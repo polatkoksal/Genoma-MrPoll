@@ -1,0 +1,37 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+	.important {
+		font-weight: bold;
+	}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:AbsolutePanel height="153px">
+			<g:at left="474" top="47">
+				<g:Button styleName="{style.important}" ui:field="back" text="Çıkış" />
+			</g:at>
+			<g:at left="164" top="10">
+				<g:Label text="Kullanıcı Ana Menü" styleName="{style.important}"/>
+			</g:at>
+			<g:at left="35" top="47">
+				<g:Button text="Yeni Hasta Girişi" ui:field="newPatient"/>
+			</g:at>
+			<g:at left="35" top="81">
+				<g:Button text="Kayıtlı Hasta Çağırma" ui:field="callpatient"/>
+			</g:at>
+			<g:at left="35" top="117">
+				<g:Button ui:field="analysis">Analiz</g:Button>
+			</g:at>
+			<g:at left="240" top="47">
+				<g:Button text="Kullanıcı Bilgilerim" ui:field="userInformation"/>
+			</g:at>
+			<g:at left="240" top="81">
+				<g:Button text="Yeni Kullanıcı Oluştur" ui:field="newuser"/>
+			</g:at>
+			<g:at left="240" top="117">
+				<g:Button text="Kullancı Güncelle/Sil" ui:field="deleteuser"/>
+			</g:at>
+		</g:AbsolutePanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

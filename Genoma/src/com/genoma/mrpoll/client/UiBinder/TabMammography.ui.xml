@@ -1,0 +1,112 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+	.important {
+		font-weight: bold;
+	}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:AbsolutePanel width="807px" height="497px">
+			<g:at left="26" top="109">
+				<g:CheckBox text="Kitle" ui:field="r_mass" wordWrap="false"/>
+			</g:at>
+			<g:at left="10" top="319">
+				<g:CheckBox text="Bulgu Yok" ui:field="r_nofinding" wordWrap="false"/>
+			</g:at>
+			<g:at left="36" top="134">
+				<g:Label text="Lezyon Sayısı:" ui:field="r_lesionnumber_label"/>
+			</g:at>
+			<g:at left="142" top="134">
+				<g:TextBox ui:field="r_lesionnumber"/>
+			</g:at>
+			<g:at left="36" top="156">
+				<g:Label text="Lezyon Dağılımı:" ui:field="r_lesionspread_label"/>
+			</g:at>
+			<g:at left="160" top="158">
+				<g:ListBox ui:field="r_lesionspread"/>
+			</g:at>
+			<g:at left="26" top="200">
+				<g:CheckBox text="Kitle Dışı Bulgu" ui:field="r_nonmass"/>
+			</g:at>
+			<g:at left="36" top="178">
+				<g:Label text="Lezyon Boyutu:" ui:field="r_lesionsize_label"/>
+			</g:at>
+			<g:at left="160" top="178">
+				<g:ListBox ui:field="r_lesionsize"/>
+			</g:at>
+			<g:at left="26" top="225">
+				<g:CheckBox text="Aksilla Lenf Düğümü Pozitif" ui:field="r_axillary"/>
+			</g:at>
+			<g:at left="71" top="248">
+				<g:Label text="Lenf Düğümü Sayısı:" ui:field="r_lymphnodecount_label"/>
+			</g:at>
+			<g:at left="223" top="248">
+				<g:TextBox ui:field="r_lymphnodecount"/>
+			</g:at>
+			<g:at left="36" top="272">
+				<g:Label text="En Büyük Düğümün Çapı:" ui:field="r_largestnoderadius_label"/>
+			</g:at>
+			<g:at left="223" top="272">
+				<g:TextBox ui:field="r_largestnoderadius"/>
+			</g:at>
+			<g:at left="36" top="294">
+				<g:CheckBox text="Kapsül İnvazyonu Var" ui:field="r_capsuleinvasion"/>
+			</g:at>
+			<g:at left="405" top="109">
+				<g:CheckBox width="50px" height="19px" text="Kitle" ui:field="l_mass" wordWrap="false"/>
+			</g:at>
+			<g:at left="389" top="319">
+				<g:CheckBox width="90px" height="19px" text="Bulgu Yok" ui:field="l_nofinding" wordWrap="false"/>
+			</g:at>
+			<g:at left="415" top="134">
+				<g:Label width="100px" height="16px" text="Lezyon Sayısı:" ui:field="l_lesionnumber_label"/>
+			</g:at>
+			<g:at left="521" top="134">
+				<g:TextBox width="130px" height="18px" ui:field="l_lesionnumber"/>
+			</g:at>
+			<g:at left="415" top="156">
+				<g:Label width="118px" height="16px" text="Lezyon Dağılımı:" ui:field="l_lesionspread_label"/>
+			</g:at>
+			<g:at left="539" top="158">
+				<g:ListBox width="56px" height="20px" ui:field="l_lesionspread"/>
+			</g:at>
+			<g:at left="405" top="200">
+				<g:CheckBox width="125px" height="19px" text="Kitle Dışı Bulgu" ui:field="l_nonmass" wordWrap="false"/>
+			</g:at>
+			<g:at left="415" top="178">
+				<g:Label width="109px" height="16px" text="Lezyon Boyutu:" ui:field="l_lesionsize_label"/>
+			</g:at>
+			<g:at left="539" top="178">
+				<g:ListBox width="56px" height="20px" ui:field="l_lesionsize"/>
+			</g:at>
+			<g:at left="405" top="225">
+				<g:CheckBox width="211px" height="19px" text="Aksilla Lenf Düğümü Pozitif" ui:field="l_axillary"/>
+			</g:at>
+			<g:at left="450" top="248">
+				<g:Label width="146px" height="16px" text="Lenf Düğümü Sayısı:" ui:field="l_lypmhnodecount_label"/>
+			</g:at>
+			<g:at left="602" top="248">
+				<g:TextBox width="130px" height="18px" ui:field="l_lymphnodecount"/>
+			</g:at>
+			<g:at left="415" top="272">
+				<g:Label width="181px" height="16px" text="En Büyük Düğümün Çapı:" ui:field="l_largestnoderadius_label"/>
+			</g:at>
+			<g:at left="602" top="272">
+				<g:TextBox width="130px" height="18px" ui:field="l_largestnoderadius"/>
+			</g:at>
+			<g:at left="415" top="294">
+				<g:CheckBox width="171px" height="19px" text="Kapsül İnvazyonu Var" ui:field="l_capsuleinvasion"/>
+			</g:at>
+			<g:at left="255" top="10">
+				<g:Label text="Mamografi bulguları" styleName="{style.important}"/>
+			</g:at>
+			<g:at left="10" top="87">
+				<g:Label text="Sağ Meme"/>
+			</g:at>
+			<g:at left="389" top="87">
+				<g:Label width="75px" height="16px" text="Sol Meme"/>
+			</g:at>
+		</g:AbsolutePanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

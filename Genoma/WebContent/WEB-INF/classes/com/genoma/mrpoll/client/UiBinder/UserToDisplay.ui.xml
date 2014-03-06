@@ -1,0 +1,32 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+	
+	</ui:style>
+	<g:HTMLPanel>
+		<g:AbsolutePanel width="993px" height="37px">
+			<g:at left="130" top="10">
+				<g:Label width="151px" height="20px" ui:field="name" text="name"/>
+			</g:at>
+			<g:at left="296" top="10">
+				<g:Label text="surname" width="151px" height="20px" ui:field="surname"/>
+			</g:at>
+			<g:at left="801" top="4">
+				<g:Button ui:field="edit" width="65px" height="26px">Düzenle</g:Button>
+			</g:at>
+			<g:at left="872" top="4">
+				<g:Button text="Kullanıcı Sil" ui:field="delete" width="111px" height="26px"/>
+			</g:at>
+			<g:at left="10" top="10">
+				<g:Label text="username" ui:field="username" width="114px" height="20px"/>
+			</g:at>
+			<g:at left="453" top="10">
+				<g:Label text="phone" ui:field="phone" width="127px" height="20px"/>
+			</g:at>
+			<g:at left="596" top="10">
+				<g:Label text="email" ui:field="email" width="186px" height="20px"/>
+			</g:at>
+		</g:AbsolutePanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

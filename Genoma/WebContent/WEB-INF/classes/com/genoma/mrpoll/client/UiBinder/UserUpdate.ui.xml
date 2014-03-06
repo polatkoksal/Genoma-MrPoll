@@ -1,0 +1,58 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+	.important {
+		font-weight: bold;
+	}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:AbsolutePanel height="385px" width="451px">
+			<g:at left="161" top="36">
+				<g:Label text="Kullanıcı Bilgilerim" styleName="{style.important}"/>
+			</g:at>
+			<g:at left="63" top="88">
+				<g:Label text="Kullanıcı Adı:"/>
+			</g:at>
+			<g:at left="113" top="125">
+				<g:Label text="Şifre:"/>
+			</g:at>
+			<g:at left="119" top="164">
+				<g:Label text="Adı:"/>
+			</g:at>
+			<g:at left="99" top="209">
+				<g:Label text="Soyadı:"/>
+			</g:at>
+			<g:at left="96" top="253">
+				<g:Label text="Telefon:"/>
+			</g:at>
+			<g:at left="102" top="298">
+				<g:Label text="E-mail:"/>
+			</g:at>
+			<g:at left="180" top="88">
+				<g:TextBox ui:field="username"/>
+			</g:at>
+			<g:at left="180" top="125">
+				<g:TextBox ui:field="password"/>
+			</g:at>
+			<g:at left="180" top="164">
+				<g:TextBox ui:field="name"/>
+			</g:at>
+			<g:at left="180" top="209">
+				<g:TextBox ui:field="surname"/>
+			</g:at>
+			<g:at left="180" top="253">
+				<g:TextBox ui:field="phone"/>
+			</g:at>
+			<g:at left="180" top="298">
+				<g:TextBox ui:field="email"/>
+			</g:at>
+			<g:at left="180" top="349">
+				<g:Button ui:field="save">Kaydet</g:Button>
+			</g:at>
+			<g:at left="269" top="349">
+				<g:Button text="İptal" ui:field="cancel">Geri</g:Button>
+			</g:at>
+		</g:AbsolutePanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

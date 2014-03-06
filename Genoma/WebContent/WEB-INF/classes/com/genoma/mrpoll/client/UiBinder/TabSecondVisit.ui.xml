@@ -1,0 +1,70 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+	.important {
+		font-weight: bold;
+	}
+	</ui:style>
+	<g:HTMLPanel width="" height="">
+		<g:AbsolutePanel width="762px" height="354px">
+			<g:at left="10" top="48">
+				<g:CheckBox text="MRI bulgusu sebebiyle biyopsi yapıldı" ui:field="r_mri_biopsy"/>
+			</g:at>
+			<g:at left="35" top="73">
+				<g:Label text="Histopatolojik tanı:"/>
+			</g:at>
+			<g:at left="174" top="73">
+				<g:ListBox ui:field="r_mri_biopsy_diagnosis"/>
+			</g:at>
+			<g:at left="10" top="95">
+				<g:CheckBox text="İkinci bakı USG yapıldı" ui:field="r_usg"/>
+			</g:at>
+			<g:at left="35" top="120">
+				<g:CheckBox text="Kitle" ui:field="r_mass"/>
+			</g:at>
+			<g:at left="35" top="145">
+				<g:CheckBox text="Kitle Dışı Bulgular" ui:field="r_nonmass"/>
+			</g:at>
+			<g:at left="35" top="170">
+				<g:CheckBox text="USG bulgusu sebebiyle biyopsi yapıldı" ui:field="r_usg_biopsy"/>
+			</g:at>
+			<g:at left="66" top="195">
+				<g:Label text="Histopatolojik tanı:" ui:field="r_usg_biopsy_diagnosis_label"/>
+			</g:at>
+			<g:at left="205" top="195">
+				<g:ListBox ui:field="r_usg_biopsy_diagnosis"/>
+			</g:at>
+			<g:at left="345" top="48">
+				<g:CheckBox width="282px" height="19px" text="MRI bulgusu sebebiyle biyopsi yapıldı" ui:field="l_mri_biopsy"/>
+			</g:at>
+			<g:at left="370" top="73">
+				<g:Label width="133px" height="16px" text="Histopatolojik tanı:"/>
+			</g:at>
+			<g:at left="509" top="73">
+				<g:ListBox width="56px" height="20px" ui:field="l_mri_biopsy_diagnosis"/>
+			</g:at>
+			<g:at left="345" top="95">
+				<g:CheckBox width="175px" height="19px" text="İkinci bakı USG yapıldı" ui:field="l_usg"/>
+			</g:at>
+			<g:at left="370" top="120">
+				<g:CheckBox width="50px" height="19px" text="Kitle" ui:field="l_mass" wordWrap="false"/>
+			</g:at>
+			<g:at left="370" top="145">
+				<g:CheckBox width="144px" height="19px" text="Kitle Dışı Bulgular" ui:field="l_nonmass"/>
+			</g:at>
+			<g:at left="370" top="170">
+				<g:CheckBox width="286px" height="19px" text="USG bulgusu sebebiyle biyopsi yapıldı" ui:field="l_usg_biopsy"/>
+			</g:at>
+			<g:at left="401" top="195">
+				<g:Label width="133px" height="16px" text="Histopatolojik tanı:" ui:field="l_usg_biopsy_diagnosis_label"/>
+			</g:at>
+			<g:at left="540" top="195">
+				<g:ListBox width="56px" height="20px" ui:field="l_usg_biopsy_diagnosis"/>
+			</g:at>
+			<g:at left="282" top="10">
+				<g:Label text="İkinci Bakı" styleName="{style.important}"/>
+			</g:at>
+		</g:AbsolutePanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

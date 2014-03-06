@@ -1,0 +1,20 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+	.important {
+		font-weight: bold;
+	}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:VerticalPanel width="132px" height="300px" ui:field="panel">
+			<g:Anchor ui:field="patientinfo" text="GENEL BİLGİLER"></g:Anchor>
+			<g:Anchor ui:field="clinic" text="KLİNİK"></g:Anchor>
+			<g:Anchor text="MAMOGRAFİ" ui:field="mammography"></g:Anchor>
+			<g:Anchor text="USG" ui:field="usg"></g:Anchor>
+			<g:Anchor text="MRI" ui:field="mri"></g:Anchor>
+			<g:Anchor text="İKİNCİ BAKI" ui:field="second"></g:Anchor>
+			<g:Anchor text="CERRAHİ" ui:field="surgical"></g:Anchor>
+		</g:VerticalPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 
