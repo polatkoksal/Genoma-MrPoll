@@ -44,6 +44,7 @@ public class UserToUpdate extends Composite{
 	@UiField TextBox phone;
 	@UiField TextBox email;
 	@UiField Button cancel;
+	@UiField TextBox hospital;
 
 	
 	
@@ -64,6 +65,7 @@ public class UserToUpdate extends Composite{
 				surname.setText(result.getSurname());
 				phone.setText(result.getPhone());
 				email.setText(result.getEmail());
+				hospital.setText(result.getHospital());
 				
 			}
 			
@@ -84,6 +86,7 @@ public class UserToUpdate extends Composite{
 		userUi.setSurname(surname.getText());
 		userUi.setPhone(phone.getText());
 		userUi.setEmail(email.getText());
+		userUi.setHospital(hospital.getText());
 
 		newUserService.updateUser("currentUser", userUi, new AsyncCallback<Boolean>() {
 

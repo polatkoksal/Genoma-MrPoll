@@ -70,17 +70,6 @@ public class UserSearchToEdit extends Composite {
 		
 	}
 	
-	public User convert(UserUI user){
-		User result = new User();
-		result.setId(user.getId());
-		result.setName(user.getName());
-		result.setPassword(user.getPassword());
-		result.setUsername(user.getUsername());
-		result.setSurname(user.getSurname());
-		result.setPhone(user.getPhone());
-		result.setEmail(user.getEmail());
-		return result;
-	}
 
 	@UiHandler("searchbox")
 	void onSearchboxKeyDown(KeyDownEvent event) {
