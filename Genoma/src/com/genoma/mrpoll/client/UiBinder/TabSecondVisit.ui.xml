@@ -9,7 +9,7 @@
 	<g:HTMLPanel width="" height="">
 		<g:AbsolutePanel width="762px" height="354px">
 			<g:at left="10" top="48">
-				<g:CheckBox text="MRI bulgusu sebebiyle biyopsi yapıldı" ui:field="r_mri_biopsy"/>
+				<g:CheckBox text="MRI kılavuzluğunda biyopsi yapıldı" ui:field="r_mri_biopsy"/>
 			</g:at>
 			<g:at left="35" top="73">
 				<g:Label text="Histopatolojik tanı:"/>
@@ -27,7 +27,7 @@
 				<g:CheckBox text="Kitle Dışı Bulgular" ui:field="r_nonmass"/>
 			</g:at>
 			<g:at left="35" top="170">
-				<g:CheckBox text="USG bulgusu sebebiyle biyopsi yapıldı" ui:field="r_usg_biopsy"/>
+				<g:CheckBox text="USG kılavuzluğunda biyopsi yapıldı" ui:field="r_usg_biopsy"/>
 			</g:at>
 			<g:at left="66" top="195">
 				<g:Label text="Histopatolojik tanı:" ui:field="r_usg_biopsy_diagnosis_label"/>
@@ -36,7 +36,7 @@
 				<g:ListBox ui:field="r_usg_biopsy_diagnosis"/>
 			</g:at>
 			<g:at left="345" top="48">
-				<g:CheckBox width="282px" height="19px" text="MRI bulgusu sebebiyle biyopsi yapıldı" ui:field="l_mri_biopsy"/>
+				<g:CheckBox width="282px" height="19px" text="MRI kılavuzluğunda biyopsi yapıldı" ui:field="l_mri_biopsy"/>
 			</g:at>
 			<g:at left="370" top="73">
 				<g:Label width="133px" height="16px" text="Histopatolojik tanı:"/>
@@ -54,7 +54,7 @@
 				<g:CheckBox width="144px" height="19px" text="Kitle Dışı Bulgular" ui:field="l_nonmass"/>
 			</g:at>
 			<g:at left="370" top="170">
-				<g:CheckBox width="286px" height="19px" text="USG bulgusu sebebiyle biyopsi yapıldı" ui:field="l_usg_biopsy"/>
+				<g:CheckBox width="286px" height="19px" text="USG kılavuzluğunda biyopsi yapıldı" ui:field="l_usg_biopsy"/>
 			</g:at>
 			<g:at left="401" top="195">
 				<g:Label width="133px" height="16px" text="Histopatolojik tanı:" ui:field="l_usg_biopsy_diagnosis_label"/>

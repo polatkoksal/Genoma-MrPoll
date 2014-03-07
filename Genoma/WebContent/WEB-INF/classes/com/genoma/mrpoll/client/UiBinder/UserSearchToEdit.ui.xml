@@ -7,15 +7,15 @@
 	}
 	</ui:style>
 	<g:HTMLPanel>
-		<g:AbsolutePanel height="422px" width="1064px">
+		<g:AbsolutePanel height="422px" width="1242px">
 			<g:at left="29" top="35">
 				<g:TextBox ui:field="searchbox"/>
 			</g:at>
 			<g:at left="198" top="35">
 				<g:Button text="Ara" ui:field="search"/>
 			</g:at>
-			<g:at left="29" top="107">
-				<g:VerticalPanel width="1025px" height="263px" ui:field="resultpanel"/>
+			<g:at left="29" top="111">
+				<g:VerticalPanel width="1185px" height="263px" ui:field="resultpanel"/>
 			</g:at>
 			<g:at left="245" top="35">
 				<g:Button ui:field="cancel">İptal</g:Button>

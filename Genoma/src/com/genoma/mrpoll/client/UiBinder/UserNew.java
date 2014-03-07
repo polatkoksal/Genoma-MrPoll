@@ -41,6 +41,7 @@ public class UserNew extends Composite{
 	@UiField TextBox phone;
 	@UiField TextBox email;
 	@UiField Button cancel;
+	@UiField TextBox hospital;
 
 	
 	
@@ -59,6 +60,7 @@ public class UserNew extends Composite{
 		newUser.setSurname(surname.getText());
 		newUser.setPhone(phone.getText());
 		newUser.setEmail(email.getText());
+		newUser.setHospital(hospital.getText());
 		
 		newUserService.addUser(newUser, new AsyncCallback<Boolean>() {
 

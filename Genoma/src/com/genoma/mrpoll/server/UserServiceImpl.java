@@ -112,6 +112,7 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 			tempUser.setSurname(user.getSurname());
 			tempUser.setPhone(user.getPhone());
 			tempUser.setEmail(user.getEmail());
+			tempUser.setHospital(user.getHospital());
 			em.getTransaction().commit();
 			em.close();
 			System.out.println("Equity of the ids :" + (user.getId()==tempUser.getId()));
@@ -232,6 +233,7 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 		result.setSurname(user.getSurname());
 		result.setPhone(user.getPhone());
 		result.setEmail(user.getEmail());
+		result.setHospital(user.getHospital());
 		return result;
 	}
 	
@@ -244,6 +246,7 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 		result.setSurname(userUi.getSurname());
 		result.setPhone(userUi.getPhone());
 		result.setEmail(userUi.getEmail());
+		result.setHospital(userUi.getHospital());
 		return result;
 		
 		
