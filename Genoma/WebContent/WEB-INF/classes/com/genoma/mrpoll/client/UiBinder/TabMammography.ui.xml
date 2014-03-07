@@ -33,7 +33,7 @@
 				<g:Label text="Lezyon Boyutu:" ui:field="r_lesionsize_label"/>
 			</g:at>
 			<g:at left="160" top="178">
-				<g:ListBox ui:field="r_lesionsize"/>
+				<g:TextBox ui:field="r_lesionsize"/>
 			</g:at>
 			<g:at left="26" top="300">
 				<g:CheckBox text="Aksilla Lenf Düğümü Pozitif" ui:field="r_axillary"/>
@@ -78,7 +78,7 @@
 				<g:Label width="109px" height="16px" text="Lezyon Boyutu:" ui:field="l_lesionsize_label"/>
 			</g:at>
 			<g:at left="564" top="178">
-				<g:ListBox width="56px" height="20px" ui:field="l_lesionsize"/>
+				<g:TextBox width="112px" height="10px" ui:field="l_lesionsize"/>
 			</g:at>
 			<g:at left="430" top="300">
 				<g:CheckBox width="211px" height="19px" text="Aksilla Lenf Düğümü Pozitif" ui:field="l_axillary"/>

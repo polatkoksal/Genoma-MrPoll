@@ -25,7 +25,7 @@ public class TabMammography extends Composite{
 	@UiField Label r_lesionnumber_label;
 	@UiField ListBox r_lesionspread;
 	@UiField Label r_lesionspread_label;
-	@UiField ListBox r_lesionsize;
+	@UiField TextBox r_lesionsize;
 	@UiField Label r_lesionsize_label;
 	@UiField CheckBox r_capsuleinvasion;
 	@UiField CheckBox l_nofinding;
@@ -34,7 +34,7 @@ public class TabMammography extends Composite{
 	@UiField Label l_lesionnumber_label;
 	@UiField ListBox l_lesionspread;
 	@UiField Label l_lesionspread_label;
-	@UiField ListBox l_lesionsize;
+	@UiField TextBox l_lesionsize;
 	@UiField Label l_lesionsize_label;
 	@UiField CheckBox r_nonmass;
 	@UiField CheckBox l_nonmass;
