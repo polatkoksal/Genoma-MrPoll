@@ -38,6 +38,12 @@ public class TabMammography extends Composite{
 	@UiField Label l_lesionsize_label;
 	@UiField CheckBox r_nonmass;
 	@UiField CheckBox l_nonmass;
+	@UiField CheckBox r_microcalcification;
+	@UiField CheckBox l_microcalcification;
+	@UiField ListBox r_microcalcificationtype;
+	@UiField Label r_microcalcificationtype_label;
+	@UiField ListBox r_microcalcificationarea;
+	@UiField Label r_microcalcificationarea_label;
 	@UiField CheckBox r_axillary;
 	@UiField CheckBox l_axillary;
 	@UiField TextBox r_lymphnodecount;
@@ -45,16 +51,14 @@ public class TabMammography extends Composite{
 	@UiField Label r_lymphnodecount_label;
 	@UiField Label r_largestnoderadius_label;
 	@UiField CheckBox l_capsuleinvasion;
+	@UiField ListBox l_microcalcificationtype;
+	@UiField ListBox l_microcalcificationarea;
+	@UiField Label l_microcalcificationtype_label;
+	@UiField Label l_microcalcificationarea_label;
 	@UiField TextBox l_lymphnodecount;
 	@UiField TextBox l_largestnoderadius;
 	@UiField Label l_lypmhnodecount_label;
 	@UiField Label l_largestnoderadius_label;
-	@UiField CheckBox r_nonmassstain;
-	@UiField CheckBox r_ductalstain;
-	@UiField CheckBox r_focallesion;
-	@UiField CheckBox l_nonmassstain;
-	@UiField CheckBox l_ductalstain;
-	@UiField CheckBox l_focallesion;
 	@UiField ListBox r_nonmass_combo;
 	@UiField ListBox l_nonmass_combo;
 
@@ -73,26 +77,24 @@ public class TabMammography extends Composite{
 		Boolean lockStatus = !r_nofinding.getValue();
 		r_mass.setEnabled(lockStatus);
 		r_axillary.setEnabled(lockStatus);
+		r_microcalcification.setEnabled(lockStatus);
 		r_nonmass.setEnabled(lockStatus);
-		r_nonmassstain.setEnabled(lockStatus);
-		r_ductalstain.setEnabled(lockStatus);
-		r_focallesion.setEnabled(lockStatus);
 		onR_massClick(null);
 		onR_nonmassClick(null);
 		onR_axillaryClick(null);
+		onR_microcalcificationClick(null);
 	}
 	@UiHandler("l_nofinding")
 	void onL_nofindingClick(ClickEvent event) {
 		Boolean lockStatus = !l_nofinding.getValue();
 		l_mass.setEnabled(lockStatus);
 		l_axillary.setEnabled(lockStatus);
+		l_microcalcification.setEnabled(lockStatus);
 		l_nonmass.setEnabled(lockStatus);
-		l_nonmassstain.setEnabled(lockStatus);
-		l_ductalstain.setEnabled(lockStatus);
-		l_focallesion.setEnabled(lockStatus);
 		onL_massClick(null);
 		onL_nonmassClick(null);
 		onL_axillaryClick(null);
+		onL_microcalcificationClick(null);
 	}
 	
 	@UiHandler("r_axillary")
@@ -122,6 +124,18 @@ public class TabMammography extends Composite{
 		l_lesionnumber.setEnabled(lockStatus);
 		l_lesionspread.setEnabled(lockStatus);
 		l_lesionsize.setEnabled(lockStatus);
+	}
+	@UiHandler("r_microcalcification")
+	void onR_microcalcificationClick(ClickEvent event) {
+		Boolean lockStatus = r_microcalcification.getValue() && r_microcalcification.isEnabled();
+		r_microcalcificationarea.setEnabled(lockStatus);
+		r_microcalcificationtype.setEnabled(lockStatus);
+	}
+	@UiHandler("l_microcalcification")
+	void onL_microcalcificationClick(ClickEvent event) {
+		Boolean lockStatus = l_microcalcification.getValue() && l_microcalcification.isEnabled();
+		l_microcalcificationarea.setEnabled(lockStatus);
+		l_microcalcificationtype.setEnabled(lockStatus);
 	}
 	@UiHandler("l_nonmass")
 	void onL_nonmassClick(ClickEvent event) {
