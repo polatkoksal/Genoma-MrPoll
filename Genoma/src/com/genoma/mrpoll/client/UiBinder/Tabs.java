@@ -27,6 +27,7 @@ public class Tabs extends Composite {
 	@UiField Anchor second;
 	@UiField Anchor usg;
 	@UiField Anchor surgical;
+	@UiField Anchor pathology;
 
 	interface TabsUiBinder extends UiBinder<Widget, Tabs> {
 	}
@@ -68,6 +69,10 @@ public class Tabs extends Composite {
 	void onMriClick(ClickEvent event) {
 		MrPoll.repaint(State.TAB_MRI);
 	}
+	@UiHandler("pathology")
+	void onPathologyClick(ClickEvent event) {
+		MrPoll.repaint(State.TAB_PATHOLOGY);
+	}
 	@UiHandler("second")
 	void onSecondClick(ClickEvent event) {
 		MrPoll.repaint(State.TAB_SECOND);
@@ -76,4 +81,5 @@ public class Tabs extends Composite {
 	void onSurgicalClick(ClickEvent event) {
 		MrPoll.repaint(State.TAB_SURGICAL);
 	}
+	
 }

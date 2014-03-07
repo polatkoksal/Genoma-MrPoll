@@ -25,6 +25,7 @@ public class MrPoll implements EntryPoint {
 		TAB_MAMMOGRAPHY,
 		TAB_USG,
 		TAB_MRI,
+		TAB_PATHOLOGY,
 		TAB_SECOND,
 		TAB_SURGICAL
 	} 
