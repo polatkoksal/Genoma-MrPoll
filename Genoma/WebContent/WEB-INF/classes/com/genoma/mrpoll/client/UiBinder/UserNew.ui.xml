@@ -7,7 +7,7 @@
 	}
 	</ui:style>
 	<g:HTMLPanel>
-		<g:AbsolutePanel height="375px" width="450px">
+		<g:AbsolutePanel height="428px" width="450px">
 			<g:at left="129" top="37">
 				<g:Label text="Kullanıcı Bilgileri" styleName="{style.important}"/>
 			</g:at>
@@ -35,23 +35,29 @@
 			<g:at left="170" top="203">
 				<g:TextBox ui:field="surname"/>
 			</g:at>
-			<g:at left="170" top="335">
+			<g:at left="170" top="373">
 				<g:Button styleName="{style.important}" ui:field="save" width="58px" height="26px">Kaydet</g:Button>
 			</g:at>
-			<g:at left="76" top="253">
+			<g:at left="76" top="297">
 				<g:Label text="Telefon:"/>
 			</g:at>
-			<g:at left="82" top="297">
+			<g:at left="79" top="340">
 				<g:Label text="E-mail:"/>
 			</g:at>
-			<g:at left="170" top="247">
+			<g:at left="170" top="291">
 				<g:TextBox ui:field="phone"/>
 			</g:at>
-			<g:at left="170" top="291">
+			<g:at left="170" top="334">
 				<g:TextBox ui:field="email"/>
 			</g:at>
-			<g:at left="250" top="335">
+			<g:at left="252" top="373">
 				<g:Button ui:field="cancel" text="İptal" styleName="{style.important}" width="57px" height="26px"/>
+			</g:at>
+			<g:at left="56" top="252">
+				<g:Label text="Hastane Adı:"/>
+			</g:at>
+			<g:at left="170" top="252">
+				<g:TextBox ui:field="hospital"/>
 			</g:at>
 		</g:AbsolutePanel>
 		

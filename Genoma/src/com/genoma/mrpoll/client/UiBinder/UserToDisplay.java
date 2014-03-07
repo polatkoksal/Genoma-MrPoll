@@ -32,6 +32,7 @@ public class UserToDisplay extends Composite {
 	@UiField Label username;
 	@UiField Label phone;
 	@UiField Label email;
+	@UiField Label hospital;
 	UserUI userUi;
 
 	interface UserSearchResultUiBinder extends
@@ -50,6 +51,7 @@ public class UserToDisplay extends Composite {
 		surname.setText(userUi.getSurname());
 		phone.setText(userUi.getPhone());
 		email.setText(userUi.getEmail());
+		hospital.setText(userUi.getHospital());
 	}
 	
 	@UiHandler("edit")

@@ -42,6 +42,7 @@ public class UserUpdate extends Composite {
 	@UiField TextBox email;
 	@UiField Button save;
 	@UiField Button cancel;
+	@UiField TextBox hospital;
 
 	public UserUpdate(String firstName) {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -59,6 +60,7 @@ public class UserUpdate extends Composite {
 				surname.setText(result.getSurname());
 				phone.setText(result.getPhone());
 				email.setText(result.getEmail());
+				hospital.setText(result.getHospital());
 			}
 			
 			@Override
@@ -81,6 +83,7 @@ public class UserUpdate extends Composite {
 		newUser.setSurname(surname.getText());
 		newUser.setPhone(phone.getText());
 		newUser.setEmail(email.getText());
+		newUser.setHospital(hospital.getText());
 		
 		service.updateUser("sessionUser", newUser, new AsyncCallback<Boolean>() {
 

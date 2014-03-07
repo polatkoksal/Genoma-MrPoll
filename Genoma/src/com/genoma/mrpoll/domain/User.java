@@ -2,7 +2,6 @@ package com.genoma.mrpoll.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.List;
 
 
 /**
@@ -24,6 +23,9 @@ public class User implements Serializable {
 	private String email;
 
 	@Column(length=255)
+	private String hospital;
+
+	@Column(length=255)
 	private String name;
 
 	@Column(length=255)
@@ -37,10 +39,6 @@ public class User implements Serializable {
 
 	@Column(length=255)
 	private String username;
-
-	//bi-directional many-to-one association to UserRole
-	@OneToMany(mappedBy="user")
-	private List<UserRole> userRoles;
 
 	public User() {
 	}
@@ -59,6 +57,14 @@ public class User implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getHospital() {
+		return this.hospital;
+	}
+
+	public void setHospital(String hospital) {
+		this.hospital = hospital;
 	}
 
 	public String getName() {
@@ -99,28 +105,6 @@ public class User implements Serializable {
 
 	public void setUsername(String username) {
 		this.username = username;
-	}
-
-	public List<UserRole> getUserRoles() {
-		return this.userRoles;
-	}
-
-	public void setUserRoles(List<UserRole> userRoles) {
-		this.userRoles = userRoles;
-	}
-
-	public UserRole addUserRole(UserRole userRole) {
-		getUserRoles().add(userRole);
-		userRole.setUser(this);
-
-		return userRole;
-	}
-
-	public UserRole removeUserRole(UserRole userRole) {
-		getUserRoles().remove(userRole);
-		userRole.setUser(null);
-
-		return userRole;
 	}
 
 }

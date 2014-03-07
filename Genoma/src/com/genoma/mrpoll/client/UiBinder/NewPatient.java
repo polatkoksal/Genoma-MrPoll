@@ -29,7 +29,7 @@ public class NewPatient extends Composite {
 	
 	public void pointTo(State target, Button button){
 		if(target==null){
-			button.setEnabled(false);
+			button.setVisible(false);
 		}
 		else{
 			button.addClickHandler(new ClickHandler() {

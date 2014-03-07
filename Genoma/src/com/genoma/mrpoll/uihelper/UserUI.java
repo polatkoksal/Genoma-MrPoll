@@ -1,7 +1,9 @@
 package com.genoma.mrpoll.uihelper;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.Set;
 
 /**
@@ -25,6 +27,8 @@ public class UserUI implements Serializable {
 	private String surname;
 
 	private String username;
+	
+	private String hospital;
 
 	public UserUI() {
 	}
@@ -83,6 +87,14 @@ public class UserUI implements Serializable {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	
+	public String getHospital() {
+		return this.hospital;
+	}
+
+	public void setHospital(String hospital) {
+		this.hospital = hospital;
 	}
 
 }
