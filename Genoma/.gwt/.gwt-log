@@ -36077,3 +36077,1324 @@ Compiling...
    Compilation completed in 0.00 seconds
 Removing invalidated units
 Finding entry point classes
+Public resources found in...
+Translatable source found in...
+Found 0 cached/archived units.  Used 0 / 2719 units from cache.
+Compiling...
+   0% complete (ETR: ?)
+   10% complete (ETR: 88 seconds)
+   20% complete (ETR: 59 seconds)
+   30% complete (ETR: 44 seconds)
+   40% complete (ETR: 33 seconds)
+   50% complete (ETR: 23 seconds)
+   60% complete (ETR: 18 seconds)
+   70% complete (ETR: 13 seconds)
+   80% complete (ETR: 8 seconds)
+   90% complete (ETR: 4 seconds)
+   100% complete (ETR: 0 seconds)
+   Compilation completed in 39.46 seconds
+Removing invalidated units
+Finding entry point classes
+Public resources found in...
+Translatable source found in...
+Found 2719 cached/archived units.  Used 2719 / 2719 units from cache.
+Compiling...
+   Compilation completed in 0.00 seconds
+Removing invalidated units
+Finding entry point classes
+Public resources found in...
+Translatable source found in...
+Found 2719 cached/archived units.  Used 2719 / 2719 units from cache.
+Compiling...
+   Compilation completed in 0.00 seconds
+Removing invalidated units
+Finding entry point classes
+Public resources found in...
+Translatable source found in...
+Found 0 cached/archived units.  Used 0 / 2743 units from cache.
+Compiling...
+   10% complete (ETR: 21 seconds)
+   10% complete (ETR: 21 seconds)
+   20% complete (ETR: 21 seconds)
+   30% complete (ETR: 16 seconds)
+   40% complete (ETR: 12 seconds)
+   50% complete (ETR: 9 seconds)
+   60% complete (ETR: 7 seconds)
+   70% complete (ETR: 6 seconds)
+   80% complete (ETR: 4 seconds)
+   90% complete (ETR: 2 seconds)
+   100% complete (ETR: 0 seconds)
+   Compilation completed in 24.83 seconds
+Validating units:
+   [ERROR] Errors in 'file:/home/can/git/Genoma-MrPoll/Genoma/src/com/genoma/mrpoll/client/EMF.java'
+      [ERROR] Line 7: No source code is available for type javax.persistence.EntityManagerFactory; did you forget to inherit a required module?
+      [ERROR] Line 8: No source code is available for type javax.persistence.Persistence; did you forget to inherit a required module?
+Removing invalidated units
+Finding entry point classes
+Rebinding com.google.gwt.i18n.client.impl.LocaleInfoImpl
+   Invoking generator com.google.gwt.i18n.rebind.LocaleInfoGenerator
+      Processing interface com.google.gwt.i18n.client.constants.NumberConstantsImpl
+         Generating method body for notANumber()
+         Generating method body for currencyPattern()
+         Generating method body for decimalPattern()
+         Generating method body for decimalSeparator()
+         Generating method body for defCurrencyCode()
+         Generating method body for exponentialSymbol()
+         Generating method body for globalCurrencyPattern()
+         Generating method body for groupingSeparator()
+         Generating method body for infinity()
+         Generating method body for minusSign()
+         Generating method body for monetaryGroupingSeparator()
+         Generating method body for monetarySeparator()
+         Generating method body for percent()
+         Generating method body for percentPattern()
+         Generating method body for perMill()
+         Generating method body for plusSign()
+         Generating method body for scientificPattern()
+         Generating method body for simpleCurrencyPattern()
+         Generating method body for zeroDigit()
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.06 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.21 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178227223.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178227223.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.04 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178227223_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.03 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.12 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178234358.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178234358.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.02 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178234358_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.03 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.13 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178305232.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178305232.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.02 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178305232_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.03 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.09 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178322796.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178322796.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.02 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178322796_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.02 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.10 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178327667.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178327667.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178327667_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.04 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178331819.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178331819.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178331819_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.05 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178338388.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178338388.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178338388_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.06 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178342150.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178342150.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178342150_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.05 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178347216.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178347216.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178347216_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.04 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178354248.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178354248.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178354248_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.02 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.05 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178366830.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178366830.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178366830_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Public resources found in...
+Translatable source found in...
+Found 2742 cached/archived units.  Used 2742 / 2743 units from cache.
+Compiling...
+   Compilation completed in 0.04 seconds
+Invalid Unit: com.genoma.mrpoll.client.UiBinder.NewPatient
+Invalid units found: 1
+Compiling...
+   Compilation completed in 0.05 seconds
+Validating units:
+   [ERROR] Errors in 'file:/home/can/git/Genoma-MrPoll/Genoma/src/com/genoma/mrpoll/client/EMF.java'
+      [ERROR] Line 7: No source code is available for type javax.persistence.EntityManagerFactory; did you forget to inherit a required module?
+      [ERROR] Line 8: No source code is available for type javax.persistence.Persistence; did you forget to inherit a required module?
+Removing invalidated units
+Finding entry point classes
+Rebinding com.google.gwt.i18n.client.impl.LocaleInfoImpl
+   Invoking generator com.google.gwt.i18n.rebind.LocaleInfoGenerator
+      Processing interface com.google.gwt.i18n.client.constants.NumberConstantsImpl
+         Generating method body for notANumber()
+         Generating method body for currencyPattern()
+         Generating method body for decimalPattern()
+         Generating method body for decimalSeparator()
+         Generating method body for defCurrencyCode()
+         Generating method body for exponentialSymbol()
+         Generating method body for globalCurrencyPattern()
+         Generating method body for groupingSeparator()
+         Generating method body for infinity()
+         Generating method body for minusSign()
+         Generating method body for monetaryGroupingSeparator()
+         Generating method body for monetarySeparator()
+         Generating method body for percent()
+         Generating method body for percentPattern()
+         Generating method body for perMill()
+         Generating method body for plusSign()
+         Generating method body for scientificPattern()
+         Generating method body for simpleCurrencyPattern()
+         Generating method body for zeroDigit()
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.04 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178384669.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178384669.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178384669_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.09 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178386200.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178386200.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178386200_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.06 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178396300.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178396300.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178396300_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.05 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178402612.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178402612.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178402612_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.02 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.04 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178411075.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178411075.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178411075_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.04 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178414566.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178414566.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178414566_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.04 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178415024.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178415024.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178415024_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.04 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178419966.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178419966.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178419966_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.05 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178427112.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178427112.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178427112_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.07 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178436773.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178436773.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178436773_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.02 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.04 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178444356.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178444356.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178444356_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.04 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178446130.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178446130.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178446130_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.04 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178446487.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178446487.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.02 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178446487_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.04 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178461688.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178461688.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178461688_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.04 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178463408.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178463408.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178463408_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.04 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178463831.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178463831.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178463831_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.05 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178472455.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178472455.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178472455_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.04 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178475425.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178475425.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178475425_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.03 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178475809.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178475809.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMammography_MammographyUiBinderImpl_designTime1394178475809_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Public resources found in...
+Translatable source found in...
+Found 2743 cached/archived units.  Used 2743 / 2743 units from cache.
+Compiling...
+   Compilation completed in 0.00 seconds
+Validating units:
+   [ERROR] Errors in 'file:/home/can/git/Genoma-MrPoll/Genoma/src/com/genoma/mrpoll/client/EMF.java'
+      [ERROR] Line 7: No source code is available for type javax.persistence.EntityManagerFactory; did you forget to inherit a required module?
+      [ERROR] Line 8: No source code is available for type javax.persistence.Persistence; did you forget to inherit a required module?
+Removing invalidated units
+Finding entry point classes
+Rebinding com.google.gwt.i18n.client.impl.LocaleInfoImpl
+   Invoking generator com.google.gwt.i18n.rebind.LocaleInfoGenerator
+      Processing interface com.google.gwt.i18n.client.constants.NumberConstantsImpl
+         Generating method body for notANumber()
+         Generating method body for currencyPattern()
+         Generating method body for decimalPattern()
+         Generating method body for decimalSeparator()
+         Generating method body for defCurrencyCode()
+         Generating method body for exponentialSymbol()
+         Generating method body for globalCurrencyPattern()
+         Generating method body for groupingSeparator()
+         Generating method body for infinity()
+         Generating method body for minusSign()
+         Generating method body for monetaryGroupingSeparator()
+         Generating method body for monetarySeparator()
+         Generating method body for percent()
+         Generating method body for percentPattern()
+         Generating method body for perMill()
+         Generating method body for plusSign()
+         Generating method body for scientificPattern()
+         Generating method body for simpleCurrencyPattern()
+         Generating method body for zeroDigit()
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.07 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178494195.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178494195.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178494195_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.02 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.04 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178496367.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178496367.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178496367_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.04 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178515792.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178515792.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178515792_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.04 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178524053.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178524053.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178524053_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.03 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178528887.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178528887.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178528887_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.21 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178534798.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178534798.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178534798_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.02 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.03 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178539248.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178539248.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178539248_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.03 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178549039.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178549039.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178549039_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.08 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178555420.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178555420.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178555420_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Public resources found in...
+Translatable source found in...
+Found 2742 cached/archived units.  Used 2742 / 2743 units from cache.
+Compiling...
+   Compilation completed in 0.02 seconds
+Invalid Unit: com.genoma.mrpoll.client.UiBinder.NewPatient
+Invalid units found: 1
+Compiling...
+   Compilation completed in 0.01 seconds
+Validating units:
+   [ERROR] Errors in 'file:/home/can/git/Genoma-MrPoll/Genoma/src/com/genoma/mrpoll/client/EMF.java'
+      [ERROR] Line 7: No source code is available for type javax.persistence.EntityManagerFactory; did you forget to inherit a required module?
+      [ERROR] Line 8: No source code is available for type javax.persistence.Persistence; did you forget to inherit a required module?
+Removing invalidated units
+Finding entry point classes
+Rebinding com.google.gwt.i18n.client.impl.LocaleInfoImpl
+   Invoking generator com.google.gwt.i18n.rebind.LocaleInfoGenerator
+      Processing interface com.google.gwt.i18n.client.constants.NumberConstantsImpl
+         Generating method body for notANumber()
+         Generating method body for currencyPattern()
+         Generating method body for decimalPattern()
+         Generating method body for decimalSeparator()
+         Generating method body for defCurrencyCode()
+         Generating method body for exponentialSymbol()
+         Generating method body for globalCurrencyPattern()
+         Generating method body for groupingSeparator()
+         Generating method body for infinity()
+         Generating method body for minusSign()
+         Generating method body for monetaryGroupingSeparator()
+         Generating method body for monetarySeparator()
+         Generating method body for percent()
+         Generating method body for percentPattern()
+         Generating method body for perMill()
+         Generating method body for plusSign()
+         Generating method body for scientificPattern()
+         Generating method body for simpleCurrencyPattern()
+         Generating method body for zeroDigit()
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.03 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178564489.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178564489.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178564489_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.03 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178565881.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178565881.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178565881_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.03 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178573145.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178573145.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178573145_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.06 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178578183.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178578183.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178578183_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.03 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178584241.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178584241.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178584241_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.03 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178592630.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178592630.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178592630_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.03 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178595843.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178595843.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabMRI_MammographyUiBinderImpl_designTime1394178595843_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Public resources found in...
+Translatable source found in...
+Found 2743 cached/archived units.  Used 2743 / 2743 units from cache.
+Compiling...
+   Compilation completed in 0.00 seconds
+Validating units:
+   [ERROR] Errors in 'file:/home/can/git/Genoma-MrPoll/Genoma/src/com/genoma/mrpoll/client/EMF.java'
+      [ERROR] Line 7: No source code is available for type javax.persistence.EntityManagerFactory; did you forget to inherit a required module?
+      [ERROR] Line 8: No source code is available for type javax.persistence.Persistence; did you forget to inherit a required module?
+Removing invalidated units
+Finding entry point classes
+Rebinding com.google.gwt.i18n.client.impl.LocaleInfoImpl
+   Invoking generator com.google.gwt.i18n.rebind.LocaleInfoGenerator
+      Processing interface com.google.gwt.i18n.client.constants.NumberConstantsImpl
+         Generating method body for notANumber()
+         Generating method body for currencyPattern()
+         Generating method body for decimalPattern()
+         Generating method body for decimalSeparator()
+         Generating method body for defCurrencyCode()
+         Generating method body for exponentialSymbol()
+         Generating method body for globalCurrencyPattern()
+         Generating method body for groupingSeparator()
+         Generating method body for infinity()
+         Generating method body for minusSign()
+         Generating method body for monetaryGroupingSeparator()
+         Generating method body for monetarySeparator()
+         Generating method body for percent()
+         Generating method body for percentPattern()
+         Generating method body for perMill()
+         Generating method body for plusSign()
+         Generating method body for scientificPattern()
+         Generating method body for simpleCurrencyPattern()
+         Generating method body for zeroDigit()
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabUltrasonography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.05 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabUltrasonography_MammographyUiBinderImpl_designTime1394178614191.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabUltrasonography_MammographyUiBinderImpl_designTime1394178614191.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabUltrasonography_MammographyUiBinderImpl_designTime1394178614191_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabUltrasonography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.04 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabUltrasonography_MammographyUiBinderImpl_designTime1394178615349.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabUltrasonography_MammographyUiBinderImpl_designTime1394178615349.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabUltrasonography_MammographyUiBinderImpl_designTime1394178615349_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabUltrasonography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.06 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabUltrasonography_MammographyUiBinderImpl_designTime1394178628490.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabUltrasonography_MammographyUiBinderImpl_designTime1394178628490.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabUltrasonography_MammographyUiBinderImpl_designTime1394178628490_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.02 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabUltrasonography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.03 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabUltrasonography_MammographyUiBinderImpl_designTime1394178639086.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabUltrasonography_MammographyUiBinderImpl_designTime1394178639086.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabUltrasonography_MammographyUiBinderImpl_designTime1394178639086_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabUltrasonography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.04 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabUltrasonography_MammographyUiBinderImpl_designTime1394178644175.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabUltrasonography_MammographyUiBinderImpl_designTime1394178644175.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabUltrasonography_MammographyUiBinderImpl_designTime1394178644175_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabUltrasonography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.04 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabUltrasonography_MammographyUiBinderImpl_designTime1394178650535.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabUltrasonography_MammographyUiBinderImpl_designTime1394178650535.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabUltrasonography_MammographyUiBinderImpl_designTime1394178650535_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.02 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabUltrasonography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.04 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabUltrasonography_MammographyUiBinderImpl_designTime1394178656907.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabUltrasonography_MammographyUiBinderImpl_designTime1394178656907.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabUltrasonography_MammographyUiBinderImpl_designTime1394178656907_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabUltrasonography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.04 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabUltrasonography_MammographyUiBinderImpl_designTime1394178661566.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabUltrasonography_MammographyUiBinderImpl_designTime1394178661566.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabUltrasonography_MammographyUiBinderImpl_designTime1394178661566_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Public resources found in...
+Translatable source found in...
+Found 2742 cached/archived units.  Used 2742 / 2743 units from cache.
+Compiling...
+   Compilation completed in 0.02 seconds
+Invalid Unit: com.genoma.mrpoll.client.UiBinder.NewPatient
+Invalid units found: 1
+Compiling...
+   Compilation completed in 0.01 seconds
+Validating units:
+   [ERROR] Errors in 'file:/home/can/git/Genoma-MrPoll/Genoma/src/com/genoma/mrpoll/client/EMF.java'
+      [ERROR] Line 7: No source code is available for type javax.persistence.EntityManagerFactory; did you forget to inherit a required module?
+      [ERROR] Line 8: No source code is available for type javax.persistence.Persistence; did you forget to inherit a required module?
+Removing invalidated units
+Finding entry point classes
+Rebinding com.google.gwt.i18n.client.impl.LocaleInfoImpl
+   Invoking generator com.google.gwt.i18n.rebind.LocaleInfoGenerator
+      Processing interface com.google.gwt.i18n.client.constants.NumberConstantsImpl
+         Generating method body for notANumber()
+         Generating method body for currencyPattern()
+         Generating method body for decimalPattern()
+         Generating method body for decimalSeparator()
+         Generating method body for defCurrencyCode()
+         Generating method body for exponentialSymbol()
+         Generating method body for globalCurrencyPattern()
+         Generating method body for groupingSeparator()
+         Generating method body for infinity()
+         Generating method body for minusSign()
+         Generating method body for monetaryGroupingSeparator()
+         Generating method body for monetarySeparator()
+         Generating method body for percent()
+         Generating method body for percentPattern()
+         Generating method body for perMill()
+         Generating method body for plusSign()
+         Generating method body for scientificPattern()
+         Generating method body for simpleCurrencyPattern()
+         Generating method body for zeroDigit()
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.00 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabUltrasonography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.04 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabUltrasonography_MammographyUiBinderImpl_designTime1394178667630.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabUltrasonography_MammographyUiBinderImpl_designTime1394178667630.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabUltrasonography_MammographyUiBinderImpl_designTime1394178667630_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabUltrasonography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.05 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabUltrasonography_MammographyUiBinderImpl_designTime1394178669152.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabUltrasonography_MammographyUiBinderImpl_designTime1394178669152.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabUltrasonography_MammographyUiBinderImpl_designTime1394178669152_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.02 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabUltrasonography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.07 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabUltrasonography_MammographyUiBinderImpl_designTime1394178677437.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabUltrasonography_MammographyUiBinderImpl_designTime1394178677437.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabUltrasonography_MammographyUiBinderImpl_designTime1394178677437_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabUltrasonography.MammographyUiBinder
+   Adding '3' new generated units
+      Compiling...
+         Compilation completed in 0.04 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabUltrasonography_MammographyUiBinderImpl_designTime1394178682729.Template
+   Invoking generator com.google.gwt.safehtml.rebind.SafeHtmlTemplatesGenerator
+      Constructing interface com.genoma.mrpoll.client.UiBinder.TabUltrasonography_MammographyUiBinderImpl_designTime1394178682729.Template
+         Generating method body for html1()
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
+Rebinding com.genoma.mrpoll.client.UiBinder.TabUltrasonography_MammographyUiBinderImpl_designTime1394178682729_GenBundle
+   Adding '1' new generated units
+      Compiling...
+         Compilation completed in 0.01 seconds
+      Removing invalidated units
