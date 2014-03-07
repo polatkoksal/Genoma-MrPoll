@@ -59,6 +59,8 @@ public class TabUltrasonography extends Composite{
 	@UiField TextBox l_largestnoderadius;
 	@UiField Label l_lypmhnodecount_label;
 	@UiField Label l_largestnoderadius_label;
+	@UiField ListBox r_nonmass_combo;
+	@UiField ListBox l_nonmass_combo;
 
 	interface MammographyUiBinder extends UiBinder<Widget, TabUltrasonography> {
 	}
@@ -78,6 +80,7 @@ public class TabUltrasonography extends Composite{
 		r_microcalcification.setEnabled(lockStatus);
 		r_nonmass.setEnabled(lockStatus);
 		onR_massClick(null);
+		onR_nonmassClick(null);
 		onR_axillaryClick(null);
 		onR_microcalcificationClick(null);
 	}
@@ -89,6 +92,7 @@ public class TabUltrasonography extends Composite{
 		l_microcalcification.setEnabled(lockStatus);
 		l_nonmass.setEnabled(lockStatus);
 		onL_massClick(null);
+		onL_nonmassClick(null);
 		onL_axillaryClick(null);
 		onL_microcalcificationClick(null);
 	}
@@ -132,5 +136,15 @@ public class TabUltrasonography extends Composite{
 		Boolean lockStatus = l_microcalcification.getValue() && l_microcalcification.isEnabled();
 		l_microcalcificationarea.setEnabled(lockStatus);
 		l_microcalcificationtype.setEnabled(lockStatus);
+	}
+	@UiHandler("l_nonmass")
+	void onL_nonmassClick(ClickEvent event) {
+		Boolean lockStatus = l_nonmass.getValue() && l_nonmass.isEnabled();
+		l_nonmass_combo.setEnabled(lockStatus);
+	}
+	@UiHandler("r_nonmass")
+	void onR_nonmassClick(ClickEvent event) {
+		Boolean lockStatus = r_nonmass.getValue() && r_nonmass.isEnabled();
+		r_nonmass_combo.setEnabled(lockStatus);
 	}
 }

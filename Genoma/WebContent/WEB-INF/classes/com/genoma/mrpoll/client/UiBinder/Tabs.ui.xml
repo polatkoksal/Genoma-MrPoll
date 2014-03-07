@@ -13,6 +13,7 @@
 			<g:Anchor text="MAMOGRAFİ" ui:field="mammography"></g:Anchor>
 			<g:Anchor text="USG" ui:field="usg"></g:Anchor>
 			<g:Anchor text="MRI" ui:field="mri"></g:Anchor>
+			<g:Anchor ui:field="pathology">PATOLOJİ</g:Anchor>
 			<g:Anchor text="İKİNCİ BAKI" ui:field="second"></g:Anchor>
 			<g:Anchor text="CERRAHİ" ui:field="surgical"></g:Anchor>
 		</g:VerticalPanel>

@@ -137,6 +137,12 @@
 			<g:at left="389" top="87">
 				<g:Label width="75px" height="16px" text="Sol Meme"/>
 			</g:at>
+			<g:at left="160" top="200">
+				<g:ListBox ui:field="r_nonmass_combo"/>
+			</g:at>
+			<g:at left="539" top="200">
+				<g:ListBox ui:field="l_nonmass_combo"/>
+			</g:at>
 		</g:AbsolutePanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 

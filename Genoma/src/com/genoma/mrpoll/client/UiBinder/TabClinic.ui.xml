@@ -7,15 +7,15 @@
 	}
 	</ui:style>
 	<g:HTMLPanel>
-		<g:AbsolutePanel height="300px" width="451px">
+		<g:AbsolutePanel height="318px" width="451px">
 			<g:at left="98" top="21">
 				<g:Label text="Klinik Bilgileri" styleName="{style.important}"/>
 			</g:at>
 			<g:at left="46" top="76">
 				<g:Label text="Menapoz Durumu"/>
 			</g:at>
-			<g:at left="199" top="72">
-				<g:ListBox/>
+			<g:at left="230" top="76">
+				<g:ListBox visibleItemCount="1" ui:field="menopause_combo"/>
 			</g:at>
 			<g:at left="46" top="121">
 				<g:CheckBox text="Hikayesinde Yakıma Var"/>
