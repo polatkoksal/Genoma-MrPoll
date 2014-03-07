@@ -49,12 +49,6 @@ public class TabMRI extends Composite{
 	@UiField TextBox l_largestnoderadius;
 	@UiField Label l_lypmhnodecount_label;
 	@UiField Label l_largestnoderadius_label;
-	@UiField CheckBox r_nonmassstain;
-	@UiField CheckBox r_ductalstain;
-	@UiField CheckBox r_focallesion;
-	@UiField CheckBox l_nonmassstain;
-	@UiField CheckBox l_ductalstain;
-	@UiField CheckBox l_focallesion;
 
 	interface MammographyUiBinder extends UiBinder<Widget, TabMRI> {
 	}
@@ -72,9 +66,6 @@ public class TabMRI extends Composite{
 		r_mass.setEnabled(lockStatus);
 		r_axillary.setEnabled(lockStatus);
 		r_nonmass.setEnabled(lockStatus);
-		r_nonmassstain.setEnabled(lockStatus);
-		r_ductalstain.setEnabled(lockStatus);
-		r_focallesion.setEnabled(lockStatus);
 		onR_massClick(null);
 		onR_axillaryClick(null);
 	}
@@ -84,9 +75,6 @@ public class TabMRI extends Composite{
 		l_mass.setEnabled(lockStatus);
 		l_axillary.setEnabled(lockStatus);
 		l_nonmass.setEnabled(lockStatus);
-		l_nonmassstain.setEnabled(lockStatus);
-		l_ductalstain.setEnabled(lockStatus);
-		l_focallesion.setEnabled(lockStatus);
 		onL_massClick(null);
 		onL_axillaryClick(null);
 	}
