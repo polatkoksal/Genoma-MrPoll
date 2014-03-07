@@ -55,6 +55,8 @@ public class TabMammography extends Composite{
 	@UiField CheckBox l_nonmassstain;
 	@UiField CheckBox l_ductalstain;
 	@UiField CheckBox l_focallesion;
+	@UiField ListBox r_nonmass_combo;
+	@UiField ListBox l_nonmass_combo;
 
 	interface MammographyUiBinder extends UiBinder<Widget, TabMammography> {
 	}
@@ -76,6 +78,7 @@ public class TabMammography extends Composite{
 		r_ductalstain.setEnabled(lockStatus);
 		r_focallesion.setEnabled(lockStatus);
 		onR_massClick(null);
+		onR_nonmassClick(null);
 		onR_axillaryClick(null);
 	}
 	@UiHandler("l_nofinding")
@@ -88,6 +91,7 @@ public class TabMammography extends Composite{
 		l_ductalstain.setEnabled(lockStatus);
 		l_focallesion.setEnabled(lockStatus);
 		onL_massClick(null);
+		onL_nonmassClick(null);
 		onL_axillaryClick(null);
 	}
 	
@@ -118,5 +122,15 @@ public class TabMammography extends Composite{
 		l_lesionnumber.setEnabled(lockStatus);
 		l_lesionspread.setEnabled(lockStatus);
 		l_lesionsize.setEnabled(lockStatus);
+	}
+	@UiHandler("l_nonmass")
+	void onL_nonmassClick(ClickEvent event) {
+		Boolean lockStatus = l_nonmass.getValue() && l_nonmass.isEnabled();
+		l_nonmass_combo.setEnabled(lockStatus);
+	}
+	@UiHandler("r_nonmass")
+	void onR_nonmassClick(ClickEvent event) {
+		Boolean lockStatus = r_nonmass.getValue() && r_nonmass.isEnabled();
+		r_nonmass_combo.setEnabled(lockStatus);
 	}
 }

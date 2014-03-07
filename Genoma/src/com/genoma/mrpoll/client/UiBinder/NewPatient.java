@@ -75,11 +75,16 @@ public class NewPatient extends Composite {
 			case TAB_MRI:
 				panel.add(new TabMRI());
 				pointTo(State.TAB_USG,back);
+				pointTo(State.TAB_PATHOLOGY,forward);
+				break;
+			case TAB_PATHOLOGY:
+				panel.add(new TabPathology());
+				pointTo(State.TAB_MRI,back);
 				pointTo(State.TAB_SECOND,forward);
 				break;
 			case TAB_SECOND:
 				panel.add(new TabSecondVisit());
-				pointTo(State.TAB_MRI,back);
+				pointTo(State.TAB_PATHOLOGY,back);
 				pointTo(State.TAB_SURGICAL,forward);
 				break;
 			case TAB_SURGICAL:

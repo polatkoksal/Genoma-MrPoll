@@ -143,6 +143,12 @@
 			<g:at left="430" top="225">
 				<g:CheckBox width="210px" height="19px" text="Kitlesel Olmayan Boyanma" ui:field="l_nonmassstain"/>
 			</g:at>
+			<g:at left="160" top="200">
+				<g:ListBox ui:field="r_nonmass_combo"/>
+			</g:at>
+			<g:at left="564" top="200">
+				<g:ListBox ui:field="l_nonmass_combo"/>
+			</g:at>
 		</g:AbsolutePanel>
 	</g:HTMLPanel>
 </ui:UiBinder> 
