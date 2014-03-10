@@ -49,11 +49,13 @@ public class NewPatient extends Composite {
 		initWidget(uiBinder.createAndBindUi(this));
 		panel.add(new Tabs());
 	}
+	Updater tab;
 	public NewPatient(State s){
 		this();
 		switch(s){
 			case TAB_GENERAL_INFO:
-				panel.add(new TabGeneralInfo());
+				tab=new TabGeneralInfo();
+				panel.add((Widget) tab);
 				pointTo(null, back);
 				pointTo(State.TAB_CLINIC,forward);
 				break;
@@ -101,7 +103,7 @@ public class NewPatient extends Composite {
 	@UiField Button back;
 	@UiField Button forward;
 	@UiField Button save;
-	@UiField Button delete;
+	@UiField Button cancel;
 	@UiField Label patientid;
 	@UiField HorizontalPanel panel;
 

@@ -13,4 +13,13 @@
 	    <servlet-name>user</servlet-name>
 	    <url-pattern>/com.genoma.mrpoll.main/user</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+	    <servlet-name>patient</servlet-name>
+	    <servlet-class>com.genoma.mrpoll.server.PatientServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>patient</servlet-name>
+	    <url-pattern>/com.genoma.mrpoll.main/patient</url-pattern>
+	</servlet-mapping>
 </web-app>

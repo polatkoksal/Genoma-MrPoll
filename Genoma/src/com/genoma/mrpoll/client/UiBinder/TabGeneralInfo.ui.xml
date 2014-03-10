@@ -7,48 +7,54 @@
 	}
 	</ui:style>
 	<g:HTMLPanel>
-		<g:AbsolutePanel height="496px" width="348px">
+		<g:AbsolutePanel height="394px" width="348px">
 			<g:at left="121" top="10">
 				<g:Label text="Genel Bilgiler" styleName="{style.important}"/>
 			</g:at>
-			<g:at left="164" top="55">
-				<g:TextBox/>
+			<g:at left="164" top="91">
+				<g:TextBox ui:field="name"/>
 			</g:at>
-			<g:at left="65" top="61">
+			<g:at left="65" top="97">
 				<g:Label text="Adı Soyadı"/>
 			</g:at>
-			<g:at left="65" top="102">
+			<g:at left="65" top="138">
 				<g:Label text="Yaşı"/>
 			</g:at>
-			<g:at left="164" top="96">
-				<g:TextBox/>
-			</g:at>
-			<g:at left="65" top="143">
-				<g:Label text="Cinsiyeti"/>
-			</g:at>
-			<g:at left="164" top="142">
-				<g:RadioButton name="gender" text="Kadın" ui:field="women"/>
-			</g:at>
-			<g:at left="246" top="142">
-				<g:RadioButton name="gender" text="Erkek" ui:field="man"/>
+			<g:at left="164" top="132">
+				<g:TextBox ui:field="age"/>
 			</g:at>
 			<g:at left="65" top="179">
+				<g:Label text="Cinsiyeti"/>
+			</g:at>
+			<g:at left="164" top="178">
+				<g:RadioButton name="gender" text="Kadın" ui:field="woman"/>
+			</g:at>
+			<g:at left="246" top="178">
+				<g:RadioButton name="gender" text="Erkek" ui:field="man"/>
+			</g:at>
+			<g:at left="65" top="59">
 				<g:Label text="Protocol No"/>
 			</g:at>
-			<g:at left="164" top="179">
-				<g:TextBox/>
+			<g:at left="164" top="59">
+				<g:TextBox ui:field="protocolno"/>
 			</g:at>
-			<g:at left="65" top="215">
+			<g:at left="63" top="221">
 				<g:Label text="İşlem Tarihi"/>
 			</g:at>
 			<g:at left="164" top="215">
-				<p1:DateBox/>
+				<p1:DateBox ui:field="date"/>
 			</g:at>
-			<g:at left="65" top="263">
+			<g:at left="65" top="304">
 				<g:CheckBox text="Etik Kurul Onayı Var"/>
 			</g:at>
-			<g:at left="65" top="309">
+			<g:at left="65" top="346">
 				<g:FileUpload/>
+			</g:at>
+			<g:at left="65" top="260">
+				<g:Label text="Hastane Adı:"/>
+			</g:at>
+			<g:at left="164" top="260">
+				<g:TextBox ui:field="hospital"/>
 			</g:at>
 		</g:AbsolutePanel>
 	    
