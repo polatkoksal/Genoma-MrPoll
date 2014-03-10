@@ -37,11 +37,12 @@ public class UserNew extends Composite{
 	@UiField TextBox password;
 	@UiField TextBox name;
 	@UiField TextBox surname;
-	@UiField Button save;
+	@UiField TextBox hospital;
 	@UiField TextBox phone;
 	@UiField TextBox email;
+	@UiField Button save;
 	@UiField Button cancel;
-	@UiField TextBox hospital;
+	
 
 	
 	

@@ -25,14 +25,15 @@ public class UserToDisplay extends Composite {
 	private static UserSearchResultUiBinder uiBinder = GWT
 			.create(UserSearchResultUiBinder.class);
 	
+	@UiField Label username;
 	@UiField Label name;
 	@UiField Label surname;
-	@UiField Button edit;
-	@UiField Button delete;
-	@UiField Label username;
+	@UiField Label hospital;
 	@UiField Label phone;
 	@UiField Label email;
-	@UiField Label hospital;
+	@UiField Button edit;
+	@UiField Button delete;
+	
 	UserUI userUi;
 
 	interface UserSearchResultUiBinder extends
@@ -69,22 +70,25 @@ public class UserToDisplay extends Composite {
 	}
 	@UiHandler("delete")
 	void onDeleteClick(ClickEvent event) {
-		service.deleteUser(userUi, new AsyncCallback<Boolean>() {
-
-			
-			@Override
-			public void onSuccess(Boolean result) {
-				Window.alert("Kullanıcı Silindi");
-				MrPoll.repaint(State.MAIN_MENU);
-			}
-			
-			@Override
-			public void onFailure(Throwable caught) {
-				Window.alert("delete fail");
-			
+		Boolean b = Window.confirm("Bu kullanıcıyı silmek istediginizden emin misiniz?");
+		if(b){
+			service.deleteUser(userUi, new AsyncCallback<Boolean>() {
+	
 				
-			}
-
-		});
+				@Override
+				public void onSuccess(Boolean result) {
+					Window.alert("Kullanıcı Silindi");
+					MrPoll.repaint(State.MAIN_MENU);
+				}
+				
+				@Override
+				public void onFailure(Throwable caught) {
+					Window.alert("delete fail");
+				
+					
+				}
+	
+			});
+		}
 	}
 }

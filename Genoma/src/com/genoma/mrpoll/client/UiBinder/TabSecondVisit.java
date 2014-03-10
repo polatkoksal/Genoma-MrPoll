@@ -40,6 +40,23 @@ public class TabSecondVisit extends Composite {
 		onL_mri_biopsyClick(null);
 		onR_usgClick(null);
 		onL_usgClick(null);
+		r_mri_biopsy_diagnosis.addItem("Duktal");
+		r_mri_biopsy_diagnosis.addItem("Lobüler");
+		r_mri_biopsy_diagnosis.addItem("Mikst");
+		r_mri_biopsy_diagnosis.addItem("Diğer");
+		r_usg_biopsy_diagnosis.addItem("Duktal");
+		r_usg_biopsy_diagnosis.addItem("Lobüler");
+		r_usg_biopsy_diagnosis.addItem("Mikst");
+		r_usg_biopsy_diagnosis.addItem("Diğer");
+		l_mri_biopsy_diagnosis.addItem("Duktal");
+		l_mri_biopsy_diagnosis.addItem("Lobüler");
+		l_mri_biopsy_diagnosis.addItem("Mikst");
+		l_mri_biopsy_diagnosis.addItem("Diğer");
+		l_usg_biopsy_diagnosis.addItem("Duktal");
+		l_usg_biopsy_diagnosis.addItem("Lobüler");
+		l_usg_biopsy_diagnosis.addItem("Mikst");
+		l_usg_biopsy_diagnosis.addItem("Diğer");
+		
 	}
 
 	@UiHandler("r_usg_biopsy")

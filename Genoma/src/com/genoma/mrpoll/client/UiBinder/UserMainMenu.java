@@ -69,7 +69,11 @@ public class UserMainMenu extends Composite {
 
 	@UiHandler("back")
 	void onClick(ClickEvent e) {
-		MrPoll.repaint(State.USER_LOGIN);
+		Boolean result = Window.confirm("Çıkmak isteginizden emin misiniz?");
+		if(result){
+			MrPoll.repaint(State.USER_LOGIN);
+		}
+		
 	}
 
 

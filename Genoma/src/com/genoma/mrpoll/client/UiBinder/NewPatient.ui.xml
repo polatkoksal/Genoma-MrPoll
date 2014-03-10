@@ -28,7 +28,7 @@
 				<g:Button text="Kaydet" styleName="{style.important}" ui:field="save"/>
 			</g:at>
 			<g:at left="101" top="71">
-				<g:Button text="Bu Kaydı Sil" styleName="{style.important}" ui:field="delete"/>
+				<g:Button text="Kaydetmeden Çık" styleName="{style.important}" ui:field="cancel"/>
 			</g:at>
 			<g:at left="99" top="45">
 				<g:Label text="yeni hasta" ui:field="patientid"/>
