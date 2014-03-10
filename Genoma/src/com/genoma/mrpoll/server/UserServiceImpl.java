@@ -1,19 +1,15 @@
 package com.genoma.mrpoll.server;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
-
+import javax.crypto.Cipher;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.servlet.http.HttpSession;
-
-import org.apache.commons.beanutils.BeanUtils;
-
+import org.apache.commons.codec.binary.Base64;
 import com.genoma.mrpoll.client.EMF;
 import com.genoma.mrpoll.client.UserService;
 import com.genoma.mrpoll.domain.User;
@@ -92,9 +88,9 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 		
 		Boolean result = true;
 		HttpSession session = this.getThreadLocalRequest().getSession();
-		User sessionUser = (User) session.getAttribute(sessionParam);
+		User loginUser = (User) session.getAttribute(sessionParam);
 		User user =convertToUser(userUi);
-		user.setId(sessionUser.getId());
+		user.setId(loginUser.getId());
 		factory = EMF.get();
 		EntityManager em = factory.createEntityManager();
 		User tempUser = em.find(User.class, user.getId());
@@ -128,25 +124,25 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 	public Boolean validateUser(String userName, String password){
 		
 		Boolean result = false;
+		String decryptPassword = null;
 		factory = EMF.get();
 		EntityManager em = factory.createEntityManager();
 		Query query = em.createQuery("select u from User u where u.username=:userName");
 		query.setParameter("userName", userName);
 		List<User> users=query.getResultList();
-		System.out.println("users:"+users.get(0));
 		
 		if (!users.isEmpty()){
-			System.out.println("users not empty");
+			/*try {
+				decryptPassword = decrypt(users.get(0).getPassword(), "a");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}*/
+			//if(decryptPassword.equals(password)){
 			if(users.get(0).getPassword().equals(password)){
-				System.out.println("password check ok");
 				HttpSession session = this.getThreadLocalRequest().getSession();
-				session.setAttribute("sessionUser", users.get(0));
+				session.setAttribute("loginUser", users.get(0));
 				result = true;
 			}
-			else{
-				System.out.println("password:"+users.get(0).getPassword()+" - " +password);
-			}
-				
 			
 		}
 		return result;
@@ -174,7 +170,7 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 	public Boolean isAdmin(){
 		Boolean result = false;
 		HttpSession session = this.getThreadLocalRequest().getSession();
-		User user = (User)session.getAttribute("sessionUser");
+		User user = (User)session.getAttribute("loginUser");
 		factory = EMF.get();
 		EntityManager em = factory.createEntityManager();
 		Query query = em.createQuery("select ur from UserRole ur where ur.user.id = :param");
@@ -253,15 +249,54 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 	}
 	
 	
-	/*public void putSession(Class className, String paramName, Object object){
-		HttpSession session = this.getThreadLocalRequest().getSession();
-		session.setAttribute(paramName, (className.cast(object)));
-	}*/
 	
 	public User getUser(String userName){
 		User result = null;
 		return result;
 		
+	}
+	 
+	
+	
+	
+	private String encrypt(String text, String key) throws Exception {
+		Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+		byte[] keyBytes = new byte[16];
+		byte[] b = key.getBytes("UTF-8");
+		int len = b.length;
+		if (len > keyBytes.length)
+			len = keyBytes.length;
+		System.arraycopy(b, 0, keyBytes, 0, len);
+		SecretKeySpec keySpec = new SecretKeySpec(keyBytes, "AES");
+		IvParameterSpec ivSpec = new IvParameterSpec(keyBytes);
+		cipher.init(Cipher.ENCRYPT_MODE, keySpec, ivSpec);
+
+		byte[] results = cipher.doFinal(text.getBytes("UTF-8"));
+		Base64 encoder = new Base64();
+		String encrypted = new String(encoder.encode(results));
+		//String urlEncrypted = URLEncoder.encode(encrypted, "UTF-8");
+		String urlEncrypted = java.net.URLEncoder.encode(encrypted, "UTF-8");
+		return urlEncrypted;
+	}
+	
+	private  String decrypt(String text, String key) throws Exception {
+
+		Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+		byte[] keyBytes = new byte[16];
+		byte[] b = key.getBytes("UTF-8");
+		int len = b.length;
+		if (len > keyBytes.length)
+			len = keyBytes.length;
+		System.arraycopy(b, 0, keyBytes, 0, len);
+		SecretKeySpec keySpec = new SecretKeySpec(keyBytes, "AES");
+		IvParameterSpec ivSpec = new IvParameterSpec(keyBytes);
+		cipher.init(Cipher.DECRYPT_MODE, keySpec, ivSpec);
+
+		Base64 decoder = new Base64();
+
+		byte[] results = cipher.doFinal((byte[]) decoder.decode(text));
+
+		return new String(results, "UTF-8");
 	}
 	
 	

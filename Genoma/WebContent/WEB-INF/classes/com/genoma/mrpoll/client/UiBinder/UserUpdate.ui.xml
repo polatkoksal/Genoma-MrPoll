@@ -23,6 +23,9 @@
 			<g:at left="99" top="184">
 				<g:Label text="Soyadı:"/>
 			</g:at>
+			<g:at left="63" top="210">
+				<g:Label text="Hastane Adı:"/>
+			</g:at>
 			<g:at left="96" top="246">
 				<g:Label text="Telefon:"/>
 			</g:at>
@@ -41,6 +44,9 @@
 			<g:at left="180" top="184">
 				<g:TextBox ui:field="surname"/>
 			</g:at>
+			<g:at left="180" top="216">
+				<g:TextBox ui:field="hospital"/>
+			</g:at>
 			<g:at left="180" top="246">
 				<g:TextBox ui:field="phone"/>
 			</g:at>
@@ -52,12 +58,6 @@
 			</g:at>
 			<g:at left="272" top="324">
 				<g:Button text="İptal" ui:field="cancel">Geri</g:Button>
-			</g:at>
-			<g:at left="63" top="210">
-				<g:Label text="Hastane Adı:"/>
-			</g:at>
-			<g:at left="180" top="216">
-				<g:TextBox ui:field="hospital"/>
 			</g:at>
 		</g:AbsolutePanel>
 	</g:HTMLPanel>

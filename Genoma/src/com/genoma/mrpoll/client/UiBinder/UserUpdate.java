@@ -38,11 +38,12 @@ public class UserUpdate extends Composite {
 	@UiField TextBox password;
 	@UiField TextBox name;
 	@UiField TextBox surname;
+	@UiField TextBox hospital;
 	@UiField TextBox phone;
 	@UiField TextBox email;
 	@UiField Button save;
 	@UiField Button cancel;
-	@UiField TextBox hospital;
+	
 
 	public UserUpdate(String firstName) {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -50,7 +51,7 @@ public class UserUpdate extends Composite {
 	}
 
 	public void setUserInfo(){
-		service.getSessionUser("sessionUser", new AsyncCallback<UserUI>() {
+		service.getSessionUser("loginUser", new AsyncCallback<UserUI>() {
 			
 			@Override
 			public void onSuccess(UserUI result) {
@@ -85,7 +86,7 @@ public class UserUpdate extends Composite {
 		newUser.setEmail(email.getText());
 		newUser.setHospital(hospital.getText());
 		
-		service.updateUser("sessionUser", newUser, new AsyncCallback<Boolean>() {
+		service.updateUser("loginUser", newUser, new AsyncCallback<Boolean>() {
 
 			@Override
 			public void onSuccess(Boolean result) {

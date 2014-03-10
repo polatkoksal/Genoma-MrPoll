@@ -71,6 +71,10 @@ public class TabMammography extends Composite{
 		l_nofinding.setValue(true);
 		onR_nofindingClick(null);
 		onL_nofindingClick(null);
+		r_lesionspread.addItem("Multifokal");
+		r_lesionspread.addItem("Multisentrik");
+		l_lesionspread.addItem("Multifokal");
+		l_lesionspread.addItem("Multisentrik");
 	}
 	@UiHandler("r_nofinding")
 	void onR_nofindingClick(ClickEvent event) {
