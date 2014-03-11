@@ -1,5 +1,8 @@
 package com.genoma.mrpoll.client.UiBinder;
 
+import java.util.List;
+
+import com.genoma.mrpoll.domain.Answer;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.Composite;
@@ -11,7 +14,7 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 
-public class TabSecondVisit extends Composite {
+public class TabSecondVisit extends Composite implements Updater {
 
 	private static SecondUiBinder uiBinder = GWT.create(SecondUiBinder.class);
 	@UiField CheckBox r_mri_biopsy;
@@ -94,5 +97,17 @@ public class TabSecondVisit extends Composite {
 		l_nonmass.setEnabled(lockStatus);
 		l_usg_biopsy.setEnabled(lockStatus);
 		onL_usg_biopsyClick(null);
+	}
+
+	@Override
+	public void update(List<Answer> answers) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Answer> getAllAnswers() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
