@@ -1,7 +1,12 @@
 package com.genoma.mrpoll.client.UiBinder;
 
+import java.util.List;
+
 import com.genoma.mrpoll.client.MrPoll;
 import com.genoma.mrpoll.client.MrPoll.State;
+import com.genoma.mrpoll.client.PatientService;
+import com.genoma.mrpoll.client.PatientServiceAsync;
+import com.genoma.mrpoll.domain.Answer;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -9,6 +14,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasText;
@@ -39,7 +45,14 @@ public class NewPatient extends Composite {
 					return this;
 				}
 				public void onClick(ClickEvent event) {
-					MrPoll.repaint(target);
+					PatientServiceAsync service= GWT.create(PatientService.class);
+					service.saveAllAnswers(tab.getAllAnswers(), new AsyncCallback<Void>() {
+						public void onSuccess(Void result) {
+							MrPoll.repaint(target);
+						}
+						public void onFailure(Throwable caught) {
+						}
+					});
 				}
 			}.init(target));
 		}
@@ -50,53 +63,62 @@ public class NewPatient extends Composite {
 		panel.add(new Tabs());
 	}
 	Updater tab;
+
 	public NewPatient(State s){
 		this();
+		PatientServiceAsync service= GWT.create(PatientService.class);
 		switch(s){
 			case TAB_GENERAL_INFO:
 				tab=new TabGeneralInfo();
-				panel.add((Widget) tab);
 				pointTo(null, back);
 				pointTo(State.TAB_CLINIC,forward);
 				break;
 			case TAB_CLINIC:
-				panel.add(new TabClinic());
+				tab=new TabClinic();
 				pointTo(State.TAB_GENERAL_INFO,back);
 				pointTo(State.TAB_MAMMOGRAPHY,forward);
 				break;
 			case TAB_MAMMOGRAPHY:
-				panel.add(new TabMammography());
+				tab=new TabMammography();
 				pointTo(State.TAB_CLINIC,back);
 				pointTo(State.TAB_USG,forward);
 				break;
 			case TAB_USG:
-				panel.add(new TabUltrasonography());
+				tab=new TabUltrasonography();
 				pointTo(State.TAB_MAMMOGRAPHY, back);
 				pointTo(State.TAB_MRI, forward);
 				break;
 			case TAB_MRI:
-				panel.add(new TabMRI());
+				tab=new TabMRI();
 				pointTo(State.TAB_USG,back);
 				pointTo(State.TAB_PATHOLOGY,forward);
 				break;
 			case TAB_PATHOLOGY:
-				panel.add(new TabPathology());
+				tab=new TabPathology();
 				pointTo(State.TAB_MRI,back);
 				pointTo(State.TAB_SECOND,forward);
 				break;
 			case TAB_SECOND:
-				panel.add(new TabSecondVisit());
+				tab=new TabSecondVisit();
 				pointTo(State.TAB_PATHOLOGY,back);
 				pointTo(State.TAB_SURGICAL,forward);
 				break;
 			case TAB_SURGICAL:
-				panel.add(new TabSurgical());
+				tab=new TabSurgical();
 				pointTo(State.TAB_SECOND, back);
 				pointTo(null,forward);
 				break;
 			default:
 				break;
 		}
+		panel.add((Widget)tab);
+		service.getAllAnswers(new AsyncCallback<List<Answer>>() {
+			public void onSuccess(List<Answer> result) {
+				tab.update(result);
+			}
+			public void onFailure(Throwable caught) {
+			}
+		});
 	}
 	
 	@UiField Button mainmenu;

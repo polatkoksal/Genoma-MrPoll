@@ -1,5 +1,8 @@
 package com.genoma.mrpoll.client.UiBinder;
 
+import java.util.List;
+
+import com.genoma.mrpoll.domain.Answer;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -15,7 +18,7 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
 
-public class TabUltrasonography extends Composite{
+public class TabUltrasonography extends Composite implements Updater{
 
 	private static MammographyUiBinder uiBinder = GWT
 			.create(MammographyUiBinder.class);
@@ -124,5 +127,15 @@ public class TabUltrasonography extends Composite{
 	void onR_nonmassClick(ClickEvent event) {
 		Boolean lockStatus = r_nonmass.getValue() && r_nonmass.isEnabled();
 		r_nonmass_combo.setEnabled(lockStatus);
+	}
+	@Override
+	public void update(List<Answer> answers) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public List<Answer> getAllAnswers() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

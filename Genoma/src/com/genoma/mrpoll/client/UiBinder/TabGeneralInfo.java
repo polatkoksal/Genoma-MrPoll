@@ -1,5 +1,9 @@
 package com.genoma.mrpoll.client.UiBinder;
 
+import java.util.LinkedList;
+import java.util.List;
+
+import com.genoma.mrpoll.domain.Answer;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -76,8 +80,23 @@ public class TabGeneralInfo extends Composite implements Updater {
 		}
 	}
 
+
 	@Override
-	public void save() {
+	public List<Answer> getAllAnswers() {
+//		List<Answer> result = new LinkedList<Answer>();
+//		Answer ats;
+//		ats=new Answer();
+//		ats.setBelongsQuestionId(10);
+//		ats.setAnswer(name.getText());
+//		result.add(ats);
+//		ats=new Answer();
+//		ats.setBelongsQuestionId(11);
+//		ats.setAnswer();
+		return null;
+	}
+
+	@Override
+	public void update(List<Answer> answers) {
 		// TODO Auto-generated method stub
 		
 	}
