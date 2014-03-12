@@ -35,18 +35,18 @@ public class Tabs extends Composite {
 	public Tabs() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
-	/*public Tabs(State s) {
+	public Tabs(State s) {
 		this();
 		switch (s){
-			case PATIENT_GENERAL_INFO:
+			case TAB_GENERAL_INFO:
 				patientinfo.setStyleName("important");
 				break;
-			case PATIENT_CLINIC:
+			case TAB_CLINIC:
 				clinic.setStyleName("important");
 				break;
 		}
 		
-	}*/
+	}
 	
 	@UiHandler("patientinfo")
 	void onPatientinfoClick(ClickEvent event) {
