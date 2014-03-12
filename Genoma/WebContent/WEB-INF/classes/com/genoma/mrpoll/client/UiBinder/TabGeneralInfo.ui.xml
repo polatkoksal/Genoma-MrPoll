@@ -36,7 +36,7 @@
 				<g:Label text="Protocol No"/>
 			</g:at>
 			<g:at left="164" top="59">
-				<g:TextBox ui:field="protocolno"/>
+				<g:Label ui:field="protocolno" text="protocolNo" wordWrap="false"/>
 			</g:at>
 			<g:at left="63" top="221">
 				<g:Label text="İşlem Tarihi"/>

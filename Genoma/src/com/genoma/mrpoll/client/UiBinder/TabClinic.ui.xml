@@ -18,13 +18,13 @@
 				<g:ListBox visibleItemCount="1" ui:field="menopause_combo"/>
 			</g:at>
 			<g:at left="46" top="121">
-				<g:CheckBox text="Hikayesinde Yakıma Var"/>
+				<g:CheckBox text="Hikayesinde Yakıma Var" ui:field="whining"/>
 			</g:at>
 			<g:at left="46" top="168">
-				<g:CheckBox text="Fiziki Bakıda Bulgu Var"/>
+				<g:CheckBox text="Fiziki Bakıda Bulgu Var" ui:field="physicalfinding"/>
 			</g:at>
 			<g:at left="46" top="224">
-				<g:CheckBox text="Risk Faktör Var"/>
+				<g:CheckBox text="Risk Faktör Var" ui:field="riskfactor"/>
 			</g:at>
 		</g:AbsolutePanel>
 	</g:HTMLPanel>

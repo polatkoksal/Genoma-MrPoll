@@ -80,7 +80,7 @@ public class UserMainMenu extends Composite {
 	
 	@UiHandler("newPatient")
 	void onNewPatientClick(ClickEvent event) {
-		MrPoll.repaint(State.TAB_GENERAL_INFO);
+		MrPoll.repaint(State.NEW_PATIENT);
 	}
 	
 	
