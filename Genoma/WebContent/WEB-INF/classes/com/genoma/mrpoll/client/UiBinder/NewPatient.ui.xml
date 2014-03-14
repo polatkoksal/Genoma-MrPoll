@@ -2,42 +2,22 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui">
 	<ui:style>
-	.important {
-		font-weight: bold;
-	}
-	.newstyle {
-		background-color: Red;
-	}
 	
 	</ui:style>
 	<g:HTMLPanel>
-		<g:AbsolutePanel height="107px">
-			<g:at left="572" top="43">
-				<g:Button styleName="{style.important}" ui:field="mainmenu" text="Ana Menüye Dön" />
+		<g:AbsolutePanel height="417px" width="616px">
+			<g:at left="95" top="133">
+				<g:Label text="Protokol No:"/>
 			</g:at>
-			<g:at left="226" top="10">
-				<g:Label text="Hasta Bilgisi Görüntüleme ve Girişi" styleName="{style.important}"/>
+			<g:at left="181" top="133">
+				<g:TextBox ui:field="protocolno"/>
 			</g:at>
-			<g:at left="640" top="75">
-				<g:Button text="ileri" width="55px" height="22px" styleName="{style.important}" ui:field="forward"/>
+			<g:at left="338" top="133">
+				<g:Button ui:field="add">Devam Et</g:Button>
 			</g:at>
-			<g:at left="33" top="45">
-				<g:Label text="Hasta no:" styleName="{style.important}"/>
+			<g:at left="423" top="133">
+				<g:Button ui:field="cancel">İptal</g:Button>
 			</g:at>
-			<g:at left="33" top="71">
-				<g:Button text="Kaydet" styleName="{style.important}" ui:field="save"/>
-			</g:at>
-			<g:at left="101" top="71">
-				<g:Button text="Kaydetmeden Çık" styleName="{style.important}" ui:field="cancel"/>
-			</g:at>
-			<g:at left="99" top="45">
-				<g:Label text="yeni hasta" ui:field="patientid"/>
-			</g:at>
-			<g:at left="572" top="75">
-				<g:Button width="58px" height="22px" styleName="{style.important}" ui:field="back">geri</g:Button>
-			</g:at>
-			
 		</g:AbsolutePanel>
-		<g:HorizontalPanel height="349px" width="722px" ui:field="panel"/>
 	</g:HTMLPanel>
 </ui:UiBinder> 

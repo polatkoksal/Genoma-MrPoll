@@ -1,8 +1,9 @@
 package com.genoma.mrpoll.client;
 
+import com.genoma.mrpoll.client.UiBinder.NewPatient;
 import com.genoma.mrpoll.client.UiBinder.UserSearchToEdit;
 import com.genoma.mrpoll.client.UiBinder.UserToUpdate;
-import com.genoma.mrpoll.client.UiBinder.NewPatient;
+import com.genoma.mrpoll.client.UiBinder.EditPatient;
 import com.genoma.mrpoll.client.UiBinder.UserNew;
 import com.genoma.mrpoll.client.UiBinder.UserUpdate;
 import com.genoma.mrpoll.client.UiBinder.UserLogin;
@@ -18,7 +19,9 @@ public class MrPoll implements EntryPoint {
 		MAIN_MENU, 
 		USER_UPDATE, 
 		NEW_USER, 
-		USER_SEARCH, 
+		NEW_PATIENT,
+		USER_SEARCH,
+		USER_SEARCH_BACK,
 		USER_TO_UPDATE, 
 		TAB_GENERAL_INFO, 
 		TAB_CLINIC,
@@ -56,11 +59,17 @@ public class MrPoll implements EntryPoint {
 			case USER_SEARCH: 
 				RootPanel.get().add(new UserSearchToEdit());
 				break;
+			case USER_SEARCH_BACK:
+				RootPanel.get().add(new UserSearchToEdit(true));
+				break;
 			case USER_TO_UPDATE:
 				RootPanel.get().add(new UserToUpdate());
 				break;
+			case NEW_PATIENT:
+				RootPanel.get().add(new NewPatient());
+				break;
 			default:
-				RootPanel.get().add(new NewPatient(s));
+				RootPanel.get().add(new EditPatient(s));
 				break;
 		}
 		

@@ -18,8 +18,8 @@ public class TabClinic extends Composite implements Updater {
 	private static ClinicUiBinder uiBinder = GWT.create(ClinicUiBinder.class);
 	@UiField ListBox menopause_combo;
 	@UiField CheckBox whining;
-	@UiField CheckBox riskfactor;
 	@UiField CheckBox physicalfinding;
+	@UiField CheckBox riskfactor;
 
 	interface ClinicUiBinder extends UiBinder<Widget, TabClinic> {
 	}

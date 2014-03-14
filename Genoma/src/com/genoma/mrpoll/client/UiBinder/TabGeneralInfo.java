@@ -3,6 +3,8 @@ package com.genoma.mrpoll.client.UiBinder;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.genoma.mrpoll.client.PatientService;
+import com.genoma.mrpoll.client.PatientServiceAsync;
 import com.genoma.mrpoll.domain.Answer;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -17,14 +19,17 @@ import com.google.gwt.user.datepicker.client.DateBox;
 import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.event.dom.client.KeyDownEvent;
 import com.google.gwt.event.dom.client.KeyUpEvent;
+import com.google.gwt.user.client.ui.Label;
 
 public class TabGeneralInfo extends Composite implements Updater {
+	
+	PatientServiceAsync service= GWT.create(PatientService.class);
 
 	private static PatientInfoUiBinder uiBinder = GWT.create(PatientInfoUiBinder.class);
 	
 	@UiField RadioButton woman;
 	@UiField RadioButton man;
-	@UiField TextBox protocolno;
+	@UiField Label protocolno;
 	@UiField TextBox name;
 	@UiField TextBox age;
 	@UiField DateBox date;
@@ -70,28 +75,19 @@ public class TabGeneralInfo extends Composite implements Updater {
 		hospital.setEnabled(b);
 	}
 	
-	@UiHandler("protocolno")
-	void onProtocolnoKeyUp(KeyUpEvent event) {
-		if(isValidProtocolNo(protocolno.getText())){
-			setActive(true);
-		}
-		else{
-			setActive(false);
-		}
-	}
+//	@UiHandler("protocolno")
+//	void onProtocolnoKeyUp(KeyUpEvent event) {
+//		if(isValidProtocolNo(protocolno.getText())){
+//			setActive(true);
+//		}
+//		else{
+//			setActive(false);
+//		}
+//	}
 
 
 	@Override
 	public List<Answer> getAllAnswers() {
-//		List<Answer> result = new LinkedList<Answer>();
-//		Answer ats;
-//		ats=new Answer();
-//		ats.setBelongsQuestionId(10);
-//		ats.setAnswer(name.getText());
-//		result.add(ats);
-//		ats=new Answer();
-//		ats.setBelongsQuestionId(11);
-//		ats.setAnswer();
 		return null;
 	}
 
