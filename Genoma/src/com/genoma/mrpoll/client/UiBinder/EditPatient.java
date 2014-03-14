@@ -120,8 +120,6 @@ public class EditPatient extends Composite {
 			}
 		});
 	}
-	
-	@UiField Button mainmenu;
 	@UiField Button back;
 	@UiField Button forward;
 	@UiField Button save;
@@ -130,8 +128,9 @@ public class EditPatient extends Composite {
 	@UiField HorizontalPanel panel;
 
 	
-	@UiHandler("mainmenu")
-	void onMainmenuClick(ClickEvent event) {
+	
+	@UiHandler("cancel")
+	void onCancelClick(ClickEvent event) {
 		MrPoll.repaint(State.MAIN_MENU);
 	}
 }

@@ -12,8 +12,6 @@ public interface UserServiceAsync {
 
 	void getAll(AsyncCallback<List<User>> callback);
 
-	void getUser(String userName, AsyncCallback<User> callback);
-
 	void validateUser(String userName, String password, AsyncCallback<Boolean> callback);
 
 	void getSessionUser(String param, AsyncCallback<UserUI> callback);
@@ -28,9 +26,9 @@ public interface UserServiceAsync {
 
 	void isAdmin(AsyncCallback<Boolean> callback);
 
-	void putSessionString(String param, String string, AsyncCallback<Void> callback);
-
 	void putSessionUser(String param, UserUI userUi, AsyncCallback<Void> callback);
+
+	void getSessionString(AsyncCallback<String> callback);
 	
 
 

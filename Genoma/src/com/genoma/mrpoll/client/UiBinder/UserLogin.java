@@ -82,24 +82,6 @@ public class UserLogin extends Composite {
 
 	}
 		
-		/*service.getUser(username.getText(), new AsyncCallback<User>() {
-			public void onSuccess() {
-				MrPoll.validateUser(username.getText(), password.getText());
-				
-				
-				/*if( result != null && result.getPassword() == password.getText() ){	
-					MrPoll.repaint(State.MAIN_MENU);
-				}
-				else{
-					Window.alert("Kullanıcı adı veya şifre hatalı!");
-				}
-			}
-			public void onFailure(Throwable caught) {
-				Window.alert("Uzaktan prosedürel çağrı denemesi başarısız oldu.");
-			}
-		});*/
-	
-
 	
 	@UiHandler("password")
 	void onPasswordKeyDown(KeyDownEvent event) {

@@ -10,6 +10,7 @@ import com.genoma.mrpoll.client.PatientServiceAsync;
 import com.genoma.mrpoll.domain.Answer;
 import com.genoma.mrpoll.domain.Patient;
 import com.genoma.mrpoll.domain.Question;
+import com.genoma.mrpoll.domain.User;
 import com.genoma.mrpoll.domain.Visit;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
@@ -55,9 +56,11 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 	}
 
 	@Override
-	public void savePatientToSession(Patient patient) {
+	public void savePatientToSession(Patient patient) {		
 		HttpSession session= this.getThreadLocalRequest().getSession();
+		User user = (User) session.getAttribute("loginUser");
 		session.removeAttribute("patient");
+		patient.setCreatedUserId(user.getId());
 		session.setAttribute("patient", patient);
 	}
 

@@ -29,10 +29,22 @@ public class UserMainMenu extends Composite {
 	
 	public UserMainMenu() {
 		initWidget(uiBinder.createAndBindUi(this));
+		back.setVisible(false);
+		userInformation.setVisible(false);
+		analysis.setVisible(false);
+		callpatient.setVisible(false);
+		newuser.setVisible(false);
+		deleteuser.setVisible(false);
+		newpatient.setVisible(false);
 		userService.isAdmin(new AsyncCallback<Boolean>() {
 
 			@Override
 			public void onSuccess(Boolean result) {
+				back.setVisible(true);
+				userInformation.setVisible(true);
+				analysis.setVisible(true);
+				callpatient.setVisible(true);
+				newpatient.setVisible(true);
 				newuser.setVisible(result);
 				deleteuser.setVisible(result);
 				
@@ -56,6 +68,7 @@ public class UserMainMenu extends Composite {
 	@UiField Button deleteuser;
 	@UiField Button analysis;
 	@UiField Button callpatient;
+	@UiField Button newpatient;
 	
 	
 
@@ -78,7 +91,7 @@ public class UserMainMenu extends Composite {
 
 
 	
-	@UiHandler("newPatient")
+	@UiHandler("newpatient")
 	void onNewPatientClick(ClickEvent event) {
 		MrPoll.repaint(State.NEW_PATIENT);
 	}

@@ -11,7 +11,6 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 public interface UserService extends RemoteService {
 	
 	
-	public User getUser(String userName);
 	public List<User> getAll();
 	public Boolean validateUser(String userName, String password);
 	public UserUI getSessionUser(String param);
@@ -20,8 +19,7 @@ public interface UserService extends RemoteService {
 	public Boolean updateUser(String sessionParam, UserUI userUi);
 	public List<UserUI> searchUser(String coulmn,String name);
 	public Boolean isAdmin();
-	public void putSessionUser(String param, UserUI userUi);
-	public void putSessionString(String param, String string);	
-	
+	public void putSessionUser(String param, UserUI userUi);	
+	public String getSessionString();
 	
 }

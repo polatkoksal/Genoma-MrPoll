@@ -22,8 +22,8 @@ import com.google.gwt.event.dom.client.ClickEvent;
 public class NewPatient extends Composite {
 	UserServiceAsync userService= GWT.create(UserService.class);
 	PatientServiceAsync service = GWT.create(PatientService.class);
-	private static NewPatientUiBinder uiBinder = GWT
-			.create(NewPatientUiBinder.class);
+	private static NewPatientUiBinder uiBinder = GWT.create(NewPatientUiBinder.class);
+	
 	@UiField TextBox protocolno;
 	@UiField Button cancel;
 	@UiField Button add;
@@ -42,29 +42,16 @@ public class NewPatient extends Composite {
 	@UiHandler("add")
 	void onAddClick(ClickEvent event) {
 		
+
+		Patient patient = new Patient();
+		patient.setProtocolNo(Integer.parseInt(protocolno.getText()));
 		
-		userService.getSessionUser("loginUser", new AsyncCallback<UserUI>() {
-			
+		service.savePatientToSession(patient, new AsyncCallback<Void>() {
 			@Override
-			public void onSuccess(UserUI result) {
-				Patient patient = new Patient();
-				patient.setProtocolNo(Integer.parseInt(protocolno.getText()));
-				patient.setCreatedUserId(result.getId());
-				service.savePatientToSession(patient, new AsyncCallback<Void>() {
-					@Override
-					public void onSuccess(Void result) {
-						MrPoll.repaint(State.TAB_GENERAL_INFO);
-						
-					}
-					@Override
-					public void onFailure(Throwable caught) {
-						// TODO Auto-generated method stub
-						
-					}
-				});
+			public void onSuccess(Void result) {
+				MrPoll.repaint(State.TAB_GENERAL_INFO);
 				
 			}
-			
 			@Override
 			public void onFailure(Throwable caught) {
 				// TODO Auto-generated method stub

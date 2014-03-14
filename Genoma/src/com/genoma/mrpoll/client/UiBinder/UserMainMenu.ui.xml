@@ -15,7 +15,7 @@
 				<g:Label text="Kullanıcı Ana Menü" styleName="{style.important}"/>
 			</g:at>
 			<g:at left="35" top="47">
-				<g:Button text="Yeni Hasta Girişi" ui:field="newPatient"/>
+				<g:Button text="Yeni Hasta Girişi" ui:field="newpatient"/>
 			</g:at>
 			<g:at left="35" top="81">
 				<g:Button text="Kayıtlı Hasta Çağırma" ui:field="callpatient"/>

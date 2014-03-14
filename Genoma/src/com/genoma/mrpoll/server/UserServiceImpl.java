@@ -1,7 +1,9 @@
 package com.genoma.mrpoll.server;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
@@ -9,7 +11,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.servlet.http.HttpSession;
+
+import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.codec.binary.Base64;
+
 import com.genoma.mrpoll.client.EMF;
 import com.genoma.mrpoll.client.UserService;
 import com.genoma.mrpoll.domain.User;
@@ -32,8 +37,6 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 		EntityManager em = factory.createEntityManager();
 		Query query = em.createQuery("select t from User t");
 		List<User> users = query.getResultList();
-		for(User u:users)
-			System.out.println(u.getId()+u.getUsername()+u.getPassword());
 		return users;
 	}
 	
@@ -42,7 +45,15 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 	public Boolean addUser(UserUI userUi) {
 		
 		Boolean result = true;
-		User user = convertToUser(userUi);
+		//User user = convertToUser(userUi);
+		User user = new User();
+		try {
+			BeanUtils.copyProperties(user, userUi);
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		}
 		List<User> users = getAll();
 		for(User tempUser : users){
 			if(tempUser.getUsername().equals(userUi.getUsername())){
@@ -63,7 +74,15 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 
 	
 	public Boolean deleteUser(UserUI userUi){
-		User user = convertToUser(userUi);
+		//User user = convertToUser(userUi);
+		User user = new User();
+		try {
+			BeanUtils.copyProperties(user, userUi);
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		}
 		factory = EMF.get();
 		EntityManager em = factory.createEntityManager();
 		User tempUser = em.find(User.class, user.getId());
@@ -84,13 +103,24 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 		return true;
 	}
 	
+	
+	
+	
 	public Boolean updateUser(String sessionParam, UserUI userUi){
 		
 		Boolean result = true;
+		User user = new User();
 		HttpSession session = this.getThreadLocalRequest().getSession();
-		User loginUser = (User) session.getAttribute(sessionParam);
-		User user =convertToUser(userUi);
-		user.setId(loginUser.getId());
+		User sessionUser = (User) session.getAttribute(sessionParam);
+		//user =convertToUser(userUi);
+		try {
+			BeanUtils.copyProperties(user, userUi);
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		}
+		user.setId(sessionUser.getId());
 		factory = EMF.get();
 		EntityManager em = factory.createEntityManager();
 		User tempUser = em.find(User.class, user.getId());
@@ -111,7 +141,6 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 			tempUser.setHospital(user.getHospital());
 			em.getTransaction().commit();
 			em.close();
-			System.out.println("Equity of the ids :" + (user.getId()==tempUser.getId()));
 			session.setAttribute(sessionParam, tempUser);
 			
 		}	
@@ -152,15 +181,16 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 		User sessionUser = new User();
 		HttpSession session = this.getThreadLocalRequest().getSession();
 		sessionUser = (User)session.getAttribute(param);
-		UserUI newUser = convertToUserUi(sessionUser);
+		//UserUI newUser = convertToUserUi(sessionUser);
 		
-		/*try {
-			BeanUtils.copyProperties(newUser, result);
+		UserUI newUser = new UserUI();
+		try {
+			BeanUtils.copyProperties(newUser, sessionUser);
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		} catch (InvocationTargetException e) {
 			e.printStackTrace();
-		}*/ 
+		}
 		return newUser;
 	}
 	
@@ -186,7 +216,6 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 	
 
 	public List<UserUI> searchUser(String coulmn,String name){
-		//putSession(String.class, "currentSearch", name);
 		HttpSession session = this.getThreadLocalRequest().getSession();
 		session.setAttribute("currentSearch", name);
 		factory = EMF.get();
@@ -194,33 +223,49 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 		Query query = em.createQuery("select u from User u where u."+coulmn+"=:name");
 		query.setParameter("name", name);
 		List<User> users=query.getResultList();
-		List<UserUI> usersUI = new ArrayList<UserUI>();
+		List<UserUI> usersUi = new ArrayList<UserUI>();
+		UserUI tempUserUi = new UserUI();
 		if(!users.isEmpty()){
 			for(User user : users){
-				usersUI.add(convertToUserUi(user));
-			}
+				//usersUi.add(convertToUserUi(user));
+				try {
+					BeanUtils.copyProperties(tempUserUi, user);
+				} catch (IllegalAccessException e) {
+					e.printStackTrace();
+				} catch (InvocationTargetException e) {
+					e.printStackTrace();
+				}
+				usersUi.add(tempUserUi);			}
 		}
-		return usersUI;
+		return usersUi;
 	}
 	
 	
 	
 	public void putSessionUser(String param, UserUI userUi){
-		User user = convertToUser(userUi);
+		//User user = convertToUser(userUi);
+		User user = new User();
+		try {
+			BeanUtils.copyProperties(user, userUi);
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		}
 		HttpSession session = this.getThreadLocalRequest().getSession();
 		session.setAttribute(param, user);
 		
 		
 	}
 	
-	public void putSessionString(String param, String string){
+	
+	public String getSessionString() {
 		HttpSession session = this.getThreadLocalRequest().getSession();
-		session.setAttribute(param, string);
-		
+		String search = (String) session.getAttribute("currentSearch");
+		return search;
 	}
 	
-	
-	public UserUI convertToUserUi(User user){
+	/*public UserUI convertToUserUi(User user){
 		UserUI result = new UserUI();
 		result.setId(user.getId());
 		result.setName(user.getName());
@@ -246,16 +291,7 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 		return result;
 		
 		
-	}
-	
-	
-	
-	public User getUser(String userName){
-		User result = null;
-		return result;
-		
-	}
-	 
+	}*/
 	
 	
 	
@@ -298,6 +334,8 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 
 		return new String(results, "UTF-8");
 	}
+
+
 	
 	
 }

@@ -11,10 +11,7 @@
 	
 	</ui:style>
 	<g:HTMLPanel>
-		<g:AbsolutePanel height="107px">
-			<g:at left="572" top="43">
-				<g:Button styleName="{style.important}" ui:field="mainmenu" text="Ana Menüye Dön" />
-			</g:at>
+		<g:AbsolutePanel height="107px" width="749px">
 			<g:at left="226" top="10">
 				<g:Label text="Hasta Bilgisi Görüntüleme ve Girişi" styleName="{style.important}"/>
 			</g:at>
@@ -38,6 +35,6 @@
 			</g:at>
 			
 		</g:AbsolutePanel>
-		<g:HorizontalPanel height="349px" width="722px" ui:field="panel"/>
+		<g:HorizontalPanel height="349px" width="750px" ui:field="panel"/>
 	</g:HTMLPanel>
 </ui:UiBinder> 

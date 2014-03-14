@@ -17,6 +17,8 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.PasswordTextBox;
 
 public class UserToUpdate extends Composite{
 
@@ -24,8 +26,8 @@ public class UserToUpdate extends Composite{
 			.create(UserInformationUiBinder.class);
 	
 	
-	UserServiceAsync newUserService = GWT.create(UserService.class);
-	UserUI userUi;
+	UserServiceAsync service = GWT.create(UserService.class);
+	UserUI userUi = new UserUI();
 	
 	interface UserInformationUiBinder extends UiBinder<Widget, UserToUpdate> {
 	}
@@ -37,7 +39,6 @@ public class UserToUpdate extends Composite{
 
 	
 	@UiField TextBox username;
-	@UiField TextBox password;
 	@UiField TextBox name;
 	@UiField TextBox surname;
 	@UiField TextBox hospital;
@@ -45,6 +46,15 @@ public class UserToUpdate extends Composite{
 	@UiField TextBox email;
 	@UiField Button save;
 	@UiField Button cancel;
+	@UiField Button changepassword;
+	@UiField Label oldlabel;
+	@UiField Label newlabel;
+	@UiField Label newlabelrepeat;
+	@UiField PasswordTextBox currentpassword;
+	@UiField PasswordTextBox newpassword;
+	@UiField PasswordTextBox newpasswordrepeat;
+	@UiField Button savepassword;
+	@UiField Button cancelpassword;
 	
 
 	
@@ -55,13 +65,13 @@ public class UserToUpdate extends Composite{
 	}*/
 
 	public void getUserFromSession(){
+		setVisibilityPassword(false);
 		
-		newUserService.getSessionUser("currentUser", new AsyncCallback<UserUI>() {
+		service.getSessionUser("currentUser", new AsyncCallback<UserUI>() {
 			
 			public void onSuccess(UserUI result) {
 				userUi=result;
 				username.setText(result.getUsername());
-				password.setText(result.getPassword());
 				name.setText(result.getName());
 				surname.setText(result.getSurname());
 				phone.setText(result.getPhone());
@@ -82,34 +92,134 @@ public class UserToUpdate extends Composite{
 	void onSaveClick(ClickEvent event) {
 		
 		userUi.setUsername(username.getText());
-		userUi.setPassword(password.getText());
 		userUi.setName(name.getText());
 		userUi.setSurname(surname.getText());
 		userUi.setPhone(phone.getText());
 		userUi.setEmail(email.getText());
 		userUi.setHospital(hospital.getText());
-
-		newUserService.updateUser("currentUser", userUi, new AsyncCallback<Boolean>() {
+		
+		service.getSessionUser("currentUser", new AsyncCallback<UserUI>() {
 
 			@Override
-			public void onSuccess(Boolean result) {
-				if(result){
-					Window.alert("Kullanıcı Güncellendi!");
-					MrPoll.repaint(State.MAIN_MENU);
+			public void onSuccess(UserUI result) {
+				
+				userUi.setPassword(result.getPassword());
+				
+				service.updateUser("currentUser", userUi, new AsyncCallback<Boolean>() {
+
+					@Override
+					public void onSuccess(Boolean result) {
+						if(result){
+							Window.alert("Kullanıcı Güncellendi!");
+							MrPoll.repaint(State.USER_SEARCH_BACK);
+						}
+						else{
+							Window.alert("Bu Kullanıcı Adı Daha Önce Oluşturuldu!");
+						}
+					}
+					
+					@Override
+					public void onFailure(Throwable caught) {
+						Window.alert("Hata!!!");
+					}
+				});
+				
+			}
+			
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			
+		});
+		
+	}
+	
+	@UiHandler("cancel")
+	void onCancelClick(ClickEvent event) {
+		MrPoll.repaint(State.USER_SEARCH_BACK);
+	}
+	
+	@UiHandler("changepassword")
+	void onChangepasswordClick(ClickEvent event) {
+		setVisibilityPassword(true);
+		currentpassword.setText("");
+		newpassword.setText("");
+		newpasswordrepeat.setText("");
+	}
+	
+	
+	@UiHandler("savepassword")
+	void onSavepasswordClick(ClickEvent event) {
+		
+		service.getSessionUser("currentUser", new AsyncCallback<UserUI>() {
+			
+			@Override
+			public void onSuccess(UserUI result) {
+				if(currentpassword.getText().equals(result.getPassword())){
+					if(newpassword.getText().equals(newpasswordrepeat.getText())){
+						
+						userUi.setPassword(newpassword.getText());				
+						userUi.setUsername(result.getUsername());
+						userUi.setName(result.getName());
+						userUi.setSurname(result.getSurname());
+						userUi.setPhone(result.getPhone());
+						userUi.setEmail(result.getEmail());
+						userUi.setHospital(result.getHospital());
+						
+						service.updateUser("currentUser", userUi, new AsyncCallback<Boolean>() {
+
+							@Override
+							public void onSuccess(Boolean result) {
+								setVisibilityPassword(false);
+								Window.alert("Şifre degiştirildi");
+								
+							}
+							
+							@Override
+							public void onFailure(Throwable caught) {
+							
+								Window.alert("change password hata!");
+							}
+
+						});
+					}
+					else{
+						Window.alert("Yeni Şifreleriniz Uymuyor!");
+					}
+					
 				}
 				else{
-					Window.alert("Bu Kullanıcı Adı Daha Önce Oluşturuldu!");
+					Window.alert("Eski Şifreniz Yanlış Girildi!");
 				}
 			}
 			
 			@Override
 			public void onFailure(Throwable caught) {
-				Window.alert("Hata!!!");
+				
 			}
+
+			
 		});
+		
+		
 	}
-	@UiHandler("cancel")
-	void onCancelClick(ClickEvent event) {
-		MrPoll.repaint(State.MAIN_MENU);
+	
+	@UiHandler("cancelpassword")
+	void onCancelpasswordClick(ClickEvent event) {
+		setVisibilityPassword(false);
+	}
+	
+	void setVisibilityPassword(Boolean b){
+		currentpassword.setVisible(b);
+		newpassword.setVisible(b);
+		newpasswordrepeat.setVisible(b);
+		cancelpassword.setVisible(b);
+		savepassword.setVisible(b);
+		oldlabel.setVisible(b);
+		newlabel.setVisible(b);
+		newlabelrepeat.setVisible(b);
 	}
 }

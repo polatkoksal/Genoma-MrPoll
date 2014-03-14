@@ -7,57 +7,78 @@
 	}
 	</ui:style>
 	<g:HTMLPanel>
-		<g:AbsolutePanel height="447px" width="450px">
+		<g:AbsolutePanel height="447px" width="770px">
 			<g:at left="129" top="37">
 				<g:Label text="Kullanıcı Bilgileri" styleName="{style.important}"/>
 			</g:at>
 			<g:at left="43" top="97">
 				<g:Label text="Kullanıcı Adı:"/>
 			</g:at>
-			<g:at left="93" top="133">
-				<g:Label text="Şifre:"/>
-			</g:at>
-			<g:at left="99" top="169">
+			<g:at left="90" top="127">
 				<g:Label text="Adı:"/>
 			</g:at>
-			<g:at left="79" top="209">
+			<g:at left="76" top="169">
 				<g:Label text="Soyadı:"/>
 			</g:at>
-			<g:at left="56" top="250">
+			<g:at left="43" top="209">
 				<g:Label text="Hastane Adı:"/>
 			</g:at>
-			<g:at left="76" top="297">
+			<g:at left="76" top="250">
 				<g:Label text="Telefon:"/>
 			</g:at>
-			<g:at left="79" top="335">
+			<g:at left="82" top="297">
 				<g:Label text="E-mail:"/>
 			</g:at>
 			<g:at left="170" top="91">
 				<g:TextBox ui:field="username"/>
 			</g:at>
 			<g:at left="170" top="127">
-				<g:TextBox ui:field="password"/>
-			</g:at>
-			<g:at left="170" top="163">
 				<g:TextBox ui:field="name"/>
 			</g:at>
-			<g:at left="170" top="203">
+			<g:at left="170" top="169">
 				<g:TextBox ui:field="surname"/>
 			</g:at>
-			<g:at left="170" top="250">
+			<g:at left="170" top="209">
 				<g:TextBox ui:field="hospital"/>
 			</g:at>
-			<g:at left="170" top="291">
+			<g:at left="170" top="250">
 				<g:TextBox ui:field="phone"/>
 			</g:at>
-			<g:at left="170" top="329">
+			<g:at left="170" top="297">
 				<g:TextBox ui:field="email"/>
 			</g:at>
-			<g:at left="170" top="373">
+			<g:at left="170" top="335">
 				<g:Button styleName="{style.important}" ui:field="save" width="75px" height="26px">Kaydet</g:Button>
 			</g:at>
-			<g:at left="251" top="373">
+			<g:at left="251" top="335">
 				<g:Button ui:field="cancel" text="İptal" styleName="{style.important}" width="70px" height="26px"/>
+			</g:at>
+			<g:at left="554" top="127">
+				<g:PasswordTextBox ui:field="currentpassword"/>
+			</g:at>
+			<g:at left="554" top="169">
+				<g:PasswordTextBox ui:field="newpassword"/>
+			</g:at>
+			<g:at left="554" top="209">
+				<g:PasswordTextBox ui:field="newpasswordrepeat"/>
+			</g:at>
+			<g:at left="462" top="133">
+				<g:Label text="Eski Şifre:" ui:field="oldlabel"/>
+			</g:at>
+			<g:at left="457" top="169">
+				<g:Label text="Yeni Şifre:" ui:field="newlabel"/>
+			</g:at>
+			<g:at left="417" top="209">
+				<g:Label text="Eski Şifre Tekrar:" ui:field="newlabelrepeat"/>
+			</g:at>
+			<g:at left="554" top="91">
+				<g:Button width="147px" height="22px" ui:field="changepassword">Şifre Değiştir</g:Button>
+			</g:at>
+			<g:at left="557" top="250">
+				<g:Button width="66px" height="22px" ui:field="savepassword">Kaydet</g:Button>
+			</g:at>
+			<g:at left="636" top="250">
+				<g:Button width="65px" height="22px" ui:field="cancelpassword">İptal</g:Button>
 			</g:at>
 		</g:AbsolutePanel>
 		

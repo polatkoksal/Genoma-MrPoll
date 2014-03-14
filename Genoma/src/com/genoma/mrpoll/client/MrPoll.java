@@ -20,7 +20,8 @@ public class MrPoll implements EntryPoint {
 		USER_UPDATE, 
 		NEW_USER, 
 		NEW_PATIENT,
-		USER_SEARCH, 
+		USER_SEARCH,
+		USER_SEARCH_BACK,
 		USER_TO_UPDATE, 
 		TAB_GENERAL_INFO, 
 		TAB_CLINIC,
@@ -57,6 +58,9 @@ public class MrPoll implements EntryPoint {
 				break;
 			case USER_SEARCH: 
 				RootPanel.get().add(new UserSearchToEdit());
+				break;
+			case USER_SEARCH_BACK:
+				RootPanel.get().add(new UserSearchToEdit(true));
 				break;
 			case USER_TO_UPDATE:
 				RootPanel.get().add(new UserToUpdate());

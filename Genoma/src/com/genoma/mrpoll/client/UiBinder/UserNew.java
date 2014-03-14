@@ -17,6 +17,7 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.ui.PasswordTextBox;
 
 public class UserNew extends Composite{
 
@@ -34,7 +35,7 @@ public class UserNew extends Composite{
 
 	
 	@UiField TextBox username;
-	@UiField TextBox password;
+	@UiField PasswordTextBox password;
 	@UiField TextBox name;
 	@UiField TextBox surname;
 	@UiField TextBox hospital;
@@ -42,6 +43,7 @@ public class UserNew extends Composite{
 	@UiField TextBox email;
 	@UiField Button save;
 	@UiField Button cancel;
+	@UiField PasswordTextBox passwordrepeat;
 	
 
 	
@@ -63,24 +65,32 @@ public class UserNew extends Composite{
 		newUser.setEmail(email.getText());
 		newUser.setHospital(hospital.getText());
 		
-		newUserService.addUser(newUser, new AsyncCallback<Boolean>() {
+		if(newUser.getPassword().equals(passwordrepeat.getText())){
+			newUserService.addUser(newUser, new AsyncCallback<Boolean>() {
 
-			@Override
-			public void onSuccess(Boolean result) {
-				if(result){
-					Window.alert("Kullanıcı Eklendi!");
-					MrPoll.repaint(State.MAIN_MENU);
+				@Override
+				public void onSuccess(Boolean result) {
+					if(result){
+						Window.alert("Kullanıcı Eklendi!");
+						MrPoll.repaint(State.MAIN_MENU);
+					}
+					else{
+						Window.alert("Bu Kullanıcı Adı Daha Önce Oluşturuldu!");
+					}
 				}
-				else{
-					Window.alert("Bu Kullanıcı Adı Daha Önce Oluşturuldu!");
+				
+				@Override
+				public void onFailure(Throwable caught) {
+					Window.alert("Hata!!!");
 				}
-			}
-			
-			@Override
-			public void onFailure(Throwable caught) {
-				Window.alert("Hata!!!");
-			}
-		});
+			});
+		}
+		else{
+			Window.alert("Şifreleriniz Uyuşmuyor");
+		}
+		
+		
+		
 	}
 	@UiHandler("cancel")
 	void onCancelClick(ClickEvent event) {
