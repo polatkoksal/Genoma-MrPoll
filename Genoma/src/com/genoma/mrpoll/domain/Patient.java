@@ -2,8 +2,7 @@ package com.genoma.mrpoll.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
 
 /**
@@ -26,10 +25,8 @@ public class Patient implements Serializable {
 	@Column(name="created_user_id")
 	private Integer createdUserId;
 
-	@Temporal(TemporalType.DATE)
-	private Date date;
-
-	private Integer gender;
+	@Column(length=255)
+	private String gender;
 
 	@Column(length=255)
 	private String namesurname;
@@ -37,17 +34,9 @@ public class Patient implements Serializable {
 	@Column(name="protocol_no")
 	private Integer protocolNo;
 
-	//bi-directional many-to-one association to Document
-	@OneToMany(mappedBy="patient")
-	private List<Document> documents;
-
-	//bi-directional many-to-one association to Note
-	@OneToMany(mappedBy="patient")
-	private List<Note> notes;
-
 	//bi-directional many-to-one association to Visit
-	@OneToMany(mappedBy="patient")
-	private List<Visit> visits;
+	@OneToMany(mappedBy="patient", cascade = CascadeType.PERSIST)
+	private Set<Visit> visits;
 
 	public Patient() {
 	}
@@ -76,19 +65,11 @@ public class Patient implements Serializable {
 		this.createdUserId = createdUserId;
 	}
 
-	public Date getDate() {
-		return this.date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
-
-	public Integer getGender() {
+	public String getGender() {
 		return this.gender;
 	}
 
-	public void setGender(Integer gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 
@@ -108,55 +89,11 @@ public class Patient implements Serializable {
 		this.protocolNo = protocolNo;
 	}
 
-	public List<Document> getDocuments() {
-		return this.documents;
-	}
-
-	public void setDocuments(List<Document> documents) {
-		this.documents = documents;
-	}
-
-	public Document addDocument(Document document) {
-		getDocuments().add(document);
-		document.setPatient(this);
-
-		return document;
-	}
-
-	public Document removeDocument(Document document) {
-		getDocuments().remove(document);
-		document.setPatient(null);
-
-		return document;
-	}
-
-	public List<Note> getNotes() {
-		return this.notes;
-	}
-
-	public void setNotes(List<Note> notes) {
-		this.notes = notes;
-	}
-
-	public Note addNote(Note note) {
-		getNotes().add(note);
-		note.setPatient(this);
-
-		return note;
-	}
-
-	public Note removeNote(Note note) {
-		getNotes().remove(note);
-		note.setPatient(null);
-
-		return note;
-	}
-
-	public List<Visit> getVisits() {
+	public Set<Visit> getVisits() {
 		return this.visits;
 	}
 
-	public void setVisits(List<Visit> visits) {
+	public void setVisits(Set<Visit> visits) {
 		this.visits = visits;
 	}
 

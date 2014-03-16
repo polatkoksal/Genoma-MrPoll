@@ -10,6 +10,7 @@ import com.genoma.mrpoll.domain.Patient;
 import com.genoma.mrpoll.uihelper.UserUI;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
@@ -46,16 +47,39 @@ public class NewPatient extends Composite {
 		Patient patient = new Patient();
 		patient.setProtocolNo(Integer.parseInt(protocolno.getText()));
 		
-		service.savePatientToSession(patient, new AsyncCallback<Void>() {
+		service.savePatient(patient, new AsyncCallback<Boolean>() {
 			@Override
-			public void onSuccess(Void result) {
-				MrPoll.repaint(State.TAB_GENERAL_INFO);
+			public void onSuccess(Boolean result) {
+				if(!result){
+					Boolean confirm = Window.confirm("kayıt bulundu! o kayıttan devam edilsin mi?");
+					if(!confirm){
+						service.createVisit(new AsyncCallback<Void>() {
+
+							@Override
+							public void onSuccess(Void result) {
+								MrPoll.repaint(State.TAB_PATIENT_INFO);
+							}
+							
+							@Override
+							public void onFailure(Throwable caught) {
+								Window.alert("createVisit Error!");
+							}
+
+						});	
+					}
+					else{
+						MrPoll.repaint(State.TAB_PATIENT_INFO);
+					}
+				}
+				else{
+					MrPoll.repaint(State.TAB_PATIENT_INFO);
+				}
+				
 				
 			}
 			@Override
 			public void onFailure(Throwable caught) {
-				// TODO Auto-generated method stub
-				
+				Window.alert("createPatient Error!");
 			}
 		});
 		

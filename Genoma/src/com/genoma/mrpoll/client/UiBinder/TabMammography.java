@@ -2,6 +2,7 @@ package com.genoma.mrpoll.client.UiBinder;
 
 import java.util.List;
 
+import com.genoma.mrpoll.client.MrPoll.State;
 import com.genoma.mrpoll.domain.Answer;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -68,7 +69,7 @@ public class TabMammography extends Composite implements Updater{
 	interface MammographyUiBinder extends UiBinder<Widget, TabMammography> {
 	}
 
-	public TabMammography() {
+	public TabMammography(State s) {
 		initWidget(uiBinder.createAndBindUi(this));
 		r_nofinding.setValue(true);
 		l_nofinding.setValue(true);
@@ -155,12 +156,12 @@ public class TabMammography extends Composite implements Updater{
 		r_nonmass_combo.setEnabled(lockStatus);
 	}
 	@Override
-	public void update(List<Answer> answers) {
+	public void updateUi(List<Answer> answers) {
 		// TODO Auto-generated method stub
 		
 	}
 	@Override
-	public List<Answer> getAllAnswers() {
+	public List<Answer> getAnswers() {
 		// TODO Auto-generated method stub
 		return null;
 	}

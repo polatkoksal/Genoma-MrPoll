@@ -46,11 +46,12 @@ public class EditPatient extends Composite {
 				}
 				public void onClick(ClickEvent event) {
 					PatientServiceAsync service= GWT.create(PatientService.class);
-					service.saveAllAnswers(tab.getAllAnswers(), new AsyncCallback<Void>() {
+					service.saveAnswers(tab.getAnswers(), new AsyncCallback<Void>() {
 						public void onSuccess(Void result) {
 							MrPoll.repaint(target);
 						}
 						public void onFailure(Throwable caught) {
+							
 						}
 					});
 				}
@@ -58,63 +59,79 @@ public class EditPatient extends Composite {
 		}
 	}
 
-	public EditPatient() {
-		initWidget(uiBinder.createAndBindUi(this));
-		panel.add(new Tabs());
-	}
+	
 	Updater tab;
 
 	public EditPatient(State s){
-		this();
+		initWidget(uiBinder.createAndBindUi(this));
+		
 		PatientServiceAsync service= GWT.create(PatientService.class);
+		
 		switch(s){
-			case TAB_GENERAL_INFO:
-				tab=new TabGeneralInfo();
+			
+			case TAB_PATIENT_INFO:
+				tab=new TabPatientInfo(s);
 				pointTo(null, back);
-				pointTo(State.TAB_CLINIC,forward);
+				pointTo(State.TAB_VISIT,forward);
 				break;
+			
+			case TAB_VISIT:
+				tab=new TabVisitInfo(s);
+				pointTo(State.TAB_PATIENT_INFO, back);
+				pointTo(State.TAB_CLINIC, forward);
+				break;
+			
 			case TAB_CLINIC:
-				tab=new TabClinic();
-				pointTo(State.TAB_GENERAL_INFO,back);
+				tab=new TabClinic(s);
+				pointTo(State.TAB_VISIT,back);
 				pointTo(State.TAB_MAMMOGRAPHY,forward);
 				break;
+			
 			case TAB_MAMMOGRAPHY:
-				tab=new TabMammography();
+				tab=new TabMammography(s);
 				pointTo(State.TAB_CLINIC,back);
 				pointTo(State.TAB_USG,forward);
 				break;
+			
 			case TAB_USG:
-				tab=new TabUltrasonography();
+				tab=new TabUltrasonography(s);
 				pointTo(State.TAB_MAMMOGRAPHY, back);
 				pointTo(State.TAB_MRI, forward);
 				break;
+			
 			case TAB_MRI:
-				tab=new TabMRI();
+				tab=new TabMRI(s);
 				pointTo(State.TAB_USG,back);
 				pointTo(State.TAB_PATHOLOGY,forward);
 				break;
+			
 			case TAB_PATHOLOGY:
-				tab=new TabPathology();
+				tab=new TabPathology(s);
 				pointTo(State.TAB_MRI,back);
 				pointTo(State.TAB_SECOND,forward);
 				break;
+			
 			case TAB_SECOND:
-				tab=new TabSecondVisit();
+				tab=new TabSecondVisit(s);
 				pointTo(State.TAB_PATHOLOGY,back);
 				pointTo(State.TAB_SURGICAL,forward);
 				break;
+			
 			case TAB_SURGICAL:
-				tab=new TabSurgical();
+				tab=new TabSurgical(s);
 				pointTo(State.TAB_SECOND, back);
 				pointTo(null,forward);
 				break;
 			default:
 				break;
 		}
+		
+		Tabs tabs=new Tabs(s,tab);
+		panel.add(tabs);
 		panel.add((Widget)tab);
-		service.getAllAnswers(new AsyncCallback<List<Answer>>() {
+		service.getAnswers(new AsyncCallback<List<Answer>>() {
 			public void onSuccess(List<Answer> result) {
-				tab.update(result);
+				tab.updateUi(result);
 			}
 			public void onFailure(Throwable caught) {
 			}

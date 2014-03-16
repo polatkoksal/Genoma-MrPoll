@@ -56,11 +56,6 @@ public class UserUpdate extends Composite {
 	@UiField Label oldlabel;
 	@UiField Label newlabel;
 	@UiField Label newlabelrepeat;
-	
-
-	public UserUpdate(String firstName) {
-		initWidget(uiBinder.createAndBindUi(this));	
-	}
 
 	public void setUserInfo(){
 		

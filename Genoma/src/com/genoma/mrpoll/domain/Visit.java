@@ -1,7 +1,9 @@
 package com.genoma.mrpoll.domain;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.Date;
 
 
@@ -23,8 +25,14 @@ public class Visit implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date date;
 
+	@Column(length=255)
+	private String hospital;
+
+	@Column(length=500)
+	private String note;
+
 	//bi-directional many-to-one association to Patient
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.PERSIST)
 	@JoinColumn(name="done_patient_id")
 	private Patient patient;
 
@@ -45,6 +53,22 @@ public class Visit implements Serializable {
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+
+	public String getHospital() {
+		return this.hospital;
+	}
+
+	public void setHospital(String hospital) {
+		this.hospital = hospital;
+	}
+
+	public String getNote() {
+		return this.note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
 	}
 
 	public Patient getPatient() {

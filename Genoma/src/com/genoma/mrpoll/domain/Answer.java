@@ -22,11 +22,13 @@ public class Answer implements Serializable {
 	@Column(length=255)
 	private String answer;
 
-	@Column(name="answered_visit_id")
-	private Integer answeredVisitId;
-
 	@Column(name="belongs_question_id")
 	private Integer belongsQuestionId;
+
+	//bi-directional many-to-one association to Visit
+	@ManyToOne
+	@JoinColumn(name="answered_visit_id")
+	private Visit visit;
 
 	public Answer() {
 	}
@@ -47,20 +49,20 @@ public class Answer implements Serializable {
 		this.answer = answer;
 	}
 
-	public Integer getAnsweredVisitId() {
-		return this.answeredVisitId;
-	}
-
-	public void setAnsweredVisitId(Integer answeredVisitId) {
-		this.answeredVisitId = answeredVisitId;
-	}
-
 	public Integer getBelongsQuestionId() {
 		return this.belongsQuestionId;
 	}
 
 	public void setBelongsQuestionId(Integer belongsQuestionId) {
 		this.belongsQuestionId = belongsQuestionId;
+	}
+
+	public Visit getVisit() {
+		return this.visit;
+	}
+
+	public void setVisit(Visit visit) {
+		this.visit = visit;
 	}
 
 }

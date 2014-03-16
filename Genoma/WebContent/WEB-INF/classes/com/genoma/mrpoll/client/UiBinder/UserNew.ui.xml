@@ -41,6 +41,9 @@
 			<g:at left="170" top="127">
 				<g:PasswordTextBox ui:field="password"/>
 			</g:at>
+			<g:at left="170" top="159">
+				<g:PasswordTextBox ui:field="passwordrepeat"/>
+			</g:at>
 			<g:at left="170" top="201">
 				<g:TextBox ui:field="name"/>
 			</g:at>
@@ -61,9 +64,6 @@
 			</g:at>
 			<g:at left="252" top="411">
 				<g:Button ui:field="cancel" text="İptal" styleName="{style.important}" width="57px" height="26px"/>
-			</g:at>
-			<g:at left="170" top="159">
-				<g:PasswordTextBox ui:field="passwordrepeat"/>
 			</g:at>
 		</g:AbsolutePanel>
 		

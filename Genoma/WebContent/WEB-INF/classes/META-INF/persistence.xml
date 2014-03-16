@@ -5,7 +5,7 @@
 		<class>com.genoma.mrpoll.domain.UserRole</class>
 		<class>com.genoma.mrpoll.domain.User</class>
 		<class>com.genoma.mrpoll.domain.Document</class>
-		<class>com.genoma.mrpoll.domain.Note</class>
+		<class>com.genoma.mrpoll.domain.Answer</class>
 		<class>com.genoma.mrpoll.domain.Patient</class>
 		<class>com.genoma.mrpoll.domain.Visit</class>
 		<properties>

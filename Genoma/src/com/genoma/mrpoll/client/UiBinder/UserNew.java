@@ -44,13 +44,6 @@ public class UserNew extends Composite{
 	@UiField Button save;
 	@UiField Button cancel;
 	@UiField PasswordTextBox passwordrepeat;
-	
-
-	
-	
-	public UserNew(String firstName) {
-		initWidget(uiBinder.createAndBindUi(this));
-	}
 
 	
 	@UiHandler("save")
