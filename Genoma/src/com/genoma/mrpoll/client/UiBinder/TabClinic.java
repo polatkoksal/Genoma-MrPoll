@@ -2,21 +2,18 @@ package com.genoma.mrpoll.client.UiBinder;
 
 import java.util.LinkedList;
 import java.util.List;
-
+import com.genoma.mrpoll.client.MrPoll.State;
 import com.genoma.mrpoll.client.PatientService;
 import com.genoma.mrpoll.client.PatientServiceAsync;
-import com.genoma.mrpoll.client.MrPoll.State;
 import com.genoma.mrpoll.domain.Answer;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
-import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.HasText;
-import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.client.ui.ListBox;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.CheckBox;
-import com.google.gwt.user.client.ui.TabBar;
+import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.ListBox;
+import com.google.gwt.user.client.ui.Widget;
 
 public class TabClinic extends Composite implements Updater {
 
@@ -35,35 +32,45 @@ public class TabClinic extends Composite implements Updater {
 		initWidget(uiBinder.createAndBindUi(this));
 		menopause_combo.addItem("Premenapoz");
 		menopause_combo.addItem("Postmenapoz");
+		updateUi();
 	}
 
-	@Override
-	public void updateUi(List<Answer> answers) {
-		for(Answer answer:answers){
-			if(answer.getBelongsQuestionId()==21){
-				for(int i=0; i<menopause_combo.getItemCount();i++){
-					if(answer.getAnswer().equals(menopause_combo.getItemText(i))){
-						menopause_combo.setSelectedIndex(i);
-						break;
+	
+	
+
+	public void updateUi() {
+		service.getAnswersFromSession(new AsyncCallback<List<Answer>>() {
+			public void onSuccess(List<Answer> result) {
+				for(Answer answer : result){
+					if(answer.getBelongsQuestionId()==21){
+						for(int i=0; i<menopause_combo.getItemCount();i++){
+							if(answer.getAnswer().equals(menopause_combo.getItemText(i))){
+								menopause_combo.setSelectedIndex(i);
+								break;
+							}
+						}
+					}//break goes here
+					if(answer.getBelongsQuestionId()==22){
+						whining.setValue(Boolean.parseBoolean(answer.getAnswer()));
+					}
+					if(answer.getBelongsQuestionId()==23){
+						riskfactor.setValue(Boolean.parseBoolean(answer.getAnswer()));
+					}
+					if(answer.getBelongsQuestionId()==24){
+						physicalfinding.setValue(Boolean.parseBoolean(answer.getAnswer()));
 					}
 				}
-			}//break goes here
-			if(answer.getBelongsQuestionId()==22){
-				whining.setValue(Boolean.parseBoolean(answer.getAnswer()));
 			}
-			if(answer.getBelongsQuestionId()==23){
-				riskfactor.setValue(Boolean.parseBoolean(answer.getAnswer()));
+			public void onFailure(Throwable caught) {
 			}
-			if(answer.getBelongsQuestionId()==24){
-				physicalfinding.setValue(Boolean.parseBoolean(answer.getAnswer()));
-			}
-		}
+		});
+		
 		
 	}
 	
 	
 	@Override
-	public List<Answer> getAnswers() {
+	public List<Answer> getAnswersFromUi() {
 		List<Answer> result = new LinkedList<Answer>();
 		Answer ats;
 		ats=new Answer();

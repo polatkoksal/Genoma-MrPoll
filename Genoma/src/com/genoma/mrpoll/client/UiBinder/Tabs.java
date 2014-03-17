@@ -88,6 +88,16 @@ public class Tabs extends Composite {
 		
 	}
 	
+	private void updateSession(){
+		PatientServiceAsync service= GWT.create(PatientService.class);
+		service.saveAnswersToSession(tab.getAnswersFromUi(), new AsyncCallback<Void>() {
+			public void onSuccess(Void result) {
+			}
+			public void onFailure(Throwable caught) {
+			}
+		});
+	}
+	
 	@UiHandler("patientinfo")
 	void onPatientinfoClick(ClickEvent event) {
 		updateSession();
@@ -142,13 +152,5 @@ public class Tabs extends Composite {
 		MrPoll.repaint(State.TAB_SURGICAL);
 	}
 	
-	private void updateSession(){
-		PatientServiceAsync service= GWT.create(PatientService.class);
-		service.saveAnswers(tab.getAnswers(), new AsyncCallback<Void>() {
-			public void onSuccess(Void result) {
-			}
-			public void onFailure(Throwable caught) {
-			}
-		});
-	}
+	
 }

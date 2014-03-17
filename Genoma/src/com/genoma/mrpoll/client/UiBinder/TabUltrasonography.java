@@ -129,13 +129,9 @@ public class TabUltrasonography extends Composite implements Updater{
 		Boolean lockStatus = r_nonmass.getValue() && r_nonmass.isEnabled();
 		r_nonmass_combo.setEnabled(lockStatus);
 	}
+	
 	@Override
-	public void updateUi(List<Answer> answers) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public List<Answer> getAnswers() {
+	public List<Answer> getAnswersFromUi() {
 		// TODO Auto-generated method stub
 		return null;
 	}

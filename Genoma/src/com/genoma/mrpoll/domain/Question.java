@@ -19,9 +19,6 @@ public class Question implements Serializable {
 	@Column(unique=true, nullable=false)
 	private Integer id;
 
-	@Column(name="contain_answer_id")
-	private Integer containAnswerId;
-
 	@Column(length=255)
 	private String question;
 
@@ -34,14 +31,6 @@ public class Question implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Integer getContainAnswerId() {
-		return this.containAnswerId;
-	}
-
-	public void setContainAnswerId(Integer containAnswerId) {
-		this.containAnswerId = containAnswerId;
 	}
 
 	public String getQuestion() {

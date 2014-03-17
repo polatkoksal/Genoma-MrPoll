@@ -32,14 +32,10 @@ public class TabPathology extends Composite implements Updater {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 
-	@Override
-	public void updateUi(List<Answer> answers) {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 	@Override
-	public List<Answer> getAnswers() {
+	public List<Answer> getAnswersFromUi() {
 		// TODO Auto-generated method stub
 		return null;
 	}

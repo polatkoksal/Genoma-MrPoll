@@ -100,14 +100,9 @@ public class TabSecondVisit extends Composite implements Updater {
 		onL_usg_biopsyClick(null);
 	}
 
-	@Override
-	public void updateUi(List<Answer> answers) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
-	public List<Answer> getAnswers() {
+	public List<Answer> getAnswersFromUi() {
 		// TODO Auto-generated method stub
 		return null;
 	}

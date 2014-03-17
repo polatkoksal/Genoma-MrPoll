@@ -123,13 +123,9 @@ public class TabMRI extends Composite implements Updater{
 		l_lesionspread.setEnabled(lockStatus);
 		l_lesionsize.setEnabled(lockStatus);
 	}
+	
 	@Override
-	public void updateUi(List<Answer> answers) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public List<Answer> getAnswers() {
+	public List<Answer> getAnswersFromUi() {
 		// TODO Auto-generated method stub
 		return null;
 	}

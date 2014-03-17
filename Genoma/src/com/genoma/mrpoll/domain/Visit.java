@@ -1,9 +1,7 @@
 package com.genoma.mrpoll.domain;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
-
 import java.util.Date;
 
 
@@ -24,6 +22,8 @@ public class Visit implements Serializable {
 
 	@Temporal(TemporalType.DATE)
 	private Date date;
+
+	private Boolean ethic;
 
 	@Column(length=255)
 	private String hospital;
@@ -53,6 +53,14 @@ public class Visit implements Serializable {
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+
+	public Boolean getEthic() {
+		return this.ethic;
+	}
+
+	public void setEthic(Boolean ethic) {
+		this.ethic = ethic;
 	}
 
 	public String getHospital() {

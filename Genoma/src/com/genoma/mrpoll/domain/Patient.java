@@ -35,7 +35,7 @@ public class Patient implements Serializable {
 	private Integer protocolNo;
 
 	//bi-directional many-to-one association to Visit
-	@OneToMany(mappedBy="patient", cascade = CascadeType.PERSIST)
+	@OneToMany(mappedBy="patient")
 	private Set<Visit> visits;
 
 	public Patient() {

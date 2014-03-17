@@ -1,30 +1,21 @@
 package com.genoma.mrpoll.client.UiBinder;
 
-import java.util.List;
-
 import com.genoma.mrpoll.client.MrPoll;
 import com.genoma.mrpoll.client.MrPoll.State;
 import com.genoma.mrpoll.client.PatientService;
 import com.genoma.mrpoll.client.PatientServiceAsync;
-import com.genoma.mrpoll.domain.Answer;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.HasText;
-import com.google.gwt.user.client.ui.Widget;
-import com.google.gwt.user.cellview.client.CellList;
-import com.google.gwt.cell.client.AbstractCell;
-import com.google.gwt.cell.client.Cell.Context;
-import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
-import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.Widget;
 
 public class EditPatient extends Composite {
 
@@ -46,7 +37,7 @@ public class EditPatient extends Composite {
 				}
 				public void onClick(ClickEvent event) {
 					PatientServiceAsync service= GWT.create(PatientService.class);
-					service.saveAnswers(tab.getAnswers(), new AsyncCallback<Void>() {
+					service.saveAnswersToSession(tab.getAnswersFromUi(), new AsyncCallback<Void>() {
 						public void onSuccess(Void result) {
 							MrPoll.repaint(target);
 						}
@@ -64,8 +55,6 @@ public class EditPatient extends Composite {
 
 	public EditPatient(State s){
 		initWidget(uiBinder.createAndBindUi(this));
-		
-		PatientServiceAsync service= GWT.create(PatientService.class);
 		
 		switch(s){
 			
@@ -129,13 +118,6 @@ public class EditPatient extends Composite {
 		Tabs tabs=new Tabs(s,tab);
 		panel.add(tabs);
 		panel.add((Widget)tab);
-		service.getAnswers(new AsyncCallback<List<Answer>>() {
-			public void onSuccess(List<Answer> result) {
-				tab.updateUi(result);
-			}
-			public void onFailure(Throwable caught) {
-			}
-		});
 	}
 	@UiField Button back;
 	@UiField Button forward;

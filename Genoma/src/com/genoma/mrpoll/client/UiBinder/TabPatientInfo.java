@@ -9,6 +9,7 @@ import com.genoma.mrpoll.client.PatientServiceAsync;
 import com.genoma.mrpoll.domain.Answer;
 import com.genoma.mrpoll.domain.Patient;
 import com.genoma.mrpoll.domain.Visit;
+import com.genoma.mrpoll.uihelper.PatientUI;
 import com.genoma.mrpoll.uihelper.UserUI;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -46,7 +47,7 @@ public class TabPatientInfo extends Composite implements Updater {
 		initWidget(uiBinder.createAndBindUi(this));
 		gender.addItem("man");
 		gender.addItem("woman");
-		
+		updateUi();
 	}
 	
 	
@@ -62,10 +63,10 @@ public class TabPatientInfo extends Composite implements Updater {
 		return result;
 	}
 	
-	public void setAttribute(){
-		service.getPatientFromSession(new AsyncCallback<Patient>() {
+	public void updateUi(){
+		service.getPatientFromSession(new AsyncCallback<PatientUI>() {
 		
-			public void onSuccess(Patient result) {
+			public void onSuccess(PatientUI result) {
 				protocolno.setText(result.getProtocolNo().toString());
 				name.setText(result.getNamesurname());
 				age.setValue(result.getAge().toString());
@@ -80,13 +81,8 @@ public class TabPatientInfo extends Composite implements Updater {
 	
 	
 	@Override
-	public List<Answer> getAnswers() {
+	public List<Answer> getAnswersFromUi() {
 		return null;
 	}
 
-	@Override
-	public void updateUi(List<Answer> answers) {
-		setAttribute();
-		
-	}
 }

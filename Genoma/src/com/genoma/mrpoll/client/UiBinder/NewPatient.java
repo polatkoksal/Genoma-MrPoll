@@ -7,6 +7,7 @@ import com.genoma.mrpoll.client.PatientServiceAsync;
 import com.genoma.mrpoll.client.UserService;
 import com.genoma.mrpoll.client.UserServiceAsync;
 import com.genoma.mrpoll.domain.Patient;
+import com.genoma.mrpoll.uihelper.PatientUI;
 import com.genoma.mrpoll.uihelper.UserUI;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -44,10 +45,10 @@ public class NewPatient extends Composite {
 	void onAddClick(ClickEvent event) {
 		
 
-		Patient patient = new Patient();
-		patient.setProtocolNo(Integer.parseInt(protocolno.getText()));
+		PatientUI patientUi = new PatientUI();
+		patientUi.setProtocolNo(Integer.parseInt(protocolno.getText()));
 		
-		service.savePatient(patient, new AsyncCallback<Boolean>() {
+		service.savePatient(patientUi, new AsyncCallback<Boolean>() {
 			@Override
 			public void onSuccess(Boolean result) {
 				if(!result){
