@@ -29,6 +29,8 @@ public interface UserServiceAsync {
 	void putSessionUser(String param, UserUI userUi, AsyncCallback<Void> callback);
 
 	void getSessionString(AsyncCallback<String> callback);
+
+	void sendMail(String receiver, AsyncCallback<Void> callback);
 	
 
 

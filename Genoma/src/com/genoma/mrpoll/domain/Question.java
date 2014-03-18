@@ -4,10 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 
-/**
- * The persistent class for the "Question" database table.
- * 
- */
+
 @Entity
 @Table(name="\"Question\"")
 @NamedQuery(name="Question.findAll", query="SELECT q FROM Question q")

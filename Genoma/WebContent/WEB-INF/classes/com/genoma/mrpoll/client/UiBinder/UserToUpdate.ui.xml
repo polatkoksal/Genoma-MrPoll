@@ -53,32 +53,8 @@
 			<g:at left="251" top="335">
 				<g:Button ui:field="cancel" text="İptal" styleName="{style.important}" width="70px" height="26px"/>
 			</g:at>
-			<g:at left="554" top="127">
-				<g:PasswordTextBox ui:field="currentpassword"/>
-			</g:at>
-			<g:at left="554" top="169">
-				<g:PasswordTextBox ui:field="newpassword"/>
-			</g:at>
-			<g:at left="554" top="209">
-				<g:PasswordTextBox ui:field="newpasswordrepeat"/>
-			</g:at>
-			<g:at left="462" top="133">
-				<g:Label text="Eski Şifre:" ui:field="oldlabel"/>
-			</g:at>
-			<g:at left="457" top="169">
-				<g:Label text="Yeni Şifre:" ui:field="newlabel"/>
-			</g:at>
-			<g:at left="417" top="209">
-				<g:Label text="Eski Şifre Tekrar:" ui:field="newlabelrepeat"/>
-			</g:at>
-			<g:at left="554" top="91">
-				<g:Button width="147px" height="22px" ui:field="changepassword">Şifre Değiştir</g:Button>
-			</g:at>
-			<g:at left="557" top="250">
-				<g:Button width="66px" height="22px" ui:field="savepassword">Kaydet</g:Button>
-			</g:at>
-			<g:at left="636" top="250">
-				<g:Button width="65px" height="22px" ui:field="cancelpassword">İptal</g:Button>
+			<g:at left="170" top="381">
+				<g:Button width="151px" height="44px" ui:field="resetpassword" text="Kullanıcı Şifresini Sıfırla" styleName="{style.important}">Şifre Değiştir</g:Button>
 			</g:at>
 		</g:AbsolutePanel>
 		

@@ -32,7 +32,7 @@ public class Visit implements Serializable {
 	private String note;
 
 	//bi-directional many-to-one association to Patient
-	@ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.PERSIST)
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="done_patient_id")
 	private Patient patient;
 

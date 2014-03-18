@@ -1,9 +1,6 @@
 package com.genoma.mrpoll.uihelper;
 
 import java.io.Serializable;
-import java.util.Set;
-
-import com.genoma.mrpoll.domain.Visit;
 
 public class PatientUI implements Serializable {
 	
@@ -14,20 +11,17 @@ public class PatientUI implements Serializable {
 
 	private Integer age;
 
-	
+
 	private Integer createdUserId;
 
-	
+
 	private String gender;
 
-	
+
 	private String namesurname;
 
-	
+
 	private Integer protocolNo;
-
-
-	private Set<Visit> visits;
 
 	public PatientUI() {
 	}
@@ -80,13 +74,6 @@ public class PatientUI implements Serializable {
 		this.protocolNo = protocolNo;
 	}
 
-	public Set<Visit> getVisits() {
-		return this.visits;
-	}
-
-	public void setVisits(Set<Visit> visits) {
-		this.visits = visits;
-	}
 
 
 }

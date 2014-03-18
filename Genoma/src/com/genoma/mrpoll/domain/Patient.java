@@ -2,13 +2,9 @@ package com.genoma.mrpoll.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.Set;
 
 
-/**
- * The persistent class for the "Patient" database table.
- * 
- */
+
 @Entity
 @Table(name="\"Patient\"")
 @NamedQuery(name="Patient.findAll", query="SELECT p FROM Patient p")
@@ -33,10 +29,6 @@ public class Patient implements Serializable {
 
 	@Column(name="protocol_no")
 	private Integer protocolNo;
-
-	//bi-directional many-to-one association to Visit
-	@OneToMany(mappedBy="patient")
-	private Set<Visit> visits;
 
 	public Patient() {
 	}
@@ -87,28 +79,6 @@ public class Patient implements Serializable {
 
 	public void setProtocolNo(Integer protocolNo) {
 		this.protocolNo = protocolNo;
-	}
-
-	public Set<Visit> getVisits() {
-		return this.visits;
-	}
-
-	public void setVisits(Set<Visit> visits) {
-		this.visits = visits;
-	}
-
-	public Visit addVisit(Visit visit) {
-		getVisits().add(visit);
-		visit.setPatient(this);
-
-		return visit;
-	}
-
-	public Visit removeVisit(Visit visit) {
-		getVisits().remove(visit);
-		visit.setPatient(null);
-
-		return visit;
 	}
 
 }

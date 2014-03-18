@@ -2,6 +2,7 @@ package com.genoma.mrpoll.client.UiBinder;
 
 import java.util.LinkedList;
 import java.util.List;
+
 import com.genoma.mrpoll.client.MrPoll.State;
 import com.genoma.mrpoll.client.PatientService;
 import com.genoma.mrpoll.client.PatientServiceAsync;

@@ -34,6 +34,7 @@ public class TabPatientInfo extends Composite implements Updater {
 	PatientServiceAsync service= GWT.create(PatientService.class);
 
 	private static PatientInfoUiBinder uiBinder = GWT.create(PatientInfoUiBinder.class);
+	
 	@UiField TextBox protocolno;
 	@UiField TextBox name;
 	@UiField TextBox age;
@@ -51,17 +52,7 @@ public class TabPatientInfo extends Composite implements Updater {
 	}
 	
 	
-	public Boolean isValidProtocolNo(String input){
-		Boolean result = true;
-		try{
-			Integer.parseInt(input);
-		}
-		catch(NumberFormatException e){
-			result=false;
-		}
-		
-		return result;
-	}
+
 	
 	public void updateUi(){
 		service.getPatientFromSession(new AsyncCallback<PatientUI>() {

@@ -1,5 +1,7 @@
 package com.genoma.mrpoll.client.UiBinder;
 
+import sun.net.www.protocol.mailto.MailToURLConnection;
+
 import com.genoma.mrpoll.client.MrPoll;
 import com.genoma.mrpoll.client.MrPoll.State;
 import com.genoma.mrpoll.client.UserService;
@@ -46,15 +48,7 @@ public class UserToUpdate extends Composite{
 	@UiField TextBox email;
 	@UiField Button save;
 	@UiField Button cancel;
-	@UiField Button changepassword;
-	@UiField Label oldlabel;
-	@UiField Label newlabel;
-	@UiField Label newlabelrepeat;
-	@UiField PasswordTextBox currentpassword;
-	@UiField PasswordTextBox newpassword;
-	@UiField PasswordTextBox newpasswordrepeat;
-	@UiField Button savepassword;
-	@UiField Button cancelpassword;
+	
 	
 
 	
@@ -65,7 +59,6 @@ public class UserToUpdate extends Composite{
 	}*/
 
 	public void getUserFromSession(){
-		setVisibilityPassword(false);
 		
 		service.getSessionUser("currentUser", new AsyncCallback<UserUI>() {
 			
@@ -131,8 +124,7 @@ public class UserToUpdate extends Composite{
 				// TODO Auto-generated method stub
 				
 			}
-
-			
+	
 		});
 		
 	}
@@ -142,84 +134,31 @@ public class UserToUpdate extends Composite{
 		MrPoll.repaint(State.USER_SEARCH_BACK);
 	}
 	
-	@UiHandler("changepassword")
+	@UiHandler("resetpassword")
 	void onChangepasswordClick(ClickEvent event) {
-		setVisibilityPassword(true);
-		currentpassword.setText("");
-		newpassword.setText("");
-		newpasswordrepeat.setText("");
-	}
-	
-	
-	@UiHandler("savepassword")
-	void onSavepasswordClick(ClickEvent event) {
 		
-		service.getSessionUser("currentUser", new AsyncCallback<UserUI>() {
-			
-			@Override
-			public void onSuccess(UserUI result) {
-				if(currentpassword.getText().equals(result.getPassword())){
-					if(newpassword.getText().equals(newpasswordrepeat.getText())){
-						
-						userUi.setPassword(newpassword.getText());				
-						userUi.setUsername(result.getUsername());
-						userUi.setName(result.getName());
-						userUi.setSurname(result.getSurname());
-						userUi.setPhone(result.getPhone());
-						userUi.setEmail(result.getEmail());
-						userUi.setHospital(result.getHospital());
-						
-						service.updateUser("currentUser", userUi, new AsyncCallback<Boolean>() {
-
-							@Override
-							public void onSuccess(Boolean result) {
-								setVisibilityPassword(false);
-								Window.alert("Şifre degiştirildi");
-								
-							}
-							
-							@Override
-							public void onFailure(Throwable caught) {
-							
-								Window.alert("change password hata!");
-							}
-
-						});
+		Boolean b = Window.confirm("Kullanıcı Şifresini Sıfırlamak İstediğinizden Emin misiniz???");
+		if(b){
+			userUi.setPassword("a");
+			service.updateUser("currentUser", userUi, new AsyncCallback<Boolean>() {
+	
+				@Override
+				public void onSuccess(Boolean result) {
+					if(result){ 
+						Window.alert("Kullanıcı Şifresi Sıfırlandı! ");
+						MrPoll.repaint(State.MAIN_MENU);
 					}
 					else{
-						Window.alert("Yeni Şifreleriniz Uymuyor!");
+						Window.alert("şifre sıfırlanamadı!!!");
 					}
-					
 				}
-				else{
-					Window.alert("Eski Şifreniz Yanlış Girildi!");
-				}
-			}
-			
-			@Override
-			public void onFailure(Throwable caught) {
 				
-			}
-
-			
-		});
-		
-		
-	}
+				@Override
+				public void onFailure(Throwable caught) {
+					Window.alert("change password hata!");
+				}
 	
-	@UiHandler("cancelpassword")
-	void onCancelpasswordClick(ClickEvent event) {
-		setVisibilityPassword(false);
-	}
-	
-	void setVisibilityPassword(Boolean b){
-		currentpassword.setVisible(b);
-		newpassword.setVisible(b);
-		newpasswordrepeat.setVisible(b);
-		cancelpassword.setVisible(b);
-		savepassword.setVisible(b);
-		oldlabel.setVisible(b);
-		newlabel.setVisible(b);
-		newlabelrepeat.setVisible(b);
+			});
+		}
 	}
 }

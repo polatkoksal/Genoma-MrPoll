@@ -45,7 +45,7 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 	public Boolean addUser(UserUI userUi) {
 		
 		Boolean result = true;
-		//User user = convertToUser(userUi);
+		
 		User user = new User();
 		try {
 			BeanUtils.copyProperties(user, userUi);
@@ -74,7 +74,7 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 
 	
 	public Boolean deleteUser(UserUI userUi){
-		//User user = convertToUser(userUi);
+		
 		User user = new User();
 		try {
 			BeanUtils.copyProperties(user, userUi);
@@ -112,7 +112,7 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 		User user = new User();
 		HttpSession session = this.getThreadLocalRequest().getSession();
 		User sessionUser = (User) session.getAttribute(sessionParam);
-		//user =convertToUser(userUi);
+		
 		try {
 			BeanUtils.copyProperties(user, userUi);
 		} catch (IllegalAccessException e) {
@@ -181,7 +181,7 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 		User sessionUser = new User();
 		HttpSession session = this.getThreadLocalRequest().getSession();
 		sessionUser = (User)session.getAttribute(param);
-		//UserUI newUser = convertToUserUi(sessionUser);
+		
 		
 		UserUI newUser = new UserUI();
 		try {
@@ -227,7 +227,7 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 		UserUI tempUserUi = new UserUI();
 		if(!users.isEmpty()){
 			for(User user : users){
-				//usersUi.add(convertToUserUi(user));
+				
 				try {
 					BeanUtils.copyProperties(tempUserUi, user);
 				} catch (IllegalAccessException e) {
@@ -243,7 +243,7 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 	
 	
 	public void putSessionUser(String param, UserUI userUi){
-		//User user = convertToUser(userUi);
+		
 		User user = new User();
 		try {
 			BeanUtils.copyProperties(user, userUi);
@@ -264,34 +264,6 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 		String search = (String) session.getAttribute("currentSearch");
 		return search;
 	}
-	
-	/*public UserUI convertToUserUi(User user){
-		UserUI result = new UserUI();
-		result.setId(user.getId());
-		result.setName(user.getName());
-		result.setPassword(user.getPassword());
-		result.setUsername(user.getUsername());
-		result.setSurname(user.getSurname());
-		result.setPhone(user.getPhone());
-		result.setEmail(user.getEmail());
-		result.setHospital(user.getHospital());
-		return result;
-	}
-	
-	public User convertToUser(UserUI userUi){
-		User result = new User();
-		result.setId(userUi.getId());
-		result.setName(userUi.getName());
-		result.setPassword(userUi.getPassword());
-		result.setUsername(userUi.getUsername());
-		result.setSurname(userUi.getSurname());
-		result.setPhone(userUi.getPhone());
-		result.setEmail(userUi.getEmail());
-		result.setHospital(userUi.getHospital());
-		return result;
-		
-		
-	}*/
 	
 	
 	
@@ -333,6 +305,14 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 		byte[] results = cipher.doFinal((byte[]) decoder.decode(text));
 
 		return new String(results, "UTF-8");
+	}
+
+
+	@Override
+	public void sendMail(String receiver) {
+		
+		
+		
 	}
 
 

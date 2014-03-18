@@ -15,10 +15,10 @@
 				<g:Label text="Kullanıcı Ana Menü" styleName="{style.important}"/>
 			</g:at>
 			<g:at left="35" top="47">
-				<g:Button text="Yeni Hasta Girişi" ui:field="newpatient"/>
+				<g:Button text="Yeni Vaka Girişi" ui:field="newpatient"/>
 			</g:at>
 			<g:at left="35" top="81">
-				<g:Button text="Kayıtlı Hasta Çağırma" ui:field="callpatient"/>
+				<g:Button text="Kayıtlı Vaka Arama" ui:field="callpatient"/>
 			</g:at>
 			<g:at left="35" top="117">
 				<g:Button ui:field="analysis">Analiz</g:Button>

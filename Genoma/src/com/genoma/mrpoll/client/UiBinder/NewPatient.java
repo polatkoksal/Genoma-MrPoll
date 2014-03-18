@@ -22,8 +22,10 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 
 public class NewPatient extends Composite {
+	
 	UserServiceAsync userService= GWT.create(UserService.class);
 	PatientServiceAsync service = GWT.create(PatientService.class);
+	
 	private static NewPatientUiBinder uiBinder = GWT.create(NewPatientUiBinder.class);
 	
 	@UiField TextBox protocolno;
