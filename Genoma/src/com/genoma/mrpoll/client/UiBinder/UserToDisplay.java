@@ -78,7 +78,7 @@ public class UserToDisplay extends Composite {
 				@Override
 				public void onSuccess(Boolean result) {
 					Window.alert("Kullanıcı Silindi");
-					MrPoll.repaint(State.MAIN_MENU);
+					MrPoll.repaint(State.USER_SEARCH_BACK);
 				}
 				
 				@Override

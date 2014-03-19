@@ -69,10 +69,12 @@ public class UserSearchToEdit extends Composite {
 			public void onSuccess(List<UserUI> result) {
 				resultpanel.clear();
 				resultpanel.setHeight((result.size())*(new UserToDisplay().getOffsetHeight())+"");
+				
 				for (UserUI userUi : result){
 					UserToDisplay searchResult = new UserToDisplay(userUi);
 					resultpanel.add(searchResult);
 				}
+			
 			}
 			
 			@Override
