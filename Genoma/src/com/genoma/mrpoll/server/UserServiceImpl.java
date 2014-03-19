@@ -153,7 +153,7 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 	public Boolean validateUser(String userName, String password){
 		
 		Boolean result = false;
-		String decryptPassword = null;
+		//String decryptPassword = null;
 		factory = EMF.get();
 		EntityManager em = factory.createEntityManager();
 		Query query = em.createQuery("select u from User u where u.username=:userName");
@@ -224,18 +224,18 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 		query.setParameter("name", name);
 		List<User> users=query.getResultList();
 		List<UserUI> usersUi = new ArrayList<UserUI>();
-		UserUI tempUserUi = new UserUI();
-		if(!users.isEmpty()){
-			for(User user : users){
-				
-				try {
-					BeanUtils.copyProperties(tempUserUi, user);
-				} catch (IllegalAccessException e) {
-					e.printStackTrace();
-				} catch (InvocationTargetException e) {
-					e.printStackTrace();
-				}
-				usersUi.add(tempUserUi);			}
+		
+		for(User user : users){
+			try {
+				UserUI tempUserUi = new UserUI();
+				BeanUtils.copyProperties(tempUserUi, user);
+				usersUi.add(tempUserUi);
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				e.printStackTrace();
+			}
+						
 		}
 		return usersUi;
 	}
