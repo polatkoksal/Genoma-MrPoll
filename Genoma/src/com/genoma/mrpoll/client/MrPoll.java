@@ -23,7 +23,8 @@ public class MrPoll implements EntryPoint {
 		USER_SEARCH,
 		USER_SEARCH_BACK,
 		USER_TO_UPDATE, 
-		TAB_GENERAL_INFO, 
+		TAB_PATIENT_INFO,
+		TAB_VISIT,
 		TAB_CLINIC,
 		TAB_MAMMOGRAPHY,
 		TAB_USG,
@@ -34,8 +35,7 @@ public class MrPoll implements EntryPoint {
 	} 
 	
 	public void onModuleLoad() {
-		repaint(State.USER_LOGIN);
-		
+		repaint(State.USER_LOGIN);	
 	}
 	
 	
@@ -57,10 +57,8 @@ public class MrPoll implements EntryPoint {
 				RootPanel.get().add(new UserUpdate());
 				break;
 			case USER_SEARCH: 
-				RootPanel.get().add(new UserSearchToEdit());
-				break;
 			case USER_SEARCH_BACK:
-				RootPanel.get().add(new UserSearchToEdit(true));
+				RootPanel.get().add(new UserSearchToEdit(s));
 				break;
 			case USER_TO_UPDATE:
 				RootPanel.get().add(new UserToUpdate());
@@ -72,45 +70,7 @@ public class MrPoll implements EntryPoint {
 				RootPanel.get().add(new EditPatient(s));
 				break;
 		}
-		
-		
-		
-		
-		
-		//final UserServiceAsync service = GWT.create(UserService.class);
-		
-		/*button.addClickHandler(new ClickHandler() {
-			
-			@Override
-			public void onClick(ClickEvent arg0) {
-				
-				User user = new User();
-				user.setName("Polat");
-		
-				service.addUser(user, new AsyncCallback<Void>() {
-					
-					@Override
-					public void onSuccess(Void arg0) {
-						System.out.println("User added!");
-					}
-					
-					@Override
-					public void onFailure(Throwable arg0) {
-						System.out.println("Error Occured!");
-						
-					}
-				});
-			}
-		});*/
-		
-		
-		
-			
 			
 	}
 
-	
-	
-
-	
 }

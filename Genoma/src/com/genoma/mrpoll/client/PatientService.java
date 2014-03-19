@@ -4,15 +4,25 @@ import java.util.List;
 
 import com.genoma.mrpoll.domain.Answer;
 import com.genoma.mrpoll.domain.Patient;
+import com.genoma.mrpoll.domain.User;
 import com.genoma.mrpoll.domain.Visit;
+import com.genoma.mrpoll.uihelper.PatientUI;
+import com.genoma.mrpoll.uihelper.UserUI;
+import com.genoma.mrpoll.uihelper.VisitUI;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
 @RemoteServiceRelativePath("patient")
 public interface PatientService extends RemoteService {
-	void saveAnswer(Answer answer);
-	void saveAllAnswers(List<Answer> answers);
-	List<Answer> getAllAnswers();
-	void savePatientToSession(Patient patient);
-	void saveVisitToSession(Visit visit);
+	//void saveAnswer(Answer answer);
+	void saveAnswersToSession(List<Answer> answers);
+	List<Answer> getAnswersFromSession();
+	void savePatientToSession(PatientUI patientUi);
+	void saveVisitToSession(VisitUI visitUi);
+	Boolean savePatient(PatientUI patientUi);
+	void createVisit();
+	PatientUI getPatientFromSession();
+	UserUI getUserFromSession();
+	VisitUI getVisitFromSession();
+	Boolean updatePatient(PatientUI patientUi);
 }

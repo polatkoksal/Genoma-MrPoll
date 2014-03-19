@@ -7,9 +7,9 @@
 	}
 	</ui:style>
 	<g:HTMLPanel>
-		<g:AbsolutePanel height="394px" width="348px">
+		<g:AbsolutePanel height="254px" width="348px">
 			<g:at left="121" top="10">
-				<g:Label text="Genel Bilgiler" styleName="{style.important}"/>
+				<g:Label text="Hasta Bilgileri" styleName="{style.important}"/>
 			</g:at>
 			<g:at left="164" top="91">
 				<g:TextBox ui:field="name"/>
@@ -26,35 +26,14 @@
 			<g:at left="65" top="179">
 				<g:Label text="Cinsiyeti"/>
 			</g:at>
-			<g:at left="164" top="178">
-				<g:RadioButton name="gender" text="Kadın" ui:field="woman"/>
-			</g:at>
-			<g:at left="246" top="178">
-				<g:RadioButton name="gender" text="Erkek" ui:field="man"/>
-			</g:at>
 			<g:at left="65" top="59">
 				<g:Label text="Protocol No"/>
 			</g:at>
 			<g:at left="164" top="59">
-				<g:Label ui:field="protocolno" text="protocolNo" wordWrap="false"/>
+				<g:TextBox ui:field="protocolno"/>
 			</g:at>
-			<g:at left="63" top="221">
-				<g:Label text="İşlem Tarihi"/>
-			</g:at>
-			<g:at left="164" top="215">
-				<p1:DateBox ui:field="date"/>
-			</g:at>
-			<g:at left="65" top="304">
-				<g:CheckBox text="Etik Kurul Onayı Var"/>
-			</g:at>
-			<g:at left="65" top="346">
-				<g:FileUpload/>
-			</g:at>
-			<g:at left="65" top="260">
-				<g:Label text="Hastane Adı:"/>
-			</g:at>
-			<g:at left="164" top="260">
-				<g:TextBox ui:field="hospital"/>
+			<g:at left="164" top="175">
+				<g:ListBox ui:field="gender"/>
 			</g:at>
 		</g:AbsolutePanel>
 	    

@@ -2,6 +2,7 @@ package com.genoma.mrpoll.client.UiBinder;
 
 import java.util.List;
 
+import com.genoma.mrpoll.client.MrPoll.State;
 import com.genoma.mrpoll.domain.Answer;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -37,7 +38,7 @@ public class TabSecondVisit extends Composite implements Updater {
 	interface SecondUiBinder extends UiBinder<Widget, TabSecondVisit> {
 	}
 
-	public TabSecondVisit() {
+	public TabSecondVisit(State s) {
 		initWidget(uiBinder.createAndBindUi(this));
 		onR_mri_biopsyClick(null);
 		onL_mri_biopsyClick(null);
@@ -99,14 +100,9 @@ public class TabSecondVisit extends Composite implements Updater {
 		onL_usg_biopsyClick(null);
 	}
 
-	@Override
-	public void update(List<Answer> answers) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
-	public List<Answer> getAllAnswers() {
+	public List<Answer> getAnswersFromUi() {
 		// TODO Auto-generated method stub
 		return null;
 	}

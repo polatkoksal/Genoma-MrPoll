@@ -1,42 +1,32 @@
-package com.genoma.mrpoll.domain;
+package com.genoma.mrpoll.uihelper;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.Date;
 
+import com.genoma.mrpoll.domain.Patient;
 
-/**
- * The persistent class for the "Visit" database table.
- * 
- */
-@Entity
-@Table(name="\"Visit\"")
-@NamedQuery(name="Visit.findAll", query="SELECT v FROM Visit v")
-public class Visit implements Serializable {
+public class VisitUI implements Serializable{
+
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(unique=true, nullable=false)
+
 	private Integer id;
 
-	@Temporal(TemporalType.DATE)
+	
 	private Date date;
 
 	private Boolean ethic;
 
-	@Column(length=255)
+	
 	private String hospital;
 
-	@Column(length=500)
+	
 	private String note;
 
-	//bi-directional many-to-one association to Patient
-	@ManyToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name="done_patient_id")
+	
 	private Patient patient;
 
-	public Visit() {
+	public VisitUI() {
 	}
 
 	public Integer getId() {
@@ -86,5 +76,4 @@ public class Visit implements Serializable {
 	public void setPatient(Patient patient) {
 		this.patient = patient;
 	}
-
 }

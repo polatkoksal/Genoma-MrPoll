@@ -37,28 +37,27 @@ public class UserSearchToEdit extends Composite {
 	interface SearchUserToEditUiBinder extends UiBinder<Widget, UserSearchToEdit> {
 	}
 
-	public UserSearchToEdit() {
-		initWidget(uiBinder.createAndBindUi(this));
-	}
 	
-	public UserSearchToEdit(Boolean b){
-		this();
-		service.getSessionString(new AsyncCallback<String>() {
-
-			@Override
-			public void onSuccess(String result) {
-				searchbox.setText(result);
-				onSearchClick(null);
+	public UserSearchToEdit(State s){
+		initWidget(uiBinder.createAndBindUi(this));
+		if (s==State.USER_SEARCH_BACK){
+			service.getSessionString(new AsyncCallback<String>() {
+	
+				@Override
+				public void onSuccess(String result) {
+					searchbox.setText(result);
+					onSearchClick(null);
+					
+				}
 				
-			}
-			
-			@Override
-			public void onFailure(Throwable caught) {
-				
-				
-			}
-
-		});
+				@Override
+				public void onFailure(Throwable caught) {
+					
+					
+				}
+	
+			});
+		}
 	}
 	
 	@UiHandler("search")

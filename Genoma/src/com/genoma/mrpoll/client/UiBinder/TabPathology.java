@@ -2,6 +2,7 @@ package com.genoma.mrpoll.client.UiBinder;
 
 import java.util.List;
 
+import com.genoma.mrpoll.client.MrPoll.State;
 import com.genoma.mrpoll.domain.Answer;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -27,18 +28,14 @@ public class TabPathology extends Composite implements Updater {
 	interface TabPathologyUiBinder extends UiBinder<Widget, TabPathology> {
 	}
 
-	public TabPathology() {
+	public TabPathology(State s) {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 
-	@Override
-	public void update(List<Answer> answers) {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 	@Override
-	public List<Answer> getAllAnswers() {
+	public List<Answer> getAnswersFromUi() {
 		// TODO Auto-generated method stub
 		return null;
 	}

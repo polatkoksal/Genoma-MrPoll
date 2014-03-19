@@ -20,6 +20,9 @@ public class Document implements Serializable {
 	@Column(unique=true, nullable=false)
 	private Integer id;
 
+	@Column(name="attached_visit_id")
+	private Integer attachedVisitId;
+
 	@Column(name="creates_user_id")
 	private Integer createsUserId;
 
@@ -32,11 +35,6 @@ public class Document implements Serializable {
 	@Column(length=255)
 	private String name;
 
-	//bi-directional many-to-one association to Patient
-	@ManyToOne
-	@JoinColumn(name="attached_patient_id")
-	private Patient patient;
-
 	public Document() {
 	}
 
@@ -46,6 +44,14 @@ public class Document implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public Integer getAttachedVisitId() {
+		return this.attachedVisitId;
+	}
+
+	public void setAttachedVisitId(Integer attachedVisitId) {
+		this.attachedVisitId = attachedVisitId;
 	}
 
 	public Integer getCreatesUserId() {
@@ -78,14 +84,6 @@ public class Document implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public Patient getPatient() {
-		return this.patient;
-	}
-
-	public void setPatient(Patient patient) {
-		this.patient = patient;
 	}
 
 }

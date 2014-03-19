@@ -4,10 +4,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 
-/**
- * The persistent class for the "Question" database table.
- * 
- */
+
 @Entity
 @Table(name="\"Question\"")
 @NamedQuery(name="Question.findAll", query="SELECT q FROM Question q")
@@ -18,9 +15,6 @@ public class Question implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(unique=true, nullable=false)
 	private Integer id;
-
-	@Column(name="contain_answer_id")
-	private Integer containAnswerId;
 
 	@Column(length=255)
 	private String question;
@@ -34,14 +28,6 @@ public class Question implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Integer getContainAnswerId() {
-		return this.containAnswerId;
-	}
-
-	public void setContainAnswerId(Integer containAnswerId) {
-		this.containAnswerId = containAnswerId;
 	}
 
 	public String getQuestion() {

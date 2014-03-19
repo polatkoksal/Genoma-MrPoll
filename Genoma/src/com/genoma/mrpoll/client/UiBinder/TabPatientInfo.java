@@ -3,12 +3,18 @@ package com.genoma.mrpoll.client.UiBinder;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.genoma.mrpoll.client.MrPoll.State;
 import com.genoma.mrpoll.client.PatientService;
 import com.genoma.mrpoll.client.PatientServiceAsync;
 import com.genoma.mrpoll.domain.Answer;
+import com.genoma.mrpoll.domain.Patient;
+import com.genoma.mrpoll.domain.Visit;
+import com.genoma.mrpoll.uihelper.PatientUI;
+import com.genoma.mrpoll.uihelper.UserUI;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.RadioButton;
 import com.google.gwt.user.client.ui.Widget;
@@ -20,80 +26,54 @@ import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.event.dom.client.KeyDownEvent;
 import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.ListBox;
+import com.google.gwt.user.client.ui.CheckBox;
 
-public class TabGeneralInfo extends Composite implements Updater {
+public class TabPatientInfo extends Composite implements Updater {
 	
 	PatientServiceAsync service= GWT.create(PatientService.class);
 
 	private static PatientInfoUiBinder uiBinder = GWT.create(PatientInfoUiBinder.class);
 	
-	@UiField RadioButton woman;
-	@UiField RadioButton man;
-	@UiField Label protocolno;
+	@UiField TextBox protocolno;
 	@UiField TextBox name;
 	@UiField TextBox age;
-	@UiField DateBox date;
-	@UiField TextBox hospital;
+	@UiField ListBox gender;
 
-	interface PatientInfoUiBinder extends UiBinder<Widget, TabGeneralInfo> {
+	interface PatientInfoUiBinder extends UiBinder<Widget, TabPatientInfo> {
 		
 	}
 
-	public TabGeneralInfo() {
+	public TabPatientInfo(State s) {
 		initWidget(uiBinder.createAndBindUi(this));
-		setActive(false);
+		gender.addItem("man");
+		gender.addItem("woman");
+		updateUi();
 	}
 	
-//	@UiHandler("protocolno")
-//	void onProtocolnoKeyPress(KeyPressEvent event) {
-//		if(isValidProtocolNo(protocolno.getText())){
-//			setActive(true);
-//		}
-//		else{
-//			setActive(false);
-//		}
-//	}
 	
-	public Boolean isValidProtocolNo(String input){
-		Boolean result = true;
-		try{
-			Integer.parseInt(input);
-		}
-		catch(NumberFormatException e){
-			result=false;
-		}
+
+	
+	public void updateUi(){
+		service.getPatientFromSession(new AsyncCallback<PatientUI>() {
 		
-		return result;
+			public void onSuccess(PatientUI result) {
+				protocolno.setText(result.getProtocolNo().toString());
+				name.setText(result.getNamesurname());
+				age.setValue(result.getAge().toString());
+				gender.setTitle(result.getGender());
+			}
+		
+			public void onFailure(Throwable caught) {	
+			}
+		});
+		
 	}
 	
-	public void setActive(Boolean b){
-		woman.setEnabled(b);
-		man.setEnabled(b);
-		name.setEnabled(b);
-		age.setEnabled(b);
-		date.setEnabled(b);
-		hospital.setEnabled(b);
-	}
 	
-//	@UiHandler("protocolno")
-//	void onProtocolnoKeyUp(KeyUpEvent event) {
-//		if(isValidProtocolNo(protocolno.getText())){
-//			setActive(true);
-//		}
-//		else{
-//			setActive(false);
-//		}
-//	}
-
-
 	@Override
-	public List<Answer> getAllAnswers() {
+	public List<Answer> getAnswersFromUi() {
 		return null;
 	}
 
-	@Override
-	public void update(List<Answer> answers) {
-		// TODO Auto-generated method stub
-		
-	}
 }

@@ -1,0 +1,40 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+	.important {
+		font-weight: bold;
+	}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:AbsolutePanel height="398px" width="599px">
+			<g:at left="227" top="38">
+				<g:Label text="Ziyaret Bilgileri" styleName="{style.important}"/>
+			</g:at>
+			<g:at left="125" top="100">
+				<g:Label text="Ziyaret Tarihi:"/>
+			</g:at>
+			<g:at left="239" top="100">
+				<g:TextBox ui:field="date"/>
+			</g:at>
+			<g:at left="125" top="155">
+				<g:Label text="Hastane Adı:"/>
+			</g:at>
+			<g:at left="239" top="149">
+				<g:TextBox ui:field="hospital"/>
+			</g:at>
+			<g:at left="239" top="202">
+				<g:CheckBox text="Etik Kurul Onayı Var" ui:field="ethic"/>
+			</g:at>
+			<g:at left="239" top="243">
+				<g:FileUpload/>
+			</g:at>
+			<g:at left="239" top="323">
+				<g:TextArea ui:field="note"/>
+			</g:at>
+			<g:at left="239" top="290">
+				<g:Label text="Ziyaret ile ilgili not" width="191px" height="20px"/>
+			</g:at>
+		</g:AbsolutePanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 
