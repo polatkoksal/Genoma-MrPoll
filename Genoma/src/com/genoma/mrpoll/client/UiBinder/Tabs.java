@@ -1,6 +1,7 @@
 package com.genoma.mrpoll.client.UiBinder;
 
 import java.io.Serializable;
+
 import com.genoma.mrpoll.client.MrPoll;
 import com.genoma.mrpoll.client.MrPoll.State;
 import com.genoma.mrpoll.client.PatientService;
@@ -88,68 +89,65 @@ public class Tabs extends Composite implements Serializable{
 		
 	}
 	
-	private void updateSession(){
+	private void updateSession(State target){
 		PatientServiceAsync service= GWT.create(PatientService.class);
 		service.saveAnswersToSession(tab.getAnswersFromUi(), new AsyncCallback<Void>() {
+			State target;
+			public AsyncCallback<Void> init(State state){
+				target=state;
+				return this;
+			}
 			public void onSuccess(Void result) {
+				MrPoll.repaint(target);
 			}
 			public void onFailure(Throwable caught) {
 			}
-		});
+		}.init(target));
 	}
 	
 	@UiHandler("patientinfo")
 	void onPatientinfoClick(ClickEvent event) {
-		updateSession();
-		MrPoll.repaint(State.TAB_PATIENT_INFO);
+		updateSession(State.TAB_PATIENT_INFO);
 	}
 	
 	@UiHandler("visit")
 	void onVisitClick(ClickEvent event) {
-		updateSession();
-		MrPoll.repaint(State.TAB_VISIT);
+		updateSession(State.TAB_VISIT);
 	}
 	
 	@UiHandler("clinic")
 	void onClinicClick(ClickEvent event) {
-		updateSession();
-		MrPoll.repaint(State.TAB_CLINIC);
+		updateSession(State.TAB_CLINIC);
 	}
 	
 	@UiHandler("mammography")
 	void onMammographyClick(ClickEvent event) {
-		updateSession();
-		MrPoll.repaint(State.TAB_MAMMOGRAPHY);
+		updateSession(State.TAB_MAMMOGRAPHY);
 	}
 	
 	@UiHandler("usg")
 	void onUsgClick(ClickEvent event) {
-		updateSession();
-		MrPoll.repaint(State.TAB_USG);
+		updateSession(State.TAB_USG);
 	}
 	
 	@UiHandler("mri")
 	void onMriClick(ClickEvent event) {
-		updateSession();
-		MrPoll.repaint(State.TAB_MRI);
+		updateSession(State.TAB_MRI);
 	}
 	
 	@UiHandler("pathology")
 	void onPathologyClick(ClickEvent event) {
-		updateSession();
-		MrPoll.repaint(State.TAB_PATHOLOGY);
+		updateSession(State.TAB_PATHOLOGY);
 	}
 	
 	@UiHandler("second")
 	void onSecondClick(ClickEvent event) {
-		updateSession();
-		MrPoll.repaint(State.TAB_SECOND);
+		updateSession(State.TAB_SECOND);
 	}
 	
 	@UiHandler("surgical")
 	void onSurgicalClick(ClickEvent event) {
-		updateSession();
-		MrPoll.repaint(State.TAB_SURGICAL);
+		updateSession(State.TAB_SURGICAL);
 	}
 	
 	
