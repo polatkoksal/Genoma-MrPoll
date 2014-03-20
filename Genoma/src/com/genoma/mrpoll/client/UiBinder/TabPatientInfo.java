@@ -1,33 +1,22 @@
 package com.genoma.mrpoll.client.UiBinder;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.genoma.mrpoll.client.MrPoll.State;
 import com.genoma.mrpoll.client.PatientService;
 import com.genoma.mrpoll.client.PatientServiceAsync;
 import com.genoma.mrpoll.domain.Answer;
-import com.genoma.mrpoll.domain.Patient;
-import com.genoma.mrpoll.domain.Visit;
 import com.genoma.mrpoll.uihelper.PatientUI;
-import com.genoma.mrpoll.uihelper.UserUI;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.RadioButton;
-import com.google.gwt.user.client.ui.Widget;
-import com.google.gwt.user.client.ui.TextBox;
-import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.event.logical.shared.ValueChangeEvent;
-import com.google.gwt.user.datepicker.client.DateBox;
-import com.google.gwt.event.dom.client.KeyPressEvent;
-import com.google.gwt.event.dom.client.KeyDownEvent;
-import com.google.gwt.event.dom.client.KeyUpEvent;
-import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
-import com.google.gwt.user.client.ui.CheckBox;
+import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.user.client.ui.Widget;
 
 public class TabPatientInfo extends Composite implements Updater {
 	
@@ -46,8 +35,8 @@ public class TabPatientInfo extends Composite implements Updater {
 
 	public TabPatientInfo(State s) {
 		initWidget(uiBinder.createAndBindUi(this));
-		gender.addItem("man");
-		gender.addItem("woman");
+		gender.addItem("Kadın");
+		gender.addItem("Erkek");
 		updateUi();
 	}
 	
@@ -59,7 +48,7 @@ public class TabPatientInfo extends Composite implements Updater {
 		
 			public void onSuccess(PatientUI result) {
 				protocolno.setText(result.getProtocolNo().toString());
-				name.setText(result.getNamesurname());
+				name.setText(result.getNameSurname());
 				age.setValue(result.getAge().toString());
 				gender.setTitle(result.getGender());
 			}
@@ -73,6 +62,34 @@ public class TabPatientInfo extends Composite implements Updater {
 	
 	@Override
 	public List<Answer> getAnswersFromUi() {
+		
+		PatientUI patientUi = new PatientUI();
+		patientUi.setProtocolNo(protocolno.getText());
+		patientUi.setNameSurname(name.getText());
+		patientUi.setGender(gender.getItemText(0));
+		if(age.getText() != ""){
+			patientUi.setAge(Integer.parseInt(age.getText()));
+		}
+		else{
+			patientUi.setAge(0);
+		}
+		
+		service.savePatientToSession(patientUi, new AsyncCallback<Void>() {
+
+			@Override
+			public void onSuccess(Void result) {
+				
+			}
+			
+			@Override
+			public void onFailure(Throwable caught) {
+				
+			}
+
+		});
+		
+		
+		
 		return null;
 	}
 

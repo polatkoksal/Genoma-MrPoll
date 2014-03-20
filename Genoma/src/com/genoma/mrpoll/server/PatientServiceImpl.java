@@ -48,67 +48,72 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 		patient.setCreatedUserId(user.getId());
 		factory = EMF.get();
 		EntityManager em = factory.createEntityManager();
-		Query query = em.createQuery("select t from Patient t");
+		Query query = em.createQuery("select p from Patient p where p.protocolNo=:protocolNo");
+		query.setParameter("protocolNo", patient.getProtocolNo());
 		List<Patient> patients = query.getResultList();
-		for(Patient p : patients){
-			if(p.getProtocolNo().equals(patient.getProtocolNo())){
-				patient = p;
-				result = false;
-				break;
-			}
-			
+		
+		if(!patients.isEmpty()){
+			session.setAttribute("patient", patients.get(0));
+			result = false;
 		}
+		
 		if(result){
 			em.getTransaction().begin();
 			patient=em.merge(patient);
 			em.getTransaction().commit();
 			em.close();
+			session.setAttribute("patient", patient);
 		}
 		
-		session.setAttribute("patient", patient);
 		return result;
 			
 	}
 	
 	@Override
-	
-	
 	public Boolean updatePatient(PatientUI patientUi) {
 		
 		Boolean result = true;
 		Patient patient = new Patient();
+		
 		try {
-			BeanUtils.copyProperties(patientUi, patient);
+			BeanUtils.copyProperties(patient, patientUi);
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		} catch (InvocationTargetException e) {
 			e.printStackTrace();
 		}
+		
+		HttpSession session= this.getThreadLocalRequest().getSession();
+		Patient temp = (Patient) session.getAttribute("patient");
+		patient.setId(temp.getId());
+		patient.setCreatedUserId(temp.getCreatedUserId());
+		
 		factory = EMF.get();
 		EntityManager em = factory.createEntityManager();
-		Query query = em.createQuery("select t from Patient t");
+		Query query = em.createQuery("select p from Patient p where p.protocolNo=:protocolNo");
+		query.setParameter("protocolNo", patient.getProtocolNo());
 		List<Patient> patients = query.getResultList();
 		Patient findPatient = em.find(Patient.class, getPatientFromSession().getId());
-		for(Patient p : patients){
-			if(p.getProtocolNo().equals(findPatient)){
+		
+		if(!patients.isEmpty()){
+			if(patients.get(0).getId() != patient.getId()){
 				result = false;
-				break;
 			}
 		}
+		
+		
 		if(result){
 			em.getTransaction().begin();
 			findPatient.setProtocolNo(patient.getProtocolNo());
-			findPatient.setNamesurname(patient.getNamesurname());
+			findPatient.setNameSurname(patient.getNameSurname());
 			findPatient.setAge(patient.getAge());
 			findPatient.setGender(patient.getGender());
 			em.getTransaction().commit();
 			em.close();
+			session.setAttribute("patient", findPatient);
 		}
 		
-		HttpSession session= this.getThreadLocalRequest().getSession();
-		session.setAttribute("patient", findPatient);
-		
-		return null;
+		return result;
 	}
 
 	
@@ -140,7 +145,7 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 	public void savePatientToSession(PatientUI patientUi) {
 		Patient patient = new Patient();
 		try {
-			BeanUtils.copyProperties(patientUi, patient);
+			BeanUtils.copyProperties(patient, patientUi);
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		} catch (InvocationTargetException e) {
@@ -187,7 +192,9 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 	
 	@Override
 	public void saveAnswersToSession(List<Answer> answers) {
-		if(answers==null){return;}
+		if(answers==null){
+			return;
+		}
 		HttpSession session = this.getThreadLocalRequest().getSession();
 		List<Answer> loki=(List<Answer>) session.getAttribute("questions");
 		if (loki!=null){

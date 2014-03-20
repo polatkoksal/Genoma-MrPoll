@@ -27,7 +27,7 @@
 				<g:Label text="Cinsiyeti"/>
 			</g:at>
 			<g:at left="65" top="59">
-				<g:Label text="Protocol No"/>
+				<g:Label text="Protokol No"/>
 			</g:at>
 			<g:at left="164" top="59">
 				<g:TextBox ui:field="protocolno"/>

@@ -48,7 +48,7 @@ public class NewPatient extends Composite {
 		
 
 		PatientUI patientUi = new PatientUI();
-		patientUi.setProtocolNo(Integer.parseInt(protocolno.getText()));
+		patientUi.setProtocolNo(protocolno.getText());
 		
 		service.savePatient(patientUi, new AsyncCallback<Boolean>() {
 			@Override
