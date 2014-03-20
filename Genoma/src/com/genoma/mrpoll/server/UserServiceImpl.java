@@ -54,15 +54,18 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 		} catch (InvocationTargetException e) {
 			e.printStackTrace();
 		}
-		List<User> users = getAll();
-		for(User tempUser : users){
-			if(tempUser.getUsername().equals(userUi.getUsername())){
-				result = false;
-			}
+	
+		factory = EMF.get();
+		EntityManager em = factory.createEntityManager();
+		Query query = em.createQuery("select u from User u where u.username=:userName");
+		query.setParameter("userName", user.getUsername());
+		List<User> users = query.getResultList();
+		if(!users.isEmpty()){
+			result = false;
 		}
+		
 		if(result){
 			factory = EMF.get();
-			EntityManager em = factory.createEntityManager();
 			em.getTransaction().begin();
 			em.persist(user);
 			em.getTransaction().commit();
@@ -124,12 +127,16 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 		factory = EMF.get();
 		EntityManager em = factory.createEntityManager();
 		User tempUser = em.find(User.class, user.getId());
-		List<User> users = getAll();
-		for(User searchUser : users){
-			if(searchUser.getUsername().equals(user.getUsername()) && searchUser.getId()!=user.getId()){
+		Query query = em.createQuery("select u from User u where u.username=:userName");
+		query.setParameter("userName", user.getUsername());
+		List<User> users = query.getResultList();
+		if(!users.isEmpty()){
+			if(tempUser.getId() != users.get(0).getId()){
 				result = false;
 			}
 		}
+		
+		
 		if(result){
 			em.getTransaction().begin();
 			tempUser.setUsername(user.getUsername());
@@ -203,7 +210,7 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 		User user = (User)session.getAttribute("loginUser");
 		factory = EMF.get();
 		EntityManager em = factory.createEntityManager();
-		Query query = em.createQuery("select ur from UserRole ur where ur.user.id = :param");
+		Query query = em.createQuery("select ur from UserRole ur where ur.user.id=:param");
 		query.setParameter("param", user.getId());
 		List<UserRole> userRoles = query.getResultList();
 		if(!userRoles.isEmpty() && userRoles.get(0).getRole().getName().equals("admin")){

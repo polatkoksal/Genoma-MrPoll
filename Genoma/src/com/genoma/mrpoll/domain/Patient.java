@@ -4,7 +4,10 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 
-
+/**
+ * The persistent class for the "Patient" database table.
+ * 
+ */
 @Entity
 @Table(name="\"Patient\"")
 @NamedQuery(name="Patient.findAll", query="SELECT p FROM Patient p")
@@ -24,11 +27,11 @@ public class Patient implements Serializable {
 	@Column(length=255)
 	private String gender;
 
-	@Column(length=255)
-	private String namesurname;
+	@Column(name="name_surname", length=255)
+	private String nameSurname;
 
-	@Column(name="protocol_no")
-	private Integer protocolNo;
+	@Column(name="protocol_no", length=255)
+	private String protocolNo;
 
 	public Patient() {
 	}
@@ -65,19 +68,19 @@ public class Patient implements Serializable {
 		this.gender = gender;
 	}
 
-	public String getNamesurname() {
-		return this.namesurname;
+	public String getNameSurname() {
+		return this.nameSurname;
 	}
 
-	public void setNamesurname(String namesurname) {
-		this.namesurname = namesurname;
+	public void setNameSurname(String nameSurname) {
+		this.nameSurname = nameSurname;
 	}
 
-	public Integer getProtocolNo() {
+	public String getProtocolNo() {
 		return this.protocolNo;
 	}
 
-	public void setProtocolNo(Integer protocolNo) {
+	public void setProtocolNo(String protocolNo) {
 		this.protocolNo = protocolNo;
 	}
 

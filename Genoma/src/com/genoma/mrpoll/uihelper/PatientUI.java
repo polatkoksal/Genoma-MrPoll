@@ -2,6 +2,11 @@ package com.genoma.mrpoll.uihelper;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 public class PatientUI implements Serializable {
 	
 
@@ -11,17 +16,14 @@ public class PatientUI implements Serializable {
 
 	private Integer age;
 
-
+	
 	private Integer createdUserId;
-
 
 	private String gender;
 
+	private String nameSurname;
 
-	private String namesurname;
-
-
-	private Integer protocolNo;
+	private String protocolNo;
 
 	public PatientUI() {
 	}
@@ -58,19 +60,19 @@ public class PatientUI implements Serializable {
 		this.gender = gender;
 	}
 
-	public String getNamesurname() {
-		return this.namesurname;
+	public String getNameSurname() {
+		return this.nameSurname;
 	}
 
-	public void setNamesurname(String namesurname) {
-		this.namesurname = namesurname;
+	public void setNameSurname(String nameSurname) {
+		this.nameSurname = nameSurname;
 	}
 
-	public Integer getProtocolNo() {
+	public String getProtocolNo() {
 		return this.protocolNo;
 	}
 
-	public void setProtocolNo(Integer protocolNo) {
+	public void setProtocolNo(String protocolNo) {
 		this.protocolNo = protocolNo;
 	}
 
