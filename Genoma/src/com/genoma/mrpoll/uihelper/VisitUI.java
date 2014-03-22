@@ -3,6 +3,16 @@ package com.genoma.mrpoll.uihelper;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import com.genoma.mrpoll.domain.Patient;
 
 public class VisitUI implements Serializable{
@@ -12,7 +22,7 @@ public class VisitUI implements Serializable{
 
 	private Integer id;
 
-	
+
 	private Date date;
 
 	private Boolean ethic;
@@ -20,9 +30,10 @@ public class VisitUI implements Serializable{
 	
 	private String hospital;
 
-	
+
 	private String note;
 
+	
 	
 	private Patient patient;
 

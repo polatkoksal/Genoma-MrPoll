@@ -1,8 +1,20 @@
 package com.genoma.mrpoll.domain;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.Date;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 /**
@@ -31,7 +43,7 @@ public class Visit implements Serializable {
 	@Column(length=500)
 	private String note;
 
-	//bi-directional many-to-one association to Patient
+	
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="done_patient_id")
 	private Patient patient;

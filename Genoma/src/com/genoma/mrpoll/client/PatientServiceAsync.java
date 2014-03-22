@@ -15,7 +15,6 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public interface PatientServiceAsync {
 
-	//void saveAnswer(Answer answer, AsyncCallback<Void> callback);
 	void saveAnswersToSession(List<Answer> answers, AsyncCallback<Void> callback);
 	void getAnswersFromSession(AsyncCallback<List<Answer>> callback);
 	void savePatientToSession(PatientUI patientUi, AsyncCallback<Void> callback);
@@ -26,6 +25,9 @@ public interface PatientServiceAsync {
 	void getUserFromSession(AsyncCallback<UserUI> callback);
 	void getVisitFromSession(AsyncCallback<VisitUI> callback);
 	void updatePatient(PatientUI patientUi, AsyncCallback<Boolean> callback);
+	void updateVisit(VisitUI visitUi, AsyncCallback<Boolean> callback);
+	void getVisitFromDB(AsyncCallback<Boolean> callback);
+	void mergeAnswers(List<Answer> target, List<Answer> list, AsyncCallback<List<Answer>> callback);
 	
 
 

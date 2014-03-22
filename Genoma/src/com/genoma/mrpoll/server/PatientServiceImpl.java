@@ -28,8 +28,6 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 	private static final long serialVersionUID = -5024300527855702085L;
 	private EntityManagerFactory factory;
 
-	
-	
 
 	@Override
 	public Boolean savePatient(PatientUI patientUi) {
@@ -93,7 +91,7 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 		Query query = em.createQuery("select p from Patient p where p.protocolNo=:protocolNo");
 		query.setParameter("protocolNo", patient.getProtocolNo());
 		List<Patient> patients = query.getResultList();
-		Patient findPatient = em.find(Patient.class, getPatientFromSession().getId());
+		Patient findPatient = em.find(Patient.class, patient.getId());
 		
 		if(!patients.isEmpty()){
 			if(patients.get(0).getId() != patient.getId()){
@@ -108,9 +106,10 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 			findPatient.setNameSurname(patient.getNameSurname());
 			findPatient.setAge(patient.getAge());
 			findPatient.setGender(patient.getGender());
+			patient = em.merge(findPatient);
 			em.getTransaction().commit();
 			em.close();
-			session.setAttribute("patient", findPatient);
+			session.setAttribute("patient", patient);
 		}
 		
 		return result;
@@ -133,13 +132,63 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 		visit.setDate(date);
 		visit.setPatient(patient);
 		em.getTransaction().begin();
-		em.persist(visit);
+		visit = em.merge(visit);
 		em.getTransaction().commit();
 		em.close();
-		
+		session.removeAttribute("visit");
 		session.setAttribute("visit", visit);
 	}
 	
+	@Override
+	public Boolean updateVisit(VisitUI visitUi) {
+		
+		Visit visit = new Visit();
+		try {
+			BeanUtils.copyProperties(visit, visitUi);
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		}
+		HttpSession session= this.getThreadLocalRequest().getSession();
+		Visit visitSession = (Visit) session.getAttribute("visit");
+		visit.setId(visitSession.getId());
+		
+		factory = EMF.get();
+		EntityManager em = factory.createEntityManager();
+		Visit findVisit = em.find(Visit.class, visit.getId());
+
+		em.getTransaction().begin();
+		findVisit.setDate(visit.getDate());
+		findVisit.setHospital(visit.getHospital());
+		findVisit.setEthic(visit.getEthic());
+		findVisit.setNote(visit.getNote());
+		visit = em.merge(findVisit);
+		em.getTransaction().commit();
+		em.close();
+		session.removeAttribute("visit");
+		session.setAttribute("visit", visit);
+		return true;
+	}
+	
+	@Override
+	public Boolean getVisitFromDB() {
+		Boolean result = true;
+		
+		HttpSession session= this.getThreadLocalRequest().getSession();
+		Patient patientSession = (Patient) session.getAttribute("patient");
+		
+		factory = EMF.get();
+		EntityManager em = factory.createEntityManager();
+		Query query = em.createQuery("select v from Visit v where v.patient.id = :patientId order by v.date desc, v.id desc");
+		query.setParameter("patientId", patientSession.getId());
+		query.setMaxResults(1);
+		List<Visit> visits = query.getResultList();
+		
+		session.setAttribute("visit", visits.get(0));
+		
+		return result;
+	}
 	
 	@Override
 	public void savePatientToSession(PatientUI patientUi) {
@@ -153,8 +202,10 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 		}
 		HttpSession session= this.getThreadLocalRequest().getSession();
 		User user = (User) session.getAttribute("loginUser");
+		Patient temp = (Patient) session.getAttribute("patient");
+		patient.setCreatedUserId(user.getId());
+		patient.setId(temp.getId());
 		session.removeAttribute("patient");
-		patientUi.setCreatedUserId(user.getId());
 		session.setAttribute("patient", patient);
 	}
 	
@@ -196,22 +247,22 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 			return;
 		}
 		HttpSession session = this.getThreadLocalRequest().getSession();
-		List<Answer> loki=(List<Answer>) session.getAttribute("questions");
+		List<Answer> loki=(List<Answer>) session.getAttribute("answers");
 		if (loki!=null){
-			session.removeAttribute("questions");
+			session.removeAttribute("answers");
 		}
 		else{
 			loki=new LinkedList<Answer>();
 		}
-		loki.addAll(answers);//add RemoveDuplicates
-		session.setAttribute("questions", loki);
+		loki = mergeAnswers(loki, answers);
+		session.setAttribute("answers", loki);
 		
 	}
 
 	@Override
 	public List<Answer> getAnswersFromSession() {
 		HttpSession session = this.getThreadLocalRequest().getSession();
-		List<Answer> result=(List<Answer>) session.getAttribute("questions");
+		List<Answer> result=(List<Answer>) session.getAttribute("answers");
 		return result;
 	}
 
@@ -222,13 +273,17 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 	public void saveVisitToSession(VisitUI visitUi) {
 		Visit visit = new Visit();
 		try {
-			BeanUtils.copyProperties(visitUi, visit);
+			BeanUtils.copyProperties(visit, visitUi);
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		} catch (InvocationTargetException e) {
 			e.printStackTrace();
 		}
 		HttpSession session= this.getThreadLocalRequest().getSession();
+		Visit temp = (Visit) session.getAttribute("visit");
+		Patient patient = (Patient) session.getAttribute("patient");
+		visit.setId(temp.getId());
+		visit.setPatient(patient);
 		session.removeAttribute("visit");
 		session.setAttribute("visit", visit);
 	}
@@ -249,5 +304,17 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 		return visitUi;
 	}
 
-		
+	public List<Answer> mergeAnswers(List<Answer> target, List<Answer> list ){
+		for(Answer w: list){
+			for(Answer a:target){
+				if(a.getBelongsQuestionId().equals(w.getBelongsQuestionId())){
+					target.remove(a);
+					break;
+				}
+			}
+		}
+		target.addAll(list);
+		return target;
+	}
+
 }

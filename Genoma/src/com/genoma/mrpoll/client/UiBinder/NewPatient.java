@@ -71,11 +71,36 @@ public class NewPatient extends Composite {
 						});	
 					}
 					else{
-						MrPoll.repaint(State.TAB_PATIENT_INFO);
+						service.getVisitFromDB(new AsyncCallback<Boolean>() {
+
+							@Override
+							public void onSuccess(Boolean result) {
+								MrPoll.repaint(State.TAB_PATIENT_INFO);
+							}
+							
+							@Override
+							public void onFailure(Throwable caught) {
+								Window.alert("get hataaaa");
+							}	
+						});
+						
 					}
 				}
 				else{
-					MrPoll.repaint(State.TAB_PATIENT_INFO);
+					service.createVisit(new AsyncCallback<Void>() {
+
+						@Override
+						public void onSuccess(Void result) {
+							MrPoll.repaint(State.TAB_PATIENT_INFO);
+						}
+						
+						@Override
+						public void onFailure(Throwable caught) {
+						}
+
+						
+					});
+					
 				}
 				
 				

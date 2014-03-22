@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+encoding//src/com/genoma/mrpoll/client/UiBinder/EditPatient.java=UTF-8
 encoding//src/com/genoma/mrpoll/client/UiBinder/NewPatient.java=UTF-8
 encoding//src/com/genoma/mrpoll/client/UiBinder/TabPatientInfo.java=UTF-8
 encoding//src/com/genoma/mrpoll/client/UiBinder/TabSecondVisit.java=UTF-8

@@ -4,6 +4,8 @@ import com.genoma.mrpoll.client.MrPoll;
 import com.genoma.mrpoll.client.MrPoll.State;
 import com.genoma.mrpoll.client.PatientService;
 import com.genoma.mrpoll.client.PatientServiceAsync;
+import com.genoma.mrpoll.uihelper.PatientUI;
+import com.genoma.mrpoll.uihelper.VisitUI;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -22,6 +24,8 @@ public class EditPatient extends Composite {
 
 	private static GeneralInfoUiBinder uiBinder = GWT.create(GeneralInfoUiBinder.class);
 
+	PatientServiceAsync service= GWT.create(PatientService.class);
+	
 	interface GeneralInfoUiBinder extends UiBinder<Widget, EditPatient> {
 	}
 	
@@ -37,7 +41,6 @@ public class EditPatient extends Composite {
 					return this;
 				}
 				public void onClick(ClickEvent event) {
-					PatientServiceAsync service= GWT.create(PatientService.class);
 					
 					service.saveAnswersToSession(tab.getAnswersFromUi(), new AsyncCallback<Void>() {
 						public void onSuccess(Void result) {
@@ -54,9 +57,22 @@ public class EditPatient extends Composite {
 
 	
 	Updater tab;
+	
+	public void setPatientId(){
+		service.getPatientFromSession(new AsyncCallback<PatientUI>() {
+			@Override
+			public void onSuccess(PatientUI result) {
+				patientid.setText(result.getProtocolNo());
+			}
+			@Override
+			public void onFailure(Throwable caught) {
+			}
+		});
+	}
 
 	public EditPatient(State s){
 		initWidget(uiBinder.createAndBindUi(this));
+		setPatientId();
 		
 		switch(s){
 			
@@ -129,9 +145,68 @@ public class EditPatient extends Composite {
 	@UiField HorizontalPanel panel;
 
 	
+	@UiHandler("save")
+	void onSaveClick(ClickEvent event) {
+		
+		service.getPatientFromSession(new AsyncCallback<PatientUI>() {
+			@Override
+			public void onSuccess(PatientUI result) {
+				
+				service.updatePatient(result, new AsyncCallback<Boolean>() {
+					@Override
+					public void onSuccess(Boolean result) {
+						if(result){
+							Window.alert("hasta kaydı yapıldı");
+							
+							service.getVisitFromSession(new AsyncCallback<VisitUI>() {
+								@Override
+								public void onSuccess(VisitUI result) {
+									service.updateVisit(result, new AsyncCallback<Boolean>() {
+
+										@Override
+										public void onSuccess(Boolean result) {
+											Window.alert("visit added");
+										}
+										
+										@Override
+										public void onFailure(Throwable caught) {
+											
+											
+										}
+									});
+								}
+								
+								@Override
+								public void onFailure(Throwable caught) {	
+								}	
+							});
+						}
+						else{
+							Window.alert("bu hasta daha önce oluşturuldu!!!");
+						}
+					}
+					
+					@Override
+					public void onFailure(Throwable caught) {
+	
+					}	
+				});
+			}
+			@Override
+			public void onFailure(Throwable caught) {	
+			}
+		});
+		
+		
+		
+		
+		
+	}
+	
 	
 	@UiHandler("cancel")
 	void onCancelClick(ClickEvent event) {
 		MrPoll.repaint(State.MAIN_MENU);
 	}
+	
 }

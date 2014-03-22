@@ -24,7 +24,7 @@ public class UserNew extends Composite{
 	private static UserInformationUiBinder uiBinder = GWT
 			.create(UserInformationUiBinder.class);
 
-	UserServiceAsync newUserService = GWT.create(UserService.class);
+	UserServiceAsync service = GWT.create(UserService.class);
 	
 	interface UserInformationUiBinder extends UiBinder<Widget, UserNew> {
 	}
@@ -59,12 +59,26 @@ public class UserNew extends Composite{
 		newUser.setHospital(hospital.getText());
 		
 		if(newUser.getPassword().equals(passwordrepeat.getText())){
-			newUserService.addUser(newUser, new AsyncCallback<Boolean>() {
+			service.addUser(newUser, new AsyncCallback<Boolean>() {
 
 				@Override
 				public void onSuccess(Boolean result) {
 					if(result){
 						Window.alert("Kullanıcı Eklendi!");
+						
+						/*String message = "Kullanic Adi:"+username.getText()+"  Sifre:"+password.getText();
+						service.sendMail(email.getText(), message, new AsyncCallback<Void>() {
+							@Override
+							public void onSuccess(Void result) {
+								Window.alert("mail sent");
+							}
+							@Override
+							public void onFailure(Throwable caught) {
+								Window.alert("send mail fails!!!");
+							}
+
+							
+						});*/
 						MrPoll.repaint(State.MAIN_MENU);
 					}
 					else{
