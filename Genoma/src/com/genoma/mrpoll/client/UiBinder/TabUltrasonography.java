@@ -1,7 +1,12 @@
 package com.genoma.mrpoll.client.UiBinder;
 
+import static com.genoma.mrpoll.client.MrPoll.returnAnswerOf;
+
+import java.util.ArrayList;
 import java.util.List;
 
+import com.genoma.mrpoll.client.PatientService;
+import com.genoma.mrpoll.client.PatientServiceAsync;
 import com.genoma.mrpoll.client.MrPoll.State;
 import com.genoma.mrpoll.domain.Answer;
 import com.google.gwt.core.client.GWT;
@@ -10,6 +15,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasText;
@@ -20,6 +26,8 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
 
 public class TabUltrasonography extends Composite implements Updater{
+
+	PatientServiceAsync service=GWT.create(PatientService.class);
 
 	private static MammographyUiBinder uiBinder = GWT
 			.create(MammographyUiBinder.class);
@@ -63,12 +71,11 @@ public class TabUltrasonography extends Composite implements Updater{
 		initWidget(uiBinder.createAndBindUi(this));
 		r_nofinding.setValue(true);
 		l_nofinding.setValue(true);
-		onR_nofindingClick(null);
-		onL_nofindingClick(null);
 		r_lesionspread.addItem("Multifokal");
 		r_lesionspread.addItem("Multisentrik");
 		l_lesionspread.addItem("Multifokal");
 		l_lesionspread.addItem("Multisentrik");
+		updateUi();
 	}
 	@UiHandler("r_nofinding")
 	void onR_nofindingClick(ClickEvent event) {
@@ -129,10 +136,70 @@ public class TabUltrasonography extends Composite implements Updater{
 		Boolean lockStatus = r_nonmass.getValue() && r_nonmass.isEnabled();
 		r_nonmass_combo.setEnabled(lockStatus);
 	}
-	
+	public void updateUi(){
+		service.getAnswersFromSession(new AsyncCallback<List<Answer>>() {
+			
+			@Override
+			public void onSuccess(List<Answer> result) {
+				for(Answer a:result){switch(a.getBelongsQuestionId()){
+				case 300:	r_nofinding.setValue(Boolean.parseBoolean(a.getAnswer()));									break;
+				case 310:	r_mass.setValue(Boolean.parseBoolean(a.getAnswer()));												break;
+				case 311:	r_lesionnumber.setText(a.getAnswer());																			break;
+				case 312:	r_lesionspread.setSelectedIndex(Integer.parseInt(a.getAnswer()));						break;
+				case 313:	r_lesionsize.setText(a.getAnswer());																				break;
+				case 320:	r_nonmass.setValue(Boolean.parseBoolean(a.getAnswer()));										break;
+				case 321:	r_nonmass_combo.setSelectedIndex(Integer.parseInt(a.getAnswer()));					break;
+				case 340:	r_axillary.setValue(Boolean.parseBoolean(a.getAnswer()));										break;
+				case 341:	r_lymphnodecount.setText(a.getAnswer());																		break;
+				case 342:	r_largestnoderadius.setText(a.getAnswer());																	break;
+				case 343:	r_capsuleinvasion.setValue(Boolean.parseBoolean(a.getAnswer()));						break;
+				case 350:	l_nofinding.setValue(Boolean.parseBoolean(a.getAnswer()));									break;
+				case 360:	l_mass.setValue(Boolean.parseBoolean(a.getAnswer()));												break;
+				case 361:	l_lesionnumber.setText(a.getAnswer());																			break;
+				case 362:	l_lesionspread.setSelectedIndex(Integer.parseInt(a.getAnswer()));						break;
+				case 363:	l_lesionsize.setText(a.getAnswer());																				break;
+				case 370:	l_nonmass.setValue(Boolean.parseBoolean(a.getAnswer()));										break;
+				case 371:	l_nonmass_combo.setSelectedIndex(Integer.parseInt(a.getAnswer()));					break;
+				case 390:	l_axillary.setValue(Boolean.parseBoolean(a.getAnswer()));										break;
+				case 391:	l_lymphnodecount.setText(a.getAnswer());																		break;
+				case 392:	l_largestnoderadius.setText(a.getAnswer());																	break;
+				case 393:	l_capsuleinvasion.setValue(Boolean.parseBoolean(a.getAnswer()));						break;
+				}
+					
+				}
+				onR_nofindingClick(null);
+				onL_nofindingClick(null);
+			}
+			@Override
+			public void onFailure(Throwable caught) {
+			}
+		});
+	}
 	@Override
 	public List<Answer> getAnswersFromUi() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Answer> result=new ArrayList<Answer>();
+		result.add(returnAnswerOf(300, r_nofinding));
+		result.add(returnAnswerOf(310, r_mass));
+		result.add(returnAnswerOf(311, r_lesionnumber));
+		result.add(returnAnswerOf(312, r_lesionspread));
+		result.add(returnAnswerOf(313, r_lesionsize));
+		result.add(returnAnswerOf(320, r_nonmass));
+		result.add(returnAnswerOf(321, r_nonmass_combo));
+		result.add(returnAnswerOf(340, r_axillary));
+		result.add(returnAnswerOf(341, r_lymphnodecount));
+		result.add(returnAnswerOf(342, r_largestnoderadius));
+		result.add(returnAnswerOf(343, r_capsuleinvasion));
+		result.add(returnAnswerOf(350, l_nofinding));
+		result.add(returnAnswerOf(360, l_mass));
+		result.add(returnAnswerOf(361, l_lesionnumber));
+		result.add(returnAnswerOf(362, l_lesionspread));
+		result.add(returnAnswerOf(363, l_lesionsize));
+		result.add(returnAnswerOf(370, l_nonmass));
+		result.add(returnAnswerOf(371, l_nonmass_combo));
+		result.add(returnAnswerOf(390, l_axillary));
+		result.add(returnAnswerOf(391, l_lymphnodecount));
+		result.add(returnAnswerOf(392, l_largestnoderadius));
+		result.add(returnAnswerOf(393, l_capsuleinvasion));
+		return result;
 	}
 }

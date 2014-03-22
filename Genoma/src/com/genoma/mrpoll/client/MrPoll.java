@@ -8,8 +8,13 @@ import com.genoma.mrpoll.client.UiBinder.UserNew;
 import com.genoma.mrpoll.client.UiBinder.UserUpdate;
 import com.genoma.mrpoll.client.UiBinder.UserLogin;
 import com.genoma.mrpoll.client.UiBinder.UserMainMenu;
+import com.genoma.mrpoll.domain.Answer;
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.user.client.ui.CheckBox;
+import com.google.gwt.user.client.ui.FocusWidget;
+import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.TextBox;
 
 public class MrPoll implements EntryPoint {
 	
@@ -71,6 +76,26 @@ public class MrPoll implements EntryPoint {
 				break;
 		}
 			
+	}
+	
+	public static Answer returnAnswerOf(int i, FocusWidget w){ 
+		Answer atr= new Answer(); 
+		atr.setBelongsQuestionId(i); 
+		String s=""; 
+		if(!w.isEnabled()){
+			s=null;
+		} 
+		else if(w instanceof TextBox){ 
+			s=((TextBox) w).getText(); 
+		}
+		else if(w instanceof CheckBox){ 
+			s=((CheckBox) w).getValue().toString(); 
+		}
+		else if(w instanceof ListBox){
+			s=((ListBox) w).getSelectedIndex()+""; 
+		} 
+		atr.setAnswer(s); 
+		return atr; 
 	}
 
 }
