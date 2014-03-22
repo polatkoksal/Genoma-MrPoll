@@ -1,5 +1,6 @@
 package com.genoma.mrpoll.client.UiBinder;
 
+import static com.genoma.mrpoll.client.MrPoll.returnAnswerOf;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -43,22 +44,11 @@ public class TabClinic extends Composite implements Updater {
 		service.getAnswersFromSession(new AsyncCallback<List<Answer>>() {
 			public void onSuccess(List<Answer> result) {
 				for(Answer answer : result){
-					if(answer.getBelongsQuestionId()==21){
-						for(int i=0; i<menopause_combo.getItemCount();i++){
-							if(answer.getAnswer().equals(menopause_combo.getItemText(i))){
-								menopause_combo.setSelectedIndex(i);
-								break;
-							}
-						}
-					}//break goes here
-					if(answer.getBelongsQuestionId()==22){
-						whining.setValue(Boolean.parseBoolean(answer.getAnswer()));
-					}
-					if(answer.getBelongsQuestionId()==23){
-						riskfactor.setValue(Boolean.parseBoolean(answer.getAnswer()));
-					}
-					if(answer.getBelongsQuestionId()==24){
-						physicalfinding.setValue(Boolean.parseBoolean(answer.getAnswer()));
+					switch (answer.getBelongsQuestionId()){
+						case 21:	menopause_combo.setSelectedIndex(Integer.parseInt(answer.getAnswer()));		break;
+						case 22:	whining.setValue(Boolean.parseBoolean(answer.getAnswer()));								break;
+						case 23:	riskfactor.setValue(Boolean.parseBoolean(answer.getAnswer()));						break;
+						case 24:	physicalfinding.setValue(Boolean.parseBoolean(answer.getAnswer()));				break;
 					}
 				}
 			}
@@ -73,24 +63,10 @@ public class TabClinic extends Composite implements Updater {
 	@Override
 	public List<Answer> getAnswersFromUi() {
 		List<Answer> result = new LinkedList<Answer>();
-		Answer ats;
-		ats=new Answer();
-		ats.setBelongsQuestionId(21);
-		ats.setAnswer(menopause_combo.getItemText(menopause_combo.getSelectedIndex()));
-		result.add(ats);
-		ats=new Answer();
-		ats.setBelongsQuestionId(22);
-		ats.setAnswer(whining.getValue().toString());
-		result.add(ats);
-		ats=new Answer();
-		ats.setBelongsQuestionId(23);
-		ats.setAnswer(riskfactor.getValue().toString());
-		result.add(ats);
-		ats=new Answer();
-		ats.setBelongsQuestionId(24);
-		ats.setAnswer(physicalfinding.getValue().toString());
-		result.add(ats);
-		
+		result.add(returnAnswerOf(21, menopause_combo));
+		result.add(returnAnswerOf(22, whining));
+		result.add(returnAnswerOf(23, riskfactor));
+		result.add(returnAnswerOf(24, physicalfinding));
 		return result;
 	}
 

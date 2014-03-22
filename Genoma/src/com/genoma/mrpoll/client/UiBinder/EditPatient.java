@@ -1,9 +1,12 @@
 package com.genoma.mrpoll.client.UiBinder;
 
+import java.util.List;
+
 import com.genoma.mrpoll.client.MrPoll;
 import com.genoma.mrpoll.client.MrPoll.State;
 import com.genoma.mrpoll.client.PatientService;
 import com.genoma.mrpoll.client.PatientServiceAsync;
+import com.genoma.mrpoll.domain.Answer;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;

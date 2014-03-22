@@ -39,25 +39,25 @@
 				<g:CheckBox text="Lezyon Yok" ui:field="r_nolesion"/>
 			</g:at>
 			<g:at left="168" top="59">
-				<g:ListBox/>
+				<g:ListBox ui:field="r_hpdiag"/>
 			</g:at>
 			<g:at left="168" top="81">
-				<g:ListBox width="56px" height="20px"/>
+				<g:ListBox width="56px" height="20px" ui:field="r_stage"/>
 			</g:at>
 			<g:at left="168" top="103">
-				<g:ListBox width="56px" height="20px"/>
+				<g:ListBox width="56px" height="20px" ui:field="r_er"/>
 			</g:at>
 			<g:at left="168" top="125">
-				<g:ListBox width="56px" height="20px"/>
+				<g:ListBox width="56px" height="20px" ui:field="r_pgr"/>
 			</g:at>
 			<g:at left="168" top="191">
-				<g:ListBox width="56px" height="20px"/>
+				<g:ListBox width="56px" height="20px" ui:field="r_metastasis"/>
 			</g:at>
 			<g:at left="168" top="169">
-				<g:ListBox width="56px" height="20px"/>
+				<g:ListBox width="56px" height="20px" ui:field="r_lymphnode"/>
 			</g:at>
 			<g:at left="168" top="147">
-				<g:ListBox width="56px" height="20px"/>
+				<g:ListBox width="56px" height="20px" ui:field="r_her2"/>
 			</g:at>
 			<g:at left="358" top="213">
 				<g:CheckBox width="99px" height="19px" text="Lezyon Yok" ui:field="l_nolesion"/>
@@ -69,37 +69,37 @@
 				<g:ListBox width="56px" height="20px" ui:field="l_metastasis"/>
 			</g:at>
 			<g:at left="491" top="169">
-				<g:ListBox width="56px" height="20px"/>
+				<g:ListBox width="56px" height="20px" ui:field="l_lymphnode"/>
 			</g:at>
 			<g:at left="348" top="169">
 				<g:Label width="101px" height="16px" text="Lenf Düğümü:"/>
 			</g:at>
 			<g:at left="491" top="147">
-				<g:ListBox width="56px" height="20px"/>
+				<g:ListBox width="56px" height="20px" ui:field="l_her2"/>
 			</g:at>
 			<g:at left="348" top="147">
 				<g:Label width="44px" height="16px" text="HER2:"/>
 			</g:at>
 			<g:at left="491" top="125">
-				<g:ListBox width="56px" height="20px"/>
+				<g:ListBox width="56px" height="20px" ui:field="l_pgr"/>
 			</g:at>
 			<g:at left="348" top="125">
 				<g:Label width="34px" height="16px" text="PGR:"/>
 			</g:at>
 			<g:at left="491" top="103">
-				<g:ListBox width="56px" height="20px"/>
+				<g:ListBox width="56px" height="20px" ui:field="l_er"/>
 			</g:at>
 			<g:at left="348" top="103">
 				<g:Label width="24px" height="16px" text="ER:"/>
 			</g:at>
 			<g:at left="491" top="81">
-				<g:ListBox width="56px" height="20px"/>
+				<g:ListBox width="56px" height="20px" ui:field="l_stage"/>
 			</g:at>
 			<g:at left="348" top="81">
 				<g:Label width="37px" height="16px" text="Evre:"/>
 			</g:at>
 			<g:at left="491" top="59">
-				<g:ListBox width="56px" height="20px"/>
+				<g:ListBox width="56px" height="20px" ui:field="l_hpdiag"/>
 			</g:at>
 			<g:at left="348" top="59">
 				<g:Label width="137px" height="16px" text="Histopatolojik Tanı:"/>
