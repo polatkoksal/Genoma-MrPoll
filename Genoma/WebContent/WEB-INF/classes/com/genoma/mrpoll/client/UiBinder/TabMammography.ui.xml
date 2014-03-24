@@ -7,7 +7,7 @@
 	}
 	</ui:style>
 	<g:HTMLPanel>
-		<g:AbsolutePanel width="807px" height="497px">
+		<g:AbsolutePanel width="763px" height="497px" ui:field="absultePanel">
 			<g:at left="26" top="109">
 				<g:CheckBox text="Kitle" ui:field="r_mass" wordWrap="false"/>
 			</g:at>

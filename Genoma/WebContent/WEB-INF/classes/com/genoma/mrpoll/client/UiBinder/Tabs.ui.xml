@@ -2,18 +2,15 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:p1="urn:import:com.google.gwt.user.datepicker.client" xmlns:w="urn:import:com.google.gwt.widget.client">
 	<ui:style>
-	.important {
-		font-weight: bold;
-		background-color: red;
-	}
+
 	</ui:style>
 	<g:HTMLPanel>
-		<g:VerticalPanel width="153px" height="318px" ui:field="panel">
+		<g:VerticalPanel width="190px" height="318px" ui:field="panel">
 			<g:PushButton ui:field="patientinfo" text="HASTA BİLGİLERİ"></g:PushButton>
 			<g:PushButton text="ZİYARET BİLGİLERİ" ui:field="visit"/>
 			<g:PushButton ui:field="clinic" text="KLİNİK"></g:PushButton>
 			<g:PushButton text="MAMOGRAFİ" ui:field="mammography"></g:PushButton>
-			<g:PushButton text="USG" ui:field="usg"></g:PushButton>
+			<g:PushButton text="ULTRASONOGRAFİ" ui:field="usg"></g:PushButton>
 			<g:PushButton text="MRI" ui:field="mri"></g:PushButton>
 			<g:PushButton ui:field="pathology">PATOLOJİ</g:PushButton>
 			<g:PushButton text="İKİNCİ BAKI" ui:field="second"></g:PushButton>

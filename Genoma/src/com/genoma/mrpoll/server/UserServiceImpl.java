@@ -402,7 +402,7 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 		try {
  
 			Message msg = new MimeMessage(session);
-			msg.setFrom(new InternetAddress("polatkoksal50@gmail.com"));
+			msg.setFrom(new InternetAddress(getSetting("email")));
 			msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(receiver));
 			msg.setSubject("Test");
 			msg.setText(message);
@@ -420,12 +420,12 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 	}
 
 
-	private String getSetting(String dsc) {
+	private String getSetting(String key) {
 		String value = null;
 		factory = EMF.get();
 		EntityManager em = factory.createEntityManager();
-		Query query = em.createQuery("select s from Settings s where s.key=:dsc");
-		query.setParameter("dsc", dsc);
+		Query query = em.createQuery("select s from Settings s where s.key=:key");
+		query.setParameter("key", key);
 		query.setMaxResults(1);
 		List<Settings> settings=query.getResultList();
 		value = settings.get(0).getDescription();
@@ -433,6 +433,4 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 	}
 
 
-	
-	
 }

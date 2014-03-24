@@ -37,7 +37,7 @@ public class TabPatientInfo extends Composite implements Updater {
 		initWidget(uiBinder.createAndBindUi(this));
 		gender.addItem("Kadın");
 		gender.addItem("Erkek");
-		updateUi();
+		//updateUi();
 	}
 	
 	
@@ -69,9 +69,6 @@ public class TabPatientInfo extends Composite implements Updater {
 		patientUi.setGender(gender.getItemText(0));
 		if(age.getText() != ""){
 			patientUi.setAge(Integer.parseInt(age.getText()));
-		}
-		else{
-			patientUi.setAge(0);
 		}
 		
 		service.savePatientToSession(patientUi, new AsyncCallback<Void>() {

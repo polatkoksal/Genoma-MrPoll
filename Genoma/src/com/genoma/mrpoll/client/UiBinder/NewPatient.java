@@ -46,18 +46,50 @@ public class NewPatient extends Composite {
 	@UiHandler("add")
 	void onAddClick(ClickEvent event) {
 		
-
-		PatientUI patientUi = new PatientUI();
-		patientUi.setProtocolNo(protocolno.getText());
-		
-		service.savePatient(patientUi, new AsyncCallback<Boolean>() {
-			@Override
-			public void onSuccess(Boolean result) {
-				if(!result){
-					Boolean confirm = Window.confirm("kayıt bulundu! o kayıttan devam edilsin mi?");
-					if(!confirm){
+		if(!protocolno.getText().equals("")){
+			
+			PatientUI patientUi = new PatientUI();
+			patientUi.setProtocolNo(protocolno.getText());
+			
+			service.savePatient(patientUi, new AsyncCallback<Boolean>() {
+				@Override
+				public void onSuccess(Boolean result) {
+					if(!result){
+						Boolean confirm = Window.confirm("kayıt bulundu! o kayıttan devam edilsin mi?");
+						if(!confirm){
+							service.createVisit(new AsyncCallback<Void>() {
+	
+								@Override
+								public void onSuccess(Void result) {
+									MrPoll.repaint(State.TAB_PATIENT_INFO);
+								}
+								
+								@Override
+								public void onFailure(Throwable caught) {
+									Window.alert("createVisit Error!");
+								}
+	
+							});	
+						}
+						else{
+							service.getVisitFromDB(new AsyncCallback<Boolean>() {
+	
+								@Override
+								public void onSuccess(Boolean result) {
+									MrPoll.repaint(State.TAB_PATIENT_INFO);
+								}
+								
+								@Override
+								public void onFailure(Throwable caught) {
+									Window.alert("get hataaaa");
+								}	
+							});
+							
+						}
+					}
+					else{
 						service.createVisit(new AsyncCallback<Void>() {
-
+	
 							@Override
 							public void onSuccess(Void result) {
 								MrPoll.repaint(State.TAB_PATIENT_INFO);
@@ -65,51 +97,24 @@ public class NewPatient extends Composite {
 							
 							@Override
 							public void onFailure(Throwable caught) {
-								Window.alert("createVisit Error!");
 							}
-
-						});	
-					}
-					else{
-						service.getVisitFromDB(new AsyncCallback<Boolean>() {
-
-							@Override
-							public void onSuccess(Boolean result) {
-								MrPoll.repaint(State.TAB_PATIENT_INFO);
-							}
+	
 							
-							@Override
-							public void onFailure(Throwable caught) {
-								Window.alert("get hataaaa");
-							}	
 						});
 						
 					}
-				}
-				else{
-					service.createVisit(new AsyncCallback<Void>() {
-
-						@Override
-						public void onSuccess(Void result) {
-							MrPoll.repaint(State.TAB_PATIENT_INFO);
-						}
-						
-						@Override
-						public void onFailure(Throwable caught) {
-						}
-
-						
-					});
+					
 					
 				}
-				
-				
-			}
-			@Override
-			public void onFailure(Throwable caught) {
-				Window.alert("createPatient Error!");
-			}
-		});
+				@Override
+				public void onFailure(Throwable caught) {
+					Window.alert("createPatient Error!");
+				}
+			});
+		}
+		else{
+			Window.alert("Hatatlı Protokol No Girdiniz!!!");
+		}
 		
 	}
 }

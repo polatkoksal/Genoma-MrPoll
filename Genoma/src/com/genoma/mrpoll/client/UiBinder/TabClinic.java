@@ -1,6 +1,7 @@
 package com.genoma.mrpoll.client.UiBinder;
 
 import static com.genoma.mrpoll.client.MrPoll.returnAnswerOf;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -35,9 +36,41 @@ public class TabClinic extends Composite implements Updater {
 		menopause_combo.addItem("Premenapoz");
 		menopause_combo.addItem("Postmenapoz");
 		updateUi();
+		
+//		Map<String, Object> fields = new HashMap<String, Object>();
+//		
+//		fields.put("0301", menopause_combo);
+//		fields.put("0302", whining);
+//		fields.put("0303", physicalfinding);
+//		fields.put("0304", riskfactor);
+		
 	}
 
 	
+//	void saveButton()
+//	{
+//		Set keys = fields.keySet();
+//		for (Iterator iterator = keys.iterator(); iterator.hasNext();) {
+//			String questionCode = (String) iterator.next();
+//			Object uiField = fields.get(questionCode);
+//			String value = null;
+//			if (uiField instanceof CheckBox) {
+//				// your code
+//				value = ((CheckBox) uiField).getValue().toString();
+//			}
+//			if (uiField instanceof ListBox) {
+//				// your code
+//				value = ((ListBox) uiField).getValue(((ListBox) uiField)
+//						.getSelectedIndex());
+//			}
+//			Answer answer = new Answer();
+//			Question q = null; // questionCode a sahip soruyu al. Ornek 0201.
+//			answer.setBelongsQuestionId(belongsQuestionId);
+//			answer.setVisit;
+//			answer.setValue(value);
+//			em.persist;
+//  
+//	}
 	
 
 	public void updateUi() {

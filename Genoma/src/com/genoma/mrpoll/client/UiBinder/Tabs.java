@@ -7,6 +7,7 @@ import com.genoma.mrpoll.client.MrPoll.State;
 import com.genoma.mrpoll.client.PatientService;
 import com.genoma.mrpoll.client.PatientServiceAsync;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Style.FontWeight;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -17,6 +18,14 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.PushButton;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.ui.CustomButton;
+import com.google.gwt.user.client.ui.ToggleButton;
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.event.dom.client.MouseOutHandler;
+import com.google.gwt.event.dom.client.MouseOverEvent;
+import com.google.gwt.event.dom.client.MouseOutEvent;
+import com.google.gwt.event.dom.client.MouseOverHandler;
 
 
 public class Tabs extends Composite implements Serializable{
@@ -50,107 +59,111 @@ public class Tabs extends Composite implements Serializable{
 
 		switch (s){
 			case TAB_PATIENT_INFO:
-				patientinfo.setStyleName("important");
+				patientinfo.getElement().getStyle().setFontWeight(FontWeight.BOLD);
 				break;
 		
 			case TAB_VISIT:
-				visit.setStyleName("important");
+				visit.getElement().getStyle().setFontWeight(FontWeight.BOLD);
 				break;
 			
 			case TAB_CLINIC:
-				clinic.setStyleName("important");
+				clinic.getElement().getStyle().setFontWeight(FontWeight.BOLD);
 				break;
 			
 			case TAB_MAMMOGRAPHY:
-				mammography.setStyleName("important");
+				mammography.getElement().getStyle().setFontWeight(FontWeight.BOLD);
 				break;
 			
 			case TAB_USG:
-				usg.setStyleName("important");
+				usg.getElement().getStyle().setFontWeight(FontWeight.BOLD);
 				break;
 			
 			case TAB_MRI:
-				mri.setStyleName("important");
+				mri.getElement().getStyle().setFontWeight(FontWeight.BOLD);
 				break;
 			
 			case TAB_PATHOLOGY:
-				pathology.setStyleName("important");
+				pathology.getElement().getStyle().setFontWeight(FontWeight.BOLD);
 				break;
 			
 			case TAB_SECOND:
-				second.setStyleName("important");
+				second.getElement().getStyle().setFontWeight(FontWeight.BOLD);
 				break;
 			
 			case TAB_SURGICAL:
-				surgical.setStyleName("important");
+				surgical.getElement().getStyle().setFontWeight(FontWeight.BOLD);
 				break;
 			default:
 				break;
 		}
-		
+		for(Widget widget:panel){
+			((PushButton) widget).addMouseOverHandler(new MouseOverHandler(){
+				Widget target;
+				MouseOverHandler init(Widget w){
+					target=w;
+					return this;
+				}
+				public void onMouseOver(MouseOverEvent event) {
+					target.getElement().getStyle().setBackgroundColor("#A8A8A8");
+				}
+			}.init(widget));
+			
+			((PushButton) widget).addMouseOutHandler(new MouseOutHandler(){
+				Widget target;
+				MouseOutHandler init(Widget w){
+					target=w;
+					return this;
+				}
+				public void onMouseOut(MouseOutEvent event) {
+					target.getElement().getStyle().setBackgroundColor("white");
+				}
+			}.init(widget));
+		}
 	}
 	
-	private void updateSession(State target){
-		PatientServiceAsync service= GWT.create(PatientService.class);
-		service.saveAnswersToSession(tab.getAnswersFromUi(), new AsyncCallback<Void>() {
-			State target;
-			public AsyncCallback<Void> init(State state){
-				target=state;
-				return this;
-			}
-			public void onSuccess(Void result) {
-				MrPoll.repaint(target);
-			}
-			public void onFailure(Throwable caught) {
-				Window.alert("tabs fails!!!");
-			}
-		}.init(target));
-	}
-	
+
 	@UiHandler("patientinfo")
 	void onPatientinfoClick(ClickEvent event) {
-		updateSession(State.TAB_PATIENT_INFO);
+		MrPoll.repaint(State.TAB_PATIENT_INFO);
 	}
 	
 	@UiHandler("visit")
 	void onVisitClick(ClickEvent event) {
-		updateSession(State.TAB_VISIT);
+		MrPoll.repaint(State.TAB_VISIT);
 	}
 	
 	@UiHandler("clinic")
 	void onClinicClick(ClickEvent event) {
-		updateSession(State.TAB_CLINIC);
+		MrPoll.repaint(State.TAB_CLINIC);
 	}
 	
 	@UiHandler("mammography")
 	void onMammographyClick(ClickEvent event) {
-		updateSession(State.TAB_MAMMOGRAPHY);
+		MrPoll.repaint(State.TAB_MAMMOGRAPHY);
 	}
 	
 	@UiHandler("usg")
 	void onUsgClick(ClickEvent event) {
-		updateSession(State.TAB_USG);
+		MrPoll.repaint(State.TAB_USG);
 	}
 	
 	@UiHandler("mri")
 	void onMriClick(ClickEvent event) {
-		updateSession(State.TAB_MRI);
+		MrPoll.repaint(State.TAB_MRI);
 	}
 	
 	@UiHandler("pathology")
 	void onPathologyClick(ClickEvent event) {
-		updateSession(State.TAB_PATHOLOGY);
+		MrPoll.repaint(State.TAB_PATHOLOGY);
 	}
 	
 	@UiHandler("second")
 	void onSecondClick(ClickEvent event) {
-		updateSession(State.TAB_SECOND);
+		MrPoll.repaint(State.TAB_SECOND);
 	}
 	
 	@UiHandler("surgical")
 	void onSurgicalClick(ClickEvent event) {
-		updateSession(State.TAB_SURGICAL);
+		MrPoll.repaint(State.TAB_SURGICAL);
 	}
-	
-	
 }

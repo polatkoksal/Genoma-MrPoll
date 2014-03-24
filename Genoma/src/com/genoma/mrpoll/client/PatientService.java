@@ -19,13 +19,14 @@ public interface PatientService extends RemoteService {
 	List<Answer> getAnswersFromSession();
 	void savePatientToSession(PatientUI patientUi);
 	void saveVisitToSession(VisitUI visitUi);
-	Boolean updateVisit(VisitUI visitUi);
+	Boolean updateVisit();
 	Boolean savePatient(PatientUI patientUi);
 	void createVisit();
 	PatientUI getPatientFromSession();
 	UserUI getUserFromSession();
 	VisitUI getVisitFromSession();
-	Boolean updatePatient(PatientUI patientUi);
+	Boolean updatePatient();
 	Boolean getVisitFromDB();
 	List<Answer> mergeAnswers(List<Answer> target, List<Answer> list );
+	void close();
 }

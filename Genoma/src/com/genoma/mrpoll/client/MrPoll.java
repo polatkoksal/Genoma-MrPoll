@@ -10,6 +10,9 @@ import com.genoma.mrpoll.client.UiBinder.UserLogin;
 import com.genoma.mrpoll.client.UiBinder.UserMainMenu;
 import com.genoma.mrpoll.domain.Answer;
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.Window.ClosingEvent;
+import com.google.gwt.user.client.Window.ClosingHandler;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.FocusWidget;
 import com.google.gwt.user.client.ui.ListBox;
@@ -40,14 +43,15 @@ public class MrPoll implements EntryPoint {
 	} 
 	
 	public void onModuleLoad() {
+		addCloseConfirmation();
 		repaint(State.USER_LOGIN);	
 	}
 	
+	public static EditPatient editPatientPanel=null;
 	
 	public static void repaint(State s){
 		
 		RootPanel.get().clear();
-		
 		switch(s){
 			case USER_LOGIN:
 				RootPanel.get().add(new UserLogin());
@@ -72,10 +76,25 @@ public class MrPoll implements EntryPoint {
 				RootPanel.get().add(new NewPatient());
 				break;
 			default:
-				RootPanel.get().add(new EditPatient(s));
+				//RootPanel.get().add(new EditPatient(s));
+				if(editPatientPanel == null) {
+					editPatientPanel = new EditPatient(s);
+				}
+				editPatientPanel.repaint(s);
+				RootPanel.get().add(editPatientPanel);
 				break;
 		}
-			
+		
+	}
+	
+	private static void addCloseConfirmation(){
+		Window.addWindowClosingHandler(new ClosingHandler(){
+
+			@Override
+			public void onWindowClosing(ClosingEvent event) {
+				event.setMessage("really?");
+				
+			}});
 	}
 	
 	public static Answer returnAnswerOf(int i, FocusWidget w){ 

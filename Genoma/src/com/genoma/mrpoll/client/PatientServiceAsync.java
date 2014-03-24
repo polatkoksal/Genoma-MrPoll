@@ -24,10 +24,11 @@ public interface PatientServiceAsync {
 	void getPatientFromSession(AsyncCallback<PatientUI> callback);
 	void getUserFromSession(AsyncCallback<UserUI> callback);
 	void getVisitFromSession(AsyncCallback<VisitUI> callback);
-	void updatePatient(PatientUI patientUi, AsyncCallback<Boolean> callback);
-	void updateVisit(VisitUI visitUi, AsyncCallback<Boolean> callback);
+	void updatePatient(AsyncCallback<Boolean> callback);
+	void updateVisit(AsyncCallback<Boolean> callback);
 	void getVisitFromDB(AsyncCallback<Boolean> callback);
 	void mergeAnswers(List<Answer> target, List<Answer> list, AsyncCallback<List<Answer>> callback);
+	void close(AsyncCallback<Void> callback);
 	
 
 

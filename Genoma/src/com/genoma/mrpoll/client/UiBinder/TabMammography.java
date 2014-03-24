@@ -23,6 +23,7 @@ import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
+import com.google.gwt.user.client.ui.AbsolutePanel;
 
 public class TabMammography extends Composite implements Updater{
 
@@ -72,6 +73,7 @@ public class TabMammography extends Composite implements Updater{
 	@UiField Label l_largestnoderadius_label;
 	@UiField ListBox r_nonmass_combo;
 	@UiField ListBox l_nonmass_combo;
+	@UiField AbsolutePanel absultePanel;
 
 	interface MammographyUiBinder extends UiBinder<Widget, TabMammography> {
 	}
@@ -84,6 +86,8 @@ public class TabMammography extends Composite implements Updater{
 		r_lesionspread.addItem("Multisentrik");
 		l_lesionspread.addItem("Multifokal");
 		l_lesionspread.addItem("Multisentrik");
+		l_lesionspread.getName();
+		absultePanel.getWidget(0).getElement(); // Widget in tipine göre cast at ve hangi tipte ise ona göre value sunu al.
 		updateUi();
 	}
 	@UiHandler("r_nofinding")

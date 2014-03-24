@@ -68,23 +68,13 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 	}
 	
 	@Override
-	public Boolean updatePatient(PatientUI patientUi) {
+	public Boolean updatePatient() {
 		
 		Boolean result = true;
-		Patient patient = new Patient();
-		
-		try {
-			BeanUtils.copyProperties(patient, patientUi);
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			e.printStackTrace();
-		}
-		
+	
 		HttpSession session= this.getThreadLocalRequest().getSession();
-		Patient temp = (Patient) session.getAttribute("patient");
-		patient.setId(temp.getId());
-		patient.setCreatedUserId(temp.getCreatedUserId());
+		Patient patient = (Patient) session.getAttribute("patient");
+		
 		
 		factory = EMF.get();
 		EntityManager em = factory.createEntityManager();
@@ -140,19 +130,10 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 	}
 	
 	@Override
-	public Boolean updateVisit(VisitUI visitUi) {
+	public Boolean updateVisit() {
 		
-		Visit visit = new Visit();
-		try {
-			BeanUtils.copyProperties(visit, visitUi);
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			e.printStackTrace();
-		}
 		HttpSession session= this.getThreadLocalRequest().getSession();
-		Visit visitSession = (Visit) session.getAttribute("visit");
-		visit.setId(visitSession.getId());
+		Visit visit = (Visit) session.getAttribute("visit");
 		
 		factory = EMF.get();
 		EntityManager em = factory.createEntityManager();
@@ -315,6 +296,45 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 		}
 		target.addAll(list);
 		return target;
+	}
+
+	@Override
+	public void close() {
+		
+		HttpSession session= this.getThreadLocalRequest().getSession();
+		Patient patient = (Patient)session.getAttribute("patient");
+		Visit visit = (Visit)session.getAttribute("visit");
+		
+		factory = EMF.get();
+		EntityManager em = factory.createEntityManager();
+		
+		Query query1 = em.createQuery("select a from Answer a where a.visit.id=:visitId");
+		query1.setParameter("visitId", visit.getId());
+		List<Answer> answers = query1.getResultList();
+		
+		if(answers.isEmpty()){
+			Visit tempVisit = em.find(Visit.class, visit.getId());
+			em.getTransaction().begin();
+			em.remove(tempVisit);
+			em.getTransaction().commit();
+			
+		}
+		
+		Query query2 = em.createQuery("select v from Visit v where v.patient.id=:patientId");
+		query2.setParameter("patientId", patient.getId());
+		List<Visit> visits = query2.getResultList();
+		
+		if(visits.isEmpty()){
+			Patient tempPatient = em.find(Patient.class, patient.getId());
+			em.getTransaction().begin();
+			em.remove(tempPatient);
+			em.getTransaction().commit();
+			em.close();
+		}
+		
+		session.removeAttribute("patient");
+		session.removeAttribute("visit");
+		
 	}
 
 }
