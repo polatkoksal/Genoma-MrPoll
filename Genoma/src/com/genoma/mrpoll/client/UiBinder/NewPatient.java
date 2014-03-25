@@ -7,6 +7,7 @@ import com.genoma.mrpoll.client.PatientServiceAsync;
 import com.genoma.mrpoll.client.UserService;
 import com.genoma.mrpoll.client.UserServiceAsync;
 import com.genoma.mrpoll.domain.Patient;
+import com.genoma.mrpoll.uihelper.Container;
 import com.genoma.mrpoll.uihelper.PatientUI;
 import com.genoma.mrpoll.uihelper.UserUI;
 import com.google.gwt.core.client.GWT;
@@ -48,7 +49,43 @@ public class NewPatient extends Composite {
 		
 		if(!protocolno.getText().equals("")){
 			
-			PatientUI patientUi = new PatientUI();
+			service.getProperties(protocolno.getText(), new AsyncCallback<Container>() {
+
+				@Override
+				public void onSuccess(Container result) {
+					Window.alert("before if");
+					if(result.getVisit() == null){	
+						Window.alert("inside if");
+						MrPoll.editPatientPanel = new EditPatient(result);
+						Window.alert("after if");
+						
+					}else{
+						Boolean b = Window.confirm("Kayıt bulundu! Devam etmek ister misiniz?");
+						if(!b){
+							result.setVisit(null);
+							result.setAnswers(null);
+						}					
+						MrPoll.editPatientPanel = new EditPatient(result);
+					}
+					Window.alert("before repaint");
+					MrPoll.repaint(State.TAB_PATIENT_INFO);
+					
+				}
+				@Override
+				public void onFailure(Throwable caught) {
+					Window.alert("getProperties Error!!!");
+					
+				}
+
+				
+			});
+			
+			
+			
+			
+			
+			
+			/*PatientUI patientUi = new PatientUI();
 			patientUi.setProtocolNo(protocolno.getText());
 			
 			service.savePatient(patientUi, new AsyncCallback<Boolean>() {
@@ -61,6 +98,7 @@ public class NewPatient extends Composite {
 	
 								@Override
 								public void onSuccess(Void result) {
+									
 									MrPoll.repaint(State.TAB_PATIENT_INFO);
 								}
 								
@@ -110,7 +148,7 @@ public class NewPatient extends Composite {
 				public void onFailure(Throwable caught) {
 					Window.alert("createPatient Error!");
 				}
-			});
+			});*/
 		}
 		else{
 			Window.alert("Hatatlı Protokol No Girdiniz!!!");

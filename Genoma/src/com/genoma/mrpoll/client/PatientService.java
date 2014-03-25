@@ -6,6 +6,7 @@ import com.genoma.mrpoll.domain.Answer;
 import com.genoma.mrpoll.domain.Patient;
 import com.genoma.mrpoll.domain.User;
 import com.genoma.mrpoll.domain.Visit;
+import com.genoma.mrpoll.uihelper.Container;
 import com.genoma.mrpoll.uihelper.PatientUI;
 import com.genoma.mrpoll.uihelper.UserUI;
 import com.genoma.mrpoll.uihelper.VisitUI;
@@ -22,11 +23,12 @@ public interface PatientService extends RemoteService {
 	Boolean updateVisit();
 	Boolean savePatient(PatientUI patientUi);
 	void createVisit();
-	PatientUI getPatientFromSession();
+	//PatientUI getPatientFromSession();
 	UserUI getUserFromSession();
 	VisitUI getVisitFromSession();
 	Boolean updatePatient();
 	Boolean getVisitFromDB();
 	List<Answer> mergeAnswers(List<Answer> target, List<Answer> list );
 	void close();
+	Container getProperties(String protocolNo);
 }

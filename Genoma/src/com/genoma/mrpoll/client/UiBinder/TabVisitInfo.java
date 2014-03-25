@@ -33,12 +33,12 @@ public class TabVisitInfo extends Composite implements Updater{
 	interface TabVisitInfoUiBinder extends UiBinder<Widget, TabVisitInfo> {
 	}
 
-	public TabVisitInfo(State s) {
+	public TabVisitInfo(VisitUI visitUI) {
 		initWidget(uiBinder.createAndBindUi(this));
-		updateUi();
+		//updateUi();
 	}
 
-	public void updateUi(){
+	/*public void updateUi(){
 		service.getVisitFromSession(new AsyncCallback<VisitUI>() {
 			
 			@Override
@@ -54,7 +54,7 @@ public class TabVisitInfo extends Composite implements Updater{
 				
 			}
 		});
-	}
+	}*/
 
 	@Override
 	public List<Answer> getAnswersFromUi() {

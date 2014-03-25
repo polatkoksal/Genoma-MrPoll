@@ -31,7 +31,7 @@ import com.google.gwt.event.dom.client.MouseOverHandler;
 public class Tabs extends Composite implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
-	Updater tab;
+	
 
 	private static TabsUiBinder uiBinder = GWT.create(TabsUiBinder.class);
 	
@@ -46,6 +46,7 @@ public class Tabs extends Composite implements Serializable{
 	@UiField PushButton surgical;
 	@UiField PushButton pathology;
 	
+	Updater tab;
 
 	interface TabsUiBinder extends UiBinder<Widget, Tabs> {
 	}

@@ -1,6 +1,7 @@
 package com.genoma.mrpoll.server;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -18,6 +19,8 @@ import com.genoma.mrpoll.domain.Answer;
 import com.genoma.mrpoll.domain.Patient;
 import com.genoma.mrpoll.domain.User;
 import com.genoma.mrpoll.domain.Visit;
+import com.genoma.mrpoll.uihelper.AnswerUI;
+import com.genoma.mrpoll.uihelper.Container;
 import com.genoma.mrpoll.uihelper.PatientUI;
 import com.genoma.mrpoll.uihelper.UserUI;
 import com.genoma.mrpoll.uihelper.VisitUI;
@@ -28,6 +31,60 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 	private static final long serialVersionUID = -5024300527855702085L;
 	private EntityManagerFactory factory;
 
+	
+	@Override
+	public Container getProperties(String protocolNo) {
+		
+		Container result = new Container();
+		
+		factory = EMF.get();
+		EntityManager em = factory.createEntityManager();
+		Query query = em.createQuery("select p from Patient p where p.protocolNo=:protocolNo");
+		query.setParameter("protocolNo", protocolNo);
+		List<Patient> patients = query.getResultList();
+		
+		if(patients.isEmpty()){
+			PatientUI patientUI = new PatientUI();
+			patientUI.setProtocolNo(protocolNo);
+			result.setPatient(patientUI);
+			result.setVisit(new VisitUI());
+			result.setAnswers(new ArrayList<AnswerUI>());
+			return result;
+		}
+		
+		Query query1 = em.createQuery("select v from Visit v where v.patient.id = :patientId order by v.date desc, v.id desc");
+		query1.setParameter("patientId", patients.get(0).getId());
+		List<Visit> visits = query1.getResultList();
+		
+		Query query2 = em.createQuery("select a from Answer a where a.visit.id=:visitId");
+		query2.setParameter("visitId", visits.get(0).getId());
+		List<Answer> answers = query2.getResultList();
+		
+		try {
+			PatientUI patientUI = new PatientUI();
+			VisitUI visitUI = new VisitUI();
+			AnswerUI answerUI = new AnswerUI();
+			List<AnswerUI> answersUI = new ArrayList<AnswerUI>();
+			
+			BeanUtils.copyProperties(patientUI, patients.get(0));
+			BeanUtils.copyProperties(visitUI, visits.get(0));
+			for(Answer answer : answers){
+				BeanUtils.copyProperties(answerUI, answer);
+				answersUI.add(answerUI);
+			}
+				
+			result.setPatient(patientUI);
+			result.setVisit(visitUI);
+			result.setAnswers(answersUI);
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+	
 
 	@Override
 	public Boolean savePatient(PatientUI patientUi) {
@@ -191,7 +248,7 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 	}
 	
 	
-	@Override
+	/*@Override
 	public PatientUI getPatientFromSession() {
 		HttpSession session= this.getThreadLocalRequest().getSession();
 		Patient patient = (Patient) session.getAttribute("patient");
@@ -204,7 +261,7 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 			e.printStackTrace();
 		}
 		return patientUi;
-	}
+	}*/
 	
 	@Override
 	public UserUI getUserFromSession() {
@@ -336,5 +393,6 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 		session.removeAttribute("visit");
 		
 	}
+
 
 }

@@ -18,9 +18,9 @@ import com.google.gwt.user.client.ui.FocusWidget;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
+import com.sun.java.swing.plaf.windows.resources.windows;
 
 public class MrPoll implements EntryPoint {
-	
 	
 	public static enum State{
 		USER_LOGIN, 
@@ -75,13 +75,16 @@ public class MrPoll implements EntryPoint {
 			case NEW_PATIENT:
 				RootPanel.get().add(new NewPatient());
 				break;
-			default:
-				//RootPanel.get().add(new EditPatient(s));
-				if(editPatientPanel == null) {
-					editPatientPanel = new EditPatient(s);
-				}
+			case TAB_PATIENT_INFO:
+//				if(editPatientPanel == null) {
+//					editPatientPanel = new EditPatient(s);
+//				}
+				Window.alert("girdi girdi!!!");
 				editPatientPanel.repaint(s);
 				RootPanel.get().add(editPatientPanel);
+				break;
+			default:
+				Window.alert("Please See Your Provider!!!");
 				break;
 		}
 		

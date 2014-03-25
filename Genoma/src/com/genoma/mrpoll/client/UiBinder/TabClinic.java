@@ -9,6 +9,7 @@ import com.genoma.mrpoll.client.MrPoll.State;
 import com.genoma.mrpoll.client.PatientService;
 import com.genoma.mrpoll.client.PatientServiceAsync;
 import com.genoma.mrpoll.domain.Answer;
+import com.genoma.mrpoll.uihelper.AnswerUI;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -31,11 +32,18 @@ public class TabClinic extends Composite implements Updater {
 
 	PatientServiceAsync service= GWT.create(PatientService.class);
 	
-	public TabClinic(State s) {
+	public TabClinic(List<AnswerUI> answers) {
 		initWidget(uiBinder.createAndBindUi(this));
 		menopause_combo.addItem("Premenapoz");
 		menopause_combo.addItem("Postmenapoz");
-		updateUi();
+		for(AnswerUI answer : answers){
+			switch (answer.getBelongsQuestionId()){
+				case 21:	menopause_combo.setSelectedIndex(Integer.parseInt(answer.getAnswer()));		break;
+				case 22:	whining.setValue(Boolean.parseBoolean(answer.getAnswer()));					break;
+				case 23:	riskfactor.setValue(Boolean.parseBoolean(answer.getAnswer()));				break;
+				case 24:	physicalfinding.setValue(Boolean.parseBoolean(answer.getAnswer()));			break;
+			}
+		}
 		
 //		Map<String, Object> fields = new HashMap<String, Object>();
 //		

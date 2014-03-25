@@ -7,6 +7,7 @@ import com.genoma.mrpoll.domain.Patient;
 import com.genoma.mrpoll.domain.Question;
 import com.genoma.mrpoll.domain.User;
 import com.genoma.mrpoll.domain.Visit;
+import com.genoma.mrpoll.uihelper.Container;
 import com.genoma.mrpoll.uihelper.PatientUI;
 import com.genoma.mrpoll.uihelper.UserUI;
 import com.genoma.mrpoll.uihelper.VisitUI;
@@ -21,7 +22,7 @@ public interface PatientServiceAsync {
 	void saveVisitToSession(VisitUI visitUi, AsyncCallback<Void> callback);
 	void savePatient(PatientUI patientUi, AsyncCallback<Boolean> callback);
 	void createVisit(AsyncCallback<Void> callback);
-	void getPatientFromSession(AsyncCallback<PatientUI> callback);
+	//void getPatientFromSession(AsyncCallback<PatientUI> callback);
 	void getUserFromSession(AsyncCallback<UserUI> callback);
 	void getVisitFromSession(AsyncCallback<VisitUI> callback);
 	void updatePatient(AsyncCallback<Boolean> callback);
@@ -29,6 +30,7 @@ public interface PatientServiceAsync {
 	void getVisitFromDB(AsyncCallback<Boolean> callback);
 	void mergeAnswers(List<Answer> target, List<Answer> list, AsyncCallback<List<Answer>> callback);
 	void close(AsyncCallback<Void> callback);
+	void getProperties(String protocolNo, AsyncCallback<Container> callback);
 	
 
 

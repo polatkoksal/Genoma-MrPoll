@@ -33,7 +33,7 @@ public class TabPatientInfo extends Composite implements Updater {
 		
 	}
 
-	public TabPatientInfo(State s) {
+	public TabPatientInfo(PatientUI patientUI) {
 		initWidget(uiBinder.createAndBindUi(this));
 		gender.addItem("Kadın");
 		gender.addItem("Erkek");
@@ -43,7 +43,7 @@ public class TabPatientInfo extends Composite implements Updater {
 	
 
 	
-	public void updateUi(){
+	/*public void updateUi(){
 		service.getPatientFromSession(new AsyncCallback<PatientUI>() {
 		
 			public void onSuccess(PatientUI result) {
@@ -57,7 +57,7 @@ public class TabPatientInfo extends Composite implements Updater {
 			}
 		});
 		
-	}
+	}*/
 	
 	
 	@Override

@@ -4,11 +4,13 @@ import com.genoma.mrpoll.client.MrPoll;
 import com.genoma.mrpoll.client.MrPoll.State;
 import com.genoma.mrpoll.client.PatientService;
 import com.genoma.mrpoll.client.PatientServiceAsync;
+import com.genoma.mrpoll.uihelper.Container;
 import com.genoma.mrpoll.uihelper.PatientUI;
 import com.genoma.mrpoll.uihelper.VisitUI;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -18,6 +20,7 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 public class EditPatient extends Composite {
@@ -32,8 +35,10 @@ public class EditPatient extends Composite {
 
 	@UiField
 	Button back;
+	HandlerRegistration backHandler = null;
 	@UiField
 	Button forward;
+	HandlerRegistration forwardHandler = null;
 	@UiField
 	Button save;
 	@UiField
@@ -55,45 +60,53 @@ public class EditPatient extends Composite {
 	TabSurgical tabSurgical;
 	
 	Updater tab;
-	
-	public EditPatient(State s) {
 
+	public EditPatient(Container result) {
 		initWidget(uiBinder.createAndBindUi(this));
-		setPatientId();
-		tabPatientInfo = new TabPatientInfo(s);
-		this.repaint(s);
-
+		patientid.setText(result.getPatient().getProtocolNo());
+		tabPatientInfo = new TabPatientInfo(result.getPatient());
+		tabVisitInfo = new TabVisitInfo(result.getVisit());
+		tabClinic = new TabClinic(result.getAnswers());
 	}
 
 	public void repaint(State s) {
 		
+		RootPanel.get().clear();
+
+		if(backHandler != null){
+			backHandler.removeHandler();
+		}
+		if(forwardHandler != null){
+			forwardHandler.removeHandler();
+		}
+		
 		switch (s) {
 
 		case TAB_PATIENT_INFO:
-			if(tabPatientInfo == null) {
-				tabPatientInfo = new TabPatientInfo(s);
-			}
+//			if(tabPatientInfo == null) {
+//				tabPatientInfo = new TabPatientInfo(s);
+//			}
 			tab = tabPatientInfo;
-			pointTo(null, back);
-			pointTo(State.TAB_VISIT, forward);
+			backHandler = pointTo(null, back);
+			forwardHandler = pointTo(State.TAB_VISIT, forward);
 			break;
 
 		case TAB_VISIT:
-			if(tabVisitInfo == null) {
-				tabVisitInfo = new TabVisitInfo(s);
-			}
+//			if(tabVisitInfo == null) {
+//				tabVisitInfo = new TabVisitInfo(s);
+//			}
 			tab = tabVisitInfo;
-			pointTo(State.TAB_PATIENT_INFO, back);
-			pointTo(State.TAB_CLINIC, forward);
+			backHandler = pointTo(State.TAB_PATIENT_INFO, back);
+			forwardHandler = pointTo(State.TAB_CLINIC, forward);
 			break;
 
 		case TAB_CLINIC:
-			if(tabClinic == null) {
-				tabClinic = new TabClinic(s);
-			}
+//			if(tabClinic == null) {
+//				tabClinic = new TabClinic(s);
+//			}
 			tab = tabClinic;
-			pointTo(State.TAB_VISIT, back);
-			pointTo(State.TAB_MAMMOGRAPHY, forward);
+			backHandler = pointTo(State.TAB_VISIT, back);
+			forwardHandler = pointTo(State.TAB_MAMMOGRAPHY, forward);
 			break;
 
 		case TAB_MAMMOGRAPHY:
@@ -101,8 +114,8 @@ public class EditPatient extends Composite {
 				tabMammography = new TabMammography(s);
 			}
 			tab = tabMammography;
-			pointTo(State.TAB_CLINIC, back);
-			pointTo(State.TAB_USG, forward);
+			backHandler = pointTo(State.TAB_CLINIC, back);
+			forwardHandler = pointTo(State.TAB_USG, forward);
 			break;
 
 		case TAB_USG:
@@ -110,8 +123,8 @@ public class EditPatient extends Composite {
 				tabUltrasonography = new TabUltrasonography(s);
 			}
 			tab = tabUltrasonography;
-			pointTo(State.TAB_MAMMOGRAPHY, back);
-			pointTo(State.TAB_MRI, forward);
+			backHandler = pointTo(State.TAB_MAMMOGRAPHY, back);
+			forwardHandler = pointTo(State.TAB_MRI, forward);
 			break;
 
 		case TAB_MRI:
@@ -119,8 +132,8 @@ public class EditPatient extends Composite {
 				tabMRI = new TabMRI(s);
 			}
 			tab = tabMRI;
-			pointTo(State.TAB_USG, back);
-			pointTo(State.TAB_PATHOLOGY, forward);
+			backHandler = pointTo(State.TAB_USG, back);
+			forwardHandler = pointTo(State.TAB_PATHOLOGY, forward);
 			break;
 
 		case TAB_PATHOLOGY:
@@ -128,8 +141,8 @@ public class EditPatient extends Composite {
 				tabPathology = new TabPathology(s);
 			}
 			tab = tabPathology;
-			pointTo(State.TAB_MRI, back);
-			pointTo(State.TAB_SECOND, forward);
+			backHandler = pointTo(State.TAB_MRI, back);
+			forwardHandler = pointTo(State.TAB_SECOND, forward);
 			break;
 
 		case TAB_SECOND:
@@ -137,8 +150,8 @@ public class EditPatient extends Composite {
 				tabSecondVisit = new TabSecondVisit(s);
 			}
 			tab = tabSecondVisit;
-			pointTo(State.TAB_PATHOLOGY, back);
-			pointTo(State.TAB_SURGICAL, forward);
+			backHandler = pointTo(State.TAB_PATHOLOGY, back);
+			forwardHandler = pointTo(State.TAB_SURGICAL, forward);
 			break;
 
 		case TAB_SURGICAL:
@@ -146,8 +159,8 @@ public class EditPatient extends Composite {
 				tabSurgical = new TabSurgical(s);
 			}
 			tab = tabSurgical;
-			pointTo(State.TAB_SECOND, back);
-			pointTo(null, forward);
+			backHandler = pointTo(State.TAB_SECOND, back);
+			forwardHandler = pointTo(null, forward);
 			break;
 		default:
 			break;
@@ -160,8 +173,9 @@ public class EditPatient extends Composite {
 		panel.add((Widget) tab);
 	}
 
-	public void pointTo(State target, Button button) {
-
+	public HandlerRegistration pointTo(State target, Button button) {
+		final EditPatient editPatient = this;
+		HandlerRegistration result = null;
 		if (target == null) 
 		{
 			button.setVisible(false);
@@ -169,33 +183,21 @@ public class EditPatient extends Composite {
 		else 
 		{
 			button.setVisible(true);
-			button.addClickHandler(new ClickHandler() {
+			result=button.addClickHandler(new ClickHandler() {
 				State target;
-
 				public ClickHandler init(State state) {
 					target = state;
 					return this;
 				}
-
 				public void onClick(ClickEvent event) {
-					MrPoll.repaint(target);
+					editPatient.repaint(target);
 				}
 			}.init(target));
 		}
+		return result;
 	}
 
-	public void setPatientId() {
-		service.getPatientFromSession(new AsyncCallback<PatientUI>() {
-			@Override
-			public void onSuccess(PatientUI result) {
-				patientid.setText(result.getProtocolNo());
-			}
 
-			@Override
-			public void onFailure(Throwable caught) {
-			}
-		});
-	}
 
 	@UiHandler("save")
 	void onSaveClick(ClickEvent event) {
