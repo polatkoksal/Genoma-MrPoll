@@ -46,7 +46,7 @@ public class Tabs extends Composite implements Serializable{
 	@UiField PushButton surgical;
 	@UiField PushButton pathology;
 	
-	Updater tab;
+	
 
 	interface TabsUiBinder extends UiBinder<Widget, Tabs> {
 	}
@@ -54,9 +54,8 @@ public class Tabs extends Composite implements Serializable{
 	public Tabs() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
-	public Tabs(State s, Updater tab) {
+	public Tabs(State s) {
 		this();
-		this.tab=tab;
 
 		switch (s){
 			case TAB_PATIENT_INFO:
@@ -125,46 +124,46 @@ public class Tabs extends Composite implements Serializable{
 
 	@UiHandler("patientinfo")
 	void onPatientinfoClick(ClickEvent event) {
-		MrPoll.repaint(State.TAB_PATIENT_INFO);
+		MrPoll.editPatientPanel.repaint(State.TAB_PATIENT_INFO);
 	}
 	
 	@UiHandler("visit")
 	void onVisitClick(ClickEvent event) {
-		MrPoll.repaint(State.TAB_VISIT);
+		MrPoll.editPatientPanel.repaint(State.TAB_VISIT);
 	}
 	
 	@UiHandler("clinic")
 	void onClinicClick(ClickEvent event) {
-		MrPoll.repaint(State.TAB_CLINIC);
+		MrPoll.editPatientPanel.repaint(State.TAB_CLINIC);
 	}
 	
 	@UiHandler("mammography")
 	void onMammographyClick(ClickEvent event) {
-		MrPoll.repaint(State.TAB_MAMMOGRAPHY);
+		MrPoll.editPatientPanel.repaint(State.TAB_MAMMOGRAPHY);
 	}
 	
 	@UiHandler("usg")
 	void onUsgClick(ClickEvent event) {
-		MrPoll.repaint(State.TAB_USG);
+		MrPoll.editPatientPanel.repaint(State.TAB_USG);
 	}
 	
 	@UiHandler("mri")
 	void onMriClick(ClickEvent event) {
-		MrPoll.repaint(State.TAB_MRI);
+		MrPoll.editPatientPanel.repaint(State.TAB_MRI);
 	}
 	
 	@UiHandler("pathology")
 	void onPathologyClick(ClickEvent event) {
-		MrPoll.repaint(State.TAB_PATHOLOGY);
+		MrPoll.editPatientPanel.repaint(State.TAB_PATHOLOGY);
 	}
 	
 	@UiHandler("second")
 	void onSecondClick(ClickEvent event) {
-		MrPoll.repaint(State.TAB_SECOND);
+		MrPoll.editPatientPanel.repaint(State.TAB_SECOND);
 	}
 	
 	@UiHandler("surgical")
 	void onSurgicalClick(ClickEvent event) {
-		MrPoll.repaint(State.TAB_SURGICAL);
+		MrPoll.editPatientPanel.repaint(State.TAB_SURGICAL);
 	}
 }

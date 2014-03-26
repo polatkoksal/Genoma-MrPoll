@@ -1,5 +1,7 @@
 package com.genoma.mrpoll.client.UiBinder;
 
+import java.util.ArrayList;
+
 import com.genoma.mrpoll.client.MrPoll;
 import com.genoma.mrpoll.client.MrPoll.State;
 import com.genoma.mrpoll.client.PatientService;
@@ -7,9 +9,11 @@ import com.genoma.mrpoll.client.PatientServiceAsync;
 import com.genoma.mrpoll.client.UserService;
 import com.genoma.mrpoll.client.UserServiceAsync;
 import com.genoma.mrpoll.domain.Patient;
+import com.genoma.mrpoll.uihelper.AnswerUI;
 import com.genoma.mrpoll.uihelper.Container;
 import com.genoma.mrpoll.uihelper.PatientUI;
 import com.genoma.mrpoll.uihelper.UserUI;
+import com.genoma.mrpoll.uihelper.VisitUI;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.Window;
@@ -53,21 +57,17 @@ public class NewPatient extends Composite {
 
 				@Override
 				public void onSuccess(Container result) {
-					Window.alert("before if");
-					if(result.getVisit() == null){	
-						Window.alert("inside if");
+					
+					if(result.getVisit().getDate() == null){	
 						MrPoll.editPatientPanel = new EditPatient(result);
-						Window.alert("after if");
-						
 					}else{
 						Boolean b = Window.confirm("Kayıt bulundu! Devam etmek ister misiniz?");
 						if(!b){
-							result.setVisit(null);
-							result.setAnswers(null);
+							result.setVisit(new VisitUI());
+							result.setAnswers(new ArrayList<AnswerUI>());
 						}					
 						MrPoll.editPatientPanel = new EditPatient(result);
-					}
-					Window.alert("before repaint");
+					}				
 					MrPoll.repaint(State.TAB_PATIENT_INFO);
 					
 				}

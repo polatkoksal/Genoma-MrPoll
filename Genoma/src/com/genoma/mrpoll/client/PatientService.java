@@ -31,4 +31,5 @@ public interface PatientService extends RemoteService {
 	List<Answer> mergeAnswers(List<Answer> target, List<Answer> list );
 	void close();
 	Container getProperties(String protocolNo);
+	Boolean saveProperties(Container container);
 }

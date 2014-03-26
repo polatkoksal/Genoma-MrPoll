@@ -11,6 +11,7 @@ import java.util.Set;
 import com.genoma.mrpoll.client.MrPoll.State;
 import com.genoma.mrpoll.domain.Answer;
 import com.genoma.mrpoll.domain.Question;
+import com.genoma.mrpoll.uihelper.AnswerUI;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dev.util.collect.HashMap;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -62,7 +63,7 @@ public class TabSecondVisit extends Composite implements Updater {
 	interface SecondUiBinder extends UiBinder<Widget, TabSecondVisit> {
 	}
 
-	public TabSecondVisit(State s) {
+	public TabSecondVisit(List<AnswerUI> list) {
 		initWidget(uiBinder.createAndBindUi(this));
 		onR_mri_biopsyClick(null);
 		onL_mri_biopsyClick(null);
@@ -135,8 +136,8 @@ public class TabSecondVisit extends Composite implements Updater {
 	}
 
 	@Override
-	public List<Answer> getAnswersFromUi() {
-		List<Answer> result = new ArrayList<Answer>();
+	public List<AnswerUI> getAnswersFromUi() {
+		List<AnswerUI> result = new ArrayList<AnswerUI>();
 		result.add(returnAnswerOf(600, r_mri_biopsy));
 		result.add(returnAnswerOf(601, r_mri_biopsy_diagnosis));
 		result.add(returnAnswerOf(610, r_usg));

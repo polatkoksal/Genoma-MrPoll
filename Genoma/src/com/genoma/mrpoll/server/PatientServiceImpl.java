@@ -32,6 +32,7 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 	private EntityManagerFactory factory;
 
 	
+	
 	@Override
 	public Container getProperties(String protocolNo) {
 		
@@ -48,6 +49,9 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 			patientUI.setProtocolNo(protocolNo);
 			result.setPatient(patientUI);
 			result.setVisit(new VisitUI());
+			HttpSession session= this.getThreadLocalRequest().getSession();
+			User user = (User) session.getAttribute("loginUser");
+			result.getVisit().setHospital(user.getHospital());
 			result.setAnswers(new ArrayList<AnswerUI>());
 			return result;
 		}
@@ -84,6 +88,101 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 
 		return result;
 	}
+	
+	
+	@Override
+	public Boolean saveProperties(Container container) {
+		
+		Boolean result = true;
+		
+		Patient patient = new Patient();
+		Visit visit = new Visit();
+		Answer answer = new Answer();
+		List<Answer> answers = new ArrayList<Answer>();
+		
+		try {
+			BeanUtils.copyProperties(patient, container.getPatient());
+			BeanUtils.copyProperties(visit, container.getVisit());
+			for(AnswerUI answerUI : container.getAnswers()){
+				BeanUtils.copyProperties(answer, answerUI);
+				answers.add(answer);
+			}
+			
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		}
+		factory = EMF.get();
+		EntityManager em = factory.createEntityManager();
+		Query query = em.createQuery("select p from Patient p where p.protocolNo=:protocolNo and p.id<>:id");
+		query.setParameter("protocolNo", patient.getProtocolNo());
+		query.setParameter("id", patient.getId());
+		List<Patient> patients = query.getResultList();
+		
+		if(!patients.isEmpty()){
+			result = false;
+			return result;
+		}
+		
+		em.getTransaction().begin();
+		patient = em.merge(patient);
+		em.flush();
+		
+		visit.setPatient(patient);
+		visit = em.merge(visit);
+		em.flush();
+	
+		Query query1 = em.createQuery("select a from Answer a where a.visit.id=:id");
+		query1.setParameter("id", visit.getId());
+		List<Answer> results = query1.getResultList();
+		
+		for(Answer a : results){
+			em.remove(a);	
+		}
+		em.flush();
+		
+		for(Answer ans : answers){
+			ans.setVisit(visit);
+			em.persist(ans);
+		}
+		em.getTransaction().commit();
+		em.close();
+	
+		return result;
+	}
+
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 
 	@Override
@@ -393,6 +492,11 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 		session.removeAttribute("visit");
 		
 	}
+
+
+
+
+
 
 
 }

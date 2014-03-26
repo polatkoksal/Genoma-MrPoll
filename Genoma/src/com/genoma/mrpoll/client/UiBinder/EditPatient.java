@@ -1,9 +1,13 @@
 package com.genoma.mrpoll.client.UiBinder;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.genoma.mrpoll.client.MrPoll;
 import com.genoma.mrpoll.client.MrPoll.State;
 import com.genoma.mrpoll.client.PatientService;
 import com.genoma.mrpoll.client.PatientServiceAsync;
+import com.genoma.mrpoll.uihelper.AnswerUI;
 import com.genoma.mrpoll.uihelper.Container;
 import com.genoma.mrpoll.uihelper.PatientUI;
 import com.genoma.mrpoll.uihelper.VisitUI;
@@ -24,7 +28,9 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 public class EditPatient extends Composite {
-
+	
+	Container container;
+	
 	private static GeneralInfoUiBinder uiBinder = GWT
 			.create(GeneralInfoUiBinder.class);
 
@@ -63,15 +69,20 @@ public class EditPatient extends Composite {
 
 	public EditPatient(Container result) {
 		initWidget(uiBinder.createAndBindUi(this));
+		container = result;
 		patientid.setText(result.getPatient().getProtocolNo());
 		tabPatientInfo = new TabPatientInfo(result.getPatient());
 		tabVisitInfo = new TabVisitInfo(result.getVisit());
 		tabClinic = new TabClinic(result.getAnswers());
+		tabMammography = new TabMammography(result.getAnswers());
+		tabUltrasonography = new TabUltrasonography(result.getAnswers());
+		tabMRI = new TabMRI(result.getAnswers());
+		tabPathology = new TabPathology(result.getAnswers());
+		tabSecondVisit = new TabSecondVisit(result.getAnswers());
+		tabSurgical = new TabSurgical(result.getAnswers());
 	}
 
 	public void repaint(State s) {
-		
-		RootPanel.get().clear();
 
 		if(backHandler != null){
 			backHandler.removeHandler();
@@ -83,81 +94,54 @@ public class EditPatient extends Composite {
 		switch (s) {
 
 		case TAB_PATIENT_INFO:
-//			if(tabPatientInfo == null) {
-//				tabPatientInfo = new TabPatientInfo(s);
-//			}
 			tab = tabPatientInfo;
 			backHandler = pointTo(null, back);
 			forwardHandler = pointTo(State.TAB_VISIT, forward);
 			break;
 
 		case TAB_VISIT:
-//			if(tabVisitInfo == null) {
-//				tabVisitInfo = new TabVisitInfo(s);
-//			}
 			tab = tabVisitInfo;
 			backHandler = pointTo(State.TAB_PATIENT_INFO, back);
 			forwardHandler = pointTo(State.TAB_CLINIC, forward);
 			break;
 
 		case TAB_CLINIC:
-//			if(tabClinic == null) {
-//				tabClinic = new TabClinic(s);
-//			}
 			tab = tabClinic;
 			backHandler = pointTo(State.TAB_VISIT, back);
 			forwardHandler = pointTo(State.TAB_MAMMOGRAPHY, forward);
 			break;
 
 		case TAB_MAMMOGRAPHY:
-			if(tabMammography == null) {
-				tabMammography = new TabMammography(s);
-			}
 			tab = tabMammography;
 			backHandler = pointTo(State.TAB_CLINIC, back);
 			forwardHandler = pointTo(State.TAB_USG, forward);
 			break;
 
 		case TAB_USG:
-			if(tabUltrasonography == null) {
-				tabUltrasonography = new TabUltrasonography(s);
-			}
 			tab = tabUltrasonography;
 			backHandler = pointTo(State.TAB_MAMMOGRAPHY, back);
 			forwardHandler = pointTo(State.TAB_MRI, forward);
 			break;
 
 		case TAB_MRI:
-			if(tabMRI == null) {
-				tabMRI = new TabMRI(s);
-			}
 			tab = tabMRI;
 			backHandler = pointTo(State.TAB_USG, back);
 			forwardHandler = pointTo(State.TAB_PATHOLOGY, forward);
 			break;
 
 		case TAB_PATHOLOGY:
-			if(tabPathology == null) {
-				tabPathology = new TabPathology(s);
-			}
 			tab = tabPathology;
 			backHandler = pointTo(State.TAB_MRI, back);
 			forwardHandler = pointTo(State.TAB_SECOND, forward);
 			break;
 
 		case TAB_SECOND:
-			if(tabSecondVisit == null) {
-				tabSecondVisit = new TabSecondVisit(s);
-			}
 			tab = tabSecondVisit;
 			backHandler = pointTo(State.TAB_PATHOLOGY, back);
 			forwardHandler = pointTo(State.TAB_SURGICAL, forward);
 			break;
 
 		case TAB_SURGICAL:
-			if(tabSurgical == null) {
-				tabSurgical = new TabSurgical(s);
-			}
 			tab = tabSurgical;
 			backHandler = pointTo(State.TAB_SECOND, back);
 			forwardHandler = pointTo(null, forward);
@@ -167,7 +151,7 @@ public class EditPatient extends Composite {
 		}
 		
 		
-		Tabs tabs = new Tabs(s, tab);
+		Tabs tabs = new Tabs(s);
 		panel.clear();
 		panel.add(tabs);
 		panel.add((Widget) tab);
@@ -201,47 +185,52 @@ public class EditPatient extends Composite {
 
 	@UiHandler("save")
 	void onSaveClick(ClickEvent event) {
+		
+		setContainer();
+		
+		service.saveProperties(container, new AsyncCallback<Boolean>() {
 
-		service.saveAnswersToSession(tab.getAnswersFromUi(),
-				new AsyncCallback<Void>() {
-					public void onSuccess(Void result) {
-
-					}
-
-					public void onFailure(Throwable caught) {
-						Window.alert("target fails!!!");
-					}
-				});
-
-		service.updatePatient(new AsyncCallback<Boolean>() {
 			@Override
 			public void onSuccess(Boolean result) {
-				if (result) {
-
-					service.updateVisit(new AsyncCallback<Boolean>() {
-
-						@Override
-						public void onSuccess(Boolean result) {
-							Window.alert("Kayıt Yapıldı!");
-							MrPoll.repaint(State.MAIN_MENU);
-						}
-
-						@Override
-						public void onFailure(Throwable caught) {
-
-						}
-					});
-				} else {
-					Window.alert("bu hasta daha önce oluşturuldu!!!");
+				if(!result){
+					Window.alert("bu patient no daha önce oluşturuldu!");
+				}
+				else{
+					Window.alert("kayıt yapıldı");
 				}
 			}
-
+			
 			@Override
 			public void onFailure(Throwable caught) {
-
+				Window.alert("save failure!!!");
+				
 			}
+
+			
 		});
 
+	}
+	
+	public void setContainer(){
+		PatientUI patientUI = new PatientUI();
+		VisitUI visitUI = new VisitUI();
+		List<AnswerUI> answersUI = new ArrayList<AnswerUI>();
+		
+		patientUI.setProtocolNo(tabPatientInfo.protocolno.getText());
+		patientUI.setNameSurname(tabPatientInfo.name.getText());
+		patientUI.setGender(tabPatientInfo.gender.getSelectedIndex()+"");
+		if(tabPatientInfo.age.getText()!=""){
+			patientUI.setAge(Integer.parseInt(tabPatientInfo.age.getText()));
+		}
+		
+		visitUI.setDate(tabVisitInfo.date.getValue());
+		visitUI.setHospital(tabVisitInfo.hospital.getText());
+		visitUI.setEthic(tabVisitInfo.ethic.getValue());
+		visitUI.setNote(tabVisitInfo.note.getText());
+		
+		answersUI.addAll(tabClinic.getAnswersFromUi());
+		//answersUI.addAll(tabMammography.getAnswersFromUi());
+		
 	}
 
 	@UiHandler("cancel")

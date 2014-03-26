@@ -7,6 +7,7 @@ import com.genoma.mrpoll.client.MrPoll.State;
 import com.genoma.mrpoll.client.PatientService;
 import com.genoma.mrpoll.client.PatientServiceAsync;
 import com.genoma.mrpoll.domain.Answer;
+import com.genoma.mrpoll.uihelper.AnswerUI;
 import com.genoma.mrpoll.uihelper.PatientUI;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -37,36 +38,27 @@ public class TabPatientInfo extends Composite implements Updater {
 		initWidget(uiBinder.createAndBindUi(this));
 		gender.addItem("Kadın");
 		gender.addItem("Erkek");
-		//updateUi();
+		updateUI(patientUI);
 	}
 	
 	
 
 	
-	/*public void updateUi(){
-		service.getPatientFromSession(new AsyncCallback<PatientUI>() {
-		
-			public void onSuccess(PatientUI result) {
-				protocolno.setText(result.getProtocolNo().toString());
-				name.setText(result.getNameSurname());
-				age.setValue(result.getAge().toString());
-				gender.setTitle(result.getGender());
-			}
-		
-			public void onFailure(Throwable caught) {	
-			}
-		});
-		
-	}*/
+	public void updateUI(PatientUI patientUI){
+		protocolno.setText(patientUI.getProtocolNo());
+		name.setText(patientUI.getNameSurname());
+		age.setText(patientUI.getAge().toString());
+		gender.setSelectedIndex(Integer.parseInt(patientUI.getGender()));	
+	}
 	
 	
 	@Override
-	public List<Answer> getAnswersFromUi() {
+	public List<AnswerUI> getAnswersFromUi() {
 		
-		PatientUI patientUi = new PatientUI();
+		/*PatientUI patientUi = new PatientUI();
 		patientUi.setProtocolNo(protocolno.getText());
 		patientUi.setNameSurname(name.getText());
-		patientUi.setGender(gender.getItemText(0));
+		patientUi.setGender(gender.getSelectedIndex());
 		if(age.getText() != ""){
 			patientUi.setAge(Integer.parseInt(age.getText()));
 		}
@@ -83,7 +75,7 @@ public class TabPatientInfo extends Composite implements Updater {
 				
 			}
 
-		});
+		});*/
 		
 		
 		

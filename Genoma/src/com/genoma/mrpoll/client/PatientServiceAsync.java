@@ -31,6 +31,7 @@ public interface PatientServiceAsync {
 	void mergeAnswers(List<Answer> target, List<Answer> list, AsyncCallback<List<Answer>> callback);
 	void close(AsyncCallback<Void> callback);
 	void getProperties(String protocolNo, AsyncCallback<Container> callback);
+	void saveProperties(Container container, AsyncCallback<Boolean> callback);
 	
 
 

@@ -9,6 +9,7 @@ import com.genoma.mrpoll.client.PatientService;
 import com.genoma.mrpoll.client.PatientServiceAsync;
 import com.genoma.mrpoll.client.MrPoll.State;
 import com.genoma.mrpoll.domain.Answer;
+import com.genoma.mrpoll.uihelper.AnswerUI;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -34,7 +35,7 @@ public class TabSurgical extends Composite implements Updater {
 	interface SurgicalUiBinder extends UiBinder<Widget, TabSurgical> {
 	}
 
-	public TabSurgical(State s) {
+	public TabSurgical(List<AnswerUI> list) {
 		initWidget(uiBinder.createAndBindUi(this));
 		updateUi();
 	}
@@ -61,8 +62,8 @@ public class TabSurgical extends Composite implements Updater {
 
 
 	@Override
-	public List<Answer> getAnswersFromUi() {
-		List <Answer> result = new ArrayList<Answer>();
+	public List<AnswerUI> getAnswersFromUi() {
+		List <AnswerUI> result = new ArrayList<AnswerUI>();
 		result.add(returnAnswerOf(71, r_mrc));
 		result.add(returnAnswerOf(72, r_op));
 		result.add(returnAnswerOf(73, l_mrc));

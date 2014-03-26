@@ -1,6 +1,7 @@
 package com.genoma.mrpoll.client.UiBinder;
 
 import static com.genoma.mrpoll.client.MrPoll.returnAnswerOf;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +9,7 @@ import com.genoma.mrpoll.client.MrPoll.State;
 import com.genoma.mrpoll.client.PatientService;
 import com.genoma.mrpoll.client.PatientServiceAsync;
 import com.genoma.mrpoll.domain.Answer;
+import com.genoma.mrpoll.uihelper.AnswerUI;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -78,7 +80,7 @@ public class TabMammography extends Composite implements Updater{
 	interface MammographyUiBinder extends UiBinder<Widget, TabMammography> {
 	}
 
-	public TabMammography(State s) {
+	public TabMammography(List<AnswerUI> list) {
 		initWidget(uiBinder.createAndBindUi(this));
 		r_nofinding.setValue(true);
 		l_nofinding.setValue(true);
@@ -214,8 +216,8 @@ public class TabMammography extends Composite implements Updater{
 	}
 	
 	@Override
-	public List<Answer> getAnswersFromUi() {
-		List<Answer> result=new ArrayList<Answer>();
+	public List<AnswerUI> getAnswersFromUi() {
+		List<AnswerUI> result=new ArrayList<AnswerUI>();
 		result.add(returnAnswerOf(200, r_nofinding));
 		result.add(returnAnswerOf(210, r_mass));
 		result.add(returnAnswerOf(211, r_lesionnumber));

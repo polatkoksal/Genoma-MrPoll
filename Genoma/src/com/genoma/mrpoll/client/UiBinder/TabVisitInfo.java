@@ -1,11 +1,13 @@
 package com.genoma.mrpoll.client.UiBinder;
 
+import java.util.Date;
 import java.util.List;
 
 import com.genoma.mrpoll.client.PatientService;
 import com.genoma.mrpoll.client.PatientServiceAsync;
 import com.genoma.mrpoll.client.MrPoll.State;
 import com.genoma.mrpoll.domain.Answer;
+import com.genoma.mrpoll.uihelper.AnswerUI;
 import com.genoma.mrpoll.uihelper.VisitUI;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -35,31 +37,24 @@ public class TabVisitInfo extends Composite implements Updater{
 
 	public TabVisitInfo(VisitUI visitUI) {
 		initWidget(uiBinder.createAndBindUi(this));
-		//updateUi();
+		updateUI(visitUI);
 	}
 
-	/*public void updateUi(){
-		service.getVisitFromSession(new AsyncCallback<VisitUI>() {
-			
-			@Override
-			public void onSuccess(VisitUI result) {
-				date.setValue(result.getDate());
-				hospital.setText(result.getHospital());
-				note.setText(result.getNote());
-				ethic.setValue(result.getEthic());
-			}
-			
-			@Override
-			public void onFailure(Throwable caught) {
-				
-			}
-		});
-	}*/
+	public void updateUI(VisitUI visitUI){
+		if(visitUI.getDate() == null){
+			visitUI.setDate(new Date());
+		}
+		date.setValue(visitUI.getDate());
+		hospital.setText(visitUI.getHospital());
+		ethic.setValue(visitUI.getEthic());
+		note.setText(visitUI.getNote());
+		
+	}
 
 	@Override
-	public List<Answer> getAnswersFromUi() {
+	public List<AnswerUI> getAnswersFromUi() {
 		
-		VisitUI visitUi = new VisitUI();
+		/*VisitUI visitUi = new VisitUI();
 		visitUi.setDate(date.getValue());
 		visitUi.setHospital(hospital.getText());
 		visitUi.setNote(note.getText());
@@ -79,7 +74,7 @@ public class TabVisitInfo extends Composite implements Updater{
 			}
 
 			
-		});
+		});*/
 		
 		return null;
 	}

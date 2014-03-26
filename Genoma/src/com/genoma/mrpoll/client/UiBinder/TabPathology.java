@@ -9,6 +9,7 @@ import com.genoma.mrpoll.client.PatientService;
 import com.genoma.mrpoll.client.PatientServiceAsync;
 import com.genoma.mrpoll.client.MrPoll.State;
 import com.genoma.mrpoll.domain.Answer;
+import com.genoma.mrpoll.uihelper.AnswerUI;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -49,7 +50,7 @@ public class TabPathology extends Composite implements Updater {
 	interface TabPathologyUiBinder extends UiBinder<Widget, TabPathology> {
 	}
 
-	public TabPathology(State s) {
+	public TabPathology(List<AnswerUI> list) {
 		initWidget(uiBinder.createAndBindUi(this));
 		r_nolesion.setValue(true);
 		l_nolesion.setValue(true);
@@ -89,8 +90,8 @@ public class TabPathology extends Composite implements Updater {
 
 
 	@Override
-	public List<Answer> getAnswersFromUi() {
-		List<Answer> result= new ArrayList<Answer>();
+	public List<AnswerUI> getAnswersFromUi() {
+		List<AnswerUI> result= new ArrayList<AnswerUI>();
 		result.add(returnAnswerOf(500, r_nolesion));
 		result.add(returnAnswerOf(501, r_hpdiag));
 		result.add(returnAnswerOf(502, r_stage));

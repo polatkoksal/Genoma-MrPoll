@@ -36,14 +36,7 @@ public class TabClinic extends Composite implements Updater {
 		initWidget(uiBinder.createAndBindUi(this));
 		menopause_combo.addItem("Premenapoz");
 		menopause_combo.addItem("Postmenapoz");
-		for(AnswerUI answer : answers){
-			switch (answer.getBelongsQuestionId()){
-				case 21:	menopause_combo.setSelectedIndex(Integer.parseInt(answer.getAnswer()));		break;
-				case 22:	whining.setValue(Boolean.parseBoolean(answer.getAnswer()));					break;
-				case 23:	riskfactor.setValue(Boolean.parseBoolean(answer.getAnswer()));				break;
-				case 24:	physicalfinding.setValue(Boolean.parseBoolean(answer.getAnswer()));			break;
-			}
-		}
+		updateUI(answers);
 		
 //		Map<String, Object> fields = new HashMap<String, Object>();
 //		
@@ -81,29 +74,22 @@ public class TabClinic extends Composite implements Updater {
 //	}
 	
 
-	public void updateUi() {
-		service.getAnswersFromSession(new AsyncCallback<List<Answer>>() {
-			public void onSuccess(List<Answer> result) {
-				for(Answer answer : result){
-					switch (answer.getBelongsQuestionId()){
-						case 21:	menopause_combo.setSelectedIndex(Integer.parseInt(answer.getAnswer()));		break;
-						case 22:	whining.setValue(Boolean.parseBoolean(answer.getAnswer()));								break;
-						case 23:	riskfactor.setValue(Boolean.parseBoolean(answer.getAnswer()));						break;
-						case 24:	physicalfinding.setValue(Boolean.parseBoolean(answer.getAnswer()));				break;
-					}
-				}
+	public void updateUI(List<AnswerUI> answers) {
+		for(AnswerUI answer : answers){
+			switch (answer.getBelongsQuestionId()){
+				case 21:	menopause_combo.setSelectedIndex(Integer.parseInt(answer.getAnswer()));		break;
+				case 22:	whining.setValue(Boolean.parseBoolean(answer.getAnswer()));					break;
+				case 23:	riskfactor.setValue(Boolean.parseBoolean(answer.getAnswer()));				break;
+				case 24:	physicalfinding.setValue(Boolean.parseBoolean(answer.getAnswer()));			break;
 			}
-			public void onFailure(Throwable caught) {
-			}
-		});
-		
+		}
 		
 	}
 	
 	
 	@Override
-	public List<Answer> getAnswersFromUi() {
-		List<Answer> result = new LinkedList<Answer>();
+	public List<AnswerUI> getAnswersFromUi() {
+		List<AnswerUI> result = new LinkedList<AnswerUI>();
 		result.add(returnAnswerOf(21, menopause_combo));
 		result.add(returnAnswerOf(22, whining));
 		result.add(returnAnswerOf(23, riskfactor));

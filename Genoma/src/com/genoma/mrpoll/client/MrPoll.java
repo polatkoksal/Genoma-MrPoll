@@ -9,6 +9,7 @@ import com.genoma.mrpoll.client.UiBinder.UserUpdate;
 import com.genoma.mrpoll.client.UiBinder.UserLogin;
 import com.genoma.mrpoll.client.UiBinder.UserMainMenu;
 import com.genoma.mrpoll.domain.Answer;
+import com.genoma.mrpoll.uihelper.AnswerUI;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.Window.ClosingEvent;
@@ -79,7 +80,6 @@ public class MrPoll implements EntryPoint {
 //				if(editPatientPanel == null) {
 //					editPatientPanel = new EditPatient(s);
 //				}
-				Window.alert("girdi girdi!!!");
 				editPatientPanel.repaint(s);
 				RootPanel.get().add(editPatientPanel);
 				break;
@@ -100,8 +100,8 @@ public class MrPoll implements EntryPoint {
 			}});
 	}
 	
-	public static Answer returnAnswerOf(int i, FocusWidget w){ 
-		Answer atr= new Answer(); 
+	public static AnswerUI returnAnswerOf(int i, FocusWidget w){ 
+		AnswerUI atr= new AnswerUI(); 
 		atr.setBelongsQuestionId(i); 
 		String s=""; 
 		if(!w.isEnabled()){

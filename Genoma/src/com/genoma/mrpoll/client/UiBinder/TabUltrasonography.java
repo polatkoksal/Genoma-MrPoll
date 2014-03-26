@@ -9,6 +9,7 @@ import com.genoma.mrpoll.client.PatientService;
 import com.genoma.mrpoll.client.PatientServiceAsync;
 import com.genoma.mrpoll.client.MrPoll.State;
 import com.genoma.mrpoll.domain.Answer;
+import com.genoma.mrpoll.uihelper.AnswerUI;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -67,7 +68,7 @@ public class TabUltrasonography extends Composite implements Updater{
 	interface MammographyUiBinder extends UiBinder<Widget, TabUltrasonography> {
 	}
 
-	public TabUltrasonography(State s) {
+	public TabUltrasonography(List<AnswerUI> list) {
 		initWidget(uiBinder.createAndBindUi(this));
 		r_nofinding.setValue(true);
 		l_nofinding.setValue(true);
@@ -176,8 +177,8 @@ public class TabUltrasonography extends Composite implements Updater{
 		});
 	}
 	@Override
-	public List<Answer> getAnswersFromUi() {
-		List<Answer> result=new ArrayList<Answer>();
+	public List<AnswerUI> getAnswersFromUi() {
+		List<AnswerUI> result=new ArrayList<AnswerUI>();
 		result.add(returnAnswerOf(300, r_nofinding));
 		result.add(returnAnswerOf(310, r_mass));
 		result.add(returnAnswerOf(311, r_lesionnumber));
