@@ -56,7 +56,7 @@ public class TabPathology extends Composite implements Updater {
 		l_nolesion.setValue(true);
 		onR_nolesionClick(null);
 		onL_nolesionClick(null);
-		updateUi();
+//		updateUi();
 	}
 
 	public void updateUi(){

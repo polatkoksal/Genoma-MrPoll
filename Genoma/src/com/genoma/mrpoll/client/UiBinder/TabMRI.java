@@ -75,7 +75,7 @@ public class TabMRI extends Composite implements Updater{
 		r_lesionspread.addItem("Multisentrik");
 		l_lesionspread.addItem("Multifokal");
 		l_lesionspread.addItem("Multisentrik");
-		updateUi();
+//		updateUi();
 	}
 	@UiHandler("r_nofinding")
 	void onR_nofindingClick(ClickEvent event) {

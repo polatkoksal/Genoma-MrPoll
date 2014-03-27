@@ -90,7 +90,7 @@ public class TabMammography extends Composite implements Updater{
 		l_lesionspread.addItem("Multisentrik");
 		l_lesionspread.getName();
 		absultePanel.getWidget(0).getElement(); // Widget in tipine göre cast at ve hangi tipte ise ona göre value sunu al.
-		updateUi();
+//		updateUi();
 	}
 	@UiHandler("r_nofinding")
 	void onR_nofindingClick(ClickEvent event) {

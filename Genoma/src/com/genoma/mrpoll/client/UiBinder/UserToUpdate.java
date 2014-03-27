@@ -91,42 +91,26 @@ public class UserToUpdate extends Composite{
 		userUi.setEmail(email.getText());
 		userUi.setHospital(hospital.getText());
 		
-		service.getSessionUser("currentUser", new AsyncCallback<UserUI>() {
+				
+		service.updateUser("currentUser", userUi, new AsyncCallback<Boolean>() {
 
 			@Override
-			public void onSuccess(UserUI result) {
-				
-				userUi.setPassword(result.getPassword());
-				
-				service.updateUser("currentUser", userUi, new AsyncCallback<Boolean>() {
-
-					@Override
-					public void onSuccess(Boolean result) {
-						if(result){
-							Window.alert("Kullanıcı Güncellendi!");
-							MrPoll.repaint(State.USER_SEARCH_BACK);
-						}
-						else{
-							Window.alert("Bu Kullanıcı Adı Daha Önce Oluşturuldu!");
-						}
-					}
-					
-					@Override
-					public void onFailure(Throwable caught) {
-						Window.alert("Hata!!!");
-					}
-				});
-				
+			public void onSuccess(Boolean result) {
+				if(result){
+					Window.alert("Kullanıcı Güncellendi!");
+					MrPoll.repaint(State.USER_SEARCH_BACK);
+				}
+				else{
+					Window.alert("Bu Kullanıcı Adı Daha Önce Oluşturuldu!");
+				}
 			}
 			
 			@Override
 			public void onFailure(Throwable caught) {
-				// TODO Auto-generated method stub
-				
+				Window.alert("Hata!!!");
 			}
-	
-		});
-		
+		});		
+
 	}
 	
 	@UiHandler("cancel")
@@ -139,8 +123,10 @@ public class UserToUpdate extends Composite{
 		
 		Boolean b = Window.confirm("Kullanıcı Şifresini Sıfırlamak İstediğinizden Emin misiniz???");
 		if(b){
-			userUi.setPassword("a");
-			service.updateUser("currentUser", userUi, new AsyncCallback<Boolean>() {
+			UserUI user = new UserUI();
+			user.setPassword("a");
+			
+			service.updateUser("currentUser", user, new AsyncCallback<Boolean>() {
 	
 				@Override
 				public void onSuccess(Boolean result) {

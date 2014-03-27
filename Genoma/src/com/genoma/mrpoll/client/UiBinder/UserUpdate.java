@@ -93,41 +93,25 @@ public class UserUpdate extends Composite {
 		newUser.setEmail(email.getText());
 		newUser.setHospital(hospital.getText());
 		
-		service.getSessionUser("loginUser", new AsyncCallback<UserUI>() {
+		
+		service.updateUser("loginUser", newUser, new AsyncCallback<Boolean>() {
 
 			@Override
-			public void onSuccess(UserUI result) {
-		
-				newUser.setPassword(result.getPassword());
-				
-				service.updateUser("loginUser", newUser, new AsyncCallback<Boolean>() {
-
-					@Override
-					public void onSuccess(Boolean result) {
-						if(result){
-							Window.alert("Kullanıcı Bilgileri Yenilendi!");
-						}
-						else{
-							Window.alert("Bu Kullanıcı Adı Daha Önce Oluşturuldu!");
-						}
-					}
-					
-					@Override
-					public void onFailure(Throwable caught) {
-						Window.alert("Hata!!!");
-					}
-				});
-				
+			public void onSuccess(Boolean result) {
+				if(result){
+					Window.alert("Kullanıcı Bilgileri Yenilendi!");
+				}
+				else{
+					Window.alert("Bu Kullanıcı Adı Daha Önce Oluşturuldu!");
+				}
 			}
 			
 			@Override
 			public void onFailure(Throwable caught) {
-				Window.alert("getSessionUser Hatası!");
-				
+				Window.alert("Hata!!!");
 			}
-
-			
 		});
+				
 		
 	}
 	@UiHandler("cancel")
@@ -144,55 +128,49 @@ public class UserUpdate extends Composite {
 	
 	@UiHandler("savepassword")
 	void onSavepasswordClick(ClickEvent event) {
-		service.getSessionUser("loginUser", new AsyncCallback<UserUI>() {
+		
+		
+		if(newpassword.getText().equals(newpasswordrepeat.getText())){
 			
-			@Override
-			public void onSuccess(UserUI result) {
-				if(currentpassword.getText().equals(result.getPassword())){
-					if(newpassword.getText().equals(newpasswordrepeat.getText())){
+			service.passwordCheck(currentpassword.getText(), "loginUser", new AsyncCallback<Boolean>() {
+
+				@Override
+				public void onSuccess(Boolean result) {
+					if(result){
+						UserUI user = new UserUI();
+						user.setPassword(newpassword.getText());				
 						
-						newUser.setPassword(newpassword.getText());				
-						newUser.setUsername(result.getUsername());
-						newUser.setName(result.getName());
-						newUser.setSurname(result.getSurname());
-						newUser.setPhone(result.getPhone());
-						newUser.setEmail(result.getEmail());
-						newUser.setHospital(result.getHospital());
-						
-						service.updateUser("loginUser", newUser, new AsyncCallback<Boolean>() {
+						service.updateUser("loginUser", user, new AsyncCallback<Boolean>() {
 
 							@Override
 							public void onSuccess(Boolean result) {
 								setVisibilityPassword(false);
-								Window.alert("Şifreniz degiştirildi");
-								
+								Window.alert("Şifreniz degiştirildi");								
 							}
 							
 							@Override
-							public void onFailure(Throwable caught) {
-							
+							public void onFailure(Throwable caught) {							
 								Window.alert("change password hata!");
 							}
-
 						});
 					}
 					else{
-						Window.alert("Yeni Şifreleriniz Uymuyor!");
-					}
+						Window.alert("Eski şifrenizi yanlış girdiniz!!!");
+					}					
+				}
+				@Override
+				public void onFailure(Throwable caught) {
+					Window.alert("passwordCheck failure!!!");
+				}
+			});	
+		}
+		else{
+			Window.alert("Yeni şifreleriniz eşleşmiyor!!!");
+		}
 					
-				}
-				else{
-					Window.alert("Eski Şifreniz Yanlış Girildi!");
-				}
-			}
-			
-			@Override
-			public void onFailure(Throwable caught) {
 				
-			}
-
-			
-		});
+				
+	
 	}
 	@UiHandler("cancelpassword")
 	void onCancelpasswordClick(ClickEvent event) {

@@ -44,15 +44,22 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 		query.setParameter("protocolNo", protocolNo);
 		List<Patient> patients = query.getResultList();
 		
+		HttpSession session= this.getThreadLocalRequest().getSession();
+		User user = (User) session.getAttribute("loginUser");
+		
 		if(patients.isEmpty()){
 			PatientUI patientUI = new PatientUI();
+			VisitUI visitUI = new VisitUI();
+			List<AnswerUI> answers = new ArrayList<AnswerUI>();
+			
+			patientUI.setCreatedUserId(user.getId());
 			patientUI.setProtocolNo(protocolNo);
 			result.setPatient(patientUI);
-			result.setVisit(new VisitUI());
-			HttpSession session= this.getThreadLocalRequest().getSession();
-			User user = (User) session.getAttribute("loginUser");
-			result.getVisit().setHospital(user.getHospital());
-			result.setAnswers(new ArrayList<AnswerUI>());
+			
+			visitUI.setHospital(user.getHospital());
+			result.setVisit(visitUI);
+			result.setAnswers(answers);
+			
 			return result;
 		}
 		
@@ -115,14 +122,15 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 		}
 		factory = EMF.get();
 		EntityManager em = factory.createEntityManager();
-		Query query = em.createQuery("select p from Patient p where p.protocolNo=:protocolNo and p.id<>:id");
+		Query query = em.createQuery("select p from Patient p where p.protocolNo=:protocolNo");
 		query.setParameter("protocolNo", patient.getProtocolNo());
-		query.setParameter("id", patient.getId());
 		List<Patient> patients = query.getResultList();
 		
 		if(!patients.isEmpty()){
-			result = false;
-			return result;
+			if(!patients.get(0).getId().equals(patient.getId())){
+				result = false;
+				return result;
+			}
 		}
 		
 		em.getTransaction().begin();

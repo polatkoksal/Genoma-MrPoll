@@ -47,8 +47,13 @@ public class TabPatientInfo extends Composite implements Updater {
 	public void updateUI(PatientUI patientUI){
 		protocolno.setText(patientUI.getProtocolNo());
 		name.setText(patientUI.getNameSurname());
-		age.setText(patientUI.getAge().toString());
-		gender.setSelectedIndex(Integer.parseInt(patientUI.getGender()));	
+		if(patientUI.getAge() != null){
+			age.setText(patientUI.getAge().toString());
+		}
+		if(patientUI.getGender() != null){
+			gender.setSelectedIndex(Integer.parseInt(patientUI.getGender()));
+		}
+			
 	}
 	
 	

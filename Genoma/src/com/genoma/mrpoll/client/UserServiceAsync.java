@@ -32,5 +32,8 @@ public interface UserServiceAsync {
 
 	void sendMail(String receiver, String message, AsyncCallback<Void> callback);
 
+	void passwordCheck(String password, String sessionParam,
+			AsyncCallback<Boolean> callback);
+
 
 }

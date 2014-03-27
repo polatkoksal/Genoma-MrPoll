@@ -11,18 +11,21 @@ import com.genoma.mrpoll.client.UiBinder.UserMainMenu;
 import com.genoma.mrpoll.domain.Answer;
 import com.genoma.mrpoll.uihelper.AnswerUI;
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.Window.ClosingEvent;
 import com.google.gwt.user.client.Window.ClosingHandler;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.FocusWidget;
+import com.google.gwt.user.client.ui.HasName;
+import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.sun.java.swing.plaf.windows.resources.windows;
 
 public class MrPoll implements EntryPoint {
-	
+	HandlerRegistration confirmation;
 	public static enum State{
 		USER_LOGIN, 
 		MAIN_MENU, 
@@ -48,7 +51,7 @@ public class MrPoll implements EntryPoint {
 		repaint(State.USER_LOGIN);	
 	}
 	
-	public static EditPatient editPatientPanel=null;
+	public static EditPatient editPatientPanel = null;
 	
 	public static void repaint(State s){
 		
@@ -77,9 +80,6 @@ public class MrPoll implements EntryPoint {
 				RootPanel.get().add(new NewPatient());
 				break;
 			case TAB_PATIENT_INFO:
-//				if(editPatientPanel == null) {
-//					editPatientPanel = new EditPatient(s);
-//				}
 				editPatientPanel.repaint(s);
 				RootPanel.get().add(editPatientPanel);
 				break;
@@ -100,11 +100,14 @@ public class MrPoll implements EntryPoint {
 			}});
 	}
 	
-	public static AnswerUI returnAnswerOf(int i, FocusWidget w){ 
+	public static AnswerUI returnAnswerOf(int i, HasName w){ 
 		AnswerUI atr= new AnswerUI(); 
+//		if(w.getName()!=null && w.getName()!=""){
+//			i=(Integer.parseInt(w.getName()));
+//		}
 		atr.setBelongsQuestionId(i); 
 		String s=""; 
-		if(!w.isEnabled()){
+		if(!((FocusWidget)w).isEnabled()){
 			s=null;
 		} 
 		else if(w instanceof TextBox){ 

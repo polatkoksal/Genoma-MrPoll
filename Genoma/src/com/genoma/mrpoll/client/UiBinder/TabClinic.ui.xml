@@ -7,7 +7,7 @@
 	}
 	</ui:style>
 	<g:HTMLPanel>
-		<g:AbsolutePanel height="318px" width="451px">
+		<g:AbsolutePanel height="318px" width="451px" ui:field="panel">
 			<g:at left="98" top="21">
 				<g:Label text="Klinik Bilgileri" styleName="{style.important}"/>
 			</g:at>
@@ -15,16 +15,16 @@
 				<g:Label text="Menapoz Durumu"/>
 			</g:at>
 			<g:at left="230" top="76">
-				<g:ListBox visibleItemCount="1" ui:field="menopause_combo"/>
+				<g:ListBox visibleItemCount="1" ui:field="menopause_combo" name="21"/>
 			</g:at>
 			<g:at left="46" top="121">
-				<g:CheckBox text="Hikayesinde Yakıma Var" ui:field="whining"/>
+				<g:CheckBox text="Hikayesinde Yakıma Var" ui:field="whining" name="22"/>
 			</g:at>
 			<g:at left="46" top="168">
-				<g:CheckBox text="Fiziki Bakıda Bulgu Var" ui:field="physicalfinding"/>
+				<g:CheckBox text="Fiziki Bakıda Bulgu Var" ui:field="physicalfinding" name="23"/>
 			</g:at>
 			<g:at left="46" top="224">
-				<g:CheckBox text="Risk Faktör Var" ui:field="riskfactor"/>
+				<g:CheckBox text="Risk Faktör Var" ui:field="riskfactor" name="24"/>
 			</g:at>
 		</g:AbsolutePanel>
 	</g:HTMLPanel>

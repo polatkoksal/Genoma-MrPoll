@@ -29,7 +29,7 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class EditPatient extends Composite {
 	
-	Container container;
+	Container container = null;
 	
 	private static GeneralInfoUiBinder uiBinder = GWT
 			.create(GeneralInfoUiBinder.class);
@@ -197,6 +197,7 @@ public class EditPatient extends Composite {
 				}
 				else{
 					Window.alert("kayıt yapıldı");
+					MrPoll.repaint(State.MAIN_MENU);
 				}
 			}
 			
@@ -212,9 +213,9 @@ public class EditPatient extends Composite {
 	}
 	
 	public void setContainer(){
-		PatientUI patientUI = new PatientUI();
-		VisitUI visitUI = new VisitUI();
-		List<AnswerUI> answersUI = new ArrayList<AnswerUI>();
+		PatientUI patientUI = container.getPatient();
+		VisitUI visitUI = container.getVisit();
+		List<AnswerUI> answersUI = container.getAnswers();
 		
 		patientUI.setProtocolNo(tabPatientInfo.protocolno.getText());
 		patientUI.setNameSurname(tabPatientInfo.name.getText());
@@ -229,29 +230,34 @@ public class EditPatient extends Composite {
 		visitUI.setNote(tabVisitInfo.note.getText());
 		
 		answersUI.addAll(tabClinic.getAnswersFromUi());
-		//answersUI.addAll(tabMammography.getAnswersFromUi());
+		
+		container.setPatient(patientUI);
+		container.setVisit(visitUI);
+		container.setAnswers(answersUI);
 		
 	}
 
 	@UiHandler("cancel")
 	void onCancelClick(ClickEvent event) {
-		Boolean b = Window.confirm("kaydetmeden cıkmak istiyormusunuz?");
-		if (b) {
-			service.close(new AsyncCallback<Void>() {
-
-				@Override
-				public void onSuccess(Void result) {
-					MrPoll.repaint(State.MAIN_MENU);
-				}
-
-				@Override
-				public void onFailure(Throwable caught) {
-					Window.alert("closing fail!!!");
-				}
-
-			});
-
-		}
+		MrPoll.repaint(State.MAIN_MENU);
+		
+//		Boolean b = Window.confirm("kaydetmeden cıkmak istiyormusunuz?");
+//		if (b) {
+//			service.close(new AsyncCallback<Void>() {
+//
+//				@Override
+//				public void onSuccess(Void result) {
+//					MrPoll.repaint(State.MAIN_MENU);
+//				}
+//
+//				@Override
+//				public void onFailure(Throwable caught) {
+//					Window.alert("closing fail!!!");
+//				}
+//
+//			});
+//
+//		}
 
 	}
 

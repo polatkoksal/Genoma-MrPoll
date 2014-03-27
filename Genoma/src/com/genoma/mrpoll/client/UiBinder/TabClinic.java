@@ -16,8 +16,10 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.ui.AbsolutePanel;
 
 public class TabClinic extends Composite implements Updater {
 
@@ -26,6 +28,7 @@ public class TabClinic extends Composite implements Updater {
 	@UiField CheckBox whining;
 	@UiField CheckBox physicalfinding;
 	@UiField CheckBox riskfactor;
+	@UiField AbsolutePanel panel;
 
 	interface ClinicUiBinder extends UiBinder<Widget, TabClinic> {
 	}
@@ -94,6 +97,9 @@ public class TabClinic extends Composite implements Updater {
 		result.add(returnAnswerOf(22, whining));
 		result.add(returnAnswerOf(23, riskfactor));
 		result.add(returnAnswerOf(24, physicalfinding));
+//		for(Widget w: panel){
+//			result.add(returnAnswerOf(0, (HasName)w));
+//		}
 		return result;
 	}
 

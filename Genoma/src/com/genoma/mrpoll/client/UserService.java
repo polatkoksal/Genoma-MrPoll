@@ -22,5 +22,6 @@ public interface UserService extends RemoteService {
 	public void putSessionUser(String param, UserUI userUi);	
 	public String getSessionString();
 	public void sendMail(String receiver, String message);
+	public Boolean passwordCheck(String password, String sessionParam);
 	
 }

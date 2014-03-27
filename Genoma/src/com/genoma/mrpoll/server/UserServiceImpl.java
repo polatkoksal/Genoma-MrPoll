@@ -65,7 +65,7 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 		}
 		
 		try {
-			user.setPassword(encrypt(user.getPassword(), "aaaaaaaaaaaaaaaa"));
+			user.setPassword(encrypt(user.getPassword(), "a"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -137,12 +137,30 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 		} catch (InvocationTargetException e) {
 			e.printStackTrace();
 		}
+		
 		user.setId(sessionUser.getId());
-		try {
-			user.setPassword(encrypt(user.getPassword(), "aaaaaaaaaaaaaaaa"));
-		} catch (Exception e) {
-			e.printStackTrace();
+		
+		if(user.getUsername() == null){
+			user.setUsername(sessionUser.getUsername());
+			user.setName(sessionUser.getName());
+			user.setSurname(sessionUser.getSurname());
+			user.setHospital(sessionUser.getHospital());
+			user.setPhone(sessionUser.getPhone());
+			user.setEmail(sessionUser.getEmail());
+			try {
+				user.setPassword(encrypt(user.getPassword(), "a"));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
+		else{
+			try {
+				user.setPassword(sessionUser.getPassword());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	
 		factory = EMF.get();
 		EntityManager em = factory.createEntityManager();
 		User tempUser = em.find(User.class, user.getId());
@@ -152,6 +170,7 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 		if(!users.isEmpty()){
 			if(tempUser.getId() != users.get(0).getId()){
 				result = false;
+				return result;
 			}
 		}
 		
@@ -174,7 +193,26 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 		return result;
 	}
 	
-	
+	@Override
+	public Boolean passwordCheck(String password, String sessionParam) {
+		
+		Boolean result = false;
+		
+		HttpSession session = this.getThreadLocalRequest().getSession();
+		User sessionUser = (User) session.getAttribute(sessionParam);
+		
+		try {
+			String pass = decrypt(sessionUser.getPassword(), "a");
+			if(pass.equals(password)){
+				result = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+		
+	}
+
 	
 	public Boolean validateUser(String userName, String password){
 		
@@ -187,23 +225,23 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 		List<User> users=query.getResultList();
 		
 		if (!users.isEmpty()){
-			if(users.get(0).getPassword().equals(password)){
-				HttpSession session = this.getThreadLocalRequest().getSession();
-				session.setAttribute("loginUser", users.get(0));
-				result = true;
-			}
-		
-//			try {
-//				decryptPassword = decrypt(users.get(0).getPassword(), "aaaaaaaaaaaaaaaa");
-//				if(decryptPassword.equals(password)){
-//					HttpSession session = this.getThreadLocalRequest().getSession();
-//					session.setAttribute("loginUser", users.get(0));
-//					result = true;
-//				}
-//			} 
-//			catch (Exception e) {
-//				e.printStackTrace();
+//			if(users.get(0).getPassword().equals(password)){
+//				HttpSession session = this.getThreadLocalRequest().getSession();
+//				session.setAttribute("loginUser", users.get(0));
+//				result = true;
 //			}
+		
+			try {
+				decryptPassword = decrypt(users.get(0).getPassword(), "a");
+				if(decryptPassword.equals(password)){
+					HttpSession session = this.getThreadLocalRequest().getSession();
+					session.setAttribute("loginUser", users.get(0));
+					result = true;
+				}
+			} 
+			catch (Exception e) {
+				e.printStackTrace();
+			}
 			
 			
 		}
@@ -287,8 +325,7 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 		}
 		HttpSession session = this.getThreadLocalRequest().getSession();
 		session.setAttribute(param, user);
-		
-		
+	
 	}
 	
 	
@@ -299,86 +336,46 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 	}
 	
 	
-	
 	public String encrypt(String text, String key) throws Exception {
-		Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-		byte[] keyBytes = new byte[16];
-		byte[] b = key.getBytes("UTF-8");
-		int len = b.length;
-		if (len > keyBytes.length)
-			len = keyBytes.length;
-		System.arraycopy(b, 0, keyBytes, 0, len);
-		SecretKeySpec keySpec = new SecretKeySpec(keyBytes, "AES");
-		IvParameterSpec ivSpec = new IvParameterSpec(keyBytes);
-		cipher.init(Cipher.ENCRYPT_MODE, keySpec, ivSpec);
+        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+        byte[] keyBytes = new byte[16];
+        byte[] b = key.getBytes("UTF-8");
+        int len = b.length;
+        if (len > keyBytes.length)
+            len = keyBytes.length;
+        System.arraycopy(b, 0, keyBytes, 0, len);
+        SecretKeySpec keySpec = new SecretKeySpec(keyBytes, "AES");
+        IvParameterSpec ivSpec = new IvParameterSpec(keyBytes);
+        cipher.init(Cipher.ENCRYPT_MODE, keySpec, ivSpec);
 
-		byte[] results = cipher.doFinal(text.getBytes("UTF-8"));
-		Base64 encoder = new Base64();
-		String encrypted = new String(encoder.encode(results));
-		String urlEncrypted = java.net.URLEncoder.encode(encrypted, "UTF-8");
-		return urlEncrypted;
-	}
+        byte[] results = cipher.doFinal(text.getBytes("UTF-8"));
+        Base64 encoder = new Base64();
+
+        return new String(encoder.encode(results));
+    }
+	
 	
 	public String decrypt(String text, String key) throws Exception {
 
-		Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-		byte[] keyBytes = new byte[16];
-		byte[] b = key.getBytes("UTF-8");
-		int len = b.length;
-		if (len > keyBytes.length)
-			len = keyBytes.length;
-		System.arraycopy(b, 0, keyBytes, 0, len);
-		SecretKeySpec keySpec = new SecretKeySpec(keyBytes, "AES");
-		IvParameterSpec ivSpec = new IvParameterSpec(keyBytes);
-		cipher.init(Cipher.DECRYPT_MODE, keySpec, ivSpec);
+        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+        byte[] keyBytes = new byte[16];
+        byte[] b = key.getBytes("UTF-8");
+        int len = b.length;
+        if (len > keyBytes.length)
+            len = keyBytes.length;
+        System.arraycopy(b, 0, keyBytes, 0, len);
+        SecretKeySpec keySpec = new SecretKeySpec(keyBytes, "AES");
+        IvParameterSpec ivSpec = new IvParameterSpec(keyBytes);
+        cipher.init(Cipher.DECRYPT_MODE, keySpec, ivSpec);
 
-		Base64 decoder = new Base64();
+        Base64 decoder = new Base64();
 
-		byte[] results = cipher.doFinal((byte[]) decoder.decode(text));
+        byte[] results = cipher.doFinal((byte[]) decoder.decode(text));
 
-		return new String(results, "UTF-8");
-	}
-
-
-	/*public String encrypt(String text, String secretKey) {
-        byte[] raw;
-        String encryptedString;
-        SecretKeySpec skeySpec;
-        byte[] encryptText = text.getBytes();
-        Cipher cipher;
-        try {
-            raw = Base64.decodeBase64(secretKey);
-            skeySpec = new SecretKeySpec(raw, "AES");
-            cipher = Cipher.getInstance("AES");
-            cipher.init(Cipher.ENCRYPT_MODE, skeySpec);
-            encryptedString = Base64.encodeBase64String(cipher.doFinal(encryptText));
-        } 
-        catch (Exception e) {
-            e.printStackTrace();
-            return "Error";
-        }
-        return encryptedString;
+        return new String(results, "UTF-8");
     }
 
-    public String decrypt(String text, String secretKey) {
-        Cipher cipher;
-        String encryptedString;
-        byte[] encryptText = null;
-        byte[] raw;
-        SecretKeySpec skeySpec;
-        try {
-            raw = Base64.decodeBase64(secretKey);
-            skeySpec = new SecretKeySpec(raw, "AES");
-            encryptText = Base64.decodeBase64(text);
-            cipher = Cipher.getInstance("AES");
-            cipher.init(Cipher.DECRYPT_MODE, skeySpec);
-            encryptedString = new String(cipher.doFinal(encryptText));
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "Error";
-        }
-        return encryptedString;
-    }*/
+   
     
 	@Override
 	public void sendMail(String receiver, String message) {
@@ -432,5 +429,7 @@ public class UserServiceImpl extends RemoteServiceServlet implements UserService
 		return value;
 	}
 
+
+	
 
 }

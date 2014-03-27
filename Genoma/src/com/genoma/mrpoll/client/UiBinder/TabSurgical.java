@@ -37,7 +37,7 @@ public class TabSurgical extends Composite implements Updater {
 
 	public TabSurgical(List<AnswerUI> list) {
 		initWidget(uiBinder.createAndBindUi(this));
-		updateUi();
+//		updateUi();
 	}
 
 
