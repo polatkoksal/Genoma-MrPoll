@@ -34,7 +34,7 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 	
 	
 	@Override
-	public Container getProperties(String protocolNo) {
+	public Container getEditVisitData(String protocolNo) {
 		
 		Container result = new Container();
 		
@@ -67,7 +67,7 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 		query1.setParameter("patientId", patients.get(0).getId());
 		List<Visit> visits = query1.getResultList();
 		
-		Query query2 = em.createQuery("select a from Answer a where a.visit.id=:visitId");
+		Query query2 = em.createQuery("select a from Answer a where a.answeredVisitId =:visitId");
 		query2.setParameter("visitId", visits.get(0).getId());
 		List<Answer> answers = query2.getResultList();
 		
@@ -98,7 +98,7 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 	
 	
 	@Override
-	public Boolean saveProperties(Container container) {
+	public Boolean saveEditVisitData(Container container) {
 		
 		Boolean result = true;
 		
@@ -151,7 +151,7 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 		em.flush();
 		
 		for(Answer ans : answers){
-			ans.setVisit(visit);
+			//ans.setVisit(visit);
 			em.persist(ans);
 		}
 		em.getTransaction().commit();
@@ -187,7 +187,7 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 	
 	
 	
-	
+	/*
 	
 	
 	
@@ -355,7 +355,7 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 	}
 	
 	
-	/*@Override
+	@Override
 	public PatientUI getPatientFromSession() {
 		HttpSession session= this.getThreadLocalRequest().getSession();
 		Patient patient = (Patient) session.getAttribute("patient");
@@ -368,7 +368,7 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 			e.printStackTrace();
 		}
 		return patientUi;
-	}*/
+	}
 	
 	@Override
 	public UserUI getUserFromSession() {
@@ -502,7 +502,7 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 	}
 
 
-
+*/
 
 
 

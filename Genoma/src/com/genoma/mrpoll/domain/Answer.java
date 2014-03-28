@@ -1,10 +1,15 @@
 package com.genoma.mrpoll.domain;
 
 import java.io.Serializable;
+import java.util.Set;
+
 import javax.persistence.*;
 
 
-
+/**
+ * The persistent class for the "Answer" database table.
+ * 
+ */
 @Entity
 @Table(name="\"Answer\"")
 @NamedQuery(name="Answer.findAll", query="SELECT a FROM Answer a")
@@ -19,14 +24,19 @@ public class Answer implements Serializable {
 	@Column(length=255)
 	private String answer;
 
-	@Column(name="belongs_question_id")
-	private Integer belongsQuestionId;
+	@Column(name="answered_visit_id")
+	private Integer answeredVisitId;
 
-	
+	//bi-directional many-to-one association to Question
 	@ManyToOne
-	@JoinColumn(name="answered_visit_id")
-	private Visit visit;
+	@JoinColumn(name="belongs_question_id")
+	private Question question;
 
+//	//bi-directional many-to-one association to Question
+//	@ManyToOne
+//	@JoinColumn(name="answered_visit_id")
+//	private Visit visit;
+	
 	public Answer() {
 	}
 
@@ -46,20 +56,20 @@ public class Answer implements Serializable {
 		this.answer = answer;
 	}
 
-	public Integer getBelongsQuestionId() {
-		return this.belongsQuestionId;
+	public Integer getAnsweredVisitId() {
+		return this.answeredVisitId;
 	}
 
-	public void setBelongsQuestionId(Integer belongsQuestionId) {
-		this.belongsQuestionId = belongsQuestionId;
+	public void setAnsweredVisitId(Integer answeredVisitId) {
+		this.answeredVisitId = answeredVisitId;
 	}
 
-	public Visit getVisit() {
-		return this.visit;
+	public Question getQuestion() {
+		return this.question;
 	}
 
-	public void setVisit(Visit visit) {
-		this.visit = visit;
+	public void setQuestion(Question question) {
+		this.question = question;
 	}
 
 }

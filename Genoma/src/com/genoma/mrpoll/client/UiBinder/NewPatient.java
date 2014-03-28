@@ -53,7 +53,7 @@ public class NewPatient extends Composite {
 		
 		if(!protocolno.getText().equals("")){
 			
-			service.getProperties(protocolno.getText(), new AsyncCallback<Container>() {
+			service.getEditVisitData(protocolno.getText(), new AsyncCallback<Container>() {
 
 				@Override
 				public void onSuccess(Container result) {

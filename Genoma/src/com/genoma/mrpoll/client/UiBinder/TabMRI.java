@@ -129,7 +129,7 @@ public class TabMRI extends Composite implements Updater{
 		l_lesionsize.setEnabled(lockStatus);
 	}
 	public void updateUi(){
-		service.getAnswersFromSession(new AsyncCallback<List<Answer>>() {
+		/*service.getAnswersFromSession(new AsyncCallback<List<Answer>>() {
 			
 			@Override
 			public void onSuccess(List<Answer> result) {
@@ -167,7 +167,7 @@ public class TabMRI extends Composite implements Updater{
 			@Override
 			public void onFailure(Throwable caught) {
 			}
-		});
+		});*/
 	}
 	@Override
 	public List<AnswerUI> getAnswersFromUi() {

@@ -138,7 +138,7 @@ public class TabUltrasonography extends Composite implements Updater{
 		r_nonmass_combo.setEnabled(lockStatus);
 	}
 	public void updateUi(){
-		service.getAnswersFromSession(new AsyncCallback<List<Answer>>() {
+		/*service.getAnswersFromSession(new AsyncCallback<List<Answer>>() {
 			
 			@Override
 			public void onSuccess(List<Answer> result) {
@@ -174,7 +174,7 @@ public class TabUltrasonography extends Composite implements Updater{
 			@Override
 			public void onFailure(Throwable caught) {
 			}
-		});
+		});*/
 	}
 	@Override
 	public List<AnswerUI> getAnswersFromUi() {

@@ -188,7 +188,7 @@ public class EditPatient extends Composite {
 		
 		setContainer();
 		
-		service.saveProperties(container, new AsyncCallback<Boolean>() {
+		service.saveEditVisitData(container, new AsyncCallback<Boolean>() {
 
 			@Override
 			public void onSuccess(Boolean result) {

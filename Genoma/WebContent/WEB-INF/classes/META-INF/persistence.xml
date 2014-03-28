@@ -4,11 +4,12 @@
 		<class>com.genoma.mrpoll.domain.Role</class>
 		<class>com.genoma.mrpoll.domain.UserRole</class>
 		<class>com.genoma.mrpoll.domain.User</class>
-		<class>com.genoma.mrpoll.domain.Answer</class>
 		<class>com.genoma.mrpoll.domain.Document</class>
 		<class>com.genoma.mrpoll.domain.Visit</class>
 		<class>com.genoma.mrpoll.domain.Patient</class>
 		<class>com.genoma.mrpoll.domain.Settings</class>
+		<class>com.genoma.mrpoll.domain.Answer</class>
+		<class>com.genoma.mrpoll.domain.Question</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
 			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://25.185.75.188:5432/mrpoll"/>

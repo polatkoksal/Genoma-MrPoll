@@ -60,7 +60,7 @@ public class TabPathology extends Composite implements Updater {
 	}
 
 	public void updateUi(){
-		service.getAnswersFromSession(new AsyncCallback<List<Answer>>() {
+		/*service.getAnswersFromSession(new AsyncCallback<List<Answer>>() {
 			public void onSuccess(List<Answer> result) {
 				for(Answer answer : result){
 					switch (answer.getBelongsQuestionId()){
@@ -85,7 +85,7 @@ public class TabPathology extends Composite implements Updater {
 			}
 			public void onFailure(Throwable caught) {
 			}
-		});
+		});*/
 	}
 
 
