@@ -1,0 +1,2 @@
+serviceClass: com.genoma.mrpoll.client.PatientService
+path: A6C7B2B9FF584D572294FB42F3D1B662.gwt.rpc
