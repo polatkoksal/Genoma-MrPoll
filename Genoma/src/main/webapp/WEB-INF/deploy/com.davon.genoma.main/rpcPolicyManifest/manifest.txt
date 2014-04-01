@@ -1,2 +1,0 @@
-# Module com.davon.genoma.main
-# RPC service class, partial path of RPC policy file

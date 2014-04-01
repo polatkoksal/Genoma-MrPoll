@@ -1,6 +1,6 @@
 package com.genoma.mrpoll.client;
 
-import com.genoma.mrpoll.uihelper.Container;
+import com.genoma.mrpoll.uihelper.EditVisitData;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
@@ -21,6 +21,6 @@ public interface PatientService extends RemoteService {
 //	Boolean getVisitFromDB();
 //	List<Answer> mergeAnswers(List<Answer> target, List<Answer> list );
 //	void close();
-	Container getEditVisitData(String protocolNo);
-	Boolean saveEditVisitData(Container container);
+	EditVisitData getEditVisitData(String protocolNo);
+	Boolean saveEditVisitData(EditVisitData container);
 }

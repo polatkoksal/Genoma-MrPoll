@@ -3,7 +3,7 @@ package com.genoma.mrpoll.uihelper;
 import java.io.Serializable;
 import java.util.List;
 
-public class Container implements Serializable{
+public class EditVisitData implements Serializable{
 	
 
 	private static final long serialVersionUID = 1L;
@@ -13,7 +13,7 @@ public class Container implements Serializable{
 	private List<AnswerUI> answers;
 	
 	
-	public Container(){
+	public EditVisitData(){
 		
 	}
 

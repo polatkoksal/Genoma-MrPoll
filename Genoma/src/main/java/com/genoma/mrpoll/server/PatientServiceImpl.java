@@ -18,7 +18,7 @@ import com.genoma.mrpoll.domain.Patient;
 import com.genoma.mrpoll.domain.User;
 import com.genoma.mrpoll.domain.Visit;
 import com.genoma.mrpoll.uihelper.AnswerUI;
-import com.genoma.mrpoll.uihelper.Container;
+import com.genoma.mrpoll.uihelper.EditVisitData;
 import com.genoma.mrpoll.uihelper.PatientUI;
 import com.genoma.mrpoll.uihelper.UserUI;
 import com.genoma.mrpoll.uihelper.VisitUI;
@@ -32,9 +32,9 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 	
 	
 	@Override
-	public Container getEditVisitData(String protocolNo) {
+	public EditVisitData getEditVisitData(String protocolNo) {
 		
-		Container result = new Container();
+		EditVisitData result = new EditVisitData();
 		
 		factory = EMF.get();
 		EntityManager em = factory.createEntityManager();
@@ -104,7 +104,7 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 	
 	
 	@Override
-	public Boolean saveEditVisitData(Container container) {
+	public Boolean saveEditVisitData(EditVisitData container) {
 		
 		Boolean result = true;
 		

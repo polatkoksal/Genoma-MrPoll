@@ -87,6 +87,7 @@
 					</executions>
 					<configuration>
 						<runTarget>index.html</runTarget>
+						<inplace>true</inplace>
 					</configuration>
 				</plugin>
 			</plugins>

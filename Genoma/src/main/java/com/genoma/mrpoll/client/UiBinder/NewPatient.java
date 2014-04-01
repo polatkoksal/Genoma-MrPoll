@@ -9,7 +9,7 @@ import com.genoma.mrpoll.client.UserService;
 import com.genoma.mrpoll.client.UserServiceAsync;
 import com.genoma.mrpoll.domain.Patient;
 import com.genoma.mrpoll.uihelper.AnswerUI;
-import com.genoma.mrpoll.uihelper.Container;
+import com.genoma.mrpoll.uihelper.EditVisitData;
 import com.genoma.mrpoll.uihelper.PatientUI;
 import com.genoma.mrpoll.uihelper.UserUI;
 import com.genoma.mrpoll.uihelper.VisitUI;
@@ -53,10 +53,10 @@ public class NewPatient extends Composite {
 		
 		if(!protocolno.getText().equals("")){
 			
-			service.getEditVisitData(protocolno.getText(), new AsyncCallback<Container>() {
+			service.getEditVisitData(protocolno.getText(), new AsyncCallback<EditVisitData>() {
 
 				@Override
-				public void onSuccess(Container result) {
+				public void onSuccess(EditVisitData result) {
 					
 					if(result.getPatient().getId() == null)
 					{

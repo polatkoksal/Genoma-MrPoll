@@ -1,6 +1,6 @@
 package com.genoma.mrpoll.client;
 
-import com.genoma.mrpoll.uihelper.Container;
+import com.genoma.mrpoll.uihelper.EditVisitData;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 
@@ -20,8 +20,8 @@ public interface PatientServiceAsync {
 //	void getVisitFromDB(AsyncCallback<Boolean> callback);
 //	void mergeAnswers(List<Answer> target, List<Answer> list, AsyncCallback<List<Answer>> callback);
 //	void close(AsyncCallback<Void> callback);
-	void getEditVisitData(String protocolNo, AsyncCallback<Container> callback);
-	void saveEditVisitData(Container container, AsyncCallback<Boolean> callback);
+	void getEditVisitData(String protocolNo, AsyncCallback<EditVisitData> callback);
+	void saveEditVisitData(EditVisitData container, AsyncCallback<Boolean> callback);
 	
 
 

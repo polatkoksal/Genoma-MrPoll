@@ -8,7 +8,7 @@ import com.genoma.mrpoll.client.MrPoll.State;
 import com.genoma.mrpoll.client.PatientService;
 import com.genoma.mrpoll.client.PatientServiceAsync;
 import com.genoma.mrpoll.uihelper.AnswerUI;
-import com.genoma.mrpoll.uihelper.Container;
+import com.genoma.mrpoll.uihelper.EditVisitData;
 import com.genoma.mrpoll.uihelper.PatientUI;
 import com.genoma.mrpoll.uihelper.VisitUI;
 import com.google.gwt.core.client.GWT;
@@ -29,7 +29,7 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class EditPatient extends Composite {
 	
-	Container container = null;
+	EditVisitData container = null;
 	
 	private static GeneralInfoUiBinder uiBinder = GWT
 			.create(GeneralInfoUiBinder.class);
@@ -67,7 +67,7 @@ public class EditPatient extends Composite {
 	
 	Updater tab;
 
-	public EditPatient(Container result) {
+	public EditPatient(EditVisitData result) {
 		initWidget(uiBinder.createAndBindUi(this));
 		container = result;
 		patientid.setText(result.getPatient().getProtocolNo());

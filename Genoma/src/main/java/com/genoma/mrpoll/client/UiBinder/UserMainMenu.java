@@ -4,6 +4,7 @@ import com.genoma.mrpoll.client.MrPoll;
 import com.genoma.mrpoll.client.MrPoll.State;
 import com.genoma.mrpoll.client.UserService;
 import com.genoma.mrpoll.client.UserServiceAsync;
+import com.genoma.mrpoll.uihelper.EditVisitData;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -93,7 +94,8 @@ public class UserMainMenu extends Composite {
 	
 	@UiHandler("newpatient")
 	void onNewPatientClick(ClickEvent event) {
-		MrPoll.repaint(State.NEW_PATIENT);
+		MrPoll.editPatientPanel = new EditPatient(new EditVisitData());
+		MrPoll.repaint(State.TAB_PATIENT_INFO);
 	}
 	
 	
