@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+	<changeSet author="kayhan (generated)" id="1396368571379-1">
+		<createTable catalogName="mrpoll" schemaName="public"
+			tableName="Patient">
+			<column autoIncrement="true" name="id" type="INT">
+				<constraints primaryKey="true" primaryKeyName="pk_patient_id" />
+			</column>
+			<column name="name_surname" type="VARCHAR(255)" />
+			<column name="age" type="INT4" />
+			<column name="created_user_id" type="INT4" />
+			<column name="gender" type="VARCHAR(255)" />
+			<column name="protocol_no" type="VARCHAR(255)" />
+		</createTable>
+	</changeSet>
+	<changeSet author="kayhan (generated)" id="1396368571379-2">
+		<createTable catalogName="mrpoll" schemaName="public"
+			tableName="Question">
+			<column name="id" type="INT4">
+				<constraints nullable="false" />
+			</column>
+			<column name="question" type="VARCHAR(255)" />
+			<column name="questionCode" type="VARCHAR(255)" />
+		</createTable>
+	</changeSet>
+	<changeSet author="kayhan (generated)" id="1396368571379-3">
+		<createTable catalogName="mrpoll" schemaName="public"
+			tableName="Role">
+			<column name="id" type="INT4">
+				<constraints nullable="false" />
+			</column>
+			<column name="name" type="VARCHAR(255)" />
+		</createTable>
+	</changeSet>
+	<changeSet author="kayhan (generated)" id="1396368571379-4">
+		<createTable catalogName="mrpoll" schemaName="public"
+			tableName="Settings">
+			<column name="id" type="INT4">
+				<constraints nullable="false" />
+			</column>
+			<column name="key" type="VARCHAR(255)" />
+			<column name="description" type="VARCHAR(255)" />
+		</createTable>
+	</changeSet>
+	<changeSet author="kayhan (generated)" id="1396368571379-5">
+		<createTable catalogName="mrpoll" schemaName="public"
+			tableName="Document">
+			<column name="id" type="INT4">
+				<constraints nullable="false" />
+			</column>
+			<column name="name" type="VARCHAR(255)" />
+			<column name="link" type="VARCHAR(255)" />
+			<column name="date" type="date" />
+			<column name="attached_visit_id" type="INT4" />
+			<column name="creates_user_id" type="INT4" />
+		</createTable>
+	</changeSet>
+	<changeSet author="kayhan (generated)" id="1396368571379-6">
+		<createTable catalogName="mrpoll" schemaName="public"
+			tableName="Visit">
+			<column autoIncrement="true" name="id" type="INT">
+				<constraints primaryKey="true" primaryKeyName="pk_visit_id" />
+			</column>
+			<column name="date" type="date" />
+			<column name="done_patient_id" type="INT4" />
+			<column name="hospital" type="VARCHAR(255)" />
+			<column name="note" type="VARCHAR(500)" />
+			<column name="ethic" type="BOOL" />
+		</createTable>
+	</changeSet>
+	<changeSet author="kayhan (generated)" id="1396368571379-7">
+		<createTable catalogName="mrpoll" schemaName="public"
+			tableName="UserRole">
+			<column autoIncrement="true" name="id" type="INT">
+				<constraints primaryKey="true" primaryKeyName="pk_user_role_id" />
+			</column>
+			<column name="user_id" type="INT4" />
+			<column name="role_id" type="INT4" />
+		</createTable>
+	</changeSet>
+	<changeSet author="kayhan (generated)" id="1396368571379-8">
+		<createTable catalogName="mrpoll" schemaName="public"
+			tableName="User">
+			<column autoIncrement="true" name="id" type="INT">
+				<constraints primaryKey="true" primaryKeyName="pk_user_id" />
+			</column>
+			<column name="username" type="VARCHAR(255)" />
+			<column name="password" type="VARCHAR(255)" />
+			<column name="name" type="VARCHAR(255)" />
+			<column name="surname" type="VARCHAR(255)" />
+			<column name="email" type="VARCHAR(255)" />
+			<column name="phone" type="VARCHAR(255)" />
+			<column name="hospital" type="VARCHAR(255)" />
+		</createTable>
+	</changeSet>
+	<changeSet author="kayhan (generated)" id="1396368571379-9">
+		<createTable catalogName="mrpoll" schemaName="public"
+			tableName="Answer">
+			<column autoIncrement="true" name="id" type="INT">
+				<constraints primaryKey="true" primaryKeyName="pk_answer_id" />
+			</column>
+			<column name="answered_visit_id" type="INT4" />
+			<column name="belongs_question_id" type="INT4" />
+			<column name="answer" type="VARCHAR(255)" />
+		</createTable>
+	</changeSet>
+	<changeSet author="kayhan (generated)" id="1396368571379-10">
+		<addPrimaryKey catalogName="mrpoll" columnNames="id"
+			constraintName="pk_settings_id" schemaName="public" tableName="Settings" />
+	</changeSet>
+	<changeSet author="kayhan (generated)" id="1396368571379-11">
+		<addPrimaryKey catalogName="mrpoll" columnNames="id"
+			constraintName="pk_role_id" schemaName="public" tableName="Role" />
+	</changeSet>
+	<changeSet author="kayhan (generated)" id="1396368571379-12">
+		<addPrimaryKey catalogName="mrpoll" columnNames="id"
+			constraintName="pk_parameter_id" schemaName="public" tableName="Question" />
+	</changeSet>
+	<changeSet author="kayhan (generated)" id="1396368571379-13">
+		<addPrimaryKey catalogName="mrpoll" columnNames="id"
+			constraintName="pk_document_id" schemaName="public" tableName="Document" />
+	</changeSet>
+	<changeSet author="kayhan (generated)" id="1396368571379-14">
+		<addForeignKeyConstraint baseColumnNames="done_patient_id"
+			baseTableCatalogName="mrpoll" baseTableName="Visit"
+			baseTableSchemaName="public" constraintName="fk_done_patient_id"
+			deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+			onUpdate="NO ACTION" referencedColumnNames="id"
+			referencedTableCatalogName="mrpoll" referencedTableName="Patient"
+			referencedTableSchemaName="public" />
+	</changeSet>
+	<changeSet author="kayhan (generated)" id="1396368571379-15">
+		<addForeignKeyConstraint baseColumnNames="belongs_question_id"
+			baseTableCatalogName="mrpoll" baseTableName="Answer"
+			baseTableSchemaName="public" constraintName="fk_question" deferrable="false"
+			initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+			referencedColumnNames="id" referencedTableCatalogName="mrpoll"
+			referencedTableName="Question" referencedTableSchemaName="public" />
+	</changeSet>
+	<changeSet author="kayhan (generated)" id="1396368571379-16">
+		<addForeignKeyConstraint baseColumnNames="attached_visit_id"
+			baseTableCatalogName="mrpoll" baseTableName="Document"
+			baseTableSchemaName="public" constraintName="fk_attached_visit_id"
+			deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+			onUpdate="NO ACTION" referencedColumnNames="id"
+			referencedTableCatalogName="mrpoll" referencedTableName="Visit"
+			referencedTableSchemaName="public" />
+	</changeSet>
+	<changeSet author="kayhan (generated)" id="1396368571379-17">
+		<addForeignKeyConstraint baseColumnNames="user_id"
+			baseTableCatalogName="mrpoll" baseTableName="UserRole"
+			baseTableSchemaName="public" constraintName="fk_user_id" deferrable="false"
+			initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+			referencedColumnNames="id" referencedTableCatalogName="mrpoll"
+			referencedTableName="User" referencedTableSchemaName="public" />
+	</changeSet>
+	<changeSet author="kayhan (generated)" id="1396368571379-18">
+		<addForeignKeyConstraint baseColumnNames="creates_user_id"
+			baseTableCatalogName="mrpoll" baseTableName="Document"
+			baseTableSchemaName="public" constraintName="fk_creates_user_id"
+			deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+			onUpdate="NO ACTION" referencedColumnNames="id"
+			referencedTableCatalogName="mrpoll" referencedTableName="User"
+			referencedTableSchemaName="public" />
+	</changeSet>
+	<changeSet author="kayhan (generated)" id="1396368571379-19">
+		<addForeignKeyConstraint baseColumnNames="role_id"
+			baseTableCatalogName="mrpoll" baseTableName="UserRole"
+			baseTableSchemaName="public" constraintName="fk_role_id" deferrable="false"
+			initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+			referencedColumnNames="id" referencedTableCatalogName="mrpoll"
+			referencedTableName="Role" referencedTableSchemaName="public" />
+	</changeSet>
+	<changeSet author="kayhan (generated)" id="1396368571379-20">
+		<addForeignKeyConstraint baseColumnNames="answered_visit_id"
+			baseTableCatalogName="mrpoll" baseTableName="Answer"
+			baseTableSchemaName="public" constraintName="fk_answered_visit_id"
+			deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+			onUpdate="NO ACTION" referencedColumnNames="id"
+			referencedTableCatalogName="mrpoll" referencedTableName="Visit"
+			referencedTableSchemaName="public" />
+	</changeSet>
+	<changeSet author="kayhan (generated)" id="1396368571379-21">
+		<addForeignKeyConstraint baseColumnNames="created_user_id"
+			baseTableCatalogName="mrpoll" baseTableName="Patient"
+			baseTableSchemaName="public" constraintName="fk_created_user_id"
+			deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+			onUpdate="NO ACTION" referencedColumnNames="id"
+			referencedTableCatalogName="mrpoll" referencedTableName="User"
+			referencedTableSchemaName="public" />
+	</changeSet>
+	<changeSet author="kayhan (generated)" id="1396368571379-22">
+		<createIndex catalogName="mrpoll" indexName="fki_answer_visit_id"
+			schemaName="public" tableName="Answer" unique="false">
+			<column name="answered_visit_id" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="kayhan (generated)" id="1396368571379-23">
+		<createIndex catalogName="mrpoll" indexName="fki_visitor_id"
+			schemaName="public" tableName="Visit" unique="false">
+			<column name="done_patient_id" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="kayhan (generated)" id="1396368571379-24">
+		<createIndex catalogName="mrpoll" indexName="fki_patient_id"
+			schemaName="public" tableName="Document" unique="false">
+			<column name="attached_visit_id" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="kayhan (generated)" id="1396368571379-25">
+		<createIndex catalogName="mrpoll" indexName="fki_user_id"
+			schemaName="public" tableName="Document" unique="false">
+			<column name="creates_user_id" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="kayhan (generated)" id="1396368571379-26">
+		<createIndex catalogName="mrpoll" indexName="fki_user_id_fk"
+			schemaName="public" tableName="Patient" unique="false">
+			<column name="created_user_id" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="kayhan (generated)" id="1396368571379-27">
+		<createIndex catalogName="mrpoll" indexName="fki_user_role_user_id"
+			schemaName="public" tableName="UserRole" unique="false">
+			<column name="user_id" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="kayhan (generated)" id="1396368571379-28">
+		<createIndex catalogName="mrpoll" indexName="fki_answer_question_id"
+			schemaName="public" tableName="Answer" unique="false">
+			<column name="belongs_question_id" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="kayhan (generated)" id="1396368571379-29">
+		<createIndex catalogName="mrpoll" indexName="fki_user_role_role_id"
+			schemaName="public" tableName="UserRole" unique="false">
+			<column name="role_id" />
+		</createIndex>
+	</changeSet>
+	<changeSet author="kayhan (generated)" id="1396368571379-30">
+		<createTable catalogName="mrpoll" schemaName="public"
+			tableName="Test">
+			<column autoIncrement="true" name="id" type="INT">
+				<constraints primaryKey="true" primaryKeyName="pk_test_patient_id" />
+			</column>
+			<column name="name_surname" type="VARCHAR(255)" />
+			<column name="age" type="INT4" />
+			<column name="created_user_id" type="INT4" />
+			<column name="gender" type="VARCHAR(255)" />
+			<column name="protocol_no" type="VARCHAR(255)" />
+		</createTable>
+	</changeSet>
+	<changeSet author="kayhan (generated)" id="1396368571379-31">
+		<dropTable tableName="Test"/>
+	</changeSet>
+	
+</databaseChangeLog>
