@@ -1,3 +1,4 @@
 dependency:purge-local-repository
 gwt:compile
 clean compile war:exploded -U -e
+
