@@ -4,6 +4,7 @@ import com.genoma.mrpoll.client.MrPoll;
 import com.genoma.mrpoll.uihelper.EditVisitData;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.uibinder.client.UiField;
@@ -33,8 +34,10 @@ public class SearchVisitResult extends Composite {
 
 	@UiHandler("edit")
 	void onEditClick(ClickEvent event) {
+		Window.alert("onEditClick");
 		MrPoll.setEditVisitData(edVisitData);
 	}
+	
 	@UiHandler("delete")
 	void onDeleteClick(ClickEvent event) {
 	}
