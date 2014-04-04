@@ -90,6 +90,34 @@
 						<inplace>true</inplace>
 					</configuration>
 				</plugin>
+				<plugin>
+					<groupId>org.liquibase</groupId>
+					<artifactId>liquibase-maven-plugin</artifactId>
+					<version>3.0.5</version>
+					<configuration>
+						<propertyFile>src/main/resources/liquibase/liquibase.properties</propertyFile>
+						<changeLogFile>src/main/resources/liquibase/changelog.xml</changeLogFile>
+					</configuration>
+					<executions>
+						<execution>
+							<phase>process-resources</phase>
+							<goals>
+								<goal>update</goal>
+							</goals>
+
+						</execution>
+						<execution>
+							<id>Kayhan</id>
+							<phase>generateChangeLog</phase>
+							<configuration>
+								<diffTypes>tables, views, columns, indexes, foreignkeys,
+									primarykeys, uniqueconstraints, data</diffTypes>
+							</configuration>
+						</execution>
+
+					</executions>
+
+				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
