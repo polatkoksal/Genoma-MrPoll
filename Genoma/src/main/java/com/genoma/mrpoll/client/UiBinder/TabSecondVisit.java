@@ -1,21 +1,31 @@
 package com.genoma.mrpoll.client.UiBinder;
 
 import static com.genoma.mrpoll.client.MrPoll.returnAnswerOf;
+import static com.genoma.mrpoll.client.MrPoll.setAnswerOf;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
+import com.genoma.mrpoll.client.MrPoll.State;
+import com.genoma.mrpoll.domain.Answer;
+import com.genoma.mrpoll.domain.Question;
 import com.genoma.mrpoll.uihelper.AnswerUI;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dev.util.collect.HashMap;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.ui.AbsolutePanel;
 
 public class TabSecondVisit extends Composite implements Updater {
 
@@ -52,6 +62,7 @@ public class TabSecondVisit extends Composite implements Updater {
 	Label l_usg_biopsy_diagnosis_label;
 	@UiField
 	Label r_usg_biopsy_diagnosis_label;
+	@UiField AbsolutePanel panel;
 
 	interface SecondUiBinder extends UiBinder<Widget, TabSecondVisit> {
 	}
@@ -128,23 +139,25 @@ public class TabSecondVisit extends Composite implements Updater {
 		onL_usg_biopsyClick(null);
 	}
 
+	public void updateUi(List<AnswerUI> answers){
+		for(AnswerUI answer : answers){
+			for(Widget w: panel){
+				if(w instanceof HasName && ((HasName) w).getName().equals(answer.getQuestionCode())){
+					setAnswerOf((HasName)w, answer.getAnswer());
+				}
+			}
+		}
+	}
+
+
 	@Override
 	public List<AnswerUI> getAnswersFromUi() {
-		List<AnswerUI> result = new ArrayList<AnswerUI>();
-//		result.add(returnAnswerOf(600, r_mri_biopsy));
-//		result.add(returnAnswerOf(601, r_mri_biopsy_diagnosis));
-//		result.add(returnAnswerOf(610, r_usg));
-//		result.add(returnAnswerOf(611, r_mass));
-//		result.add(returnAnswerOf(612, r_nonmass));
-//		result.add(returnAnswerOf(613, r_usg_biopsy));
-//		result.add(returnAnswerOf(615, r_usg_biopsy_diagnosis));
-//		result.add(returnAnswerOf(650, l_mri_biopsy));
-//		result.add(returnAnswerOf(651, l_mri_biopsy_diagnosis));
-//		result.add(returnAnswerOf(660, l_usg));
-//		result.add(returnAnswerOf(661, l_mass));
-//		result.add(returnAnswerOf(662, l_nonmass));
-//		result.add(returnAnswerOf(663, l_usg_biopsy));
-//		result.add(returnAnswerOf(665, l_usg_biopsy_diagnosis));
+		List<AnswerUI> result= new ArrayList<AnswerUI>();
+		for(Widget w: panel){
+			if(w instanceof HasName){
+				result.add(returnAnswerOf((HasName)w));
+			}
+		}
 		return result;
 	}
 }

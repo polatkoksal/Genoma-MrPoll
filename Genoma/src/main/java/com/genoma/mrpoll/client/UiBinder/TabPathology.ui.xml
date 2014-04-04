@@ -7,7 +7,7 @@
 	}
 	</ui:style>
 	<g:HTMLPanel>
-		<g:AbsolutePanel width="618px" height="277px">
+		<g:AbsolutePanel width="618px" height="283px" ui:field="panel">
 			<g:at left="206" top="10">
 				<g:Label text="Patoloji" styleName="{style.important}"/>
 			</g:at>
@@ -36,70 +36,70 @@
 				<g:Label text="Uzak Metastaz:"/>
 			</g:at>
 			<g:at left="35" top="213">
-				<g:CheckBox text="Lezyon Yok" ui:field="r_nolesion"/>
+				<g:CheckBox text="Lezyon Yok" ui:field="r_nolesion" name="600"/>
 			</g:at>
 			<g:at left="168" top="59">
-				<g:ListBox ui:field="r_hpdiag"/>
+				<g:ListBox ui:field="r_hpdiag" name="601"/>
 			</g:at>
 			<g:at left="168" top="81">
-				<g:ListBox width="56px" height="20px" ui:field="r_stage"/>
+				<g:ListBox width="56px" height="20px" ui:field="r_stage" name="602"/>
 			</g:at>
 			<g:at left="168" top="103">
-				<g:ListBox width="56px" height="20px" ui:field="r_er"/>
+				<g:ListBox width="56px" height="20px" ui:field="r_er" name="603"/>
 			</g:at>
 			<g:at left="168" top="125">
-				<g:ListBox width="56px" height="20px" ui:field="r_pgr"/>
+				<g:ListBox width="56px" height="20px" ui:field="r_pgr" name="604"/>
 			</g:at>
 			<g:at left="168" top="191">
-				<g:ListBox width="56px" height="20px" ui:field="r_metastasis"/>
+				<g:ListBox width="56px" height="20px" ui:field="r_metastasis" name="607"/>
 			</g:at>
 			<g:at left="168" top="169">
-				<g:ListBox width="56px" height="20px" ui:field="r_lymphnode"/>
+				<g:ListBox width="56px" height="20px" ui:field="r_lymphnode" name="606"/>
 			</g:at>
 			<g:at left="168" top="147">
-				<g:ListBox width="56px" height="20px" ui:field="r_her2"/>
+				<g:ListBox width="56px" height="20px" ui:field="r_her2" name="605"/>
 			</g:at>
 			<g:at left="358" top="213">
-				<g:CheckBox width="99px" height="19px" text="Lezyon Yok" ui:field="l_nolesion"/>
+				<g:CheckBox width="99px" height="19px" text="Lezyon Yok" ui:field="l_nolesion" name="650"/>
 			</g:at>
 			<g:at left="348" top="191">
 				<g:Label width="101px" height="16px" text="Uzak Metastaz:" wordWrap="false"/>
 			</g:at>
 			<g:at left="491" top="191">
-				<g:ListBox width="56px" height="20px" ui:field="l_metastasis"/>
+				<g:ListBox width="56px" height="20px" ui:field="l_metastasis" name="657"/>
 			</g:at>
 			<g:at left="491" top="169">
-				<g:ListBox width="56px" height="20px" ui:field="l_lymphnode"/>
+				<g:ListBox width="56px" height="20px" ui:field="l_lymphnode" name="656"/>
 			</g:at>
 			<g:at left="348" top="169">
 				<g:Label width="101px" height="16px" text="Lenf Düğümü:"/>
 			</g:at>
 			<g:at left="491" top="147">
-				<g:ListBox width="56px" height="20px" ui:field="l_her2"/>
+				<g:ListBox width="56px" height="20px" ui:field="l_her2" name="655"/>
 			</g:at>
 			<g:at left="348" top="147">
 				<g:Label width="44px" height="16px" text="HER2:"/>
 			</g:at>
 			<g:at left="491" top="125">
-				<g:ListBox width="56px" height="20px" ui:field="l_pgr"/>
+				<g:ListBox width="56px" height="20px" ui:field="l_pgr" name="654"/>
 			</g:at>
 			<g:at left="348" top="125">
 				<g:Label width="34px" height="16px" text="PGR:"/>
 			</g:at>
 			<g:at left="491" top="103">
-				<g:ListBox width="56px" height="20px" ui:field="l_er"/>
+				<g:ListBox width="56px" height="20px" ui:field="l_er" name="653"/>
 			</g:at>
 			<g:at left="348" top="103">
 				<g:Label width="24px" height="16px" text="ER:"/>
 			</g:at>
 			<g:at left="491" top="81">
-				<g:ListBox width="56px" height="20px" ui:field="l_stage"/>
+				<g:ListBox width="56px" height="20px" ui:field="l_stage" name="652"/>
 			</g:at>
 			<g:at left="348" top="81">
 				<g:Label width="37px" height="16px" text="Evre:"/>
 			</g:at>
 			<g:at left="491" top="59">
-				<g:ListBox width="56px" height="20px" ui:field="l_hpdiag"/>
+				<g:ListBox width="56px" height="20px" ui:field="l_hpdiag" name="651"/>
 			</g:at>
 			<g:at left="348" top="59">
 				<g:Label width="137px" height="16px" text="Histopatolojik Tanı:"/>

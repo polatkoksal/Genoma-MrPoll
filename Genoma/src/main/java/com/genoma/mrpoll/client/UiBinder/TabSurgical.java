@@ -1,6 +1,7 @@
 package com.genoma.mrpoll.client.UiBinder;
 
 import static com.genoma.mrpoll.client.MrPoll.returnAnswerOf;
+import static com.genoma.mrpoll.client.MrPoll.setAnswerOf;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +18,10 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.CheckBox;
+import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.user.client.ui.AbsolutePanel;
 
 public class TabSurgical extends Composite implements Updater {
 	
@@ -31,45 +34,36 @@ public class TabSurgical extends Composite implements Updater {
 	@UiField CheckBox r_mrc;
 	@UiField ListBox reop;
 	@UiField TextBox ref;
+	@UiField AbsolutePanel panel;
 
 	interface SurgicalUiBinder extends UiBinder<Widget, TabSurgical> {
 	}
 
 	public TabSurgical(List<AnswerUI> list) {
 		initWidget(uiBinder.createAndBindUi(this));
-//		updateUi();
+		updateUi(list);
 	}
 
 
-	void updateUi() {
-		/*service.getAnswersFromSession(new AsyncCallback<List<Answer>>() {
-			public void onSuccess(List<Answer> result) {
-				for(Answer answer : result){
-					switch (answer.getBelongsQuestionId()){
-						case 71: r_mrc.setValue(Boolean.parseBoolean(answer.getAnswer()));		break;
-						case 72: r_op.setSelectedIndex(Integer.parseInt(answer.getAnswer()));	break;
-						case 73: l_mrc.setValue(Boolean.parseBoolean(answer.getAnswer()));		break;
-						case 74: l_op.setSelectedIndex(Integer.parseInt(answer.getAnswer()));	break;
-						case 75: reop.setSelectedIndex(Integer.parseInt(answer.getAnswer()));	break;
-						case 76: ref.setText(answer.getAnswer());															break;
-					}
+	public void updateUi(List<AnswerUI> answers){
+		for(AnswerUI answer : answers){
+			for(Widget w: panel){
+				if(w instanceof HasName && ((HasName) w).getName().equals(answer.getQuestionCode())){
+					setAnswerOf((HasName)w, answer.getAnswer());
 				}
 			}
-			public void onFailure(Throwable caught) {
-			}
-		});*/
+		}
 	}
 
 
 	@Override
 	public List<AnswerUI> getAnswersFromUi() {
-		List <AnswerUI> result = new ArrayList<AnswerUI>();
-//		result.add(returnAnswerOf(71, r_mrc));
-//		result.add(returnAnswerOf(72, r_op));
-//		result.add(returnAnswerOf(73, l_mrc));
-//		result.add(returnAnswerOf(74, l_op));
-//		result.add(returnAnswerOf(75, reop));
-//		result.add(returnAnswerOf(76, ref));
+		List<AnswerUI> result= new ArrayList<AnswerUI>();
+		for(Widget w: panel){
+			if(w instanceof HasName){
+				result.add(returnAnswerOf((HasName)w));
+			}
+		}
 		return result;
 	}
 

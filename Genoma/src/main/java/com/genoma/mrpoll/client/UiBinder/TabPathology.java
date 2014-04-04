@@ -1,6 +1,7 @@
 package com.genoma.mrpoll.client.UiBinder;
 
 import static com.genoma.mrpoll.client.MrPoll.returnAnswerOf;
+import static com.genoma.mrpoll.client.MrPoll.setAnswerOf;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,10 +20,12 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.ListBox;
+import com.google.gwt.user.client.ui.AbsolutePanel;
 
 public class TabPathology extends Composite implements Updater {
 	
@@ -46,6 +49,7 @@ public class TabPathology extends Composite implements Updater {
 	@UiField ListBox l_stage;
 	@UiField ListBox r_hpdiag;
 	@UiField ListBox l_hpdiag;
+	@UiField AbsolutePanel panel;
 
 	interface TabPathologyUiBinder extends UiBinder<Widget, TabPathology> {
 	}
@@ -54,60 +58,83 @@ public class TabPathology extends Composite implements Updater {
 		initWidget(uiBinder.createAndBindUi(this));
 		r_nolesion.setValue(true);
 		l_nolesion.setValue(true);
+		r_stage.addItem("I");
+		r_stage.addItem("IIa");
+		r_stage.addItem("IIb");
+		r_stage.addItem("IIIa");
+		r_stage.addItem("IIIb");
+		r_stage.addItem("IV");
+		l_stage.addItem("I");
+		l_stage.addItem("IIa");
+		l_stage.addItem("IIb");
+		l_stage.addItem("IIIa");
+		l_stage.addItem("IIIb");
+		l_stage.addItem("IV");
+		l_er.addItem("Pozitif");
+		l_er.addItem("Negatif");
+		r_er.addItem("Pozitif");
+		r_er.addItem("Negatif");
+		l_pgr.addItem("Pozitif");
+		l_pgr.addItem("Negatif");
+		r_pgr.addItem("Pozitif");
+		r_pgr.addItem("Negatif");
+		l_her2.addItem("Pozitif");
+		l_her2.addItem("Negatif");
+		r_her2.addItem("Pozitif");
+		r_her2.addItem("Negatif");
+		l_metastasis.addItem("Var");
+		l_metastasis.addItem("Yok");
+		r_metastasis.addItem("Var");
+		r_metastasis.addItem("Yok");
+		r_hpdiag.addItem("İnvazif lobüler karsinom");
+		r_hpdiag.addItem("Tubuler karsinom");
+		r_hpdiag.addItem("İnvazif kribriform karsinom");
+		r_hpdiag.addItem("Müsinöz (kolloidal) karsinom");
+		r_hpdiag.addItem("Medüller karsinom");
+		r_hpdiag.addItem("İnvazif papiller karsinom");
+		r_hpdiag.addItem("İnvazif mikropapiller karsinom");
+		r_hpdiag.addItem("Sekretuar (jüvenil) karsinom");
+		r_hpdiag.addItem("Metaplastik karsinom");
+		r_hpdiag.addItem("Nöroendokrin karsinom");
+		r_hpdiag.addItem("Apokrin karsinom");
+		r_hpdiag.addItem("İnflamatuar karsinom");
+		l_hpdiag.addItem("İnvazif lobüler karsinom");
+		l_hpdiag.addItem("Tubuler karsinom");
+		l_hpdiag.addItem("İnvazif kribriform karsinom");
+		l_hpdiag.addItem("Müsinöz (kolloidal) karsinom");
+		l_hpdiag.addItem("Medüller karsinom");
+		l_hpdiag.addItem("İnvazif papiller karsinom");
+		l_hpdiag.addItem("İnvazif mikropapiller karsinom");
+		l_hpdiag.addItem("Sekretuar (jüvenil) karsinom");
+		l_hpdiag.addItem("Metaplastik karsinom");
+		l_hpdiag.addItem("Nöroendokrin karsinom");
+		l_hpdiag.addItem("Apokrin karsinom");
+		l_hpdiag.addItem("İnflamatuar karsinom");
+		updateUi(list);
 		onR_nolesionClick(null);
 		onL_nolesionClick(null);
-//		updateUi();
+		
 	}
 
-	public void updateUi(){
-		/*service.getAnswersFromSession(new AsyncCallback<List<Answer>>() {
-			public void onSuccess(List<Answer> result) {
-				for(Answer answer : result){
-					switch (answer.getBelongsQuestionId()){
-						case 500:	r_nolesion.setValue(Boolean.parseBoolean(answer.getAnswer()));				break;
-						case 501:	r_hpdiag.setSelectedIndex(Integer.parseInt(answer.getAnswer()));			break;
-						case 502:	r_stage.setSelectedIndex(Integer.parseInt(answer.getAnswer()));				break;
-						case 503:	r_er.setSelectedIndex(Integer.parseInt(answer.getAnswer()));					break;
-						case 504:	r_pgr.setSelectedIndex(Integer.parseInt(answer.getAnswer()));					break;
-						case 505:	r_her2.setSelectedIndex(Integer.parseInt(answer.getAnswer()));				break;
-						case 506:	r_lymphnode.setSelectedIndex(Integer.parseInt(answer.getAnswer()));		break;
-						case 507:	r_metastasis.setSelectedIndex(Integer.parseInt(answer.getAnswer()));	break;
-						case 510:	r_nolesion.setValue(Boolean.parseBoolean(answer.getAnswer()));				break;
-						case 511:	r_hpdiag.setSelectedIndex(Integer.parseInt(answer.getAnswer()));			break;
-						case 512:	r_stage.setSelectedIndex(Integer.parseInt(answer.getAnswer()));				break;
-						case 513:	r_er.setSelectedIndex(Integer.parseInt(answer.getAnswer()));					break;
-						case 514:	r_pgr.setSelectedIndex(Integer.parseInt(answer.getAnswer()));					break;
-						case 515:	r_her2.setSelectedIndex(Integer.parseInt(answer.getAnswer()));				break;
-						case 516:	r_lymphnode.setSelectedIndex(Integer.parseInt(answer.getAnswer()));		break;
-						case 517:	r_metastasis.setSelectedIndex(Integer.parseInt(answer.getAnswer()));	break;
-					}
+	public void updateUi(List<AnswerUI> answers){
+		for(AnswerUI answer : answers){
+			for(Widget w: panel){
+				if(w instanceof HasName && ((HasName) w).getName().equals(answer.getQuestionCode())){
+					setAnswerOf((HasName)w, answer.getAnswer());
 				}
 			}
-			public void onFailure(Throwable caught) {
-			}
-		});*/
+		}
 	}
 
 
 	@Override
 	public List<AnswerUI> getAnswersFromUi() {
 		List<AnswerUI> result= new ArrayList<AnswerUI>();
-//		result.add(returnAnswerOf(500, r_nolesion));
-//		result.add(returnAnswerOf(501, r_hpdiag));
-//		result.add(returnAnswerOf(502, r_stage));
-//		result.add(returnAnswerOf(503, r_er));
-//		result.add(returnAnswerOf(504, r_pgr));
-//		result.add(returnAnswerOf(505, r_her2));
-//		result.add(returnAnswerOf(506, r_lymphnode));
-//		result.add(returnAnswerOf(507, r_metastasis));
-//		result.add(returnAnswerOf(510, l_nolesion));
-//		result.add(returnAnswerOf(511, l_hpdiag));
-//		result.add(returnAnswerOf(512, l_stage));
-//		result.add(returnAnswerOf(513, l_er));
-//		result.add(returnAnswerOf(514, l_pgr));
-//		result.add(returnAnswerOf(515, l_her2));
-//		result.add(returnAnswerOf(516, l_lymphnode));
-//		result.add(returnAnswerOf(517, l_metastasis));
+		for(Widget w: panel){
+			if(w instanceof HasName){
+				result.add(returnAnswerOf((HasName)w));
+			}
+		}
 		return result;
 	}
 	@UiHandler("r_nolesion")
