@@ -1,23 +1,24 @@
 package com.genoma.mrpoll.client.UiBinder;
 
 import static com.genoma.mrpoll.client.MrPoll.returnAnswerOf;
+import static com.genoma.mrpoll.client.MrPoll.setAnswerOf;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.genoma.mrpoll.client.MrPoll.State;
 import com.genoma.mrpoll.client.PatientService;
 import com.genoma.mrpoll.client.PatientServiceAsync;
-import com.genoma.mrpoll.domain.Answer;
 import com.genoma.mrpoll.uihelper.AnswerUI;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.TextBox;
@@ -63,6 +64,9 @@ public class TabMRI extends Composite implements Updater{
 	@UiField CheckBox l_nonmassstain;
 	@UiField CheckBox l_ductalstain;
 	@UiField CheckBox l_focallesion;
+	@UiField AbsolutePanel panel;
+	@UiField ListBox r_indication;
+	@UiField ListBox l_indication;
 
 	interface MammographyUiBinder extends UiBinder<Widget, TabMRI> {
 	}
@@ -75,7 +79,13 @@ public class TabMRI extends Composite implements Updater{
 		r_lesionspread.addItem("Multisentrik");
 		l_lesionspread.addItem("Multifokal");
 		l_lesionspread.addItem("Multisentrik");
-//		updateUi();
+		r_indication.addItem("Evrelendirme amaçlı");
+		r_indication.addItem("Diğer");
+		l_indication.addItem("Evrelendirme amaçlı");
+		l_indication.addItem("Diğer");
+		updateUi(list);
+		onR_nofindingClick(null);
+		onL_nofindingClick(null);
 	}
 	@UiHandler("r_nofinding")
 	void onR_nofindingClick(ClickEvent event) {
@@ -128,74 +138,26 @@ public class TabMRI extends Composite implements Updater{
 		l_lesionspread.setEnabled(lockStatus);
 		l_lesionsize.setEnabled(lockStatus);
 	}
-	public void updateUi(){
-		/*service.getAnswersFromSession(new AsyncCallback<List<Answer>>() {
-			
-			@Override
-			public void onSuccess(List<Answer> result) {
-				for(Answer a:result){
-					switch (a.getBelongsQuestionId()){
-						case 400:	r_nofinding.setValue(Boolean.parseBoolean(a.getAnswer()));				break;
-						case 410:	r_mass.setValue(Boolean.parseBoolean(a.getAnswer()));							break;
-						case 411:	r_lesionnumber.setText(a.getAnswer());														break;
-						case 412:	r_lesionspread.setSelectedIndex(Integer.parseInt(a.getAnswer()));	break;
-						case 413:	r_lesionsize.setText(a.getAnswer());															break;
-						case 420:	r_nonmassstain.setValue(Boolean.parseBoolean(a.getAnswer()));			break;
-						case 421:	r_ductalstain.setValue(Boolean.parseBoolean(a.getAnswer()));			break;
-						case 422:	r_focallesion.setValue(Boolean.parseBoolean(a.getAnswer()));			break;
-						case 440:	r_axillary.setValue(Boolean.parseBoolean(a.getAnswer()));					break;
-						case 441:	r_lymphnodecount.setText(a.getAnswer());													break;
-						case 442:	r_largestnoderadius.setText(a.getAnswer());												break;
-						case 443:	r_capsuleinvasion.setValue(Boolean.parseBoolean(a.getAnswer()));	break;
-						case 450:	l_nofinding.setValue(Boolean.parseBoolean(a.getAnswer()));				break;
-						case 460:	l_mass.setValue(Boolean.parseBoolean(a.getAnswer()));							break;
-						case 461:	l_lesionnumber.setText(a.getAnswer());														break;
-						case 462:	l_lesionspread.setSelectedIndex(Integer.parseInt(a.getAnswer()));	break;
-						case 463:	l_lesionsize.setText(a.getAnswer());															break;
-						case 470:	l_nonmassstain.setValue(Boolean.parseBoolean(a.getAnswer()));			break;
-						case 471:	l_ductalstain.setValue(Boolean.parseBoolean(a.getAnswer()));			break;
-						case 472:	l_focallesion.setValue(Boolean.parseBoolean(a.getAnswer()));			break;
-						case 490:	l_axillary.setValue(Boolean.parseBoolean(a.getAnswer()));					break;
-						case 491:	l_lymphnodecount.setText(a.getAnswer());													break;
-						case 492:	l_largestnoderadius.setText(a.getAnswer());												break;
-						case 493:	l_capsuleinvasion.setValue(Boolean.parseBoolean(a.getAnswer()));	break;
-					}
+	public void updateUi(List<AnswerUI> answers){
+		for(AnswerUI answer : answers){
+			for(Widget w: panel){
+				if(w instanceof HasName && ((HasName) w).getName().equals(answer.getQuestionCode())){
+					setAnswerOf((HasName)w, answer.getAnswer());
 				}
-				onR_nofindingClick(null);
-				onL_nofindingClick(null);
 			}
-			@Override
-			public void onFailure(Throwable caught) {
-			}
-		});*/
+		}
 	}
 	@Override
 	public List<AnswerUI> getAnswersFromUi() {
 		List<AnswerUI> result=new ArrayList<AnswerUI>();
-//		result.add(returnAnswerOf(400, r_nofinding));
-//		result.add(returnAnswerOf(410, r_mass));
-//		result.add(returnAnswerOf(411, r_lesionnumber));
-//		result.add(returnAnswerOf(412, r_lesionspread));
-//		result.add(returnAnswerOf(413, r_lesionsize));
-//		result.add(returnAnswerOf(420, r_nonmassstain));
-//		result.add(returnAnswerOf(421, r_ductalstain));
-//		result.add(returnAnswerOf(422, r_focallesion));
-//		result.add(returnAnswerOf(440, r_axillary));
-//		result.add(returnAnswerOf(441, r_lymphnodecount));
-//		result.add(returnAnswerOf(442, r_largestnoderadius));
-//		result.add(returnAnswerOf(443, r_capsuleinvasion));
-//		result.add(returnAnswerOf(450, l_nofinding));
-//		result.add(returnAnswerOf(460, l_mass));
-//		result.add(returnAnswerOf(461, l_lesionnumber));
-//		result.add(returnAnswerOf(462, l_lesionspread));
-//		result.add(returnAnswerOf(463, l_lesionsize));
-//		result.add(returnAnswerOf(470, l_nonmassstain));
-//		result.add(returnAnswerOf(471, l_ductalstain));
-//		result.add(returnAnswerOf(472, l_focallesion));
-//		result.add(returnAnswerOf(490, l_axillary));
-//		result.add(returnAnswerOf(491, l_lymphnodecount));
-//		result.add(returnAnswerOf(492, l_largestnoderadius));
-//		result.add(returnAnswerOf(493, l_capsuleinvasion));
+		String s="";
+		for(Widget w: panel){
+			if(w instanceof HasName){
+				result.add(returnAnswerOf((HasName)w));
+				s+=((HasName) w).getName()+"-"+returnAnswerOf((HasName)w).getAnswer();
+			}
+		}
+		Window.alert(s);
 		return result;
 	}
 }
