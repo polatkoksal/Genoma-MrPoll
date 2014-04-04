@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.genoma.mrpoll.uihelper.EditVisitData;
 import com.genoma.mrpoll.uihelper.PatientUI;
+import com.genoma.mrpoll.uihelper.SearchResultData;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
@@ -27,5 +28,5 @@ public interface PatientService extends RemoteService {
 	EditVisitData getEditVisitData(String protocolNo);
 	Boolean saveEditVisitData(EditVisitData container);
 	PatientUI getPatientFromDB(String protocolNo);
-	List<EditVisitData> searchVisit(Integer selection, String search);
+	List<SearchResultData> searchVisit(Integer selection, String search);
 }

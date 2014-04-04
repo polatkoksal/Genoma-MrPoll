@@ -220,12 +220,10 @@ public class EditPatient extends Composite {
 		patientUI.setProtocolNo(tabPatientInfo.protocolno.getText());
 		patientUI.setNameSurname(tabPatientInfo.name.getText());
 		patientUI.setGender(tabPatientInfo.gender.getSelectedIndex()+"");
-		if(tabPatientInfo.age.getText()!=""){
-			patientUI.setAge(Integer.parseInt(tabPatientInfo.age.getText()));
-		}
 		
 		visitUI.setDate(tabVisitInfo.date.getValue());
 		visitUI.setHospital(tabVisitInfo.hospital.getText());
+		visitUI.setAge(tabVisitInfo.age.getText());
 		visitUI.setEthic(tabVisitInfo.ethic.getValue());
 		visitUI.setNote(tabVisitInfo.note.getText());
 		

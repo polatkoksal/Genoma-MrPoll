@@ -7,7 +7,7 @@
 	}
 	</ui:style>
 	<g:HTMLPanel>
-		<g:AbsolutePanel height="398px" width="599px">
+		<g:AbsolutePanel height="456px" width="599px">
 			<g:at left="227" top="38">
 				<g:Label text="Ziyaret Bilgileri" styleName="{style.important}"/>
 			</g:at>
@@ -17,23 +17,29 @@
 			<g:at left="239" top="100">
 				<p1:DateBox ui:field="date"/>
 			</g:at>
-			<g:at left="125" top="155">
-				<g:Label text="Hastane Adı:"/>
+			<g:at left="239" top="153">
+				<g:TextBox ui:field="age"/>
 			</g:at>
-			<g:at left="239" top="149">
+			<g:at left="240" top="200">
 				<g:TextBox ui:field="hospital"/>
 			</g:at>
-			<g:at left="239" top="202">
+			<g:at left="130" top="200">
+				<g:Label text="Hastane Adı:"/>
+			</g:at>
+			<g:at left="240" top="253">
 				<g:CheckBox text="Etik Kurul Onayı Var" ui:field="ethic"/>
 			</g:at>
-			<g:at left="239" top="243">
+			<g:at left="240" top="294">
 				<g:FileUpload/>
 			</g:at>
-			<g:at left="239" top="323">
+			<g:at left="240" top="374">
 				<g:TextArea ui:field="note"/>
 			</g:at>
-			<g:at left="239" top="290">
+			<g:at left="240" top="341">
 				<g:Label text="Ziyaret ile ilgili not" width="191px" height="20px"/>
+			</g:at>
+			<g:at left="139" top="153">
+				<g:Label text="Hasta Yaşı:"/>
 			</g:at>
 		</g:AbsolutePanel>
 	</g:HTMLPanel>

@@ -1,10 +1,14 @@
 package com.genoma.mrpoll.client.UiBinder;
 
 import com.genoma.mrpoll.client.MrPoll;
+import com.genoma.mrpoll.client.PatientService;
+import com.genoma.mrpoll.client.PatientServiceAsync;
 import com.genoma.mrpoll.uihelper.EditVisitData;
+import com.genoma.mrpoll.uihelper.SearchResultData;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.uibinder.client.UiField;
@@ -15,8 +19,10 @@ import com.google.gwt.event.dom.client.ClickEvent;
 
 public class SearchVisitResult extends Composite {
 	
-	EditVisitData edVisitData;
+	SearchResultData srcResultData;
 
+	PatientServiceAsync service = GWT.create(PatientService.class);
+	
 	private static SearchVisitResultUiBinder uiBinder = GWT.create(SearchVisitResultUiBinder.class);
 	
 	@UiField Label protocolno;
@@ -27,15 +33,30 @@ public class SearchVisitResult extends Composite {
 		
 	}
 
-	public SearchVisitResult(EditVisitData editVisitData) {
+	public SearchVisitResult(SearchResultData searchResultData) {
 		initWidget(uiBinder.createAndBindUi(this));
-		edVisitData = editVisitData;
+		srcResultData = searchResultData;
+		//protocolno.setText(editVisitData.getPatient().getProtocolNo());
 	}
 
 	@UiHandler("edit")
 	void onEditClick(ClickEvent event) {
 		Window.alert("onEditClick");
-		MrPoll.setEditVisitData(edVisitData);
+		service.getEditVisitData(srcResultData.getProtocolNo(), new AsyncCallback<EditVisitData>() {
+			
+			@Override
+			public void onSuccess(EditVisitData result) {
+				Window.alert("in onSucces in onEditClick");
+				MrPoll.setEditVisitData(result);
+				
+			}
+			
+			@Override
+			public void onFailure(Throwable caught) {
+				Window.alert("error in editClick");
+			}
+		});
+		
 	}
 	
 	@UiHandler("delete")

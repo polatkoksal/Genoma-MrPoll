@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.genoma.mrpoll.uihelper.EditVisitData;
 import com.genoma.mrpoll.uihelper.PatientUI;
+import com.genoma.mrpoll.uihelper.SearchResultData;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 
@@ -26,7 +27,7 @@ public interface PatientServiceAsync {
 	void getEditVisitData(String protocolNo, AsyncCallback<EditVisitData> callback);
 	void saveEditVisitData(EditVisitData container, AsyncCallback<Boolean> callback);
 	void getPatientFromDB(String protocolNo, AsyncCallback<PatientUI> callback);
-	void searchVisit(Integer selection, String search, AsyncCallback<List<EditVisitData>> callback);
+	void searchVisit(Integer selection, String search, AsyncCallback<List<SearchResultData>> callback);
 	
 
 

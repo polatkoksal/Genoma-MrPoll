@@ -21,6 +21,7 @@ import com.genoma.mrpoll.domain.Visit;
 import com.genoma.mrpoll.uihelper.AnswerUI;
 import com.genoma.mrpoll.uihelper.EditVisitData;
 import com.genoma.mrpoll.uihelper.PatientUI;
+import com.genoma.mrpoll.uihelper.SearchResultData;
 import com.genoma.mrpoll.uihelper.UserUI;
 import com.genoma.mrpoll.uihelper.VisitUI;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
@@ -38,89 +39,89 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 		Boolean result = true;
 		factory = EMF.get();
 		EntityManager em = factory.createEntityManager();
-		Query query = em.createQuery("select p from Patient p where p.protocolNo=:protocolNo");
-		query.setParameter("protocolNo", editVisitData.getPatient().getProtocolNo());
-		List<Patient> patients = query.getResultList();
+//		Query query = em.createQuery("select p from Patient p where p.protocolNo=:protocolNo");
+//		query.setParameter("protocolNo", editVisitData.getPatient().getProtocolNo());
+//		List<Patient> patients = query.getResultList();
+//		
+//		if(!patients.isEmpty()){
+//			result = false;
+//		}
 		
-		if(!patients.isEmpty()){
-
-		}
-		
-		HttpSession session= this.getThreadLocalRequest().getSession();
-		User user = (User) session.getAttribute("loginUser");
-		Query query2 = em.createQuery("select u from User u where u.id=:id");
-		query2.setParameter("id", user.getId());
-		List<User> users = query2.getResultList();
-		System.out.println("id:"+user.getId());
-		Patient patient = new Patient();
-		Visit visit = new Visit();
-		Answer answer = new Answer();
-		List<Answer> answers = new ArrayList<Answer>();
-		
-		try {
-			BeanUtils.copyProperties(patient, editVisitData.getPatient());
-			BeanUtils.copyProperties(visit, editVisitData.getVisit());
-			patient.setUser(users.get(0));
-			visit.setPatient(patient);
-			for(AnswerUI answerUI : editVisitData.getAnswers()){
-				answer.setAnswer(answerUI.getAnswer());
-				Query query1 = em.createQuery("select q from Question q where q.questionCode=:questionCode");
-				query1.setParameter("questionCode", answerUI.getQuestionCode());
-				List<Question> questions = query1.getResultList();
-				//answer.setQuestion(questions.get(0));
-				answer.setVisit(visit);
-				answers.add(answer);
+		if(result){
+			
+			HttpSession session= this.getThreadLocalRequest().getSession();
+			User user = (User) session.getAttribute("loginUser");
+			Query query2 = em.createQuery("select u from User u where u.id=:id");
+			query2.setParameter("id", user.getId());
+			List<User> users = query2.getResultList();
+			Patient patient = new Patient();
+			Visit visit = new Visit();
+			Answer answer = new Answer();
+			List<Answer> answers = new ArrayList<Answer>();
+			
+			try {
+				BeanUtils.copyProperties(patient, editVisitData.getPatient());
+				BeanUtils.copyProperties(visit, editVisitData.getVisit());
+				patient.setUser(users.get(0));
+				visit.setPatient(patient);
+				for(AnswerUI answerUI : editVisitData.getAnswers()){
+					answer.setAnswer(answerUI.getAnswer());
+					Query query1 = em.createQuery("select q from Question q where q.questionCode=:questionCode");
+					query1.setParameter("questionCode", answerUI.getQuestionCode());
+					List<Question> questions = query1.getResultList();
+					//FIXME : Throw exception
+					//answer.setQuestion(questions.get(0));
+					answer.setVisit(visit);
+					answers.add(answer);
+				}
+				
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				e.printStackTrace();
 			}
 			
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			e.printStackTrace();
+			
+			em.getTransaction().begin();
+			patient = em.merge(patient);
+			em.flush();
+			
+			visit.setPatient(patient);
+			visit = em.merge(visit);
+			em.flush();
+		
+			Query query1 = em.createQuery("select a from Answer a where a.visit.id=:id");
+			query1.setParameter("id", visit.getId());
+			List<Answer> results = query1.getResultList();
+			
+			for(Answer a : results){
+				em.remove(a);	
+			}
+			em.flush();
+			
+			for(Answer ans : answers){
+				em.persist(ans);
+			}
+			em.getTransaction().commit();
+			em.close();
+
 		}
-		
-		
-		em.getTransaction().begin();
-		patient = em.merge(patient);
-		em.flush();
-		
-		visit.setPatient(patient);
-		visit = em.merge(visit);
-		em.flush();
-	
-		Query query1 = em.createQuery("select a from Answer a where a.visit.id=:id");
-		query1.setParameter("id", visit.getId());
-		List<Answer> results = query1.getResultList();
-		
-		for(Answer a : results){
-			em.remove(a);	
-		}
-		em.flush();
-		
-		for(Answer ans : answers){
-			em.persist(ans);
-		}
-		em.getTransaction().commit();
-		em.close();
-	
+			
 		return result;
 	}
 
 	
 	
-	public List<EditVisitData> searchVisit(Integer selection, String search){
+	public List<SearchResultData> searchVisit(Integer selection, String search){
 		
 		
 		factory = EMF.get();
 		EntityManager em = factory.createEntityManager();
 		
-		List<EditVisitData> editVisitDatas = new ArrayList<EditVisitData>();
-		EditVisitData editVisitData = new EditVisitData();
-		PatientUI patientUI = new PatientUI();
-		VisitUI visitUI = new VisitUI();
-		AnswerUI answerUI = new AnswerUI();
-		List<AnswerUI> answersUI = new ArrayList<AnswerUI>();
+		List<SearchResultData> searchResultDatas = new ArrayList<SearchResultData>();
+		SearchResultData searchResultData = new SearchResultData();
 		List<Patient> patients = new ArrayList<Patient>();
-		
+		List<Visit> visits = new ArrayList<Visit>();
 		
 		switch(selection){
 			case 0:
@@ -129,29 +130,14 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 				patients = query.getResultList();
 				
 				for(Patient patient : patients){
-					List<Visit> visits = patient.getVisits();
+					visits = patient.getVisits();
 					for(Visit visit : visits){
-						List<Answer> answers = visit.getAnswers();
-						try {
-							BeanUtils.copyProperties(patientUI, patient);
-							BeanUtils.copyProperties(visitUI, visit);
-							for(Answer answer : answers){
-								answerUI.setAnswer(answer.getAnswer());
-								answerUI.setQuestionCode(answer.getQuestion().getQuestionCode());
-								answersUI.add(answerUI);
-								editVisitData.setPatient(patientUI);
-								editVisitData.setVisit(visitUI);
-								editVisitData.setAnswers(answersUI);
-								editVisitDatas.add(editVisitData);
-							}
-						} catch (IllegalAccessException e) {
-							e.printStackTrace();
-						} catch (InvocationTargetException e) {
-							e.printStackTrace();
-						}
-						
-						
-						
+						searchResultData.setProtocolNo(patient.getProtocolNo());
+						searchResultData.setNamaSurname(patient.getNameSurname());
+						searchResultData.setHospital(visit.getHospital());
+						searchResultData.setDate(visit.getDate());
+						searchResultData.setAge(visit.getAge());
+						searchResultDatas.add(searchResultData);
 					}
 				}
 				break;
@@ -161,31 +147,14 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 				patients = query1.getResultList();
 				
 				for(Patient patient : patients){
-					List<Visit> visits = patient.getVisits();
+					visits = patient.getVisits();
 					for(Visit visit : visits){
-						List<Answer> answers = visit.getAnswers();
-						try {
-							BeanUtils.copyProperties(patientUI, patient);
-							BeanUtils.copyProperties(visitUI, visit);
-							editVisitData.setPatient(patientUI);
-							editVisitData.setVisit(visitUI);
-							editVisitData.setAnswers(answersUI);	//??????????????
-							for(Answer answer : answers){
-								answerUI.setAnswer(answer.getAnswer());
-								answerUI.setQuestionCode(answer.getQuestion().getQuestionCode());
-								answersUI.add(answerUI);
-								editVisitData.setAnswers(answersUI);
-							
-							}
-							editVisitDatas.add(editVisitData);
-						} catch (IllegalAccessException e) {
-							e.printStackTrace();
-						} catch (InvocationTargetException e) {
-							e.printStackTrace();
-						}
-						
-						
-						
+						searchResultData.setProtocolNo(patient.getProtocolNo());
+						searchResultData.setNamaSurname(patient.getNameSurname());
+						searchResultData.setHospital(visit.getHospital());
+						searchResultData.setDate(visit.getDate());
+						searchResultData.setAge(visit.getAge());
+						searchResultDatas.add(searchResultData);
 					}
 				}
 				break;
@@ -198,7 +167,7 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 		}
 		
 		
-		return editVisitDatas;
+		return searchResultDatas;
 	}
 
 

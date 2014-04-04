@@ -7,6 +7,7 @@ import com.genoma.mrpoll.client.PatientService;
 import com.genoma.mrpoll.client.PatientServiceAsync;
 import com.genoma.mrpoll.client.MrPoll.State;
 import com.genoma.mrpoll.uihelper.EditVisitData;
+import com.genoma.mrpoll.uihelper.SearchResultData;
 import com.genoma.mrpoll.uihelper.UserUI;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -50,15 +51,15 @@ public class SearchVisit extends Composite {
 	@UiHandler("search")
 	void onSearchClick(ClickEvent event) {
 		
-		service.searchVisit(select.getSelectedIndex(), searchtext.getText(), new AsyncCallback<List<EditVisitData>>() {
+		service.searchVisit(select.getSelectedIndex(), searchtext.getText(), new AsyncCallback<List<SearchResultData>>() {
 
 			@Override
-			public void onSuccess(List<EditVisitData> result) {
+			public void onSuccess(List<SearchResultData> result) {
 				panel.clear();
 				panel.setHeight((result.size())*(new SearchVisitResult(null).getOffsetHeight())+"");
 				
-				for (EditVisitData editVisitData : result){
-					SearchVisitResult searchVisitResult = new SearchVisitResult(editVisitData);
+				for (SearchResultData searchResultData : result){
+					SearchVisitResult searchVisitResult = new SearchVisitResult(searchResultData);
 					panel.add(searchVisitResult);
 				}
 				Window.alert("searchVisit onSucces!");

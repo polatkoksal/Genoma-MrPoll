@@ -7,7 +7,7 @@
 	<g:HTMLPanel>
 		<g:AbsolutePanel height="38px" width="729px">
 			<g:at left="10" top="10">
-				<g:Label text="protocolNo" wordWrap="false" ui:field="protocolno" width="106px" height="20px"/>
+				<g:Label wordWrap="false" ui:field="protocolno" width="106px" height="20px"/>
 			</g:at>
 			<g:at left="122" top="4">
 				<g:Button text="DÜZENLE" ui:field="edit"/>
