@@ -83,7 +83,14 @@ public class UserServiceImpl extends RemoteServiceServlet implements
 			em.persist(user);
 			em.getTransaction().commit();
 			em.close();
+			
+			try {
+				sendMail(user.getEmail(), user.getUsername(), decrypt(user.getPassword(), "a"));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
+
 		return result;
 
 	}
@@ -116,6 +123,7 @@ public class UserServiceImpl extends RemoteServiceServlet implements
 		em.remove(tempUser);
 		em.getTransaction().commit();
 		em.close();
+		
 		return true;
 	}
 
@@ -128,7 +136,6 @@ public class UserServiceImpl extends RemoteServiceServlet implements
 
 		try {
 			BeanUtils.copyProperties(user, userUi);
-			// UtilService.copyProperties(userUi, user);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -146,7 +153,8 @@ public class UserServiceImpl extends RemoteServiceServlet implements
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else {
+		}
+		else {
 			try {
 				user.setPassword(sessionUser.getPassword());
 			} catch (Exception e) {
@@ -157,8 +165,7 @@ public class UserServiceImpl extends RemoteServiceServlet implements
 		factory = EMF.get();
 		EntityManager em = factory.createEntityManager();
 		User tempUser = em.find(User.class, user.getId());
-		Query query = em
-				.createQuery("select u from User u where u.username=:userName");
+		Query query = em.createQuery("select u from User u where u.username=:userName");
 		query.setParameter("userName", user.getUsername());
 		List<User> users = query.getResultList();
 		if (!users.isEmpty()) {
@@ -180,9 +187,14 @@ public class UserServiceImpl extends RemoteServiceServlet implements
 			em.getTransaction().commit();
 			em.close();
 			session.setAttribute(sessionParam, tempUser);
+			try {
+				sendMail(user.getEmail(), user.getUsername(), decrypt(user.getPassword(), "a"));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 
 		}
-
+		
 		return result;
 	}
 
@@ -205,6 +217,28 @@ public class UserServiceImpl extends RemoteServiceServlet implements
 		return result;
 
 	}
+	
+	public Boolean resetPassword(String email){
+		
+		Boolean result = false;
+		factory = EMF.get();
+		EntityManager em = factory.createEntityManager();
+		Query query = em.createQuery("select u from User u where u.email=:email");
+		query.setParameter("email", email);
+		List<User> users = query.getResultList();
+
+		if (!users.isEmpty()) {
+			
+			UserUI userUI = new UserUI();
+			userUI.setPassword("mekamar");
+			HttpSession session = this.getThreadLocalRequest().getSession();
+			session.setAttribute("currentUser", users.get(0));
+			updateUser("currentUser", userUI);
+			result = true;
+		}
+	
+		return result;
+	}
 
 	public Boolean validateUser(String userName, String password) {
 
@@ -212,8 +246,7 @@ public class UserServiceImpl extends RemoteServiceServlet implements
 		String decryptPassword = null;
 		factory = EMF.get();
 		EntityManager em = factory.createEntityManager();
-		Query query = em
-				.createQuery("select u from User u where u.username=:userName");
+		Query query = em.createQuery("select u from User u where u.username=:userName");
 		query.setParameter("userName", userName);
 		List<User> users = query.getResultList();
 
@@ -273,14 +306,12 @@ public class UserServiceImpl extends RemoteServiceServlet implements
 
 	}
 
-	public List<UserUI> searchUser(String coulmn, String name) {
-		HttpSession session = this.getThreadLocalRequest().getSession();
-		session.setAttribute("currentSearch", name);
+	public List<UserUI> searchUser() {
+		
+		
 		factory = EMF.get();
 		EntityManager em = factory.createEntityManager();
-		Query query = em.createQuery("select u from User u where u." + coulmn
-				+ "=:name");
-		query.setParameter("name", name);
+		Query query = em.createQuery("select u from User u");
 		List<User> users = query.getResultList();
 		List<UserUI> usersUi = new ArrayList<UserUI>();
 
@@ -359,7 +390,7 @@ public class UserServiceImpl extends RemoteServiceServlet implements
 	}
 
 	@Override
-	public void sendMail(String receiver, String message) {
+	public void sendMail(String receiver, String userName, String password) {
 
 		Properties props = new Properties();
 
@@ -386,6 +417,7 @@ public class UserServiceImpl extends RemoteServiceServlet implements
 			msg.setRecipients(Message.RecipientType.TO,
 					InternetAddress.parse(receiver));
 			msg.setSubject("Test");
+			String message = "Kullanic Adi:"+userName+"  Sifre:"+password;
 			msg.setText(message);
 
 			Transport.send(msg);

@@ -1,0 +1,26 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+	
+	</ui:style>
+	<g:HTMLPanel>
+		<g:AbsolutePanel height="390px" width="620px">
+			<g:at left="28" top="22">
+				<g:ListBox ui:field="select"/>
+			</g:at>
+			<g:at left="253" top="24">
+				<g:TextBox width="211px" height="16px" ui:field="searchtext"/>
+			</g:at>
+			<g:at left="491" top="22">
+				<g:Button ui:field="search" text="ARA" width="44px" height="24px"/>
+			</g:at>
+			<g:at left="10" top="71">
+				<g:VerticalPanel width="598px" height="309px" ui:field="panel"/>
+			</g:at>
+			<g:at left="545" top="22">
+				<g:Button width="53px" height="24px" ui:field="cancel">İPTAL</g:Button>
+			</g:at>
+		</g:AbsolutePanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

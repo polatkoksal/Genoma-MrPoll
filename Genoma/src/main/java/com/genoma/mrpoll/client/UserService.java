@@ -17,11 +17,12 @@ public interface UserService extends RemoteService {
 	public Boolean addUser(UserUI userUi);
 	public Boolean deleteUser(UserUI userUi);	
 	public Boolean updateUser(String sessionParam, UserUI userUi);
-	public List<UserUI> searchUser(String coulmn,String name);
+	public List<UserUI> searchUser();
 	public Boolean isAdmin();
 	public void putSessionUser(String param, UserUI userUi);	
 	public String getSessionString();
-	public void sendMail(String receiver, String message);
+	public void sendMail(String receiver, String userName, String password);
 	public Boolean passwordCheck(String password, String sessionParam);
+	public Boolean resetPassword(String email);
 	
 }

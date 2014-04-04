@@ -1,6 +1,7 @@
 package com.genoma.mrpoll.domain;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
 
 
@@ -23,12 +24,12 @@ public class Answer implements Serializable {
 	private String answer;
 
 	//bi-directional many-to-one association to Question
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="belongs_question_id")
 	private Question question;
 
 	//bi-directional many-to-one association to Visit
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="answered_visit_id")
 	private Visit visit;
 

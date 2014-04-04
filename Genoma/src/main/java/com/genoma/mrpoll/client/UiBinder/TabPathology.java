@@ -92,22 +92,22 @@ public class TabPathology extends Composite implements Updater {
 	@Override
 	public List<AnswerUI> getAnswersFromUi() {
 		List<AnswerUI> result= new ArrayList<AnswerUI>();
-		result.add(returnAnswerOf(500, r_nolesion));
-		result.add(returnAnswerOf(501, r_hpdiag));
-		result.add(returnAnswerOf(502, r_stage));
-		result.add(returnAnswerOf(503, r_er));
-		result.add(returnAnswerOf(504, r_pgr));
-		result.add(returnAnswerOf(505, r_her2));
-		result.add(returnAnswerOf(506, r_lymphnode));
-		result.add(returnAnswerOf(507, r_metastasis));
-		result.add(returnAnswerOf(510, l_nolesion));
-		result.add(returnAnswerOf(511, l_hpdiag));
-		result.add(returnAnswerOf(512, l_stage));
-		result.add(returnAnswerOf(513, l_er));
-		result.add(returnAnswerOf(514, l_pgr));
-		result.add(returnAnswerOf(515, l_her2));
-		result.add(returnAnswerOf(516, l_lymphnode));
-		result.add(returnAnswerOf(517, l_metastasis));
+//		result.add(returnAnswerOf(500, r_nolesion));
+//		result.add(returnAnswerOf(501, r_hpdiag));
+//		result.add(returnAnswerOf(502, r_stage));
+//		result.add(returnAnswerOf(503, r_er));
+//		result.add(returnAnswerOf(504, r_pgr));
+//		result.add(returnAnswerOf(505, r_her2));
+//		result.add(returnAnswerOf(506, r_lymphnode));
+//		result.add(returnAnswerOf(507, r_metastasis));
+//		result.add(returnAnswerOf(510, l_nolesion));
+//		result.add(returnAnswerOf(511, l_hpdiag));
+//		result.add(returnAnswerOf(512, l_stage));
+//		result.add(returnAnswerOf(513, l_er));
+//		result.add(returnAnswerOf(514, l_pgr));
+//		result.add(returnAnswerOf(515, l_her2));
+//		result.add(returnAnswerOf(516, l_lymphnode));
+//		result.add(returnAnswerOf(517, l_metastasis));
 		return result;
 	}
 	@UiHandler("r_nolesion")

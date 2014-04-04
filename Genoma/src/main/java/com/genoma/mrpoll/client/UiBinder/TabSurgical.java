@@ -64,12 +64,12 @@ public class TabSurgical extends Composite implements Updater {
 	@Override
 	public List<AnswerUI> getAnswersFromUi() {
 		List <AnswerUI> result = new ArrayList<AnswerUI>();
-		result.add(returnAnswerOf(71, r_mrc));
-		result.add(returnAnswerOf(72, r_op));
-		result.add(returnAnswerOf(73, l_mrc));
-		result.add(returnAnswerOf(74, l_op));
-		result.add(returnAnswerOf(75, reop));
-		result.add(returnAnswerOf(76, ref));
+//		result.add(returnAnswerOf(71, r_mrc));
+//		result.add(returnAnswerOf(72, r_op));
+//		result.add(returnAnswerOf(73, l_mrc));
+//		result.add(returnAnswerOf(74, l_op));
+//		result.add(returnAnswerOf(75, reop));
+//		result.add(returnAnswerOf(76, ref));
 		return result;
 	}
 

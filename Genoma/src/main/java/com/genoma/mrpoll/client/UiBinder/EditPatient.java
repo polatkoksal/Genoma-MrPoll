@@ -29,10 +29,9 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class EditPatient extends Composite {
 	
-	EditVisitData container = null;
+	EditVisitData editVisitData = null;
 	
-	private static GeneralInfoUiBinder uiBinder = GWT
-			.create(GeneralInfoUiBinder.class);
+	private static GeneralInfoUiBinder uiBinder = GWT.create(GeneralInfoUiBinder.class);
 
 	PatientServiceAsync service = GWT.create(PatientService.class);
 
@@ -69,8 +68,8 @@ public class EditPatient extends Composite {
 
 	public EditPatient(EditVisitData result) {
 		initWidget(uiBinder.createAndBindUi(this));
-		container = result;
-		patientid.setText(result.getPatient().getProtocolNo());
+		editVisitData = result;
+		//patientid.setText(result.getPatient().getProtocolNo());   ???????????????
 		tabPatientInfo = new TabPatientInfo(result.getPatient());
 		tabVisitInfo = new TabVisitInfo(result.getVisit());
 		tabClinic = new TabClinic(result.getAnswers());
@@ -186,9 +185,9 @@ public class EditPatient extends Composite {
 	@UiHandler("save")
 	void onSaveClick(ClickEvent event) {
 		
-		setContainer();
+		setEditVisitData();
 		
-		service.saveEditVisitData(container, new AsyncCallback<Boolean>() {
+		service.saveEditVisitData(editVisitData, new AsyncCallback<Boolean>() {
 
 			@Override
 			public void onSuccess(Boolean result) {
@@ -212,10 +211,11 @@ public class EditPatient extends Composite {
 
 	}
 	
-	public void setContainer(){
-		PatientUI patientUI = container.getPatient();
-		VisitUI visitUI = container.getVisit();
-		List<AnswerUI> answersUI = container.getAnswers();
+	public void setEditVisitData(){
+		
+		PatientUI patientUI = editVisitData.getPatient();
+		VisitUI visitUI = editVisitData.getVisit();
+		List<AnswerUI> answersUI = editVisitData.getAnswers();
 		
 		patientUI.setProtocolNo(tabPatientInfo.protocolno.getText());
 		patientUI.setNameSurname(tabPatientInfo.name.getText());
@@ -231,9 +231,9 @@ public class EditPatient extends Composite {
 		
 		answersUI.addAll(tabClinic.getAnswersFromUi());
 		
-		container.setPatient(patientUI);
-		container.setVisit(visitUI);
-		container.setAnswers(answersUI);
+		editVisitData.setPatient(patientUI);
+		editVisitData.setVisit(visitUI);
+		editVisitData.setAnswers(answersUI);
 		
 	}
 

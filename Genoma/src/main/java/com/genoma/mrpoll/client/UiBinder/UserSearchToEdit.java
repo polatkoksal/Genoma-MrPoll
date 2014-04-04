@@ -29,9 +29,7 @@ public class UserSearchToEdit extends Composite {
 	private static SearchUserToEditUiBinder uiBinder = GWT
 			.create(SearchUserToEditUiBinder.class);
 	
-	@UiField Button search;
 	@UiField VerticalPanel resultpanel;
-	@UiField TextBox searchbox;
 	@UiField Button cancel;
 
 	interface SearchUserToEditUiBinder extends UiBinder<Widget, UserSearchToEdit> {
@@ -40,30 +38,13 @@ public class UserSearchToEdit extends Composite {
 	
 	public UserSearchToEdit(State s){
 		initWidget(uiBinder.createAndBindUi(this));
-		if (s==State.USER_SEARCH_BACK){
-			service.getSessionString(new AsyncCallback<String>() {
-	
-				@Override
-				public void onSuccess(String result) {
-					searchbox.setText(result);
-					onSearchClick(null);
-					
-				}
-				
-				@Override
-				public void onFailure(Throwable caught) {
-					
-					
-				}
-	
-			});
-		}
+		getUsers();
 	}
 	
-	@UiHandler("search")
-	void onSearchClick(ClickEvent event) {
+	
+	public void getUsers(){
 		
-		service.searchUser("name", searchbox.getText(), new AsyncCallback<List<UserUI>>() {
+		service.searchUser(new AsyncCallback<List<UserUI>>() {
 			
 			@Override
 			public void onSuccess(List<UserUI> result) {
@@ -85,14 +66,6 @@ public class UserSearchToEdit extends Composite {
 		});
 		
 		
-	}
-	
-
-	@UiHandler("searchbox")
-	void onSearchboxKeyDown(KeyDownEvent event) {
-		if(event.getNativeKeyCode()==KeyCodes.KEY_ENTER){
-			onSearchClick(null);
-		}
 	}
 	@UiHandler("cancel")
 	void onCancelClick(ClickEvent event) {

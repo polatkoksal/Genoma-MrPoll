@@ -34,7 +34,6 @@ public class UserNew extends Composite{
 
 	
 	@UiField TextBox username;
-	@UiField PasswordTextBox password;
 	@UiField TextBox name;
 	@UiField TextBox surname;
 	@UiField TextBox hospital;
@@ -42,64 +41,67 @@ public class UserNew extends Composite{
 	@UiField TextBox email;
 	@UiField Button save;
 	@UiField Button cancel;
-	@UiField PasswordTextBox passwordrepeat;
+	
 
 	
 	@UiHandler("save")
 	void onSaveClick(ClickEvent event) {
 		
+		setButtonEnable(false);
 		UserUI newUser = new UserUI();
 		newUser.setUsername(username.getText());
-		newUser.setPassword(password.getText());
+		newUser.setPassword("mekamar");
 		newUser.setName(name.getText());
 		newUser.setSurname(surname.getText());
 		newUser.setPhone(phone.getText());
 		newUser.setEmail(email.getText());
 		newUser.setHospital(hospital.getText());
 		
-		if(newUser.getPassword().equals(passwordrepeat.getText())){
-			service.addUser(newUser, new AsyncCallback<Boolean>() {
+		service.addUser(newUser, new AsyncCallback<Boolean>() {
 
-				@Override
-				public void onSuccess(Boolean result) {
-					if(result){
-						Window.alert("Kullanıcı Eklendi!");
+			@Override
+			public void onSuccess(Boolean result) {
+				if(result){
+					Window.alert("Kullanıcı Eklendi!");
+					
+					/*String message = "Kullanic Adi:"+username.getText()+"  Sifre:"+password.getText();
+					service.sendMail(email.getText(), message, new AsyncCallback<Void>() {
+						@Override
+						public void onSuccess(Void result) {
+							Window.alert("mail sent");
+						}
+						@Override
+						public void onFailure(Throwable caught) {
+							Window.alert("send mail fails!!!");
+						}
+
 						
-						/*String message = "Kullanic Adi:"+username.getText()+"  Sifre:"+password.getText();
-						service.sendMail(email.getText(), message, new AsyncCallback<Void>() {
-							@Override
-							public void onSuccess(Void result) {
-								Window.alert("mail sent");
-							}
-							@Override
-							public void onFailure(Throwable caught) {
-								Window.alert("send mail fails!!!");
-							}
-
-							
-						});*/
-						MrPoll.repaint(State.MAIN_MENU);
-					}
-					else{
-						Window.alert("Bu Kullanıcı Adı Daha Önce Oluşturuldu!");
-					}
+					});*/
+					MrPoll.repaint(State.MAIN_MENU);
 				}
-				
-				@Override
-				public void onFailure(Throwable caught) {
-					Window.alert("Hata!!!");
+				else{
+					Window.alert("Bu Kullanıcı Adı Daha Önce Oluşturuldu!");
+					setButtonEnable(true);
 				}
-			});
-		}
-		else{
-			Window.alert("Şifreleriniz Uyuşmuyor");
-		}
-		
-		
+			}
+			
+			@Override
+			public void onFailure(Throwable caught) {
+				Window.alert("Hata!!!");
+				setButtonEnable(true);
+			}
+		});
 		
 	}
+	
+	
 	@UiHandler("cancel")
 	void onCancelClick(ClickEvent event) {
 		MrPoll.repaint(State.MAIN_MENU);
+	}
+	
+	public void setButtonEnable(Boolean b){
+		save.setEnabled(b);
+		cancel.setEnabled(b);
 	}
 }

@@ -13,27 +13,39 @@
 	}
 	</ui:style>
 	<g:HTMLPanel>
-		<g:AbsolutePanel height="200px" width="762px">
-			<g:at left="394" top="167">
-				<g:Button styleName="{style.important}" ui:field="button" text="Giriş" />
+		<g:AbsolutePanel height="277px" width="762px">
+			<g:at left="339" top="148">
+				<g:Button styleName="{style.important}" ui:field="login" text="Giriş" width="43px" height="24px" />
 			</g:at>
-			<g:at left="339" top="31">
+			<g:at left="358" top="31">
 				<g:Label text="Kullanıcı Girişi" styleName="{style.important}" width="151px" height="17px" wordWrap="false"/>
 			</g:at>
 			<g:at left="339" top="64">
-				<g:TextBox ui:field="username"/>
+				<g:TextBox ui:field="username" width="200px" height="16px"/>
 			</g:at>
 			<g:at left="339" top="103">
-				<g:PasswordTextBox ui:field="password"/>
+				<g:PasswordTextBox ui:field="password" width="200px" height="16px"/>
 			</g:at>
-			<g:at left="339" top="140">
-				<g:CheckBox text="Beni Hatırla"/>
-			</g:at>
-			<g:at left="223" top="70">
+			<g:at left="238" top="66">
 				<g:Label text="Kullanıcı Adı:"/>
 			</g:at>
-			<g:at left="273" top="109">
+			<g:at left="288" top="105">
 				<g:Label text="Şifre:"/>
+			</g:at>
+			<g:at left="391" top="148">
+				<g:Button styleName="{style.important}" ui:field="forgetpassword" width="152px" height="24px">Şifremi Unuttum</g:Button>
+			</g:at>
+			<g:at left="339" top="194">
+				<g:TextBox width="200px" height="16px" ui:field="email"/>
+			</g:at>
+			<g:at left="339" top="231">
+				<g:Button width="153px" height="21px" styleName="{style.important}" ui:field="sendpassword">Yeni Şifre Gönder</g:Button>
+			</g:at>
+			<g:at left="277" top="196">
+				<g:Label text="E-mail:" ui:field="emaillabel"/>
+			</g:at>
+			<g:at left="498" top="229">
+				<g:Button styleName="{style.important}" ui:field="cancel">İptal</g:Button>
 			</g:at>
 		</g:AbsolutePanel>
 	</g:HTMLPanel>

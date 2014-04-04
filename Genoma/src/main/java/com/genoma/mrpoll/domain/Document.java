@@ -1,7 +1,9 @@
 package com.genoma.mrpoll.domain;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.Date;
 
 
@@ -30,12 +32,12 @@ public class Document implements Serializable {
 	private String name;
 
 	//bi-directional many-to-one association to User
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="creates_user_id")
 	private User user;
 
 	//bi-directional many-to-one association to Visit
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="attached_visit_id")
 	private Visit visit;
 

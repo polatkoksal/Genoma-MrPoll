@@ -37,12 +37,6 @@ public class VisitUI implements Serializable{
 
 	private String note;
 
-	private ArrayList<AnswerUI> answers;
-
-	private ArrayList<DocumentUI> documents;
-
-	private PatientUI patient;
-
 	public VisitUI() {
 	}
 
@@ -84,31 +78,6 @@ public class VisitUI implements Serializable{
 
 	public void setNote(String note) {
 		this.note = note;
-	}
-
-	public List<AnswerUI> getAnswers() {
-		return this.answers;
-	}
-
-	public void setAnswers(ArrayList<AnswerUI> answers) {
-		this.answers = answers;
-	}
-
-	public List<DocumentUI> getDocuments() {
-		return this.documents;
-	}
-
-	public void setDocuments(ArrayList<DocumentUI> documents) {
-		this.documents = documents;
-	}
-
-
-	public PatientUI getPatient() {
-		return this.patient;
-	}
-
-	public void setPatient(PatientUI patient) {
-		this.patient = patient;
 	}
 
 	

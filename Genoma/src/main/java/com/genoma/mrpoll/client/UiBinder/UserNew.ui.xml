@@ -11,59 +11,47 @@
 			<g:at left="129" top="37">
 				<g:Label text="Kullanıcı Bilgileri" styleName="{style.important}"/>
 			</g:at>
-			<g:at left="43" top="97">
+			<g:at left="79" top="96">
 				<g:Label text="Kullanıcı Adı:"/>
 			</g:at>
-			<g:at left="93" top="133">
-				<g:Label text="Şifre:"/>
-			</g:at>
-			<g:at left="56" top="165">
-				<g:Label text="Şifre Tekrar:"/>
-			</g:at>
-			<g:at left="99" top="207">
+			<g:at left="132" top="129">
 				<g:Label text="Adı:"/>
 			</g:at>
-			<g:at left="79" top="247">
+			<g:at left="115" top="161">
 				<g:Label text="Soyadı:"/>
 			</g:at>
-			<g:at left="56" top="290">
+			<g:at left="82" top="193">
 				<g:Label text="Hastane Adı:"/>
 			</g:at>
-			<g:at left="76" top="335">
+			<g:at left="112" top="225">
 				<g:Label text="Telefon:"/>
 			</g:at>
-			<g:at left="79" top="378">
+			<g:at left="118" top="257">
 				<g:Label text="E-mail:"/>
 			</g:at>
 			<g:at left="170" top="91">
 				<g:TextBox ui:field="username"/>
 			</g:at>
-			<g:at left="170" top="127">
-				<g:PasswordTextBox ui:field="password"/>
-			</g:at>
-			<g:at left="170" top="159">
-				<g:PasswordTextBox ui:field="passwordrepeat"/>
-			</g:at>
-			<g:at left="170" top="201">
+			<g:at left="170" top="123">
 				<g:TextBox ui:field="name"/>
 			</g:at>
-			<g:at left="170" top="241">
+			<g:at left="170" top="155">
 				<g:TextBox ui:field="surname"/>
 			</g:at>
-			<g:at left="170" top="290">
+			<g:at left="170" top="187">
 				<g:TextBox ui:field="hospital"/>
 			</g:at>
-			<g:at left="170" top="329">
+			<g:at left="170" top="219">
 				<g:TextBox ui:field="phone"/>
 			</g:at>
-			<g:at left="170" top="372">
+			<g:at left="170" top="251">
 				<g:TextBox ui:field="email"/>
 			</g:at>
-			<g:at left="170" top="411">
-				<g:Button styleName="{style.important}" ui:field="save" width="58px" height="26px">Kaydet</g:Button>
+			<g:at left="170" top="283">
+				<g:Button styleName="{style.important}" ui:field="save" width="75px" height="26px">Kaydet</g:Button>
 			</g:at>
-			<g:at left="252" top="411">
-				<g:Button ui:field="cancel" text="İptal" styleName="{style.important}" width="57px" height="26px"/>
+			<g:at left="251" top="283">
+				<g:Button ui:field="cancel" text="İptal" styleName="{style.important}" width="70px" height="26px"/>
 			</g:at>
 		</g:AbsolutePanel>
 		

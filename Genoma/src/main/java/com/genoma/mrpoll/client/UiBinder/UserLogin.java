@@ -17,6 +17,7 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.event.dom.client.KeyDownEvent;
+import com.google.gwt.user.client.ui.Label;
 
 public class UserLogin extends Composite {
 	
@@ -29,11 +30,17 @@ public class UserLogin extends Composite {
 
 	public UserLogin() {
 		initWidget(uiBinder.createAndBindUi(this));
+		setVisibility(false);
 	}
 
-	@UiField Button button;
+	@UiField Button login;
 	@UiField TextBox username;
 	@UiField TextBox password;
+	@UiField Button forgetpassword;
+	@UiField Label emaillabel;
+	@UiField TextBox email;
+	@UiField Button sendpassword;
+	@UiField Button cancel;
 	
 	public TextBox getUsername() {
 		return username;
@@ -55,12 +62,14 @@ public class UserLogin extends Composite {
 
 	public UserLogin(String firstName) {
 		initWidget(uiBinder.createAndBindUi(this));
-		button.setText(firstName);
+		login.setText(firstName);
 	}
 
-	@UiHandler("button")
+	@UiHandler("login")
 	void onClick(ClickEvent e) 
 	{	
+		setButtonEnable(false);
+		
 		service.validateUser(username.getText(), password.getText(), new AsyncCallback<Boolean>() {
 			
 			@Override
@@ -71,12 +80,14 @@ public class UserLogin extends Composite {
 				}
 				else{
 					Window.alert("Kullanıcı adı veya şifre hatalı!");
+					setButtonEnable(true);
 				}
 			}
 			
 			@Override
 			public void onFailure(Throwable caught) {
 				Window.alert("RPC denemesi başarısız oldu.");
+				setButtonEnable(true);
 			}
 		});
 
@@ -88,5 +99,60 @@ public class UserLogin extends Composite {
 		if(event.getNativeKeyCode()==KeyCodes.KEY_ENTER){
 			onClick(null);
 		}
+	}
+	
+	@UiHandler("sendpassword")
+	void onSendpasswordClick(ClickEvent event) {
+		
+		setButtonEnable(false);
+		service.resetPassword(email.getText(), new AsyncCallback<Boolean>() {
+
+			@Override
+			public void onSuccess(Boolean result) {
+				if(result){
+					Window.alert("şifreniz gönderildi");
+					setVisibility(false);
+					setButtonEnable(true);
+				}
+				else{
+					Window.alert("eşleşen email adresi bulunamadı");
+					setButtonEnable(true);
+				}
+			}
+			
+			@Override
+			public void onFailure(Throwable arg0) {
+				Window.alert("send mail fail in userLogin");
+				setButtonEnable(true);
+			}
+
+		
+		});
+	}
+	
+	
+	@UiHandler("forgetpassword")
+	void onForgetpasswordClick(ClickEvent event) {
+		setVisibility(true);	
+	}
+	
+	
+	@UiHandler("cancel")
+	void onCancelClick(ClickEvent event) {
+		setVisibility(false);
+	}
+	
+	public void setVisibility(Boolean b){
+		emaillabel.setVisible(b);
+		email.setVisible(b);
+		sendpassword.setVisible(b);
+		cancel.setVisible(b);
+	}
+	
+	public void setButtonEnable(Boolean b){
+		login.setEnabled(b);
+		forgetpassword.setEnabled(b);
+		sendpassword.setEnabled(b);
+		cancel.setEnabled(b);
 	}
 }

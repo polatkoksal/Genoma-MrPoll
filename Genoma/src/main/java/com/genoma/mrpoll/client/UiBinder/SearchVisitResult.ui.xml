@@ -1,0 +1,20 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+	
+	</ui:style>
+	<g:HTMLPanel>
+		<g:AbsolutePanel height="38px" width="729px">
+			<g:at left="10" top="10">
+				<g:Label text="protocolNo" wordWrap="false" ui:field="protocolno" width="106px" height="20px"/>
+			</g:at>
+			<g:at left="122" top="4">
+				<g:Button text="DÜZENLE" ui:field="edit"/>
+			</g:at>
+			<g:at left="211" top="4">
+				<g:Button ui:field="delete">SİL</g:Button>
+			</g:at>
+		</g:AbsolutePanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

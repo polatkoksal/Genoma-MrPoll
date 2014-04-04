@@ -1,6 +1,6 @@
 package com.genoma.mrpoll.client.UiBinder;
 
-import static com.genoma.mrpoll.client.MrPoll.returnAnswerOf;
+import static com.genoma.mrpoll.client.MrPoll.*;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -39,67 +39,30 @@ public class TabClinic extends Composite implements Updater {
 		initWidget(uiBinder.createAndBindUi(this));
 		menopause_combo.addItem("Premenapoz");
 		menopause_combo.addItem("Postmenapoz");
-		updateUI(answers);
-		
-//		Map<String, Object> fields = new HashMap<String, Object>();
-//		
-//		fields.put("0301", menopause_combo);
-//		fields.put("0302", whining);
-//		fields.put("0303", physicalfinding);
-//		fields.put("0304", riskfactor);
-		
+		updateUI(answers);		
 	}
 
 	
-//	void saveButton()
-//	{
-//		Set keys = fields.keySet();
-//		for (Iterator iterator = keys.iterator(); iterator.hasNext();) {
-//			String questionCode = (String) iterator.next();
-//			Object uiField = fields.get(questionCode);
-//			String value = null;
-//			if (uiField instanceof CheckBox) {
-//				// your code
-//				value = ((CheckBox) uiField).getValue().toString();
-//			}
-//			if (uiField instanceof ListBox) {
-//				// your code
-//				value = ((ListBox) uiField).getValue(((ListBox) uiField)
-//						.getSelectedIndex());
-//			}
-//			Answer answer = new Answer();
-//			Question q = null; // questionCode a sahip soruyu al. Ornek 0201.
-//			answer.setBelongsQuestionId(belongsQuestionId);
-//			answer.setVisit;
-//			answer.setValue(value);
-//			em.persist;
-//  
-//	}
-	
 
 	public void updateUI(List<AnswerUI> answers) {
-		/*for(AnswerUI answer : answers){
-			switch (answer.getBelongsQuestionId()){
-				case 21:	menopause_combo.setSelectedIndex(Integer.parseInt(answer.getAnswer()));		break;
-				case 22:	whining.setValue(Boolean.parseBoolean(answer.getAnswer()));					break;
-				case 23:	riskfactor.setValue(Boolean.parseBoolean(answer.getAnswer()));				break;
-				case 24:	physicalfinding.setValue(Boolean.parseBoolean(answer.getAnswer()));			break;
+		for(AnswerUI answer : answers){
+			for(Widget w: panel){
+				if(w instanceof HasName && ((HasName) w).getName().equals(answer.getQuestionCode())){
+					setAnswerOf((HasName)w, answer.getAnswer());
+				}
 			}
-		}*/
-		
+		}
 	}
 	
 	
 	@Override
 	public List<AnswerUI> getAnswersFromUi() {
 		List<AnswerUI> result = new LinkedList<AnswerUI>();
-		result.add(returnAnswerOf(21, menopause_combo));
-		result.add(returnAnswerOf(22, whining));
-		result.add(returnAnswerOf(23, riskfactor));
-		result.add(returnAnswerOf(24, physicalfinding));
-//		for(Widget w: panel){
-//			result.add(returnAnswerOf(0, (HasName)w));
-//		}
+		for(Widget w: panel){
+			if(w instanceof HasName){
+				result.add(returnAnswerOf((HasName)w));
+			}
+		}
 		return result;
 	}
 

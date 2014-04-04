@@ -43,15 +43,8 @@ public class UserToUpdate extends Composite{
 	@UiField TextBox email;
 	@UiField Button save;
 	@UiField Button cancel;
+	@UiField Button resetpassword;
 	
-	
-
-	
-	
-	/*public UserToUpdate(UserUI userUi) {
-		initWidget(uiBinder.createAndBindUi(this));
-		this.userUi=userUi;
-	}*/
 
 	public void getUserFromSession(){
 		
@@ -79,6 +72,7 @@ public class UserToUpdate extends Composite{
 	@UiHandler("save")
 	void onSaveClick(ClickEvent event) {
 		
+		setButtonEnable(false);
 		userUi.setUsername(username.getText());
 		userUi.setName(name.getText());
 		userUi.setSurname(surname.getText());
@@ -93,16 +87,18 @@ public class UserToUpdate extends Composite{
 			public void onSuccess(Boolean result) {
 				if(result){
 					Window.alert("Kullanıcı Güncellendi!");
-					MrPoll.repaint(State.USER_SEARCH_BACK);
+					MrPoll.repaint(State.USER_SEARCH);
 				}
 				else{
 					Window.alert("Bu Kullanıcı Adı Daha Önce Oluşturuldu!");
+					setButtonEnable(true);
 				}
 			}
 			
 			@Override
 			public void onFailure(Throwable caught) {
 				Window.alert("Hata!!!");
+				setButtonEnable(true);
 			}
 		});		
 
@@ -110,18 +106,19 @@ public class UserToUpdate extends Composite{
 	
 	@UiHandler("cancel")
 	void onCancelClick(ClickEvent event) {
-		MrPoll.repaint(State.USER_SEARCH_BACK);
+		MrPoll.repaint(State.USER_SEARCH);
 	}
 	
 	@UiHandler("resetpassword")
 	void onChangepasswordClick(ClickEvent event) {
 		
+		setButtonEnable(false);
 		Boolean b = Window.confirm("Kullanıcı Şifresini Sıfırlamak İstediğinizden Emin misiniz???");
 		if(b){
-			UserUI user = new UserUI();
-			user.setPassword("a");
+			UserUI userUI = new UserUI();
+			userUI.setPassword("mekamar");
 			
-			service.updateUser("currentUser", user, new AsyncCallback<Boolean>() {
+			service.updateUser("currentUser", userUI, new AsyncCallback<Boolean>() {
 	
 				@Override
 				public void onSuccess(Boolean result) {
@@ -131,15 +128,24 @@ public class UserToUpdate extends Composite{
 					}
 					else{
 						Window.alert("şifre sıfırlanamadı!!!");
+						setButtonEnable(true);
 					}
 				}
 				
 				@Override
 				public void onFailure(Throwable caught) {
 					Window.alert("change password hata!");
+					setButtonEnable(true);
 				}
 	
 			});
 		}
+		setButtonEnable(true);
+	}
+	
+	public void setButtonEnable(Boolean b){
+		save.setEnabled(b);
+		cancel.setEnabled(b);
+		resetpassword.setEnabled(b);
 	}
 }

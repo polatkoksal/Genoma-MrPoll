@@ -41,7 +41,7 @@ public class Visit implements Serializable {
 	private List<Document> documents;
 
 	//bi-directional many-to-one association to Patient
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="done_patient_id")
 	private Patient patient;
 

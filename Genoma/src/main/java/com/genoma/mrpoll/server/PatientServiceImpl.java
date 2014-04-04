@@ -15,6 +15,7 @@ import com.genoma.mrpoll.client.EMF;
 import com.genoma.mrpoll.client.PatientService;
 import com.genoma.mrpoll.domain.Answer;
 import com.genoma.mrpoll.domain.Patient;
+import com.genoma.mrpoll.domain.Question;
 import com.genoma.mrpoll.domain.User;
 import com.genoma.mrpoll.domain.Visit;
 import com.genoma.mrpoll.uihelper.AnswerUI;
@@ -32,92 +33,42 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 	
 	
 	@Override
-	public EditVisitData getEditVisitData(String protocolNo) {
+	public Boolean saveEditVisitData(EditVisitData editVisitData) {
 		
-		EditVisitData result = new EditVisitData();
-		
+		Boolean result = true;
 		factory = EMF.get();
 		EntityManager em = factory.createEntityManager();
 		Query query = em.createQuery("select p from Patient p where p.protocolNo=:protocolNo");
-		query.setParameter("protocolNo", protocolNo);
+		query.setParameter("protocolNo", editVisitData.getPatient().getProtocolNo());
 		List<Patient> patients = query.getResultList();
+		
+		if(!patients.isEmpty()){
+
+		}
 		
 		HttpSession session= this.getThreadLocalRequest().getSession();
 		User user = (User) session.getAttribute("loginUser");
-		UserUI userUI = new UserUI();
-		
-		try {
-			BeanUtils.copyProperties(userUI, user);
-		} catch (IllegalAccessException e1) {
-			e1.printStackTrace();
-		} catch (InvocationTargetException e1) {
-			e1.printStackTrace();
-		}
-		
-		if(patients.isEmpty()){
-			PatientUI patientUI = new PatientUI();
-			VisitUI visitUI = new VisitUI();
-			List<AnswerUI> answers = new ArrayList<AnswerUI>();
-			
-			patientUI.setProtocolNo(protocolNo);
-			result.setPatient(patientUI);
-			
-			visitUI.setHospital(user.getHospital());
-			result.setVisit(visitUI);
-			result.setAnswers(answers);
-			
-			return result;
-		}
-		
-		Query query1 = em.createQuery("select v from Visit v where v.patient.id = :patientId order by v.date desc, v.id desc");
-		query1.setParameter("patientId", patients.get(0).getId());
-		List<Visit> visits = query1.getResultList();
-		
-		Query query2 = em.createQuery("select a from Answer a where a.visit.id =:visitId");
-		query2.setParameter("visitId", visits.get(0).getId());
-		List<Answer> answers = query2.getResultList();
-		
-		try {
-			PatientUI patientUI = new PatientUI();
-			VisitUI visitUI = new VisitUI();
-			AnswerUI answerUI = new AnswerUI();
-			List<AnswerUI> answersUI = new ArrayList<AnswerUI>();
-			
-			BeanUtils.copyProperties(patientUI, patients.get(0));
-			BeanUtils.copyProperties(visitUI, visits.get(0));
-			for(Answer answer : answers){
-				BeanUtils.copyProperties(answerUI, answer);
-				answersUI.add(answerUI);
-			}
-				
-			result.setPatient(patientUI);
-			result.setVisit(visitUI);
-			result.setAnswers(answersUI);
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			e.printStackTrace();
-		}
-
-		return result;
-	}
-	
-	
-	@Override
-	public Boolean saveEditVisitData(EditVisitData container) {
-		
-		Boolean result = true;
-		
+		Query query2 = em.createQuery("select u from User u where u.id=:id");
+		query2.setParameter("id", user.getId());
+		List<User> users = query2.getResultList();
+		System.out.println("id:"+user.getId());
 		Patient patient = new Patient();
 		Visit visit = new Visit();
 		Answer answer = new Answer();
 		List<Answer> answers = new ArrayList<Answer>();
 		
 		try {
-			BeanUtils.copyProperties(patient, container.getPatient());
-			BeanUtils.copyProperties(visit, container.getVisit());
-			for(AnswerUI answerUI : container.getAnswers()){
-				BeanUtils.copyProperties(answer, answerUI);
+			BeanUtils.copyProperties(patient, editVisitData.getPatient());
+			BeanUtils.copyProperties(visit, editVisitData.getVisit());
+			patient.setUser(users.get(0));
+			visit.setPatient(patient);
+			for(AnswerUI answerUI : editVisitData.getAnswers()){
+				answer.setAnswer(answerUI.getAnswer());
+				Query query1 = em.createQuery("select q from Question q where q.questionCode=:questionCode");
+				query1.setParameter("questionCode", answerUI.getQuestionCode());
+				List<Question> questions = query1.getResultList();
+				//answer.setQuestion(questions.get(0));
+				answer.setVisit(visit);
 				answers.add(answer);
 			}
 			
@@ -126,18 +77,7 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 		} catch (InvocationTargetException e) {
 			e.printStackTrace();
 		}
-		factory = EMF.get();
-		EntityManager em = factory.createEntityManager();
-		Query query = em.createQuery("select p from Patient p where p.protocolNo=:protocolNo");
-		query.setParameter("protocolNo", patient.getProtocolNo());
-		List<Patient> patients = query.getResultList();
 		
-		if(!patients.isEmpty()){
-			if(!patients.get(0).getId().equals(patient.getId())){
-				result = false;
-				return result;
-			}
-		}
 		
 		em.getTransaction().begin();
 		patient = em.merge(patient);
@@ -157,7 +97,6 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 		em.flush();
 		
 		for(Answer ans : answers){
-			//ans.setVisit(visit);
 			em.persist(ans);
 		}
 		em.getTransaction().commit();
@@ -166,6 +105,210 @@ public class PatientServiceImpl extends RemoteServiceServlet implements PatientS
 		return result;
 	}
 
+	
+	
+	public List<EditVisitData> searchVisit(Integer selection, String search){
+		
+		
+		factory = EMF.get();
+		EntityManager em = factory.createEntityManager();
+		
+		List<EditVisitData> editVisitDatas = new ArrayList<EditVisitData>();
+		EditVisitData editVisitData = new EditVisitData();
+		PatientUI patientUI = new PatientUI();
+		VisitUI visitUI = new VisitUI();
+		AnswerUI answerUI = new AnswerUI();
+		List<AnswerUI> answersUI = new ArrayList<AnswerUI>();
+		List<Patient> patients = new ArrayList<Patient>();
+		
+		
+		switch(selection){
+			case 0:
+				Query query = em.createQuery("select p from Patient p where p.nameSurname like :search");
+				query.setParameter("search", search+"%");
+				patients = query.getResultList();
+				
+				for(Patient patient : patients){
+					List<Visit> visits = patient.getVisits();
+					for(Visit visit : visits){
+						List<Answer> answers = visit.getAnswers();
+						try {
+							BeanUtils.copyProperties(patientUI, patient);
+							BeanUtils.copyProperties(visitUI, visit);
+							for(Answer answer : answers){
+								answerUI.setAnswer(answer.getAnswer());
+								answerUI.setQuestionCode(answer.getQuestion().getQuestionCode());
+								answersUI.add(answerUI);
+								editVisitData.setPatient(patientUI);
+								editVisitData.setVisit(visitUI);
+								editVisitData.setAnswers(answersUI);
+								editVisitDatas.add(editVisitData);
+							}
+						} catch (IllegalAccessException e) {
+							e.printStackTrace();
+						} catch (InvocationTargetException e) {
+							e.printStackTrace();
+						}
+						
+						
+						
+					}
+				}
+				break;
+			case 1:
+				Query query1 = em.createQuery("select p from Patient p where p.protocolNo=:search");
+				query1.setParameter("search", search);
+				patients = query1.getResultList();
+				
+				for(Patient patient : patients){
+					List<Visit> visits = patient.getVisits();
+					for(Visit visit : visits){
+						List<Answer> answers = visit.getAnswers();
+						try {
+							BeanUtils.copyProperties(patientUI, patient);
+							BeanUtils.copyProperties(visitUI, visit);
+							editVisitData.setPatient(patientUI);
+							editVisitData.setVisit(visitUI);
+							for(Answer answer : answers){
+								answerUI.setAnswer(answer.getAnswer());
+								answerUI.setQuestionCode(answer.getQuestion().getQuestionCode());
+								answersUI.add(answerUI);
+								editVisitData.setAnswers(answersUI);
+							
+							}
+							editVisitDatas.add(editVisitData);
+						} catch (IllegalAccessException e) {
+							e.printStackTrace();
+						} catch (InvocationTargetException e) {
+							e.printStackTrace();
+						}
+						
+						
+						
+					}
+				}
+				break;
+			case 2:
+				
+				break;
+			case 3:
+				
+			break;
+		}
+		
+		
+		return editVisitDatas;
+	}
+
+
+
+	@Override
+	public PatientUI getPatientFromDB(String protocolNo) {
+		
+		factory = EMF.get();
+		EntityManager em = factory.createEntityManager();
+		Query query = em.createQuery("select p from Patient p where p.protocolNo=:protocolNo");
+		query.setParameter("protocolNo", protocolNo);
+		List<Patient> patients = query.getResultList();
+		PatientUI patientUI = new PatientUI();
+		
+		if(!patients.isEmpty()){
+			try {
+				BeanUtils.copyProperties(patientUI, patients.get(0));
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
+			
+		}
+
+		return patientUI;
+	}
+	
+
+	
+	@Override
+	public EditVisitData getEditVisitData(String protocolNo) {
+		
+		EditVisitData editVisitData = new EditVisitData();
+		HttpSession session= this.getThreadLocalRequest().getSession();
+		User user = (User) session.getAttribute("loginUser");
+		
+		if(protocolNo == null){
+			PatientUI patientUI = new PatientUI();
+			VisitUI visitUI = new VisitUI();
+			List<AnswerUI> answers = new ArrayList<AnswerUI>();
+			visitUI.setHospital(user.getHospital());
+			editVisitData.setPatient(patientUI);
+			editVisitData.setVisit(visitUI);
+			editVisitData.setAnswers(answers);	
+		}
+		else{
+			factory = EMF.get();
+			EntityManager em = factory.createEntityManager();
+			Query query = em.createQuery("select p from Patient p where p.protocolNo=:protocolNo");
+			query.setParameter("protocolNo", protocolNo);
+			List<Patient> patients = query.getResultList();
+			
+			
+			UserUI userUI = new UserUI();
+			
+			try {
+				BeanUtils.copyProperties(userUI, user);
+			} catch (IllegalAccessException e1) {
+				e1.printStackTrace();
+			} catch (InvocationTargetException e1) {
+				e1.printStackTrace();
+			}
+			
+			if(patients.isEmpty()){
+				PatientUI patientUI = new PatientUI();
+				VisitUI visitUI = new VisitUI();
+				List<AnswerUI> answers = new ArrayList<AnswerUI>();
+				
+				patientUI.setProtocolNo(protocolNo);
+				editVisitData.setPatient(patientUI);
+				
+				visitUI.setHospital(user.getHospital());
+				editVisitData.setVisit(visitUI);
+				editVisitData.setAnswers(answers);
+				
+				return editVisitData;
+			}
+			
+			Query query1 = em.createQuery("select v from Visit v where v.patient.id = :patientId order by v.date desc, v.id desc");
+			query1.setParameter("patientId", patients.get(0).getId());
+			List<Visit> visits = query1.getResultList();
+			
+			Query query2 = em.createQuery("select a from Answer a where a.visit.id =:visitId");
+			query2.setParameter("visitId", visits.get(0).getId());
+			List<Answer> answers = query2.getResultList();
+			
+			try {
+				PatientUI patientUI = new PatientUI();
+				VisitUI visitUI = new VisitUI();
+				AnswerUI answerUI = new AnswerUI();
+				List<AnswerUI> answersUI = new ArrayList<AnswerUI>();
+				
+				BeanUtils.copyProperties(patientUI, patients.get(0));
+				BeanUtils.copyProperties(visitUI, visits.get(0));
+				for(Answer answer : answers){
+					BeanUtils.copyProperties(answerUI, answer);
+					answersUI.add(answerUI);
+				}
+					
+				editVisitData.setPatient(patientUI);
+				editVisitData.setVisit(visitUI);
+				editVisitData.setAnswers(answersUI);
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				e.printStackTrace();
+			}
+
+		}
+		
+		return editVisitData;
+	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	

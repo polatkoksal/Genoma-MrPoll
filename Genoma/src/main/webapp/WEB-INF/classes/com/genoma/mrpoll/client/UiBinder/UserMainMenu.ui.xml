@@ -18,7 +18,7 @@
 				<g:Button text="Yeni Vaka Girişi" ui:field="newpatient"/>
 			</g:at>
 			<g:at left="35" top="81">
-				<g:Button text="Kayıtlı Vaka Arama" ui:field="callpatient"/>
+				<g:Button text="Kayıtlı Vaka Arama" ui:field="callvisit"/>
 			</g:at>
 			<g:at left="35" top="117">
 				<g:Button ui:field="analysis">Analiz</g:Button>

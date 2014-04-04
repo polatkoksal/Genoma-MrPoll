@@ -3,6 +3,7 @@ package com.genoma.mrpoll.client.UiBinder;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.genoma.mrpoll.client.MrPoll;
 import com.genoma.mrpoll.client.MrPoll.State;
 import com.genoma.mrpoll.client.PatientService;
 import com.genoma.mrpoll.client.PatientServiceAsync;
@@ -18,6 +19,9 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
+import com.google.gwt.event.dom.client.BlurEvent;
 
 public class TabPatientInfo extends Composite implements Updater {
 	
@@ -45,15 +49,39 @@ public class TabPatientInfo extends Composite implements Updater {
 
 	
 	public void updateUI(PatientUI patientUI){
-		protocolno.setText(patientUI.getProtocolNo());
+		if(patientUI.getProtocolNo() != null){
+			protocolno.setText(patientUI.getProtocolNo());
+		}
 		name.setText(patientUI.getNameSurname());
 		if(patientUI.getAge() != null){
 			age.setText(patientUI.getAge().toString());
+		}
+		else{
+			age.setText("");
 		}
 		if(patientUI.getGender() != null){
 			gender.setSelectedIndex(Integer.parseInt(patientUI.getGender()));
 		}
 			
+	}
+
+	@UiHandler("protocolno")
+	void onProtocolnoBlur(BlurEvent event) {
+		
+		service.getPatientFromDB(protocolno.getText(), new AsyncCallback<PatientUI>() {
+
+			@Override
+			public void onSuccess(PatientUI result) {
+				updateUI(result);
+			}
+			
+			@Override
+			public void onFailure(Throwable result) {
+				Window.alert("onBlur Error!");
+			}
+
+		});
+		
 	}
 	
 	
@@ -87,4 +115,6 @@ public class TabPatientInfo extends Composite implements Updater {
 		return null;
 	}
 
+	
+	
 }

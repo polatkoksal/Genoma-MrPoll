@@ -84,6 +84,7 @@ public class UserUpdate extends Composite {
 	@UiHandler("save")
 	void onSaveClick(ClickEvent event) {
 		
+		setButtonEnable(false);
 		newUser.setUsername(username.getText());
 		newUser.setName(name.getText());
 		newUser.setSurname(surname.getText());
@@ -98,15 +99,18 @@ public class UserUpdate extends Composite {
 			public void onSuccess(Boolean result) {
 				if(result){
 					Window.alert("Kullanıcı Bilgileri Yenilendi!");
+					MrPoll.repaint(State.MAIN_MENU);
 				}
 				else{
 					Window.alert("Bu Kullanıcı Adı Daha Önce Oluşturuldu!");
+					setButtonEnable(true);
 				}
 			}
 			
 			@Override
 			public void onFailure(Throwable caught) {
 				Window.alert("Hata!!!");
+				setButtonEnable(true);
 			}
 		});
 				
@@ -127,7 +131,7 @@ public class UserUpdate extends Composite {
 	@UiHandler("savepassword")
 	void onSavepasswordClick(ClickEvent event) {
 		
-		
+		setButtonEnable(false);
 		if(newpassword.getText().equals(newpasswordrepeat.getText())){
 			
 			service.passwordCheck(currentpassword.getText(), "loginUser", new AsyncCallback<Boolean>() {
@@ -143,27 +147,32 @@ public class UserUpdate extends Composite {
 							@Override
 							public void onSuccess(Boolean result) {
 								setVisibilityPassword(false);
-								Window.alert("Şifreniz degiştirildi");								
+								Window.alert("Şifreniz degiştirildi");
+								setButtonEnable(true);
 							}
 							
 							@Override
 							public void onFailure(Throwable caught) {							
 								Window.alert("change password hata!");
+								setButtonEnable(true);
 							}
 						});
 					}
 					else{
 						Window.alert("Eski şifrenizi yanlış girdiniz!!!");
+						setButtonEnable(true);
 					}					
 				}
 				@Override
 				public void onFailure(Throwable caught) {
 					Window.alert("passwordCheck failure!!!");
+					setButtonEnable(true);
 				}
 			});	
 		}
 		else{
 			Window.alert("Yeni şifreleriniz eşleşmiyor!!!");
+			setButtonEnable(true);
 		}
 					
 				
@@ -184,6 +193,14 @@ public class UserUpdate extends Composite {
 		oldlabel.setVisible(b);
 		newlabel.setVisible(b);
 		newlabelrepeat.setVisible(b);
+	}
+	
+	void setButtonEnable(Boolean b){
+		save.setEnabled(b);
+		cancel.setEnabled(b);
+		savepassword.setEnabled(b);
+		changepassword.setEnabled(b);
+		cancelpassword.setEnabled(b);
 	}
 	
 

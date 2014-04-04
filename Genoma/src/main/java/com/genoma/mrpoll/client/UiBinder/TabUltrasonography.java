@@ -179,28 +179,28 @@ public class TabUltrasonography extends Composite implements Updater{
 	@Override
 	public List<AnswerUI> getAnswersFromUi() {
 		List<AnswerUI> result=new ArrayList<AnswerUI>();
-		result.add(returnAnswerOf(300, r_nofinding));
-		result.add(returnAnswerOf(310, r_mass));
-		result.add(returnAnswerOf(311, r_lesionnumber));
-		result.add(returnAnswerOf(312, r_lesionspread));
-		result.add(returnAnswerOf(313, r_lesionsize));
-		result.add(returnAnswerOf(320, r_nonmass));
-		result.add(returnAnswerOf(321, r_nonmass_combo));
-		result.add(returnAnswerOf(340, r_axillary));
-		result.add(returnAnswerOf(341, r_lymphnodecount));
-		result.add(returnAnswerOf(342, r_largestnoderadius));
-		result.add(returnAnswerOf(343, r_capsuleinvasion));
-		result.add(returnAnswerOf(350, l_nofinding));
-		result.add(returnAnswerOf(360, l_mass));
-		result.add(returnAnswerOf(361, l_lesionnumber));
-		result.add(returnAnswerOf(362, l_lesionspread));
-		result.add(returnAnswerOf(363, l_lesionsize));
-		result.add(returnAnswerOf(370, l_nonmass));
-		result.add(returnAnswerOf(371, l_nonmass_combo));
-		result.add(returnAnswerOf(390, l_axillary));
-		result.add(returnAnswerOf(391, l_lymphnodecount));
-		result.add(returnAnswerOf(392, l_largestnoderadius));
-		result.add(returnAnswerOf(393, l_capsuleinvasion));
+//		result.add(returnAnswerOf(300, r_nofinding));
+//		result.add(returnAnswerOf(310, r_mass));
+//		result.add(returnAnswerOf(311, r_lesionnumber));
+//		result.add(returnAnswerOf(312, r_lesionspread));
+//		result.add(returnAnswerOf(313, r_lesionsize));
+//		result.add(returnAnswerOf(320, r_nonmass));
+//		result.add(returnAnswerOf(321, r_nonmass_combo));
+//		result.add(returnAnswerOf(340, r_axillary));
+//		result.add(returnAnswerOf(341, r_lymphnodecount));
+//		result.add(returnAnswerOf(342, r_largestnoderadius));
+//		result.add(returnAnswerOf(343, r_capsuleinvasion));
+//		result.add(returnAnswerOf(350, l_nofinding));
+//		result.add(returnAnswerOf(360, l_mass));
+//		result.add(returnAnswerOf(361, l_lesionnumber));
+//		result.add(returnAnswerOf(362, l_lesionspread));
+//		result.add(returnAnswerOf(363, l_lesionsize));
+//		result.add(returnAnswerOf(370, l_nonmass));
+//		result.add(returnAnswerOf(371, l_nonmass_combo));
+//		result.add(returnAnswerOf(390, l_axillary));
+//		result.add(returnAnswerOf(391, l_lymphnodecount));
+//		result.add(returnAnswerOf(392, l_largestnoderadius));
+//		result.add(returnAnswerOf(393, l_capsuleinvasion));
 		return result;
 	}
 }

@@ -131,20 +131,20 @@ public class TabSecondVisit extends Composite implements Updater {
 	@Override
 	public List<AnswerUI> getAnswersFromUi() {
 		List<AnswerUI> result = new ArrayList<AnswerUI>();
-		result.add(returnAnswerOf(600, r_mri_biopsy));
-		result.add(returnAnswerOf(601, r_mri_biopsy_diagnosis));
-		result.add(returnAnswerOf(610, r_usg));
-		result.add(returnAnswerOf(611, r_mass));
-		result.add(returnAnswerOf(612, r_nonmass));
-		result.add(returnAnswerOf(613, r_usg_biopsy));
-		result.add(returnAnswerOf(615, r_usg_biopsy_diagnosis));
-		result.add(returnAnswerOf(650, l_mri_biopsy));
-		result.add(returnAnswerOf(651, l_mri_biopsy_diagnosis));
-		result.add(returnAnswerOf(660, l_usg));
-		result.add(returnAnswerOf(661, l_mass));
-		result.add(returnAnswerOf(662, l_nonmass));
-		result.add(returnAnswerOf(663, l_usg_biopsy));
-		result.add(returnAnswerOf(665, l_usg_biopsy_diagnosis));
+//		result.add(returnAnswerOf(600, r_mri_biopsy));
+//		result.add(returnAnswerOf(601, r_mri_biopsy_diagnosis));
+//		result.add(returnAnswerOf(610, r_usg));
+//		result.add(returnAnswerOf(611, r_mass));
+//		result.add(returnAnswerOf(612, r_nonmass));
+//		result.add(returnAnswerOf(613, r_usg_biopsy));
+//		result.add(returnAnswerOf(615, r_usg_biopsy_diagnosis));
+//		result.add(returnAnswerOf(650, l_mri_biopsy));
+//		result.add(returnAnswerOf(651, l_mri_biopsy_diagnosis));
+//		result.add(returnAnswerOf(660, l_usg));
+//		result.add(returnAnswerOf(661, l_mass));
+//		result.add(returnAnswerOf(662, l_nonmass));
+//		result.add(returnAnswerOf(663, l_usg_biopsy));
+//		result.add(returnAnswerOf(665, l_usg_biopsy_diagnosis));
 		return result;
 	}
 }

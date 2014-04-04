@@ -172,30 +172,30 @@ public class TabMRI extends Composite implements Updater{
 	@Override
 	public List<AnswerUI> getAnswersFromUi() {
 		List<AnswerUI> result=new ArrayList<AnswerUI>();
-		result.add(returnAnswerOf(400, r_nofinding));
-		result.add(returnAnswerOf(410, r_mass));
-		result.add(returnAnswerOf(411, r_lesionnumber));
-		result.add(returnAnswerOf(412, r_lesionspread));
-		result.add(returnAnswerOf(413, r_lesionsize));
-		result.add(returnAnswerOf(420, r_nonmassstain));
-		result.add(returnAnswerOf(421, r_ductalstain));
-		result.add(returnAnswerOf(422, r_focallesion));
-		result.add(returnAnswerOf(440, r_axillary));
-		result.add(returnAnswerOf(441, r_lymphnodecount));
-		result.add(returnAnswerOf(442, r_largestnoderadius));
-		result.add(returnAnswerOf(443, r_capsuleinvasion));
-		result.add(returnAnswerOf(450, l_nofinding));
-		result.add(returnAnswerOf(460, l_mass));
-		result.add(returnAnswerOf(461, l_lesionnumber));
-		result.add(returnAnswerOf(462, l_lesionspread));
-		result.add(returnAnswerOf(463, l_lesionsize));
-		result.add(returnAnswerOf(470, l_nonmassstain));
-		result.add(returnAnswerOf(471, l_ductalstain));
-		result.add(returnAnswerOf(472, l_focallesion));
-		result.add(returnAnswerOf(490, l_axillary));
-		result.add(returnAnswerOf(491, l_lymphnodecount));
-		result.add(returnAnswerOf(492, l_largestnoderadius));
-		result.add(returnAnswerOf(493, l_capsuleinvasion));
+//		result.add(returnAnswerOf(400, r_nofinding));
+//		result.add(returnAnswerOf(410, r_mass));
+//		result.add(returnAnswerOf(411, r_lesionnumber));
+//		result.add(returnAnswerOf(412, r_lesionspread));
+//		result.add(returnAnswerOf(413, r_lesionsize));
+//		result.add(returnAnswerOf(420, r_nonmassstain));
+//		result.add(returnAnswerOf(421, r_ductalstain));
+//		result.add(returnAnswerOf(422, r_focallesion));
+//		result.add(returnAnswerOf(440, r_axillary));
+//		result.add(returnAnswerOf(441, r_lymphnodecount));
+//		result.add(returnAnswerOf(442, r_largestnoderadius));
+//		result.add(returnAnswerOf(443, r_capsuleinvasion));
+//		result.add(returnAnswerOf(450, l_nofinding));
+//		result.add(returnAnswerOf(460, l_mass));
+//		result.add(returnAnswerOf(461, l_lesionnumber));
+//		result.add(returnAnswerOf(462, l_lesionspread));
+//		result.add(returnAnswerOf(463, l_lesionsize));
+//		result.add(returnAnswerOf(470, l_nonmassstain));
+//		result.add(returnAnswerOf(471, l_ductalstain));
+//		result.add(returnAnswerOf(472, l_focallesion));
+//		result.add(returnAnswerOf(490, l_axillary));
+//		result.add(returnAnswerOf(491, l_lymphnodecount));
+//		result.add(returnAnswerOf(492, l_largestnoderadius));
+//		result.add(returnAnswerOf(493, l_capsuleinvasion));
 		return result;
 	}
 }

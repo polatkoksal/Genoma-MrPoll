@@ -22,7 +22,7 @@ public interface UserServiceAsync {
 
 	void updateUser(String sessionParam, UserUI userUi, AsyncCallback<Boolean> callback);
 
-	void searchUser(String coulmn, String name, AsyncCallback<List<UserUI>> callback);
+	void searchUser(AsyncCallback<List<UserUI>> callback);
 
 	void isAdmin(AsyncCallback<Boolean> callback);
 
@@ -30,10 +30,11 @@ public interface UserServiceAsync {
 
 	void getSessionString(AsyncCallback<String> callback);
 
-	void sendMail(String receiver, String message, AsyncCallback<Void> callback);
+	void sendMail(String receiver, String userName, String password, AsyncCallback<Void> callback);
 
-	void passwordCheck(String password, String sessionParam,
-			AsyncCallback<Boolean> callback);
+	void passwordCheck(String password, String sessionParam, AsyncCallback<Boolean> callback);
+	
+	void resetPassword(String email, AsyncCallback<Boolean> callback);
 
 
 }
