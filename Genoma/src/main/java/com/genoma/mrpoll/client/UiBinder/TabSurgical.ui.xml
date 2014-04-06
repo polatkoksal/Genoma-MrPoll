@@ -12,16 +12,16 @@
 				<g:Label text="Operasyon Şekli:"/>
 			</g:at>
 			<g:at left="27" top="144">
-				<g:ListBox width="174px" height="20px" ui:field="r_op" name="710"/>
+				<g:ListBox width="174px" height="20px" ui:field="r_op" name="8110"/>
 			</g:at>
 			<g:at left="27" top="198">
-				<g:CheckBox text="MR cerrahi planını değiştirdi" ui:field="r_mrc" name="720"/>
+				<g:CheckBox text="MR cerrahi planını değiştirdi" ui:field="r_mrc" name="8120"/>
 			</g:at>
 			<g:at left="361" top="200">
-				<g:CheckBox width="218px" height="19px" text="MR cerrahi planını değiştirdi" ui:field="l_mrc" name="740"/>
+				<g:CheckBox width="218px" height="19px" text="MR cerrahi planını değiştirdi" ui:field="l_mrc" name="8220"/>
 			</g:at>
 			<g:at left="361" top="144">
-				<g:ListBox width="174px" height="20px" ui:field="l_op" name="730"/>
+				<g:ListBox width="174px" height="20px" ui:field="l_op" name="8210"/>
 			</g:at>
 			<g:at left="361" top="101">
 				<g:Label width="120px" height="16px" text="Operasyon Şekli:"/>
@@ -33,16 +33,16 @@
 				<g:Label text="Cerrahi Sınır İçin Referans Kılavuz:" ui:field="ref_label"/>
 			</g:at>
 			<g:at left="361" top="272">
-				<g:ListBox ui:field="reop" name="750" width="99px" height="20px"/>
+				<g:ListBox ui:field="reop" name="8000" width="99px" height="20px"/>
 			</g:at>
 			<g:at left="361" top="294">
-				<g:TextBox width="194px" height="12px" ui:field="ref" name="760"/>
+				<g:TextBox width="200px" height="12px" ui:field="ref" name="8010"/>
 			</g:at>
 			<g:at left="234" top="33">
 				<g:Label text="Cerrahi" styleName="{style.important}"/>
 			</g:at>
 			<g:at left="466" top="272">
-				<g:TextBox width="93px" height="12px" ui:field="reop_other"/>
+				<g:TextBox width="93px" height="12px" ui:field="reop_other" name="8001"/>
 			</g:at>
 		</g:AbsolutePanel>
 	</g:HTMLPanel>
