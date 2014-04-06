@@ -12,7 +12,7 @@
 				<g:CheckBox text="Kitle" ui:field="r_mass" wordWrap="false" name="3110"/>
 			</g:at>
 			<g:at left="10" top="403">
-				<g:CheckBox text="Bulgu Yok" ui:field="r_nofinding" name="4100" wordWrap="false" value="true"/>
+				<g:CheckBox text="Bulgu Yok" ui:field="r_nofinding" name="3100" wordWrap="false" value="true"/>
 			</g:at>
 			<g:at left="36" top="134">
 				<g:Label text="Lezyon Sayısı:" ui:field="r_lesionnumber_label"/>
@@ -66,7 +66,7 @@
 				<g:TextBox ui:field="r_largestnoderadius" name="3142" width="38px" height="12px"/>
 			</g:at>
 			<g:at left="36" top="378">
-				<g:CheckBox text="Kapsül İnvazyonu Var" ui:field="r_capsuleinvasion" name="4143"/>
+				<g:CheckBox text="Kapsül İnvazyonu Var" ui:field="r_capsuleinvasion" name="3143"/>
 			</g:at>
 			<g:at left="405" top="109">
 				<g:CheckBox width="50px" height="19px" text="Kitle" ui:field="l_mass" wordWrap="false" name="3210"/>
