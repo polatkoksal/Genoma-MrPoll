@@ -1,6 +1,7 @@
 package com.genoma.mrpoll.client.UiBinder;
 
 import com.genoma.mrpoll.client.MrPoll;
+import com.genoma.mrpoll.client.MrPoll.State;
 import com.genoma.mrpoll.client.PatientService;
 import com.genoma.mrpoll.client.PatientServiceAsync;
 import com.genoma.mrpoll.uihelper.EditVisitData;
@@ -33,16 +34,17 @@ public class SearchVisitResult extends Composite {
 		
 	}
 
+
 	public SearchVisitResult(SearchResultData searchResultData) {
 		initWidget(uiBinder.createAndBindUi(this));
 		srcResultData = searchResultData;
-		//protocolno.setText(editVisitData.getPatient().getProtocolNo());
+		//protocolno.setText(searchResultData.getProtocolNo());
 	}
 
 	@UiHandler("edit")
 	void onEditClick(ClickEvent event) {
 		Window.alert("onEditClick");
-		service.getEditVisitData(srcResultData.getProtocolNo(), new AsyncCallback<EditVisitData>() {
+		service.getEditVisitData(srcResultData, new AsyncCallback<EditVisitData>() {
 			
 			@Override
 			public void onSuccess(EditVisitData result) {
@@ -61,5 +63,20 @@ public class SearchVisitResult extends Composite {
 	
 	@UiHandler("delete")
 	void onDeleteClick(ClickEvent event) {
+		
+		service.deleteVisit(srcResultData, new AsyncCallback<Boolean>() {
+			
+			@Override
+			public void onSuccess(Boolean result) {
+				MrPoll.repaint(State.MAIN_MENU);
+				Window.alert("Vsiti deleted");
+			}
+			
+
+			@Override
+			public void onFailure(Throwable caught) {
+				Window.alert("Delete Visit Error!");
+			}
+		});
 	}
 }

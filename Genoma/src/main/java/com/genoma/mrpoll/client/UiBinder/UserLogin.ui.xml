@@ -14,17 +14,17 @@
 	</ui:style>
 	<g:HTMLPanel>
 		<g:AbsolutePanel height="277px" width="762px">
-			<g:at left="339" top="148">
-				<g:Button styleName="{style.important}" ui:field="login" text="Giriş" width="43px" height="24px" />
-			</g:at>
-			<g:at left="358" top="31">
-				<g:Label text="Kullanıcı Girişi" styleName="{style.important}" width="151px" height="17px" wordWrap="false"/>
-			</g:at>
 			<g:at left="339" top="64">
 				<g:TextBox ui:field="username" width="200px" height="16px"/>
 			</g:at>
 			<g:at left="339" top="103">
 				<g:PasswordTextBox ui:field="password" width="200px" height="16px"/>
+			</g:at>
+			<g:at left="339" top="148">
+				<g:Button styleName="{style.important}" ui:field="login" text="Giriş" width="43px" height="24px" />
+			</g:at>
+			<g:at left="358" top="31">
+				<g:Label text="Kullanıcı Girişi" styleName="{style.important}" width="151px" height="17px" wordWrap="false"/>
 			</g:at>
 			<g:at left="238" top="66">
 				<g:Label text="Kullanıcı Adı:"/>

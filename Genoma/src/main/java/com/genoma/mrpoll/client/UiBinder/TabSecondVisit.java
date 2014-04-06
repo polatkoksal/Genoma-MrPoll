@@ -4,17 +4,9 @@ import static com.genoma.mrpoll.client.MrPoll.returnAnswerOf;
 import static com.genoma.mrpoll.client.MrPoll.setAnswerOf;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import com.genoma.mrpoll.client.MrPoll.State;
-import com.genoma.mrpoll.domain.Answer;
-import com.genoma.mrpoll.domain.Question;
 import com.genoma.mrpoll.uihelper.AnswerUI;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.dev.util.collect.HashMap;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -26,6 +18,8 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.client.ui.AbsolutePanel;
+import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.event.dom.client.ChangeEvent;
 
 public class TabSecondVisit extends Composite implements Updater {
 
@@ -63,6 +57,12 @@ public class TabSecondVisit extends Composite implements Updater {
 	@UiField
 	Label r_usg_biopsy_diagnosis_label;
 	@UiField AbsolutePanel panel;
+	@UiField Label r_mri_biopsy_diagnosis_label;
+	@UiField Label l_mri_biopsy_diagnosis_label;
+	@UiField TextBox r_mri_biopsy_diagnosis_other;
+	@UiField TextBox l_mri_biopsy_diagnosis_other;
+	@UiField TextBox r_usg_biopsy_diagnosis_other;
+	@UiField TextBox l_usg_biopsy_diagnosis_other;
 
 	interface SecondUiBinder extends UiBinder<Widget, TabSecondVisit> {
 	}
@@ -89,6 +89,10 @@ public class TabSecondVisit extends Composite implements Updater {
 		l_usg_biopsy_diagnosis.addItem("Lobüler");
 		l_usg_biopsy_diagnosis.addItem("Mikst");
 		l_usg_biopsy_diagnosis.addItem("Diğer");
+		onR_mri_biopsy_diagnosisChange(null);
+		onL_mri_biopsy_diagnosisChange(null);
+		onR_usg_biopsy_diagnosisChange(null);
+		onL_usg_biopsy_diagnosisChange(null);
 	}
 
 	
@@ -98,6 +102,8 @@ public class TabSecondVisit extends Composite implements Updater {
 		Boolean lockStatus = r_usg_biopsy.isEnabled()
 				&& r_usg_biopsy.getValue();
 		r_usg_biopsy_diagnosis.setEnabled(lockStatus);
+		r_usg_biopsy_diagnosis_other.setEnabled(lockStatus);
+		r_usg_biopsy_diagnosis_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
 	}
 
 	@UiHandler("r_usg")
@@ -106,6 +112,9 @@ public class TabSecondVisit extends Composite implements Updater {
 		r_mass.setEnabled(lockStatus);
 		r_nonmass.setEnabled(lockStatus);
 		r_usg_biopsy.setEnabled(lockStatus);
+		r_mass.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_nonmass.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_usg_biopsy.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
 		onR_usg_biopsyClick(null);
 	}
 
@@ -114,6 +123,8 @@ public class TabSecondVisit extends Composite implements Updater {
 		Boolean lockStatus = l_usg_biopsy.isEnabled()
 				&& l_usg_biopsy.getValue();
 		l_usg_biopsy_diagnosis.setEnabled(lockStatus);
+		l_usg_biopsy_diagnosis_other.setEnabled(lockStatus);
+		l_usg_biopsy_diagnosis_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
 	}
 
 	@UiHandler("r_mri_biopsy")
@@ -121,6 +132,8 @@ public class TabSecondVisit extends Composite implements Updater {
 		Boolean lockStatus = r_mri_biopsy.isEnabled()
 				&& r_mri_biopsy.getValue();
 		r_mri_biopsy_diagnosis.setEnabled(lockStatus);
+		r_mri_biopsy_diagnosis_other.setEnabled(lockStatus);
+		r_mri_biopsy_diagnosis_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
 	}
 
 	@UiHandler("l_mri_biopsy")
@@ -128,6 +141,8 @@ public class TabSecondVisit extends Composite implements Updater {
 		Boolean lockStatus = l_mri_biopsy.isEnabled()
 				&& l_mri_biopsy.getValue();
 		l_mri_biopsy_diagnosis.setEnabled(lockStatus);
+		l_mri_biopsy_diagnosis_other.setEnabled(lockStatus);
+		l_mri_biopsy_diagnosis_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
 	}
 
 	@UiHandler("l_usg")
@@ -136,6 +151,9 @@ public class TabSecondVisit extends Composite implements Updater {
 		l_mass.setEnabled(lockStatus);
 		l_nonmass.setEnabled(lockStatus);
 		l_usg_biopsy.setEnabled(lockStatus);
+		l_mass.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		l_nonmass.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		l_usg_biopsy.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
 		onL_usg_biopsyClick(null);
 	}
 
@@ -143,7 +161,7 @@ public class TabSecondVisit extends Composite implements Updater {
 		for(AnswerUI answer : answers){
 			for(Widget w: panel){
 				if(w instanceof HasName && ((HasName) w).getName().equals(answer.getQuestionCode())){
-					setAnswerOf((HasName)w, answer.getAnswer());
+					setAnswerOf((HasName)w, answer.getAnswerValue());
 				}
 			}
 		}
@@ -159,5 +177,29 @@ public class TabSecondVisit extends Composite implements Updater {
 			}
 		}
 		return result;
+	}
+	@UiHandler("r_mri_biopsy_diagnosis")
+	void onR_mri_biopsy_diagnosisChange(ChangeEvent event) {
+		Boolean isLast = r_mri_biopsy_diagnosis.getSelectedIndex()==3;
+		r_mri_biopsy_diagnosis_other.setVisible(isLast);
+		r_mri_biopsy_diagnosis_other.setEnabled(isLast);
+	}
+	@UiHandler("l_mri_biopsy_diagnosis")
+	void onL_mri_biopsy_diagnosisChange(ChangeEvent event) {
+		Boolean isLast = l_mri_biopsy_diagnosis.getSelectedIndex()==3;
+		l_mri_biopsy_diagnosis_other.setVisible(isLast);
+		l_mri_biopsy_diagnosis_other.setEnabled(isLast);
+	}
+	@UiHandler("r_usg_biopsy_diagnosis")
+	void onR_usg_biopsy_diagnosisChange(ChangeEvent event) {
+		Boolean isLast = r_usg_biopsy_diagnosis.getSelectedIndex()==3;
+		r_usg_biopsy_diagnosis_other.setVisible(isLast);
+		r_usg_biopsy_diagnosis_other.setEnabled(isLast);
+	}
+	@UiHandler("l_usg_biopsy_diagnosis")
+	void onL_usg_biopsy_diagnosisChange(ChangeEvent event) {
+		Boolean isLast = l_usg_biopsy_diagnosis.getSelectedIndex()==3;
+		l_usg_biopsy_diagnosis_other.setVisible(isLast);
+		l_usg_biopsy_diagnosis_other.setEnabled(isLast);
 	}
 }

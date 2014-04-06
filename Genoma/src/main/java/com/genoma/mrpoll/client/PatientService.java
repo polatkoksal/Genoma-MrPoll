@@ -25,8 +25,9 @@ public interface PatientService extends RemoteService {
 //	Boolean getVisitFromDB();
 //	List<Answer> mergeAnswers(List<Answer> target, List<Answer> list );
 //	void close();
-	EditVisitData getEditVisitData(String protocolNo);
+	EditVisitData getEditVisitData(SearchResultData searchResultData);
 	Boolean saveEditVisitData(EditVisitData container);
 	PatientUI getPatientFromDB(String protocolNo);
 	List<SearchResultData> searchVisit(Integer selection, String search);
+	Boolean deleteVisit(SearchResultData searchResultData);
 }

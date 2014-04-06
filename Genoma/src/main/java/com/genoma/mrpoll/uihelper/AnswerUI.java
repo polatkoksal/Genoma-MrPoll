@@ -9,7 +9,7 @@ public class AnswerUI implements Serializable{
 
 
 	
-	private String answer;
+	private String answerValue;
 
 	
 	private String questionCode;
@@ -19,12 +19,12 @@ public class AnswerUI implements Serializable{
 	}
 
 	
-	public String getAnswer() {
-		return this.answer;
+	public String getAnswerValue() {
+		return this.answerValue;
 	}
 
-	public void setAnswer(String answer) {
-		this.answer = answer;
+	public void setAnswerValue(String answerValue) {
+		this.answerValue = answerValue;
 	}
 
 	public String getQuestionCode() {

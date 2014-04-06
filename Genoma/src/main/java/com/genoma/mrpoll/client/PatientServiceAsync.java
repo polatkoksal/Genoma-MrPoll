@@ -24,10 +24,11 @@ public interface PatientServiceAsync {
 //	void getVisitFromDB(AsyncCallback<Boolean> callback);
 //	void mergeAnswers(List<Answer> target, List<Answer> list, AsyncCallback<List<Answer>> callback);
 //	void close(AsyncCallback<Void> callback);
-	void getEditVisitData(String protocolNo, AsyncCallback<EditVisitData> callback);
+	void getEditVisitData(SearchResultData searchResultData, AsyncCallback<EditVisitData> callback);
 	void saveEditVisitData(EditVisitData container, AsyncCallback<Boolean> callback);
 	void getPatientFromDB(String protocolNo, AsyncCallback<PatientUI> callback);
 	void searchVisit(Integer selection, String search, AsyncCallback<List<SearchResultData>> callback);
+	void deleteVisit(SearchResultData searchResultData, AsyncCallback<Boolean> callback);
 	
 
 

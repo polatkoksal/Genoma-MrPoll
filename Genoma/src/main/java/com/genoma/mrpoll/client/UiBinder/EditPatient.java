@@ -183,7 +183,7 @@ public class EditPatient extends Composite {
 
 
 	@UiHandler("save")
-	void onSaveClick(ClickEvent event) {
+	void onSaveClick(ClickEvent event){
 		
 		setEditVisitData();
 		
@@ -228,6 +228,18 @@ public class EditPatient extends Composite {
 		visitUI.setNote(tabVisitInfo.note.getText());
 		
 		answersUI.addAll(tabClinic.getAnswersFromUi());
+		answersUI.addAll(tabMammography.getAnswersFromUi());
+		answersUI.addAll(tabMRI.getAnswersFromUi());
+		answersUI.addAll(tabPathology.getAnswersFromUi());
+		answersUI.addAll(tabSecondVisit.getAnswersFromUi());
+		answersUI.addAll(tabSurgical.getAnswersFromUi());
+		answersUI.addAll(tabUltrasonography.getAnswersFromUi());
+		
+		for(AnswerUI answerUI:answersUI){
+			if(answerUI.getAnswerValue()==null){
+				answersUI.remove(answerUI);
+			}
+		}
 		
 		editVisitData.setPatient(patientUI);
 		editVisitData.setVisit(visitUI);

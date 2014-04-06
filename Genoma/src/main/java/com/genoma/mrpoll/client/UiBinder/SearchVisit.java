@@ -61,6 +61,7 @@ public class SearchVisit extends Composite {
 				for (SearchResultData searchResultData : result){
 					SearchVisitResult searchVisitResult = new SearchVisitResult(searchResultData);
 					panel.add(searchVisitResult);
+					Window.alert("visitId:"+searchResultData.getVisitId());
 				}
 				Window.alert("searchVisit onSucces!");
 			}

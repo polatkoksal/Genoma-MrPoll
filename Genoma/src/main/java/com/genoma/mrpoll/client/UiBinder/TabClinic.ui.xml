@@ -15,16 +15,16 @@
 				<g:Label text="Menapoz Durumu"/>
 			</g:at>
 			<g:at left="230" top="76">
-				<g:ListBox visibleItemCount="1" ui:field="menopause_combo" name="21"/>
+				<g:ListBox visibleItemCount="1" ui:field="menopause_combo" name="2001"/>
 			</g:at>
 			<g:at left="46" top="121">
-				<g:CheckBox text="Hikayesinde Yakıma Var" ui:field="whining" name="22"/>
+				<g:CheckBox text="Hikayesinde Yakınma Var" ui:field="whining" name="2002"/>
 			</g:at>
 			<g:at left="46" top="168">
-				<g:CheckBox text="Fiziki Bakıda Bulgu Var" ui:field="physicalfinding" name="23"/>
+				<g:CheckBox text="Fiziki Bakıda Bulgu Var" ui:field="physicalfinding" name="2003"/>
 			</g:at>
 			<g:at left="46" top="224">
-				<g:CheckBox text="Risk Faktör Var" ui:field="riskfactor" name="24"/>
+				<g:CheckBox text="Risk Faktör Var" ui:field="riskfactor" name="2004"/>
 			</g:at>
 		</g:AbsolutePanel>
 	</g:HTMLPanel>

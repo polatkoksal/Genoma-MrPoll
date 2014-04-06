@@ -96,9 +96,7 @@ public class MrPoll implements EntryPoint {
 				RootPanel.get().add(new SearchVisit());
 				break;
 			case TAB_PATIENT_INFO:
-				Window.alert("in tpi");
 				editPatientPanel.repaint(s);
-				Window.alert("in tpi2");
 				RootPanel.get().add(editPatientPanel);
 				break;
 			default:
@@ -111,7 +109,6 @@ public class MrPoll implements EntryPoint {
 	public static void setEditVisitData(EditVisitData editVisitData){
 		
 		if(editVisitData == null){
-			Window.alert("in if!");
 			final EditVisitData edVisitData = new EditVisitData();
 			
 			userService.getSessionUser("loginUser", new AsyncCallback<UserUI>() {
@@ -188,7 +185,7 @@ public class MrPoll implements EntryPoint {
 		else if(w instanceof ListBox){
 			s=((ListBox) w).getSelectedIndex()+""; 
 		} 
-		atr.setAnswer(s); 
+		atr.setAnswerValue(s); 
 		return atr; 
 	}
 

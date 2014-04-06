@@ -11,8 +11,14 @@
 			<g:at left="121" top="10">
 				<g:Label text="Hasta Bilgileri" styleName="{style.important}"/>
 			</g:at>
+			<g:at left="164" top="59">
+				<g:TextBox ui:field="protocolno"/>
+			</g:at>
 			<g:at left="164" top="91">
 				<g:TextBox ui:field="name"/>
+			</g:at>
+			<g:at left="164" top="123">
+				<g:ListBox ui:field="gender"/>
 			</g:at>
 			<g:at left="74" top="91">
 				<g:Label text="Adı Soyadı"/>
@@ -22,12 +28,6 @@
 			</g:at>
 			<g:at left="65" top="59">
 				<g:Label text="Protokol No"/>
-			</g:at>
-			<g:at left="164" top="59">
-				<g:TextBox ui:field="protocolno"/>
-			</g:at>
-			<g:at left="164" top="123">
-				<g:ListBox ui:field="gender"/>
 			</g:at>
 		</g:AbsolutePanel>
 	    
