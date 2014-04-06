@@ -91,6 +91,8 @@ public class TabSecondVisit extends Composite implements Updater {
 		l_usg_biopsy_diagnosis.addItem("Diğer");
 		onR_mri_biopsy_diagnosisChange(null);
 		onL_mri_biopsy_diagnosisChange(null);
+		onR_usg_biopsy_diagnosisChange(null);
+		onL_usg_biopsy_diagnosisChange(null);
 	}
 
 	
@@ -100,6 +102,7 @@ public class TabSecondVisit extends Composite implements Updater {
 		Boolean lockStatus = r_usg_biopsy.isEnabled()
 				&& r_usg_biopsy.getValue();
 		r_usg_biopsy_diagnosis.setEnabled(lockStatus);
+		r_usg_biopsy_diagnosis_other.setEnabled(lockStatus);
 		r_usg_biopsy_diagnosis_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
 	}
 
@@ -120,6 +123,7 @@ public class TabSecondVisit extends Composite implements Updater {
 		Boolean lockStatus = l_usg_biopsy.isEnabled()
 				&& l_usg_biopsy.getValue();
 		l_usg_biopsy_diagnosis.setEnabled(lockStatus);
+		l_usg_biopsy_diagnosis_other.setEnabled(lockStatus);
 		l_usg_biopsy_diagnosis_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
 	}
 
