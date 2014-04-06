@@ -9,88 +9,88 @@
 	<g:HTMLPanel>
 		<g:AbsolutePanel width="815px" height="500px" ui:field="panel">
 			<g:at left="26" top="109">
-				<g:CheckBox text="Kitle" ui:field="r_mass" wordWrap="false" name="310"/>
+				<g:CheckBox text="Kitle" ui:field="r_mass" wordWrap="false" name="5110"/>
 			</g:at>
 			<g:at left="10" top="369">
-				<g:CheckBox text="Bulgu Yok" ui:field="r_nofinding" wordWrap="false" name="300"/>
+				<g:CheckBox text="Bulgu Yok" ui:field="r_nofinding" wordWrap="false" name="5100"/>
 			</g:at>
 			<g:at left="36" top="134">
 				<g:Label text="Lezyon Sayısı:" ui:field="r_lesionnumber_label"/>
 			</g:at>
-			<g:at left="142" top="134">
-				<g:TextBox ui:field="r_lesionnumber" name="311"/>
+			<g:at left="160" top="132">
+				<g:TextBox ui:field="r_lesionnumber" name="5111"/>
 			</g:at>
 			<g:at left="36" top="156">
 				<g:Label text="Lezyon Dağılımı:" ui:field="r_lesionspread_label"/>
 			</g:at>
-			<g:at left="160" top="158">
-				<g:ListBox ui:field="r_lesionspread" name="312"/>
+			<g:at left="160" top="156">
+				<g:ListBox ui:field="r_lesionspread" name="5112"/>
 			</g:at>
 			<g:at left="36" top="178">
 				<g:Label text="Lezyon Boyutu:" ui:field="r_lesionsize_label"/>
 			</g:at>
 			<g:at left="160" top="178">
-				<g:TextBox ui:field="r_lesionsize" name="313"/>
+				<g:TextBox ui:field="r_lesionsize" name="5113"/>
 			</g:at>
 			<g:at left="26" top="275">
-				<g:CheckBox text="Aksilla Lenf Düğümü Pozitif" ui:field="r_axillary" name="330"/>
+				<g:CheckBox text="Aksilla Lenf Düğümü Pozitif" ui:field="r_axillary" name="5150"/>
 			</g:at>
 			<g:at left="71" top="298">
 				<g:Label text="Lenf Düğümü Sayısı:" ui:field="r_lymphnodecount_label"/>
 			</g:at>
 			<g:at left="223" top="298">
-				<g:TextBox ui:field="r_lymphnodecount" name="331"/>
+				<g:TextBox ui:field="r_lymphnodecount" name="5151"/>
 			</g:at>
 			<g:at left="36" top="322">
 				<g:Label text="En Büyük Düğümün Çapı:" ui:field="r_largestnoderadius_label"/>
 			</g:at>
 			<g:at left="223" top="322">
-				<g:TextBox ui:field="r_largestnoderadius" name="332"/>
+				<g:TextBox ui:field="r_largestnoderadius" name="5152"/>
 			</g:at>
 			<g:at left="36" top="344">
-				<g:CheckBox text="Kapsül İnvazyonu Var" ui:field="r_capsuleinvasion" name="333"/>
+				<g:CheckBox text="Kapsül İnvazyonu Var" ui:field="r_capsuleinvasion" name="5153"/>
 			</g:at>
 			<g:at left="430" top="109">
-				<g:CheckBox width="50px" height="19px" text="Kitle" ui:field="l_mass" wordWrap="false" name="360"/>
+				<g:CheckBox width="50px" height="19px" text="Kitle" ui:field="l_mass" wordWrap="false" name="5210"/>
 			</g:at>
 			<g:at left="414" top="369">
-				<g:CheckBox width="90px" height="19px" text="Bulgu Yok" ui:field="l_nofinding" wordWrap="false" name="350"/>
+				<g:CheckBox width="90px" height="19px" text="Bulgu Yok" ui:field="l_nofinding" wordWrap="false" name="5200"/>
 			</g:at>
 			<g:at left="440" top="134">
 				<g:Label width="100px" height="16px" text="Lezyon Sayısı:" ui:field="l_lesionnumber_label"/>
 			</g:at>
-			<g:at left="546" top="134">
-				<g:TextBox width="130px" height="18px" ui:field="l_lesionnumber" name="361"/>
+			<g:at left="563" top="134">
+				<g:TextBox width="113px" height="12px" ui:field="l_lesionnumber" name="5211"/>
 			</g:at>
 			<g:at left="440" top="156">
 				<g:Label width="118px" height="16px" text="Lezyon Dağılımı:" ui:field="l_lesionspread_label"/>
 			</g:at>
-			<g:at left="564" top="158">
+			<g:at left="563" top="156">
 				<g:ListBox width="56px" height="20px" ui:field="l_lesionspread" name="362"/>
 			</g:at>
 			<g:at left="440" top="178">
 				<g:Label width="109px" height="16px" text="Lezyon Boyutu:" ui:field="l_lesionsize_label"/>
 			</g:at>
 			<g:at left="564" top="178">
-				<g:TextBox width="112px" height="10px" ui:field="l_lesionsize" name="363"/>
+				<g:TextBox width="112px" height="12px" ui:field="l_lesionsize" name="5212"/>
 			</g:at>
 			<g:at left="430" top="275">
-				<g:CheckBox width="211px" height="19px" text="Aksilla Lenf Düğümü Pozitif" ui:field="l_axillary" name="380"/>
+				<g:CheckBox width="211px" height="19px" text="Aksilla Lenf Düğümü Pozitif" ui:field="l_axillary" name="5250"/>
 			</g:at>
 			<g:at left="475" top="298">
 				<g:Label width="146px" height="16px" text="Lenf Düğümü Sayısı:" ui:field="l_lymphnodecount_label"/>
 			</g:at>
 			<g:at left="627" top="298">
-				<g:TextBox width="130px" height="18px" ui:field="l_lymphnodecount" name="381"/>
+				<g:TextBox width="130px" height="18px" ui:field="l_lymphnodecount" name="5251"/>
 			</g:at>
 			<g:at left="440" top="322">
 				<g:Label width="181px" height="16px" text="En Büyük Düğümün Çapı:" ui:field="l_largestnoderadius_label"/>
 			</g:at>
 			<g:at left="627" top="322">
-				<g:TextBox width="130px" height="18px" ui:field="l_largestnoderadius" name="382"/>
+				<g:TextBox width="130px" height="18px" ui:field="l_largestnoderadius" name="5252"/>
 			</g:at>
 			<g:at left="440" top="344">
-				<g:CheckBox width="171px" height="19px" text="Kapsül İnvazyonu Var" ui:field="l_capsuleinvasion" name="383"/>
+				<g:CheckBox width="171px" height="19px" text="Kapsül İnvazyonu Var" ui:field="l_capsuleinvasion" name="5253"/>
 			</g:at>
 			<g:at left="255" top="10">
 				<g:Label text="MRI bulguları" styleName="{style.important}"/>
@@ -105,43 +105,43 @@
 				<g:Label text="Endikasyon:"/>
 			</g:at>
 			<g:at left="102" top="403">
-				<g:ListBox ui:field="r_indication" name="340" width="135px" height="20px"/>
+				<g:ListBox ui:field="r_indication" name="5160" width="135px" height="20px"/>
 			</g:at>
 			<g:at left="10" top="425">
-				<g:CheckBox text="Aşırı granüler boyama nedeniyle MR duyarlılığı kısıtlı" name="341"/>
+				<g:CheckBox text="Aşırı granüler boyama nedeniyle MR duyarlılığı kısıtlı" name="5170"/>
 			</g:at>
 			<g:at left="414" top="403">
 				<g:Label width="86px" height="16px" text="Endikasyon:"/>
 			</g:at>
 			<g:at left="506" top="403">
-				<g:ListBox width="135px" height="20px" ui:field="l_indication" name="390"/>
+				<g:ListBox width="135px" height="20px" ui:field="l_indication" name="5260"/>
 			</g:at>
 			<g:at left="414" top="425">
-				<g:CheckBox width="391px" height="19px" text="Aşırı granüler boyama nedeniyle MR duyarlılığı kısıtlı" name="391"/>
+				<g:CheckBox width="391px" height="19px" text="Aşırı granüler boyama nedeniyle MR duyarlılığı kısıtlı" name="5270"/>
 			</g:at>
 			<g:at left="26" top="200">
-				<g:CheckBox text="Kitlesel Olmayan Boyanma" ui:field="r_nonmassstain" name="320"/>
+				<g:CheckBox text="Kitlesel Olmayan Boyanma" ui:field="r_nonmassstain" name="5120"/>
 			</g:at>
 			<g:at left="26" top="225">
-				<g:CheckBox text="Duktal Boyanma" ui:field="r_ductalstain" name="321"/>
+				<g:CheckBox text="Duktal Boyanma" ui:field="r_ductalstain" name="5130"/>
 			</g:at>
 			<g:at left="26" top="250">
-				<g:CheckBox text="Fokal Lezyon" ui:field="r_focallesion" name="322"/>
+				<g:CheckBox text="Fokal Lezyon" ui:field="r_focallesion" name="5140"/>
 			</g:at>
 			<g:at left="430" top="250">
-				<g:CheckBox width="111px" height="19px" text="Fokal Lezyon" ui:field="l_focallesion" name="372"/>
+				<g:CheckBox width="111px" height="19px" text="Fokal Lezyon" ui:field="l_focallesion" name="5240"/>
 			</g:at>
 			<g:at left="430" top="225">
-				<g:CheckBox width="137px" height="19px" text="Duktal Boyanma" ui:field="l_ductalstain" name="371"/>
+				<g:CheckBox width="137px" height="19px" text="Duktal Boyanma" ui:field="l_ductalstain" name="5230"/>
 			</g:at>
 			<g:at left="430" top="200">
-				<g:CheckBox width="210px" height="19px" text="Kitlesel Olmayan Boyanma" ui:field="l_nonmassstain" name="370"/>
+				<g:CheckBox width="210px" height="19px" text="Kitlesel Olmayan Boyanma" ui:field="l_nonmassstain" name="5220"/>
 			</g:at>
 			<g:at left="243" top="403">
-				<g:TextBox ui:field="r_indication_other" name="341"/>
+				<g:TextBox ui:field="r_indication_other" name="5161"/>
 			</g:at>
 			<g:at left="647" top="403">
-				<g:TextBox width="130px" height="13px" name="341" ui:field="l_indication_other"/>
+				<g:TextBox width="130px" height="13px" name="5261" ui:field="l_indication_other"/>
 			</g:at>
 		</g:AbsolutePanel>
 	</g:HTMLPanel>
