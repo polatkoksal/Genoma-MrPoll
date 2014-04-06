@@ -20,7 +20,6 @@ import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.TextBox;
-import com.google.gwt.user.client.ui.UIObject;
 import com.google.gwt.user.client.ui.Widget;
 
 public class TabMammography extends Composite implements Updater{
@@ -61,9 +60,9 @@ public class TabMammography extends Composite implements Updater{
 	@UiField ListBox r_microcalcificationtype;
 	@UiField ListBox l_microcalcificationtype;
 	@UiField CheckBox r_microcalcification;
-	@UiField CheckBox r_microcalcificationarea;
+	@UiField TextBox r_microcalcificationarea;
 	@UiField CheckBox l_microcalcification;
-	@UiField CheckBox l_microcalcificationarea;
+	@UiField TextBox l_microcalcificationarea;
 	@UiField Label r_microcalcificationarea_label;
 	@UiField Label r_microcalcificationtype_label;
 	@UiField Label r_microcalcificationarea_label_;
@@ -101,10 +100,10 @@ public class TabMammography extends Composite implements Updater{
 		r_axillary.setEnabled(lockStatus);
 		r_microcalcification.setEnabled(lockStatus);
 		r_nonmass.setEnabled(lockStatus);
-		r_mass.getElement().getStyle().setColor(lockStatus?"#A8A8A8":"black");
-		r_axillary.getElement().getStyle().setColor(lockStatus?"#A8A8A8":"black");
-		r_microcalcification.getElement().getStyle().setColor(lockStatus?"#A8A8A8":"black");
-		r_nonmass.getElement().getStyle().setColor(lockStatus?"#A8A8A8":"black");
+		r_mass.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_axillary.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_microcalcification.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_nonmass.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
 		onR_massClick(null);
 		onR_axillaryClick(null);
 		onR_microcalcificationClick(null);
@@ -116,10 +115,10 @@ public class TabMammography extends Composite implements Updater{
 		l_axillary.setEnabled(lockStatus);
 		l_microcalcification.setEnabled(lockStatus);
 		l_nonmass.setEnabled(lockStatus);
-		l_mass.getElement().getStyle().setColor(lockStatus?"#A8A8A8":"black");
-		l_axillary.getElement().getStyle().setColor(lockStatus?"#A8A8A8":"black");
-		l_microcalcification.getElement().getStyle().setColor(lockStatus?"#A8A8A8":"black");
-		l_nonmass.getElement().getStyle().setColor(lockStatus?"#A8A8A8":"black");
+		l_mass.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		l_axillary.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		l_microcalcification.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		l_nonmass.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
 		onL_massClick(null);
 		onL_axillaryClick(null);
 		onL_microcalcificationClick(null);

@@ -36,13 +36,16 @@
 				<g:ListBox ui:field="reop" name="8000" width="99px" height="20px"/>
 			</g:at>
 			<g:at left="361" top="294">
-				<g:TextBox width="200px" height="12px" ui:field="ref" name="8010"/>
+				<g:TextBox width="198px" height="12px" ui:field="ref" name="8010"/>
 			</g:at>
 			<g:at left="234" top="33">
 				<g:Label text="Cerrahi" styleName="{style.important}"/>
 			</g:at>
 			<g:at left="466" top="272">
-				<g:TextBox width="93px" height="12px" ui:field="reop_other" name="8001"/>
+				<g:TextBox width="41px" height="12px" ui:field="reop_other" name="8001"/>
+			</g:at>
+			<g:at left="517" top="272">
+				<g:Label text="mm" ui:field="reop_other_label"/>
 			</g:at>
 		</g:AbsolutePanel>
 	</g:HTMLPanel>
