@@ -61,6 +61,8 @@ public class TabSecondVisit extends Composite implements Updater {
 	@UiField Label l_mri_biopsy_diagnosis_label;
 	@UiField TextBox r_mri_biopsy_diagnosis_other;
 	@UiField TextBox l_mri_biopsy_diagnosis_other;
+	@UiField TextBox r_usg_biopsy_diagnosis_other;
+	@UiField TextBox l_usg_biopsy_diagnosis_other;
 
 	interface SecondUiBinder extends UiBinder<Widget, TabSecondVisit> {
 	}
@@ -183,5 +185,17 @@ public class TabSecondVisit extends Composite implements Updater {
 		Boolean isLast = l_mri_biopsy_diagnosis.getSelectedIndex()==3;
 		l_mri_biopsy_diagnosis_other.setVisible(isLast);
 		l_mri_biopsy_diagnosis_other.setEnabled(isLast);
+	}
+	@UiHandler("r_usg_biopsy_diagnosis")
+	void onR_usg_biopsy_diagnosisChange(ChangeEvent event) {
+		Boolean isLast = r_usg_biopsy_diagnosis.getSelectedIndex()==3;
+		r_usg_biopsy_diagnosis_other.setVisible(isLast);
+		r_usg_biopsy_diagnosis_other.setEnabled(isLast);
+	}
+	@UiHandler("l_usg_biopsy_diagnosis")
+	void onL_usg_biopsy_diagnosisChange(ChangeEvent event) {
+		Boolean isLast = l_usg_biopsy_diagnosis.getSelectedIndex()==3;
+		l_usg_biopsy_diagnosis_other.setVisible(isLast);
+		l_usg_biopsy_diagnosis_other.setEnabled(isLast);
 	}
 }
