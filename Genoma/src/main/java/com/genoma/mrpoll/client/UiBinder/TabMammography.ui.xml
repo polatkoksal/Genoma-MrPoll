@@ -9,7 +9,7 @@
 	<g:HTMLPanel>
 		<g:AbsolutePanel width="807px" height="497px" ui:field="panel">
 			<g:at left="26" top="109">
-				<g:CheckBox text="Kitle" ui:field="r_mass" wordWrap="false" name="4110"/>
+				<g:CheckBox text="Kitle" ui:field="r_mass" wordWrap="false" name="3110"/>
 			</g:at>
 			<g:at left="10" top="403">
 				<g:CheckBox text="Bulgu Yok" ui:field="r_nofinding" name="4100" wordWrap="false" value="true"/>
@@ -18,28 +18,28 @@
 				<g:Label text="Lezyon Sayısı:" ui:field="r_lesionnumber_label"/>
 			</g:at>
 			<g:at left="160" top="134">
-				<g:TextBox ui:field="r_lesionnumber" name="4111" width="44px" height="12px"/>
+				<g:TextBox ui:field="r_lesionnumber" name="3111" width="44px" height="12px"/>
 			</g:at>
 			<g:at left="36" top="156">
 				<g:Label text="Lezyon Dağılımı:" ui:field="r_lesionspread_label"/>
 			</g:at>
 			<g:at left="160" top="156">
-				<g:ListBox ui:field="r_lesionspread" name="4112" width="96px" height="20px"/>
+				<g:ListBox ui:field="r_lesionspread" name="3112" width="96px" height="20px"/>
 			</g:at>
 			<g:at left="26" top="200">
-				<g:CheckBox text="Kitle Dışı Bulgu" ui:field="r_nonmass" name="4120"/>
+				<g:CheckBox text="Kitle Dışı Bulgu" ui:field="r_nonmass" name="3120"/>
 			</g:at>
 			<g:at left="26" top="225">
-				<g:CheckBox text="Mikrokalsifikasyon" ui:field="r_microcalcification" name="4130"/>
+				<g:CheckBox text="Mikrokalsifikasyon" ui:field="r_microcalcification" name="3130"/>
 			</g:at>
 			<g:at left="36" top="178">
 				<g:Label text="Lezyon Boyutu:" ui:field="r_lesionsize_label"/>
 			</g:at>
 			<g:at left="160" top="178">
-				<g:TextBox ui:field="r_lesionsize" name="4113" width="44px" height="12px"/>
+				<g:TextBox ui:field="r_lesionsize" name="3113" width="44px" height="12px"/>
 			</g:at>
 			<g:at left="212" top="272">
-				<g:TextBox width="38px" height="13px" ui:field="r_microcalcificationarea" name="4132"/>
+				<g:TextBox width="38px" height="13px" ui:field="r_microcalcificationarea" name="3132"/>
 			</g:at>
 			<g:at left="36" top="272">
 				<g:Label width="170px" height="31px" text="Mikrokalsifikasyon, Etkilenen alan" ui:field="r_microcalcificationarea_label"/>
@@ -48,58 +48,58 @@
 				<g:Label width="170px" height="16px" text="Mikrokalsifikasyon Tipi" ui:field="r_microcalcificationtype_label"/>
 			</g:at>
 			<g:at left="212" top="250">
-				<g:ListBox width="100px" height="20px" ui:field="r_microcalcificationtype" name="4131"/>
+				<g:ListBox width="100px" height="20px" ui:field="r_microcalcificationtype" name="3131"/>
 			</g:at>
 			<g:at left="26" top="309">
-				<g:CheckBox text="Aksilla Lenf Düğümü Pozitif" ui:field="r_axillary" name="4140"/>
+				<g:CheckBox text="Aksilla Lenf Düğümü Pozitif" ui:field="r_axillary" name="3140"/>
 			</g:at>
 			<g:at left="71" top="332">
 				<g:Label text="Lenf Düğümü Sayısı:" ui:field="r_lymphnodecount_label"/>
 			</g:at>
 			<g:at left="223" top="332">
-				<g:TextBox ui:field="r_lymphnodecount" name="4141" width="38px" height="12px"/>
+				<g:TextBox ui:field="r_lymphnodecount" name="3141" width="38px" height="12px"/>
 			</g:at>
 			<g:at left="36" top="356">
 				<g:Label text="En Büyük Düğümün Çapı:" ui:field="r_largestnoderadius_label"/>
 			</g:at>
 			<g:at left="223" top="356">
-				<g:TextBox ui:field="r_largestnoderadius" name="4142" width="38px" height="12px"/>
+				<g:TextBox ui:field="r_largestnoderadius" name="3142" width="38px" height="12px"/>
 			</g:at>
 			<g:at left="36" top="378">
 				<g:CheckBox text="Kapsül İnvazyonu Var" ui:field="r_capsuleinvasion" name="4143"/>
 			</g:at>
 			<g:at left="405" top="109">
-				<g:CheckBox width="50px" height="19px" text="Kitle" ui:field="l_mass" wordWrap="false" name="4210"/>
+				<g:CheckBox width="50px" height="19px" text="Kitle" ui:field="l_mass" wordWrap="false" name="3210"/>
 			</g:at>
 			<g:at left="389" top="403">
-				<g:CheckBox width="90px" height="19px" text="Bulgu Yok" ui:field="l_nofinding" wordWrap="false" name="4200"/>
+				<g:CheckBox width="90px" height="19px" text="Bulgu Yok" ui:field="l_nofinding" wordWrap="false" name="3200"/>
 			</g:at>
 			<g:at left="415" top="134">
 				<g:Label width="100px" height="16px" text="Lezyon Sayısı:" ui:field="l_lesionnumber_label"/>
 			</g:at>
 			<g:at left="539" top="134">
-				<g:TextBox width="38px" height="12px" ui:field="l_lesionnumber" name="4211"/>
+				<g:TextBox width="38px" height="12px" ui:field="l_lesionnumber" name="3211"/>
 			</g:at>
 			<g:at left="415" top="156">
 				<g:Label width="118px" height="16px" text="Lezyon Dağılımı:" ui:field="l_lesionspread_label"/>
 			</g:at>
 			<g:at left="539" top="156">
-				<g:ListBox width="100px" height="20px" ui:field="l_lesionspread" name="4212"/>
+				<g:ListBox width="100px" height="20px" ui:field="l_lesionspread" name="3212"/>
 			</g:at>
 			<g:at left="405" top="200">
-				<g:CheckBox width="125px" height="19px" text="Kitle Dışı Bulgu" ui:field="l_nonmass" wordWrap="false" name="4220"/>
+				<g:CheckBox width="125px" height="19px" text="Kitle Dışı Bulgu" ui:field="l_nonmass" wordWrap="false" name="3220"/>
 			</g:at>
 			<g:at left="405" top="225">
-				<g:CheckBox width="149px" height="19px" text="Mikrokalsifikasyon" ui:field="l_microcalcification" name="4230"/>
+				<g:CheckBox width="149px" height="19px" text="Mikrokalsifikasyon" ui:field="l_microcalcification" name="3230"/>
 			</g:at>
 			<g:at left="415" top="178">
 				<g:Label width="109px" height="16px" text="Lezyon Boyutu:" ui:field="l_lesionsize_label"/>
 			</g:at>
 			<g:at left="539" top="178">
-				<g:TextBox width="38px" height="12px" ui:field="l_lesionsize" name="4213"/>
+				<g:TextBox width="38px" height="12px" ui:field="l_lesionsize" name="3213"/>
 			</g:at>
 			<g:at left="591" top="272">
-				<g:TextBox width="38px" height="13px" ui:field="l_microcalcificationarea" name="4232"/>
+				<g:TextBox width="38px" height="13px" ui:field="l_microcalcificationarea" name="3232"/>
 			</g:at>
 			<g:at left="415" top="272">
 				<g:Label width="170px" height="31px" text="Mikrokalsifikasyon, Etkilenen alan" ui:field="l_microcalcificationarea_label"/>
@@ -108,25 +108,25 @@
 				<g:Label width="170px" height="16px" text="Mikrokalsifikasyon Tipi" ui:field="l_microcalcificationtype_label"/>
 			</g:at>
 			<g:at left="591" top="250">
-				<g:ListBox width="100px" height="20px" ui:field="l_microcalcificationtype" name="4231"/>
+				<g:ListBox width="100px" height="20px" ui:field="l_microcalcificationtype" name="3231"/>
 			</g:at>
 			<g:at left="405" top="309">
-				<g:CheckBox width="211px" height="19px" text="Aksilla Lenf Düğümü Pozitif" ui:field="l_axillary" name="4240"/>
+				<g:CheckBox width="211px" height="19px" text="Aksilla Lenf Düğümü Pozitif" ui:field="l_axillary" name="3240"/>
 			</g:at>
 			<g:at left="450" top="332">
 				<g:Label width="146px" height="16px" text="Lenf Düğümü Sayısı:" ui:field="l_lymphnodecount_label"/>
 			</g:at>
 			<g:at left="602" top="332">
-				<g:TextBox width="38px" height="12px" ui:field="l_lymphnodecount" name="4241"/>
+				<g:TextBox width="38px" height="12px" ui:field="l_lymphnodecount" name="3241"/>
 			</g:at>
 			<g:at left="415" top="356">
 				<g:Label width="181px" height="16px" text="En Büyük Düğümün Çapı:" ui:field="l_largestnoderadius_label"/>
 			</g:at>
 			<g:at left="602" top="356">
-				<g:TextBox width="38px" height="12px" ui:field="l_largestnoderadius" name="4242"/>
+				<g:TextBox width="38px" height="12px" ui:field="l_largestnoderadius" name="3242"/>
 			</g:at>
 			<g:at left="415" top="378">
-				<g:CheckBox width="171px" height="19px" text="Kapsül İnvazyonu Var" ui:field="l_capsuleinvasion" name="4243"/>
+				<g:CheckBox width="171px" height="19px" text="Kapsül İnvazyonu Var" ui:field="l_capsuleinvasion" name="3243"/>
 			</g:at>
 			<g:at left="255" top="10">
 				<g:Label text="Mamografi bulguları" styleName="{style.important}"/>
