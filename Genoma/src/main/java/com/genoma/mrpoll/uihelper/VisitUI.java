@@ -30,6 +30,8 @@ public class VisitUI implements Serializable{
 	private Integer id;
 
 	private Date date;
+	
+	private String age;
 
 	private Boolean ethic;
 
@@ -54,6 +56,14 @@ public class VisitUI implements Serializable{
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+	
+	public String getAge() {
+		return this.age;
+	}
+
+	public void setAge(String age) {
+		this.age = age;
 	}
 
 	public Boolean getEthic() {

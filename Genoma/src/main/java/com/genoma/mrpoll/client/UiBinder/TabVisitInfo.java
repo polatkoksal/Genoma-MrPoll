@@ -31,6 +31,7 @@ public class TabVisitInfo extends Composite implements Updater{
 	@UiField TextBox hospital;
 	@UiField CheckBox ethic;
 	@UiField TextArea note;
+	@UiField TextBox age;
 
 	interface TabVisitInfoUiBinder extends UiBinder<Widget, TabVisitInfo> {
 	}
@@ -45,6 +46,7 @@ public class TabVisitInfo extends Composite implements Updater{
 			visitUI.setDate(new Date());
 		}
 		date.setValue(visitUI.getDate());
+		age.setText(visitUI.getAge());
 		hospital.setText(visitUI.getHospital());
 		ethic.setValue(visitUI.getEthic());
 		note.setText(visitUI.getNote());

@@ -1,7 +1,6 @@
 package com.genoma.mrpoll.domain;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
 
 

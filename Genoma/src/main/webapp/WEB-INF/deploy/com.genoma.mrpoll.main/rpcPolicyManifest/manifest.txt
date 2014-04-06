@@ -1,4 +1,4 @@
 # Module com.genoma.mrpoll.main
 # RPC service class, partial path of RPC policy file
-com.genoma.mrpoll.client.UserService, AA764ADAD07BFAA1F7053083C1ECAB76.gwt.rpc
-com.genoma.mrpoll.client.PatientService, 9A3D0A7DF43A8ADFA6B630F4257E5189.gwt.rpc
+com.genoma.mrpoll.client.UserService, A696E9339971E82E1352C61039CA58BB.gwt.rpc
+com.genoma.mrpoll.client.PatientService, 402F81567F0E02CBC2B37843DB4CE648.gwt.rpc

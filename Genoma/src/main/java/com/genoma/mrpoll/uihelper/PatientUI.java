@@ -12,8 +12,6 @@ public class PatientUI implements Serializable {
 
 	private Integer id;
 
-	private Integer age;
-
 	
 	private String gender;
 
@@ -35,14 +33,6 @@ public class PatientUI implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Integer getAge() {
-		return this.age;
-	}
-
-	public void setAge(Integer age) {
-		this.age = age;
 	}
 
 	public String getGender() {

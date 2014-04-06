@@ -78,7 +78,7 @@
 				<g:CheckBox width="211px" height="19px" text="Aksilla Lenf Düğümü Pozitif" ui:field="l_axillary" name="380"/>
 			</g:at>
 			<g:at left="475" top="298">
-				<g:Label width="146px" height="16px" text="Lenf Düğümü Sayısı:" ui:field="l_lypmhnodecount_label"/>
+				<g:Label width="146px" height="16px" text="Lenf Düğümü Sayısı:" ui:field="l_lymphnodecount_label"/>
 			</g:at>
 			<g:at left="627" top="298">
 				<g:TextBox width="130px" height="18px" ui:field="l_lymphnodecount" name="381"/>
@@ -105,7 +105,7 @@
 				<g:Label text="Endikasyon:"/>
 			</g:at>
 			<g:at left="102" top="403">
-				<g:ListBox ui:field="r_indication" name="340"/>
+				<g:ListBox ui:field="r_indication" name="340" width="135px" height="20px"/>
 			</g:at>
 			<g:at left="10" top="425">
 				<g:CheckBox text="Aşırı granüler boyama nedeniyle MR duyarlılığı kısıtlı" name="341"/>
@@ -114,7 +114,7 @@
 				<g:Label width="86px" height="16px" text="Endikasyon:"/>
 			</g:at>
 			<g:at left="506" top="403">
-				<g:ListBox width="56px" height="20px" ui:field="l_indication" name="390"/>
+				<g:ListBox width="135px" height="20px" ui:field="l_indication" name="390"/>
 			</g:at>
 			<g:at left="414" top="425">
 				<g:CheckBox width="391px" height="19px" text="Aşırı granüler boyama nedeniyle MR duyarlılığı kısıtlı" name="391"/>
@@ -136,6 +136,12 @@
 			</g:at>
 			<g:at left="430" top="200">
 				<g:CheckBox width="210px" height="19px" text="Kitlesel Olmayan Boyanma" ui:field="l_nonmassstain" name="370"/>
+			</g:at>
+			<g:at left="243" top="403">
+				<g:TextBox ui:field="r_indication_other" name="341"/>
+			</g:at>
+			<g:at left="647" top="403">
+				<g:TextBox width="130px" height="13px" name="341" ui:field="l_indication_other"/>
 			</g:at>
 		</g:AbsolutePanel>
 	</g:HTMLPanel>

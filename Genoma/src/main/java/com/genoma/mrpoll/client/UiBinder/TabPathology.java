@@ -58,6 +58,13 @@ public class TabPathology extends Composite implements Updater {
 		initWidget(uiBinder.createAndBindUi(this));
 		r_nolesion.setValue(true);
 		l_nolesion.setValue(true);
+		initUi();
+		updateUi(list);
+		onR_nolesionClick(null);
+		onL_nolesionClick(null);
+	}
+
+	public void initUi(){
 		r_stage.addItem("I");
 		r_stage.addItem("IIa");
 		r_stage.addItem("IIb");
@@ -110,12 +117,7 @@ public class TabPathology extends Composite implements Updater {
 		l_hpdiag.addItem("Nöroendokrin karsinom");
 		l_hpdiag.addItem("Apokrin karsinom");
 		l_hpdiag.addItem("İnflamatuar karsinom");
-		updateUi(list);
-		onR_nolesionClick(null);
-		onL_nolesionClick(null);
-		
 	}
-
 	public void updateUi(List<AnswerUI> answers){
 		for(AnswerUI answer : answers){
 			for(Widget w: panel){
@@ -147,6 +149,13 @@ public class TabPathology extends Composite implements Updater {
 		r_her2.setEnabled(lockStatus);
 		r_lymphnode.setEnabled(lockStatus);
 		r_metastasis.setEnabled(lockStatus);
+		r_hpdiag.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_stage.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_er.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_pgr.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_her2.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_lymphnode.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_metastasis.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
 	}
 	@UiHandler("l_nolesion")
 	void onL_nolesionClick(ClickEvent event) {
@@ -158,5 +167,12 @@ public class TabPathology extends Composite implements Updater {
 		l_her2.setEnabled(lockStatus);
 		l_lymphnode.setEnabled(lockStatus);
 		l_metastasis.setEnabled(lockStatus);
+		l_hpdiag.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		l_stage.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		l_er.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		l_pgr.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		l_her2.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		l_lymphnode.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		l_metastasis.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
 	}
 }

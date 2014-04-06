@@ -31,7 +31,6 @@ public class TabPatientInfo extends Composite implements Updater {
 	
 	@UiField TextBox protocolno;
 	@UiField TextBox name;
-	@UiField TextBox age;
 	@UiField ListBox gender;
 
 	interface PatientInfoUiBinder extends UiBinder<Widget, TabPatientInfo> {
@@ -53,12 +52,6 @@ public class TabPatientInfo extends Composite implements Updater {
 			protocolno.setText(patientUI.getProtocolNo());
 		}
 		name.setText(patientUI.getNameSurname());
-		if(patientUI.getAge() != null){
-			age.setText(patientUI.getAge().toString());
-		}
-		else{
-			age.setText("");
-		}
 		if(patientUI.getGender() != null){
 			gender.setSelectedIndex(Integer.parseInt(patientUI.getGender()));
 		}

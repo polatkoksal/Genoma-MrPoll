@@ -21,6 +21,9 @@ public class Visit implements Serializable {
 	@Column(unique=true, nullable=false)
 	private Integer id;
 
+	@Column(length=255)
+	private String age;
+
 	@Temporal(TemporalType.DATE)
 	private Date date;
 
@@ -54,6 +57,14 @@ public class Visit implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getAge() {
+		return this.age;
+	}
+
+	public void setAge(String age) {
+		this.age = age;
 	}
 
 	public Date getDate() {

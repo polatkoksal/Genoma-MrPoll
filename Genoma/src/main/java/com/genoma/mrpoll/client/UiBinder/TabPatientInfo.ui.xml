@@ -14,16 +14,10 @@
 			<g:at left="164" top="91">
 				<g:TextBox ui:field="name"/>
 			</g:at>
-			<g:at left="65" top="97">
+			<g:at left="74" top="91">
 				<g:Label text="Adı Soyadı"/>
 			</g:at>
-			<g:at left="65" top="138">
-				<g:Label text="Yaşı"/>
-			</g:at>
-			<g:at left="164" top="132">
-				<g:TextBox ui:field="age"/>
-			</g:at>
-			<g:at left="65" top="179">
+			<g:at left="91" top="127">
 				<g:Label text="Cinsiyeti"/>
 			</g:at>
 			<g:at left="65" top="59">
@@ -32,7 +26,7 @@
 			<g:at left="164" top="59">
 				<g:TextBox ui:field="protocolno"/>
 			</g:at>
-			<g:at left="164" top="175">
+			<g:at left="164" top="123">
 				<g:ListBox ui:field="gender"/>
 			</g:at>
 		</g:AbsolutePanel>

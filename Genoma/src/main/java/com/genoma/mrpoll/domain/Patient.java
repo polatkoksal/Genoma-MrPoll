@@ -1,18 +1,8 @@
 package com.genoma.mrpoll.domain;
 
 import java.io.Serializable;
+import javax.persistence.*;
 import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 
 /**
@@ -30,8 +20,6 @@ public class Patient implements Serializable {
 	@Column(unique=true, nullable=false)
 	private Integer id;
 
-	private Integer age;
-
 	@Column(length=255)
 	private String gender;
 
@@ -42,7 +30,7 @@ public class Patient implements Serializable {
 	private String protocolNo;
 
 	//bi-directional many-to-one association to User
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="created_user_id")
 	private User user;
 
@@ -59,14 +47,6 @@ public class Patient implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Integer getAge() {
-		return this.age;
-	}
-
-	public void setAge(Integer age) {
-		this.age = age;
 	}
 
 	public String getGender() {

@@ -23,6 +23,7 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.event.dom.client.ChangeEvent;
 
 public class TabMRI extends Composite implements Updater{
 
@@ -56,7 +57,7 @@ public class TabMRI extends Composite implements Updater{
 	@UiField CheckBox l_capsuleinvasion;
 	@UiField TextBox l_lymphnodecount;
 	@UiField TextBox l_largestnoderadius;
-	@UiField Label l_lypmhnodecount_label;
+	@UiField Label l_lymphnodecount_label;
 	@UiField Label l_largestnoderadius_label;
 	@UiField CheckBox r_nonmassstain;
 	@UiField CheckBox r_ductalstain;
@@ -67,6 +68,8 @@ public class TabMRI extends Composite implements Updater{
 	@UiField AbsolutePanel panel;
 	@UiField ListBox r_indication;
 	@UiField ListBox l_indication;
+	@UiField TextBox r_indication_other;
+	@UiField TextBox l_indication_other;
 
 	interface MammographyUiBinder extends UiBinder<Widget, TabMRI> {
 	}
@@ -86,6 +89,8 @@ public class TabMRI extends Composite implements Updater{
 		updateUi(list);
 		onR_nofindingClick(null);
 		onL_nofindingClick(null);
+		onR_indicationChange(null);
+		onL_indicationChange(null);
 	}
 	@UiHandler("r_nofinding")
 	void onR_nofindingClick(ClickEvent event) {
@@ -95,6 +100,11 @@ public class TabMRI extends Composite implements Updater{
 		r_nonmassstain.setEnabled(lockStatus);
 		r_ductalstain.setEnabled(lockStatus);
 		r_focallesion.setEnabled(lockStatus);
+		r_mass.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_axillary.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_nonmassstain.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_ductalstain.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_focallesion.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
 		onR_massClick(null);
 		onR_axillaryClick(null);
 	}
@@ -106,6 +116,11 @@ public class TabMRI extends Composite implements Updater{
 		l_nonmassstain.setEnabled(lockStatus);
 		l_ductalstain.setEnabled(lockStatus);
 		l_focallesion.setEnabled(lockStatus);
+		l_mass.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		l_axillary.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		l_nonmassstain.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		l_ductalstain.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		l_focallesion.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
 		onL_massClick(null);
 		onL_axillaryClick(null);
 	}
@@ -116,6 +131,11 @@ public class TabMRI extends Composite implements Updater{
 		r_lymphnodecount.setEnabled(lockStatus);
 		r_largestnoderadius.setEnabled(lockStatus);
 		r_capsuleinvasion.setEnabled(lockStatus);
+		r_lymphnodecount.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_lymphnodecount_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_largestnoderadius.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_largestnoderadius_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_capsuleinvasion.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
 	}
 	@UiHandler("l_axillary")
 	void onL_axillaryClick(ClickEvent event) {
@@ -123,6 +143,12 @@ public class TabMRI extends Composite implements Updater{
 		l_lymphnodecount.setEnabled(lockStatus);
 		l_largestnoderadius.setEnabled(lockStatus);
 		l_capsuleinvasion.setEnabled(lockStatus);
+		l_lymphnodecount.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		l_lymphnodecount_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		l_largestnoderadius.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		l_largestnoderadius_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		l_capsuleinvasion.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+	
 	}
 	@UiHandler("r_mass")
 	void onR_massClick(ClickEvent event) {
@@ -130,6 +156,9 @@ public class TabMRI extends Composite implements Updater{
 		r_lesionnumber.setEnabled(lockStatus);
 		r_lesionspread.setEnabled(lockStatus);
 		r_lesionsize.setEnabled(lockStatus);
+		r_lesionnumber_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_lesionspread_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_lesionsize_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
 	}
 	@UiHandler("l_mass")
 	void onL_massClick(ClickEvent event) {
@@ -137,6 +166,21 @@ public class TabMRI extends Composite implements Updater{
 		l_lesionnumber.setEnabled(lockStatus);
 		l_lesionspread.setEnabled(lockStatus);
 		l_lesionsize.setEnabled(lockStatus);
+		l_lesionnumber_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		l_lesionspread_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		l_lesionsize_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+	}
+	@UiHandler("l_indication")
+	void onL_indicationChange(ChangeEvent event) {
+		Boolean isLast = l_indication.getSelectedIndex()==1;
+		l_indication_other.setVisible(isLast);
+		l_indication_other.setEnabled(isLast);
+	}
+	@UiHandler("r_indication")
+	void onR_indicationChange(ChangeEvent event) {
+		Boolean isLast = r_indication.getSelectedIndex()==1;
+		r_indication_other.setVisible(isLast);
+		r_indication_other.setEnabled(isLast);
 	}
 	public void updateUi(List<AnswerUI> answers){
 		for(AnswerUI answer : answers){
@@ -150,14 +194,11 @@ public class TabMRI extends Composite implements Updater{
 	@Override
 	public List<AnswerUI> getAnswersFromUi() {
 		List<AnswerUI> result=new ArrayList<AnswerUI>();
-		String s="";
 		for(Widget w: panel){
 			if(w instanceof HasName){
 				result.add(returnAnswerOf((HasName)w));
-				s+=((HasName) w).getName()+"-"+returnAnswerOf((HasName)w).getAnswer();
 			}
 		}
-		Window.alert(s);
 		return result;
 	}
 }

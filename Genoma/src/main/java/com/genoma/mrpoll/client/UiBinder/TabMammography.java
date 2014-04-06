@@ -13,16 +13,15 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.AbsolutePanel;
+import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasName;
-import com.google.gwt.user.client.ui.HasText;
-import com.google.gwt.user.client.ui.Widget;
-import com.google.gwt.user.client.ui.CheckBox;
-import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
-import com.google.gwt.user.client.ui.AbsolutePanel;
+import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.user.client.ui.UIObject;
+import com.google.gwt.user.client.ui.Widget;
 
 public class TabMammography extends Composite implements Updater{
 
@@ -47,29 +46,30 @@ public class TabMammography extends Composite implements Updater{
 	@UiField Label l_lesionsize_label;
 	@UiField CheckBox r_nonmass;
 	@UiField CheckBox l_nonmass;
-	@UiField CheckBox r_microcalcification;
-	@UiField CheckBox l_microcalcification;
-	@UiField ListBox r_microcalcificationtype;
-	@UiField Label r_microcalcificationtype_label;
-	@UiField ListBox r_microcalcificationarea;
-	@UiField Label r_microcalcificationarea_label;
 	@UiField CheckBox r_axillary;
 	@UiField CheckBox l_axillary;
 	@UiField TextBox r_lymphnodecount;
-	@UiField TextBox r_largestnoderadius;
 	@UiField Label r_lymphnodecount_label;
 	@UiField Label r_largestnoderadius_label;
 	@UiField CheckBox l_capsuleinvasion;
-	@UiField ListBox l_microcalcificationtype;
-	@UiField ListBox l_microcalcificationarea;
-	@UiField Label l_microcalcificationtype_label;
-	@UiField Label l_microcalcificationarea_label;
 	@UiField TextBox l_lymphnodecount;
 	@UiField TextBox l_largestnoderadius;
-	@UiField Label l_lypmhnodecount_label;
+	@UiField Label l_lymphnodecount_label;
 	@UiField Label l_largestnoderadius_label;
 	@UiField AbsolutePanel panel;
-
+	@UiField TextBox r_largestnoderadius;
+	@UiField ListBox r_microcalcificationtype;
+	@UiField ListBox l_microcalcificationtype;
+	@UiField CheckBox r_microcalcification;
+	@UiField CheckBox r_microcalcificationarea;
+	@UiField CheckBox l_microcalcification;
+	@UiField CheckBox l_microcalcificationarea;
+	@UiField Label r_microcalcificationarea_label;
+	@UiField Label r_microcalcificationtype_label;
+	@UiField Label r_microcalcificationarea_label_;
+	@UiField Label l_microcalcificationarea_label;
+	@UiField Label l_microcalcificationtype_label;
+	@UiField Label l_microcalcificationarea_label_;
 	interface MammographyUiBinder extends UiBinder<Widget, TabMammography> {
 	}
 
@@ -85,10 +85,15 @@ public class TabMammography extends Composite implements Updater{
 		l_microcalcificationtype.addItem("Segmental");
 		l_microcalcificationtype.addItem("Bölgesel");
 		l_microcalcificationtype.addItem("Yaygın");
+		r_lesionspread.addItem("Multifokal");
+		r_lesionspread.addItem("Multisentrik");
+		l_lesionspread.addItem("Multifokal");
+		l_lesionspread.addItem("Multisentrik");
 		updateUi(list);
 		onR_nofindingClick(null);
 		onL_nofindingClick(null);
 	}
+	
 	@UiHandler("r_nofinding")
 	void onR_nofindingClick(ClickEvent event) {
 		Boolean lockStatus = !r_nofinding.getValue();
@@ -111,10 +116,10 @@ public class TabMammography extends Composite implements Updater{
 		l_axillary.setEnabled(lockStatus);
 		l_microcalcification.setEnabled(lockStatus);
 		l_nonmass.setEnabled(lockStatus);
-		r_mass.getElement().getStyle().setColor(lockStatus?"#A8A8A8":"black");
-		r_axillary.getElement().getStyle().setColor(lockStatus?"#A8A8A8":"black");
-		r_microcalcification.getElement().getStyle().setColor(lockStatus?"#A8A8A8":"black");
-		r_nonmass.getElement().getStyle().setColor(lockStatus?"#A8A8A8":"black");
+		l_mass.getElement().getStyle().setColor(lockStatus?"#A8A8A8":"black");
+		l_axillary.getElement().getStyle().setColor(lockStatus?"#A8A8A8":"black");
+		l_microcalcification.getElement().getStyle().setColor(lockStatus?"#A8A8A8":"black");
+		l_nonmass.getElement().getStyle().setColor(lockStatus?"#A8A8A8":"black");
 		onL_massClick(null);
 		onL_axillaryClick(null);
 		onL_microcalcificationClick(null);
@@ -126,6 +131,16 @@ public class TabMammography extends Composite implements Updater{
 		r_lymphnodecount.setEnabled(lockStatus);
 		r_largestnoderadius.setEnabled(lockStatus);
 		r_capsuleinvasion.setEnabled(lockStatus);
+		r_lymphnodecount.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_lymphnodecount_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_largestnoderadius.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_largestnoderadius_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_capsuleinvasion.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_lymphnodecount.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_lymphnodecount_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_largestnoderadius.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_largestnoderadius_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_capsuleinvasion.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
 	}
 	@UiHandler("l_axillary")
 	void onL_axillaryClick(ClickEvent event) {
@@ -133,6 +148,11 @@ public class TabMammography extends Composite implements Updater{
 		l_lymphnodecount.setEnabled(lockStatus);
 		l_largestnoderadius.setEnabled(lockStatus);
 		l_capsuleinvasion.setEnabled(lockStatus);
+		l_lymphnodecount.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		l_lymphnodecount_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		l_largestnoderadius.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		l_largestnoderadius_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		l_capsuleinvasion.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
 	}
 	@UiHandler("r_mass")
 	void onR_massClick(ClickEvent event) {
@@ -140,6 +160,9 @@ public class TabMammography extends Composite implements Updater{
 		r_lesionnumber.setEnabled(lockStatus);
 		r_lesionspread.setEnabled(lockStatus);
 		r_lesionsize.setEnabled(lockStatus);
+		r_lesionnumber_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_lesionspread_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_lesionsize_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
 	}
 	@UiHandler("l_mass")
 	void onL_massClick(ClickEvent event) {
@@ -147,18 +170,27 @@ public class TabMammography extends Composite implements Updater{
 		l_lesionnumber.setEnabled(lockStatus);
 		l_lesionspread.setEnabled(lockStatus);
 		l_lesionsize.setEnabled(lockStatus);
+		l_lesionnumber_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		l_lesionspread_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		l_lesionsize_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
 	}
 	@UiHandler("r_microcalcification")
 	void onR_microcalcificationClick(ClickEvent event) {
 		Boolean lockStatus = r_microcalcification.getValue() && r_microcalcification.isEnabled();
 		r_microcalcificationarea.setEnabled(lockStatus);
 		r_microcalcificationtype.setEnabled(lockStatus);
+		r_microcalcificationarea_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_microcalcificationtype_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_microcalcificationarea_label_.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
 	}
 	@UiHandler("l_microcalcification")
 	void onL_microcalcificationClick(ClickEvent event) {
 		Boolean lockStatus = l_microcalcification.getValue() && l_microcalcification.isEnabled();
 		l_microcalcificationarea.setEnabled(lockStatus);
 		l_microcalcificationtype.setEnabled(lockStatus);
+		l_microcalcificationarea_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		l_microcalcificationtype_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		l_microcalcificationarea_label_.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
 	}
 	public void updateUi(List<AnswerUI> answers){
 		for(AnswerUI answer : answers){

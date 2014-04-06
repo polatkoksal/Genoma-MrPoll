@@ -27,19 +27,22 @@
 				<g:Label width="120px" height="16px" text="Operasyon Şekli:"/>
 			</g:at>
 			<g:at left="43" top="272">
-				<g:Label text="Reoperasyon Gerektiren Pozitif Cerrahi Sınır:"/>
+				<g:Label text="Reoperasyon Gerektiren Pozitif Cerrahi Sınır:" ui:field="reop_label"/>
 			</g:at>
 			<g:at left="116" top="294">
-				<g:Label text="Cerrahi Sınır İçin Referans Kılavuz:"/>
+				<g:Label text="Cerrahi Sınır İçin Referans Kılavuz:" ui:field="ref_label"/>
 			</g:at>
 			<g:at left="361" top="272">
-				<g:ListBox ui:field="reop" name="750"/>
+				<g:ListBox ui:field="reop" name="750" width="99px" height="20px"/>
 			</g:at>
 			<g:at left="361" top="294">
 				<g:TextBox width="194px" height="12px" ui:field="ref" name="760"/>
 			</g:at>
 			<g:at left="234" top="33">
 				<g:Label text="Cerrahi" styleName="{style.important}"/>
+			</g:at>
+			<g:at left="466" top="272">
+				<g:TextBox width="93px" height="12px" ui:field="reop_other"/>
 			</g:at>
 		</g:AbsolutePanel>
 	</g:HTMLPanel>
