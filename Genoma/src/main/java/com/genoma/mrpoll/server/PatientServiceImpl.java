@@ -29,7 +29,6 @@ public class PatientServiceImpl extends RemoteServiceServlet implements
 		PatientService {
 
 	private static final long serialVersionUID = -5024300527855702085L;
-	private EntityManagerFactory factory;
 
 	@Override
 	public Boolean saveEditVisitData(EditVisitData editVisitData) {
