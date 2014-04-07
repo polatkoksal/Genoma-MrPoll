@@ -30,12 +30,12 @@ public class Document implements Serializable {
 	private String name;
 
 	//bi-directional many-to-one association to User
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne
 	@JoinColumn(name="creates_user_id")
 	private User user;
 
 	//bi-directional many-to-one association to Visit
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne
 	@JoinColumn(name="attached_visit_id")
 	private Visit visit;
 

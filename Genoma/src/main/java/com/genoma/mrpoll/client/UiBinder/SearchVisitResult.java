@@ -26,9 +26,13 @@ public class SearchVisitResult extends Composite {
 	
 	private static SearchVisitResultUiBinder uiBinder = GWT.create(SearchVisitResultUiBinder.class);
 	
-	@UiField Label protocolno;
 	@UiField Button edit;
 	@UiField Button delete;
+	@UiField Label protocolno;
+	@UiField Label name;
+	@UiField Label age;
+	@UiField Label hospital;
+	@UiField Label date;
 
 	interface SearchVisitResultUiBinder extends UiBinder<Widget, SearchVisitResult> {
 		
@@ -38,23 +42,30 @@ public class SearchVisitResult extends Composite {
 	public SearchVisitResult(SearchResultData searchResultData) {
 		initWidget(uiBinder.createAndBindUi(this));
 		srcResultData = searchResultData;
-		//protocolno.setText(searchResultData.getProtocolNo());
+		if(searchResultData != null){
+			protocolno.setText(searchResultData.getProtocolNo());
+			name.setText(searchResultData.getNamaSurname());
+			age.setText(searchResultData.getAge());
+			hospital.setText(searchResultData.getHospital());
+			date.setText(searchResultData.getDate().toString());
+		}
+		
 	}
 
 	@UiHandler("edit")
 	void onEditClick(ClickEvent event) {
-		Window.alert("onEditClick");
+		setEnable(false);
 		service.getEditVisitData(srcResultData, new AsyncCallback<EditVisitData>() {
 			
 			@Override
 			public void onSuccess(EditVisitData result) {
-				Window.alert("in onSucces in onEditClick");
 				MrPoll.setEditVisitData(result);
 				
 			}
 			
 			@Override
 			public void onFailure(Throwable caught) {
+				setEnable(true);
 				Window.alert("error in editClick");
 			}
 		});
@@ -63,20 +74,26 @@ public class SearchVisitResult extends Composite {
 	
 	@UiHandler("delete")
 	void onDeleteClick(ClickEvent event) {
-		
+		setEnable(false);
 		service.deleteVisit(srcResultData, new AsyncCallback<Boolean>() {
 			
 			@Override
 			public void onSuccess(Boolean result) {
-				MrPoll.repaint(State.MAIN_MENU);
-				Window.alert("Vsiti deleted");
+				Window.alert("Visit deleted");
+				MrPoll.repaint(State.MAIN_MENU);				
 			}
 			
 
 			@Override
 			public void onFailure(Throwable caught) {
 				Window.alert("Delete Visit Error!");
+				setEnable(true);
 			}
 		});
+	}
+	
+	public void setEnable(Boolean b){
+		edit.setEnabled(b);
+		delete.setEnabled(b);
 	}
 }

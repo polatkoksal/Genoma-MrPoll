@@ -11,7 +11,6 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.beanutils.BeanUtils;
 
-import com.genoma.mrpoll.client.EMF;
 import com.genoma.mrpoll.client.PatientService;
 import com.genoma.mrpoll.domain.Answer;
 import com.genoma.mrpoll.domain.Patient;
@@ -36,8 +35,7 @@ public class PatientServiceImpl extends RemoteServiceServlet implements
 	public Boolean saveEditVisitData(EditVisitData editVisitData) {
 
 		Boolean result = true;
-		factory = EMF.get();
-		EntityManager em = factory.createEntityManager();
+		EntityManager em = EMF.getEntityManager();
 		try {
 
 			em.getTransaction().begin();
@@ -52,57 +50,67 @@ public class PatientServiceImpl extends RemoteServiceServlet implements
 
 			User editUser = users.get(0);
 			Patient patient = null;
-//			if (editVisitData.getPatient().getId() != null) {
-//				patient = (Patient) em.find(Patient.class, editVisitData.getPatient().getId());
-//			} 
-//			else {
-			if (editVisitData.getPatient().getProtocolNo() != null && editVisitData.getPatient().getId() != null) {
-				Query query2 = em.createQuery("select p from Patient p where p.protocolNo=:protocolNo");
-				query2.setParameter("protocolNo", editVisitData.getPatient().getProtocolNo());
-				List<Patient> patients = query2.getResultList();
-				// FIXME: Eger birden buyuk bir rakam yada 0 sa exception
-				// atılacak.
-				// throw new RuntimeException("Mesaj");
-				if (patients.size() > 0) {
-					patient = patients.get(0);
-				} 
+			if (editVisitData.getPatient().getId() != null) {
+				patient = (Patient) em.find(Patient.class, editVisitData
+						.getPatient().getId());
+			} else {
+				if (editVisitData.getPatient().getProtocolNo() != null) {
+					Query query2 = em
+							.createQuery("select p from Patient p where p.protocolNo=:protocolNo");
+					query2.setParameter("protocolNo", editVisitData
+							.getPatient().getProtocolNo());
+					List<Patient> patients = query2.getResultList();
+					// FIXME: Eger birden buyuk bir rakam yada 0 sa exception
+					// atılacak.
+					// throw new RuntimeException("Mesaj");
+					if (patients.size() > 0) {
+						patient = patients.get(0);
+					} else {
+						patient = new Patient();
+						patient.setUser(editUser);
+					}
+				}
+
 			}
-			else {
-				patient = new Patient();
-				patient.setUser(editUser);
-			}
-//			}
 			Visit visit;
 			if (editVisitData.getVisit().getId() != null) {
-				visit = (Visit) em.find(Visit.class, editVisitData.getVisit().getId());
-			} 
-			else {
+				visit = (Visit) em.find(Visit.class, editVisitData.getVisit()
+						.getId());
+				List<Answer> results = visit.getAnswers();
+				for (Answer ans : results) {
+					em.remove(ans);
+				}
+			} else {
 				visit = new Visit();
 			}
-			
+
 			try {
+				Integer patientId = patient.getId();
+				Integer visitId = visit.getId();
 				BeanUtils.copyProperties(patient, editVisitData.getPatient());
 				BeanUtils.copyProperties(visit, editVisitData.getVisit());
+				patient.setId(patientId);
+				visit.setId(visitId);
 			} catch (Exception e1) {
 				e1.printStackTrace();
 				throw e1;
 			}
+			patient = em.merge(patient);
+			visit.setPatient(patient);
+			visit = em.merge(visit);
+			patient.getVisits().add(visit);
 
 			// DELETE ALL PRECIOUS ANSWERS OF VISIT.
-			Query query3 = em.createQuery("select a from Answer a where a.visit.id=:id");
-			query3.setParameter("id", visit.getId());
-			List<Answer> results = query3.getResultList();
-			for (Answer ans : results) {
-				em.remove(ans);
-			}
 
 			List<Answer> answers = new ArrayList<Answer>();
 			for (AnswerUI answerUI : editVisitData.getAnswers()) {
 				if (answerUI != null) {
 					Answer answer = new Answer();
 					answer.setAnswerValue(answerUI.getAnswerValue());
-					Query query1 = em.createQuery("select q from Question q where q.questionCode=:questionCode");
-					query1.setParameter("questionCode", answerUI.getQuestionCode());
+					Query query1 = em
+							.createQuery("select q from Question q where q.questionCode=:questionCode");
+					query1.setParameter("questionCode",
+							answerUI.getQuestionCode());
 					List<Question> questions = query1.getResultList();
 					// FIXME : Throw exception
 					if (!questions.isEmpty()) {
@@ -113,18 +121,13 @@ public class PatientServiceImpl extends RemoteServiceServlet implements
 					}
 				}
 			}
-
-			patient = em.merge(patient);
-
-			visit.setPatient(patient);
-	
-			visit = em.merge(visit);
-
+			em.flush();
 			em.getTransaction().commit();
 		} catch (Exception e) {
 			em.getTransaction().rollback();
-			// TODO: handle exception
+			e.printStackTrace();
 		} finally {
+			em.clear();
 			em.close();
 		}
 
@@ -133,8 +136,7 @@ public class PatientServiceImpl extends RemoteServiceServlet implements
 
 	public List<SearchResultData> searchVisit(Integer selection, String search) {
 
-		factory = EMF.get();
-		EntityManager em = factory.createEntityManager();
+		EntityManager em = EMF.getEntityManager();
 
 		List<SearchResultData> searchResultDatas = new ArrayList<SearchResultData>();
 		List<Patient> patients = new ArrayList<Patient>();
@@ -142,7 +144,8 @@ public class PatientServiceImpl extends RemoteServiceServlet implements
 
 		switch (selection) {
 		case 0:
-			Query query = em.createQuery("select p from Patient p where p.nameSurname like :search");
+			Query query = em
+					.createQuery("select p from Patient p where p.nameSurname like :search");
 			query.setParameter("search", search + "%");
 			patients = query.getResultList();
 
@@ -162,22 +165,23 @@ public class PatientServiceImpl extends RemoteServiceServlet implements
 			}
 			break;
 		case 1:
-			Query query1 = em.createQuery("select p from Patient p where p.protocolNo=:search");
+			Query query1 = em
+					.createQuery("select v from Visit v where v.patient.protocolNo=:search");
 			query1.setParameter("search", search);
-			patients = query1.getResultList();
+			visits = query1.getResultList();
 
-			for (Patient patient : patients) {
-				visits = patient.getVisits();
-				for (Visit visit : visits) {
-					SearchResultData searchResultData = new SearchResultData();
-					searchResultData.setProtocolNo(patient.getProtocolNo());
-					searchResultData.setNamaSurname(patient.getNameSurname());
-					searchResultData.setHospital(visit.getHospital());
-					searchResultData.setDate(visit.getDate());
-					searchResultData.setAge(visit.getAge());
-					searchResultData.setVisitId(visit.getId());
-					searchResultDatas.add(searchResultData);
-				}
+			for (Visit visit : visits) {
+				SearchResultData searchResultData = new SearchResultData();
+				searchResultData.setProtocolNo(visit.getPatient()
+						.getProtocolNo());
+				searchResultData.setNamaSurname(visit.getPatient()
+						.getNameSurname());
+				searchResultData.setPatientId(visit.getPatient().getId());
+				searchResultData.setHospital(visit.getHospital());
+				searchResultData.setDate(visit.getDate());
+				searchResultData.setAge(visit.getAge());
+				searchResultData.setVisitId(visit.getId());
+				searchResultDatas.add(searchResultData);
 			}
 			break;
 		case 2:
@@ -191,12 +195,11 @@ public class PatientServiceImpl extends RemoteServiceServlet implements
 		return searchResultDatas;
 	}
 
-	
 	@Override
 	public PatientUI getPatientFromDB(String protocolNo) {
 
-		factory = EMF.get();
-		EntityManager em = factory.createEntityManager();
+		EntityManager em = EMF.getEntityManager();
+		em.clear();
 		Query query = em
 				.createQuery("select p from Patient p where p.protocolNo=:protocolNo");
 		query.setParameter("protocolNo", protocolNo);
@@ -219,24 +222,16 @@ public class PatientServiceImpl extends RemoteServiceServlet implements
 	public EditVisitData getEditVisitData(SearchResultData searchResultData) {
 
 		EditVisitData editVisitData = new EditVisitData();
-		HttpSession session = this.getThreadLocalRequest().getSession();
-		User user = (User) session.getAttribute("loginUser");
-
-		factory = EMF.get();
-		EntityManager em = factory.createEntityManager();
-		Query query = em.createQuery("select p from Patient p where p.protocolNo=:protocolNo");
-		query.setParameter("protocolNo", searchResultData.getProtocolNo());
-		List<Patient> patients = query.getResultList();
-		Patient p = patients.get(0);
-
-		Query query1 = em.createQuery("select v from Visit v where v.id=:visitId");
+		EntityManager em = EMF.getEntityManager();
+		
+		Query query1 = em
+				.createQuery("select v from Visit v where v.id=:visitId");
 		query1.setParameter("visitId", searchResultData.getVisitId());
 		List<Visit> visits = query1.getResultList();
 		Visit v = visits.get(0);
-
-		Query query2 = em.createQuery("select a from Answer a where a.visit.id =:visitId");
-		query2.setParameter("visitId", v.getId());
-		List<Answer> answers = query2.getResultList();
+		Patient p = v.getPatient();
+		List<Answer> answers = v.getAnswers();
+		
 
 		try {
 			PatientUI patientUI = new PatientUI();
@@ -247,7 +242,8 @@ public class PatientServiceImpl extends RemoteServiceServlet implements
 			BeanUtils.copyProperties(patientUI, p);
 			BeanUtils.copyProperties(visitUI, v);
 			for (Answer answer : answers) {
-				BeanUtils.copyProperties(answerUI, answer);
+				answerUI.setAnswerValue(answer.getAnswerValue());
+				answerUI.setQuestionCode(answer.getQuestion().getQuestionCode());
 				answersUI.add(answerUI);
 			}
 
@@ -265,46 +261,39 @@ public class PatientServiceImpl extends RemoteServiceServlet implements
 
 	@Override
 	public Boolean deleteVisit(SearchResultData searchResultData) {
-	
+
 		Boolean result = false;
-		factory = EMF.get();
-		EntityManager em = factory.createEntityManager();
+		EntityManager em = EMF.getEntityManager();
 		em.getTransaction().begin();
-		
-		Query query = em.createQuery("select a from Answer a where a.visit.id=:id");
-		query.setParameter("id", searchResultData.getVisitId());
-		List<Answer> results = query.getResultList();
-		for (Answer ans : results) {
-			ans.setQuestion(null);
-			em.remove(ans);
-		}
-		
-		Query query1 = em.createQuery("select v from Visit v where v.id=:visitId");
+
+		Query query1 = em
+				.createQuery("select v from Visit v where v.id=:visitId");
 		query1.setParameter("visitId", searchResultData.getVisitId());
 		List<Visit> visits = query1.getResultList();
 		Visit v = visits.get(0);
-		em.remove(v);
-		
-		Query query2 = em.createQuery("select p from Patient p where p.protocolNo=:protocolNo");
-		query2.setParameter("protocolNo", searchResultData.getProtocolNo());
-		List<Patient> patients = query2.getResultList();
-		Patient p = patients.get(0);
-		List<Visit> visits2 = p.getVisits();
-		if(visits2.isEmpty()){
-			em.remove(p);
+
+		List<Answer> answers = v.getAnswers();
+		for (Answer ans : answers) {
+			ans.setQuestion(null);
+			em.remove(ans);
 		}
 
+		Patient p = v.getPatient();
+		List<Visit> visits2 = p.getVisits();
+		if (visits2.size() == 1) {
+			em.remove(p);
+			em.flush();
+		}
+
+		em.remove(v);
+		em.flush();
 		em.getTransaction().commit();
+		em.clear();
 		em.close();
-		
+
 		return result;
 	}
 
-	
-	
-	
-	
-	
 	// ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*

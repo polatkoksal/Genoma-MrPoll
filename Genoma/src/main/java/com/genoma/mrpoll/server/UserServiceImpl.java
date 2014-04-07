@@ -23,7 +23,6 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.codec.binary.Base64;
 
-import com.genoma.mrpoll.client.EMF;
 import com.genoma.mrpoll.client.UserService;
 import com.genoma.mrpoll.domain.Settings;
 import com.genoma.mrpoll.domain.User;
@@ -41,8 +40,7 @@ public class UserServiceImpl extends RemoteServiceServlet implements
 	@Override
 	public List<User> getAll() {
 
-		factory = EMF.get();
-		EntityManager em = factory.createEntityManager();
+		EntityManager em = EMF.getEntityManager();
 		Query query = em.createQuery("select t from User t");
 		List<User> users = query.getResultList();
 		return users;
@@ -67,8 +65,7 @@ public class UserServiceImpl extends RemoteServiceServlet implements
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		factory = EMF.get();
-		EntityManager em = factory.createEntityManager();
+		EntityManager em = EMF.getEntityManager();
 		Query query = em
 				.createQuery("select u from User u where u.username=:userName");
 		query.setParameter("userName", user.getUsername());
@@ -78,7 +75,6 @@ public class UserServiceImpl extends RemoteServiceServlet implements
 		}
 
 		if (result) {
-			factory = EMF.get();
 			em.getTransaction().begin();
 			em.persist(user);
 			em.getTransaction().commit();
@@ -105,8 +101,7 @@ public class UserServiceImpl extends RemoteServiceServlet implements
 		} catch (InvocationTargetException e) {
 			e.printStackTrace();
 		}
-		factory = EMF.get();
-		EntityManager em = factory.createEntityManager();
+		EntityManager em = EMF.getEntityManager();
 		User tempUser = em.find(User.class, user.getId());
 
 		Query query = em
@@ -162,8 +157,7 @@ public class UserServiceImpl extends RemoteServiceServlet implements
 			}
 		}
 
-		factory = EMF.get();
-		EntityManager em = factory.createEntityManager();
+		EntityManager em = EMF.getEntityManager();
 		User tempUser = em.find(User.class, user.getId());
 		Query query = em.createQuery("select u from User u where u.username=:userName");
 		query.setParameter("userName", user.getUsername());
@@ -221,8 +215,7 @@ public class UserServiceImpl extends RemoteServiceServlet implements
 	public Boolean resetPassword(String email){
 		
 		Boolean result = false;
-		factory = EMF.get();
-		EntityManager em = factory.createEntityManager();
+		EntityManager em = EMF.getEntityManager();
 		Query query = em.createQuery("select u from User u where u.email=:email");
 		query.setParameter("email", email);
 		List<User> users = query.getResultList();
@@ -244,8 +237,7 @@ public class UserServiceImpl extends RemoteServiceServlet implements
 
 		Boolean result = false;
 		String decryptPassword = null;
-		factory = EMF.get();
-		EntityManager em = factory.createEntityManager();
+		EntityManager em = EMF.getEntityManager();
 		Query query = em.createQuery("select u from User u where u.username=:userName");
 		query.setParameter("userName", userName);
 		List<User> users = query.getResultList();
@@ -292,8 +284,7 @@ public class UserServiceImpl extends RemoteServiceServlet implements
 		Boolean result = false;
 		HttpSession session = this.getThreadLocalRequest().getSession();
 		User user = (User) session.getAttribute("loginUser");
-		factory = EMF.get();
-		EntityManager em = factory.createEntityManager();
+		EntityManager em = EMF.getEntityManager();
 		Query query = em
 				.createQuery("select ur from UserRole ur where ur.user.id=:param");
 		query.setParameter("param", user.getId());
@@ -309,8 +300,7 @@ public class UserServiceImpl extends RemoteServiceServlet implements
 	public List<UserUI> searchUser() {
 		
 		
-		factory = EMF.get();
-		EntityManager em = factory.createEntityManager();
+		EntityManager em = EMF.getEntityManager();
 		Query query = em.createQuery("select u from User u");
 		List<User> users = query.getResultList();
 		List<UserUI> usersUi = new ArrayList<UserUI>();
@@ -430,8 +420,7 @@ public class UserServiceImpl extends RemoteServiceServlet implements
 
 	private String getSetting(String key) {
 		String value = null;
-		factory = EMF.get();
-		EntityManager em = factory.createEntityManager();
+		EntityManager em = EMF.getEntityManager();
 		Query query = em
 				.createQuery("select s from Settings s where s.key=:key");
 		query.setParameter("key", key);

@@ -8,9 +8,6 @@
 	</ui:style>
 	<g:HTMLPanel>
 		<g:AbsolutePanel height="153px">
-			<g:at left="474" top="47">
-				<g:Button styleName="{style.important}" ui:field="back" text="Çıkış" />
-			</g:at>
 			<g:at left="164" top="10">
 				<g:Label text="Kullanıcı Ana Menü" styleName="{style.important}"/>
 			</g:at>
@@ -31,6 +28,9 @@
 			</g:at>
 			<g:at left="240" top="117">
 				<g:Button text="Kullancı Güncelle/Sil" ui:field="deleteuser"/>
+			</g:at>
+			<g:at left="474" top="47">
+				<g:Button styleName="{style.important}" ui:field="back" text="Çıkış" />
 			</g:at>
 		</g:AbsolutePanel>
 	</g:HTMLPanel>

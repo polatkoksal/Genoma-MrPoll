@@ -26,6 +26,7 @@ import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.AbsolutePanel;
+import com.google.gwt.user.client.ui.Label;
 
 public class TabPathology extends Composite implements Updater {
 	
@@ -50,6 +51,20 @@ public class TabPathology extends Composite implements Updater {
 	@UiField ListBox r_hpdiag;
 	@UiField ListBox l_hpdiag;
 	@UiField AbsolutePanel panel;
+	@UiField Label r_hpdiag_label;
+	@UiField Label r_stage_label;
+	@UiField Label r_er_label;
+	@UiField Label r_pgr_label;
+	@UiField Label r_her2_label;
+	@UiField Label r_lymphnode_label;
+	@UiField Label r_metastasis_label;
+	@UiField Label l_metastasis_label;
+	@UiField Label l_lymphnode_label;
+	@UiField Label l_her2_label;
+	@UiField Label l_pgr_label;
+	@UiField Label l_er_label;
+	@UiField Label l_stage_label;
+	@UiField Label l_hpdiag_label;
 
 	interface TabPathologyUiBinder extends UiBinder<Widget, TabPathology> {
 	}
@@ -89,6 +104,10 @@ public class TabPathology extends Composite implements Updater {
 		l_her2.addItem("Negatif");
 		r_her2.addItem("Pozitif");
 		r_her2.addItem("Negatif");
+		l_lymphnode.addItem("Pozitif");
+		l_lymphnode.addItem("Negatif");
+		r_lymphnode.addItem("Pozitif");
+		r_lymphnode.addItem("Negatif");
 		l_metastasis.addItem("Var");
 		l_metastasis.addItem("Yok");
 		r_metastasis.addItem("Var");
@@ -149,13 +168,13 @@ public class TabPathology extends Composite implements Updater {
 		r_her2.setEnabled(lockStatus);
 		r_lymphnode.setEnabled(lockStatus);
 		r_metastasis.setEnabled(lockStatus);
-		r_hpdiag.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
-		r_stage.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
-		r_er.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
-		r_pgr.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
-		r_her2.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
-		r_lymphnode.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
-		r_metastasis.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_hpdiag_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_stage_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_er_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_pgr_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_her2_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_lymphnode_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		r_metastasis_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
 	}
 	@UiHandler("l_nolesion")
 	void onL_nolesionClick(ClickEvent event) {
@@ -167,12 +186,12 @@ public class TabPathology extends Composite implements Updater {
 		l_her2.setEnabled(lockStatus);
 		l_lymphnode.setEnabled(lockStatus);
 		l_metastasis.setEnabled(lockStatus);
-		l_hpdiag.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
-		l_stage.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
-		l_er.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
-		l_pgr.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
-		l_her2.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
-		l_lymphnode.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
-		l_metastasis.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		l_hpdiag_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		l_stage_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		l_er_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		l_pgr_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		l_her2_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		l_lymphnode_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
+		l_metastasis_label.getElement().getStyle().setColor(!lockStatus?"#A8A8A8":"black");
 	}
 }

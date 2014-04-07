@@ -185,6 +185,7 @@ public class EditPatient extends Composite {
 	@UiHandler("save")
 	void onSaveClick(ClickEvent event){
 		
+		setEnable(false);
 		setEditVisitData();
 		
 		service.saveEditVisitData(editVisitData, new AsyncCallback<Boolean>() {
@@ -193,6 +194,7 @@ public class EditPatient extends Composite {
 			public void onSuccess(Boolean result) {
 				if(!result){
 					Window.alert("bu patient no daha önce oluşturuldu!");
+					setEnable(true);
 				}
 				else{
 					Window.alert("kayıt yapıldı");
@@ -203,7 +205,7 @@ public class EditPatient extends Composite {
 			@Override
 			public void onFailure(Throwable caught) {
 				Window.alert("save failure!!!");
-				
+				setEnable(true);
 			}
 
 			
@@ -250,25 +252,13 @@ public class EditPatient extends Composite {
 	@UiHandler("cancel")
 	void onCancelClick(ClickEvent event) {
 		MrPoll.repaint(State.MAIN_MENU);
-		
-//		Boolean b = Window.confirm("kaydetmeden cıkmak istiyormusunuz?");
-//		if (b) {
-//			service.close(new AsyncCallback<Void>() {
-//
-//				@Override
-//				public void onSuccess(Void result) {
-//					MrPoll.repaint(State.MAIN_MENU);
-//				}
-//
-//				@Override
-//				public void onFailure(Throwable caught) {
-//					Window.alert("closing fail!!!");
-//				}
-//
-//			});
-//
-//		}
-
+	}
+	
+	public void setEnable(Boolean b){
+		save.setEnabled(b);
+		cancel.setEnabled(b);
+		forward.setEnabled(b);
+		back.setEnabled(b);
 	}
 
 }

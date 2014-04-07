@@ -80,31 +80,6 @@ public class TabPatientInfo extends Composite implements Updater {
 	
 	@Override
 	public List<AnswerUI> getAnswersFromUi() {
-		
-		/*PatientUI patientUi = new PatientUI();
-		patientUi.setProtocolNo(protocolno.getText());
-		patientUi.setNameSurname(name.getText());
-		patientUi.setGender(gender.getSelectedIndex());
-		if(age.getText() != ""){
-			patientUi.setAge(Integer.parseInt(age.getText()));
-		}
-		
-		service.savePatientToSession(patientUi, new AsyncCallback<Void>() {
-
-			@Override
-			public void onSuccess(Void result) {
-				
-			}
-			
-			@Override
-			public void onFailure(Throwable caught) {
-				
-			}
-
-		});*/
-		
-		
-		
 		return null;
 	}
 

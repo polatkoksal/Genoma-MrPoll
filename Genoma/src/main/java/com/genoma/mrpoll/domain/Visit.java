@@ -5,23 +5,22 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-
 /**
  * The persistent class for the "Visit" database table.
  * 
  */
 @Entity
-@Table(name="\"Visit\"")
-@NamedQuery(name="Visit.findAll", query="SELECT v FROM Visit v")
+@Table(name = "\"Visit\"")
+@NamedQuery(name = "Visit.findAll", query = "SELECT v FROM Visit v")
 public class Visit implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(unique=true, nullable=false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(unique = true, nullable = false)
 	private Integer id;
 
-	@Column(length=255)
+	@Column(length = 255)
 	private String age;
 
 	@Temporal(TemporalType.DATE)
@@ -29,23 +28,23 @@ public class Visit implements Serializable {
 
 	private Boolean ethic;
 
-	@Column(length=255)
+	@Column(length = 255)
 	private String hospital;
 
-	@Column(length=500)
+	@Column(length = 500)
 	private String note;
 
-	//bi-directional many-to-one association to Answer
-	@OneToMany(mappedBy="visit")
+	// bi-directional many-to-one association to Answer
+	@OneToMany(mappedBy = "visit")
 	private List<Answer> answers;
 
-	//bi-directional many-to-one association to Document
-	@OneToMany(mappedBy="visit")
+	// bi-directional many-to-one association to Document
+	@OneToMany(mappedBy = "visit")
 	private List<Document> documents;
 
-	//bi-directional many-to-one association to Patient
-	@ManyToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name="done_patient_id")
+	// bi-directional many-to-one association to Patient
+	@ManyToOne
+	@JoinColumn(name = "done_patient_id")
 	private Patient patient;
 
 	public Visit() {

@@ -55,29 +55,6 @@ public class TabVisitInfo extends Composite implements Updater{
 
 	@Override
 	public List<AnswerUI> getAnswersFromUi() {
-		
-		/*VisitUI visitUi = new VisitUI();
-		visitUi.setDate(date.getValue());
-		visitUi.setHospital(hospital.getText());
-		visitUi.setNote(note.getText());
-		visitUi.setEthic(ethic.getValue());
-		
-		service.saveVisitToSession(visitUi, new AsyncCallback<Void>() {
-			
-			@Override
-			public void onSuccess(Void result) {
-				
-			}
-			
-			
-			@Override
-			public void onFailure(Throwable caught) {
-				
-			}
-
-			
-		});*/
-		
 		return null;
 	}
 

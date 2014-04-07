@@ -7,63 +7,75 @@
 	}
 	</ui:style>
 	<g:HTMLPanel width="" height="">
-		<g:AbsolutePanel width="730px" height="337px" ui:field="panel">
+		<g:AbsolutePanel width="747px" height="356px" ui:field="panel">
 			<g:at left="10" top="48">
-				<g:CheckBox text="MRI kılavuzluğunda biyopsi yapıldı" ui:field="r_mri_biopsy" name="610"/>
+				<g:CheckBox text="MRI kılavuzluğunda biyopsi yapıldı" ui:field="r_mri_biopsy" name="7110"/>
 			</g:at>
 			<g:at left="35" top="73">
-				<g:Label text="Histopatolojik tanı:"/>
+				<g:Label text="Histopatolojik tanı:" ui:field="r_mri_biopsy_diagnosis_label"/>
 			</g:at>
 			<g:at left="174" top="73">
-				<g:ListBox ui:field="r_mri_biopsy_diagnosis" name="611"/>
+				<g:ListBox ui:field="r_mri_biopsy_diagnosis" name="7111" width="65px" height="20px"/>
 			</g:at>
 			<g:at left="10" top="95">
-				<g:CheckBox text="İkinci bakı USG yapıldı" ui:field="r_usg" name="620"/>
+				<g:CheckBox text="İkinci bakı USG yapıldı" ui:field="r_usg" name="7120"/>
 			</g:at>
 			<g:at left="35" top="120">
-				<g:CheckBox text="Kitle" ui:field="r_mass" name="621"/>
+				<g:CheckBox text="Kitle" ui:field="r_mass" name="7121"/>
 			</g:at>
 			<g:at left="35" top="145">
-				<g:CheckBox text="Kitle Dışı Bulgular" ui:field="r_nonmass" name="622"/>
+				<g:CheckBox text="Kitle Dışı Bulgular" ui:field="r_nonmass" name="7122"/>
 			</g:at>
 			<g:at left="35" top="170">
-				<g:CheckBox text="USG kılavuzluğunda biyopsi yapıldı" ui:field="r_usg_biopsy" name="630"/>
+				<g:CheckBox text="USG kılavuzluğunda biyopsi yapıldı" ui:field="r_usg_biopsy" name="7123"/>
 			</g:at>
 			<g:at left="66" top="195">
 				<g:Label text="Histopatolojik tanı:" ui:field="r_usg_biopsy_diagnosis_label"/>
 			</g:at>
 			<g:at left="205" top="195">
-				<g:ListBox ui:field="r_usg_biopsy_diagnosis" name="631"/>
+				<g:ListBox ui:field="r_usg_biopsy_diagnosis" name="7124"/>
 			</g:at>
-			<g:at left="345" top="48">
-				<g:CheckBox width="282px" height="19px" text="MRI kılavuzluğunda biyopsi yapıldı" ui:field="l_mri_biopsy" name="660"/>
+			<g:at left="361" top="48">
+				<g:CheckBox width="282px" height="19px" text="MRI kılavuzluğunda biyopsi yapıldı" ui:field="l_mri_biopsy" name="7210"/>
 			</g:at>
-			<g:at left="370" top="73">
-				<g:Label width="133px" height="16px" text="Histopatolojik tanı:"/>
+			<g:at left="386" top="73">
+				<g:Label width="133px" height="16px" text="Histopatolojik tanı:" ui:field="l_mri_biopsy_diagnosis_label"/>
 			</g:at>
-			<g:at left="509" top="73">
-				<g:ListBox width="56px" height="20px" ui:field="l_mri_biopsy_diagnosis" name="661"/>
+			<g:at left="525" top="73">
+				<g:ListBox width="65px" height="20px" ui:field="l_mri_biopsy_diagnosis" name="7211"/>
 			</g:at>
-			<g:at left="345" top="95">
-				<g:CheckBox width="175px" height="19px" text="İkinci bakı USG yapıldı" ui:field="l_usg" name="670"/>
+			<g:at left="361" top="95">
+				<g:CheckBox width="175px" height="19px" text="İkinci bakı USG yapıldı" ui:field="l_usg" name="7220"/>
 			</g:at>
-			<g:at left="370" top="120">
-				<g:CheckBox width="50px" height="19px" text="Kitle" ui:field="l_mass" wordWrap="false" name="671"/>
+			<g:at left="386" top="120">
+				<g:CheckBox width="50px" height="19px" text="Kitle" ui:field="l_mass" wordWrap="false" name="7221"/>
 			</g:at>
-			<g:at left="370" top="145">
-				<g:CheckBox width="144px" height="19px" text="Kitle Dışı Bulgular" ui:field="l_nonmass" name="672"/>
+			<g:at left="386" top="145">
+				<g:CheckBox width="144px" height="19px" text="Kitle Dışı Bulgular" ui:field="l_nonmass" name="7222"/>
 			</g:at>
-			<g:at left="370" top="170">
-				<g:CheckBox width="286px" height="19px" text="USG kılavuzluğunda biyopsi yapıldı" ui:field="l_usg_biopsy" name="680"/>
+			<g:at left="386" top="170">
+				<g:CheckBox width="286px" height="19px" text="USG kılavuzluğunda biyopsi yapıldı" ui:field="l_usg_biopsy" name="7223"/>
 			</g:at>
-			<g:at left="401" top="195">
+			<g:at left="417" top="195">
 				<g:Label width="133px" height="16px" text="Histopatolojik tanı:" ui:field="l_usg_biopsy_diagnosis_label"/>
 			</g:at>
-			<g:at left="540" top="195">
-				<g:ListBox width="56px" height="20px" ui:field="l_usg_biopsy_diagnosis" name="681"/>
+			<g:at left="556" top="195">
+				<g:ListBox width="56px" height="20px" ui:field="l_usg_biopsy_diagnosis" name="7224"/>
 			</g:at>
 			<g:at left="282" top="10">
 				<g:Label text="İkinci Bakı" styleName="{style.important}"/>
+			</g:at>
+			<g:at left="245" top="73">
+				<g:TextBox width="88px" height="12px" ui:field="r_mri_biopsy_diagnosis_other" name="7112"/>
+			</g:at>
+			<g:at left="596" top="73">
+				<g:TextBox width="88px" height="12px" ui:field="l_mri_biopsy_diagnosis_other" name="7212"/>
+			</g:at>
+			<g:at left="267" top="195">
+				<g:TextBox width="88px" height="12px" ui:field="r_usg_biopsy_diagnosis_other" name="7125"/>
+			</g:at>
+			<g:at left="618" top="195">
+				<g:TextBox width="88px" height="12px" name="7225" ui:field="l_usg_biopsy_diagnosis_other"/>
 			</g:at>
 		</g:AbsolutePanel>
 	</g:HTMLPanel>

@@ -50,26 +50,25 @@ public class SearchVisit extends Composite {
 	
 	@UiHandler("search")
 	void onSearchClick(ClickEvent event) {
-		
+		setEnable(false);
 		service.searchVisit(select.getSelectedIndex(), searchtext.getText(), new AsyncCallback<List<SearchResultData>>() {
 
 			@Override
 			public void onSuccess(List<SearchResultData> result) {
 				panel.clear();
 				panel.setHeight((result.size())*(new SearchVisitResult(null).getOffsetHeight())+"");
-				
+
 				for (SearchResultData searchResultData : result){
 					SearchVisitResult searchVisitResult = new SearchVisitResult(searchResultData);
 					panel.add(searchVisitResult);
-					Window.alert("visitId:"+searchResultData.getVisitId());
 				}
-				Window.alert("searchVisit onSucces!");
+				setEnable(true);
 			}
 			
 			@Override
 			public void onFailure(Throwable arg0) {
 				Window.alert("searchVisit error!");
-				
+				setEnable(true);
 			}
 
 	
@@ -79,5 +78,10 @@ public class SearchVisit extends Composite {
 	@UiHandler("cancel")
 	void onCancelClick(ClickEvent event) {
 		MrPoll.repaint(State.MAIN_MENU);
+	}
+	
+	public void setEnable(Boolean b){
+		search.setEnabled(b);
+		cancel.setEnabled(b);
 	}
 }

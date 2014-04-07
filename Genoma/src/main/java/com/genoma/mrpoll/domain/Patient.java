@@ -30,7 +30,7 @@ public class Patient implements Serializable {
 	private String protocolNo;
 
 	//bi-directional many-to-one association to User
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne
 	@JoinColumn(name="created_user_id")
 	private User user;
 

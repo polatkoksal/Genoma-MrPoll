@@ -5,15 +5,27 @@
 	
 	</ui:style>
 	<g:HTMLPanel>
-		<g:AbsolutePanel height="38px" width="729px">
+		<g:AbsolutePanel height="38px" width="1276px">
 			<g:at left="10" top="10">
-				<g:Label wordWrap="false" ui:field="protocolno" width="106px" height="20px"/>
+				<g:Label ui:field="protocolno" width="184px" height="20px" text="protocolNo"/>
 			</g:at>
-			<g:at left="122" top="4">
+			<g:at left="1139" top="5">
 				<g:Button text="DÜZENLE" ui:field="edit"/>
 			</g:at>
-			<g:at left="211" top="4">
+			<g:at left="1228" top="5">
 				<g:Button ui:field="delete">SİL</g:Button>
+			</g:at>
+			<g:at left="200" top="10">
+				<g:Label text="nameSurname" width="259px" height="20px" ui:field="name"/>
+			</g:at>
+			<g:at left="560" top="10">
+				<g:Label text="hospital" width="366px" height="20px" ui:field="hospital"/>
+			</g:at>
+			<g:at left="932" top="10">
+				<g:Label text="date" width="201px" height="20px" ui:field="date"/>
+			</g:at>
+			<g:at left="465" top="10">
+				<g:Label text="age" width="89px" height="20px" ui:field="age"/>
 			</g:at>
 		</g:AbsolutePanel>
 	</g:HTMLPanel>

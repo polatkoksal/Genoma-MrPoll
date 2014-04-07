@@ -5,7 +5,7 @@
 	
 	</ui:style>
 	<g:HTMLPanel>
-		<g:AbsolutePanel height="390px" width="620px">
+		<g:AbsolutePanel height="390px" width="1402px">
 			<g:at left="28" top="22">
 				<g:ListBox ui:field="select"/>
 			</g:at>
@@ -16,7 +16,7 @@
 				<g:Button ui:field="search" text="ARA" width="44px" height="24px"/>
 			</g:at>
 			<g:at left="10" top="71">
-				<g:VerticalPanel width="598px" height="309px" ui:field="panel"/>
+				<g:VerticalPanel width="1382px" height="309px" ui:field="panel"/>
 			</g:at>
 			<g:at left="545" top="22">
 				<g:Button width="53px" height="24px" ui:field="cancel">İPTAL</g:Button>

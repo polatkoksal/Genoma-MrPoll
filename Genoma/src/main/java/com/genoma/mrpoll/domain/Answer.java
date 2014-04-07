@@ -4,33 +4,32 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
-
 /**
  * The persistent class for the "Answer" database table.
  * 
  */
 @Entity
-@Table(name="\"Answer\"")
-@NamedQuery(name="Answer.findAll", query="SELECT a FROM Answer a")
+@Table(name = "\"Answer\"")
+@NamedQuery(name = "Answer.findAll", query = "SELECT a FROM Answer a")
 public class Answer implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(unique=true, nullable=false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(unique = true, nullable = false)
 	private Integer id;
 
-	@Column(name="answer_value", length=255)
+	@Column(name = "answer_value", length = 255)
 	private String answerValue;
 
-	//bi-directional many-to-one association to Question
-	@ManyToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name="belongs_question_id")
+	// bi-directional many-to-one association to Question
+	@ManyToOne
+	@JoinColumn(name = "belongs_question_id")
 	private Question question;
 
-	//bi-directional many-to-one association to Visit
-	@ManyToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name="answered_visit_id")
+	// bi-directional many-to-one association to Visit
+	@ManyToOne
+	@JoinColumn(name = "answered_visit_id")
 	private Visit visit;
 
 	public Answer() {
