@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import javax.servlet.http.HttpSession;
 
@@ -21,7 +21,6 @@ import com.genoma.mrpoll.uihelper.AnswerUI;
 import com.genoma.mrpoll.uihelper.EditVisitData;
 import com.genoma.mrpoll.uihelper.PatientUI;
 import com.genoma.mrpoll.uihelper.SearchResultData;
-import com.genoma.mrpoll.uihelper.UserUI;
 import com.genoma.mrpoll.uihelper.VisitUI;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
@@ -35,9 +34,10 @@ public class PatientServiceImpl extends RemoteServiceServlet implements
 
 		Boolean result = true;
 		EntityManager em = EMF.getEntityManager();
+		EntityTransaction tx = em.getTransaction();
 		try {
 
-			em.getTransaction().begin();
+			tx.begin();
 
 			HttpSession session = this.getThreadLocalRequest().getSession();
 			User user = (User) session.getAttribute("loginUser");
@@ -121,12 +121,11 @@ public class PatientServiceImpl extends RemoteServiceServlet implements
 				}
 			}
 			em.flush();
-			em.getTransaction().commit();
+			tx.commit();
 		} catch (Exception e) {
-			em.getTransaction().rollback();
+			tx.rollback();
 			e.printStackTrace();
 		} finally {
-			em.clear();
 			em.close();
 		}
 
@@ -222,7 +221,7 @@ public class PatientServiceImpl extends RemoteServiceServlet implements
 
 		EditVisitData editVisitData = new EditVisitData();
 		EntityManager em = EMF.getEntityManager();
-		
+
 		Query query1 = em
 				.createQuery("select v from Visit v where v.id=:visitId");
 		query1.setParameter("visitId", searchResultData.getVisitId());
@@ -230,7 +229,6 @@ public class PatientServiceImpl extends RemoteServiceServlet implements
 		Visit v = visits.get(0);
 		Patient p = v.getPatient();
 		List<Answer> answers = v.getAnswers();
-		
 
 		try {
 			PatientUI patientUI = new PatientUI();
@@ -263,7 +261,9 @@ public class PatientServiceImpl extends RemoteServiceServlet implements
 
 		Boolean result = false;
 		EntityManager em = EMF.getEntityManager();
-		em.getTransaction().begin();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		// make some changes
 
 		Query query1 = em
 				.createQuery("select v from Visit v where v.id=:visitId");
@@ -273,21 +273,18 @@ public class PatientServiceImpl extends RemoteServiceServlet implements
 
 		List<Answer> answers = v.getAnswers();
 		for (Answer ans : answers) {
-			ans.setQuestion(null);
 			em.remove(ans);
 		}
 
 		Patient p = v.getPatient();
+		p.getVisits().remove(v);
+		em.remove(v);
 		List<Visit> visits2 = p.getVisits();
 		if (visits2.size() == 1) {
 			em.remove(p);
-			em.flush();
 		}
 
-		em.remove(v);
-		em.flush();
-		em.getTransaction().commit();
-		em.clear();
+		tx.commit();
 		em.close();
 
 		return result;

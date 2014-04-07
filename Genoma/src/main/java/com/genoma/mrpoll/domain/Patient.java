@@ -29,12 +29,10 @@ public class Patient implements Serializable {
 	@Column(name="protocol_no", length=255)
 	private String protocolNo;
 
-	//bi-directional many-to-one association to User
 	@ManyToOne
 	@JoinColumn(name="created_user_id")
 	private User user;
 
-	//bi-directional many-to-one association to Visit
 	@OneToMany(mappedBy="patient")
 	private List<Visit> visits;
 
