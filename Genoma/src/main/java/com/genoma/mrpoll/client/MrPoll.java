@@ -137,7 +137,6 @@ public class MrPoll implements EntryPoint {
 			editPatientPanel = new EditPatient(editVisitData);	
 			MrPoll.repaint(State.TAB_PATIENT_INFO);
 		}
-		
 	}
 	
 	
@@ -152,7 +151,7 @@ public class MrPoll implements EntryPoint {
 	}
 	
 	public static void setAnswerOf(HasName w, String answer){
-		if(((FocusWidget)w).isEnabled()){
+//		if(((FocusWidget)w).isEnabled()){
 			if(w instanceof TextBox){ 
 				((TextBox) w).setText(answer); 
 			}
@@ -162,7 +161,7 @@ public class MrPoll implements EntryPoint {
 			else if(w instanceof ListBox){
 				((ListBox) w).setSelectedIndex(Integer.parseInt(answer)); 
 			} 
-		}
+//		}
 	}
 	
 	public static AnswerUI returnAnswerOf(HasName w){ 

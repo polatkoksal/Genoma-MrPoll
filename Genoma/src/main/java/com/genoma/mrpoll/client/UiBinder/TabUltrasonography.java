@@ -20,6 +20,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.FocusWidget;
 import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
@@ -159,7 +160,7 @@ public class TabUltrasonography extends Composite implements Updater{
 	public void updateUi(List<AnswerUI> answers){
 		for(AnswerUI answer : answers){
 			for(Widget w: panel){
-				if(w instanceof HasName && ((HasName) w).getName().equals(answer.getQuestionCode())){
+				if(answer.getAnswerValue()!=null&&w instanceof HasName && ((HasName) w).getName().equals(answer.getQuestionCode())){
 					setAnswerOf((HasName)w, answer.getAnswerValue());
 				}
 			}
@@ -170,7 +171,7 @@ public class TabUltrasonography extends Composite implements Updater{
 		List<AnswerUI> result=new ArrayList<AnswerUI>();
 		String s="";
 		for(Widget w: panel){
-			if(w instanceof HasName){
+			if(w instanceof HasName&&((FocusWidget)w).isEnabled()){
 				result.add(returnAnswerOf((HasName)w));
 				s+=((HasName) w).getName()+"-"+returnAnswerOf((HasName)w);
 			}

@@ -79,6 +79,7 @@ public class EditPatient extends Composite {
 		tabPathology = new TabPathology(result.getAnswers());
 		tabSecondVisit = new TabSecondVisit(result.getAnswers());
 		tabSurgical = new TabSurgical(result.getAnswers());
+		//FIXME: TELL ME WHAT YOU WILL NEED
 	}
 
 	public void repaint(State s) {
@@ -231,11 +232,11 @@ public class EditPatient extends Composite {
 		
 		answersUI.addAll(tabClinic.getAnswersFromUi());
 		answersUI.addAll(tabMammography.getAnswersFromUi());
-		answersUI.addAll(tabMRI.getAnswersFromUi());
-		answersUI.addAll(tabPathology.getAnswersFromUi());
-		answersUI.addAll(tabSecondVisit.getAnswersFromUi());
-		answersUI.addAll(tabSurgical.getAnswersFromUi());
-		answersUI.addAll(tabUltrasonography.getAnswersFromUi());
+//		answersUI.addAll(tabMRI.getAnswersFromUi());
+//		answersUI.addAll(tabPathology.getAnswersFromUi());
+//		answersUI.addAll(tabSecondVisit.getAnswersFromUi());
+//		answersUI.addAll(tabSurgical.getAnswersFromUi());
+//		answersUI.addAll(tabUltrasonography.getAnswersFromUi());
 		
 		for(AnswerUI answerUI:answersUI){
 			if(answerUI.getAnswerValue()==null){

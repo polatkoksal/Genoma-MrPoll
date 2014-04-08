@@ -242,6 +242,7 @@ public class PatientServiceImpl extends RemoteServiceServlet implements
 			BeanUtils.copyProperties(patientUI, p);
 			BeanUtils.copyProperties(visitUI, v);
 			for (Answer answer : answers) {
+				answerUI=new AnswerUI();
 				answerUI.setAnswerValue(answer.getAnswerValue());
 				answerUI.setQuestionCode(answer.getQuestion().getQuestionCode());
 				answersUI.add(answerUI);
