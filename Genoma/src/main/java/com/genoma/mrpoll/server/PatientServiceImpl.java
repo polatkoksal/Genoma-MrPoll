@@ -261,8 +261,9 @@ public class PatientServiceImpl extends RemoteServiceServlet implements
 
 		Boolean result = false;
 		EntityManager em = EMF.getEntityManager();
+		EntityTransaction tx = em.getTransaction();
 		try {
-			em.getTransaction().begin();
+			tx.begin();
 
 			Query query1 = em
 					.createQuery("select v from Visit v where v.id=:visitId");
@@ -272,27 +273,24 @@ public class PatientServiceImpl extends RemoteServiceServlet implements
 
 			List<Answer> answers = v.getAnswers();
 			for (Answer ans : answers) {
-				ans.setQuestion(null);
 				em.remove(ans);
 			}
-
-			// FIXME: Kayhan Burası çalışmıyor. d
-			// Patient p = v.getPatient();
-			// List<Visit> visits2 = p.getVisits();
-			// if (visits2.size() == 1) {
-			// em.remove(p);
-			// em.flush();
-			// }
-
+			Patient p = v.getPatient();
+			p.getVisits().remove(v);
 			em.remove(v);
 
-			em.flush();
-			em.getTransaction().commit();
+			// FIXME: Kayhan Burası çalışmıyor. d
+			List<Visit> visits2 = p.getVisits();
+			if (visits2.size() == 0) {
+				em.remove(p);
+			}
+
+
+			tx.commit();
 		} catch (Exception e) {
-			em.getTransaction().rollback();
+			tx.rollback();
 			e.printStackTrace();
 		} finally {
-			em.clear();
 			em.close();
 		}
 

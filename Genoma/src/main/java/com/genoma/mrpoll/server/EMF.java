@@ -7,12 +7,19 @@ import javax.persistence.Persistence;
 public class EMF {
 	private static final EntityManagerFactory emfInstance = Persistence
 			.createEntityManagerFactory("Genoma");
+	private static EntityManager em = null;
 
 	private EMF() {
 	}
 
 	public static EntityManager getEntityManager() {
-		EntityManager em = emfInstance.createEntityManager();
+		if (em == null) {
+			em = emfInstance.createEntityManager();
+		} else {
+			if (!em.isOpen()) {
+				em = emfInstance.createEntityManager();
+			}
+		}
 		return em;
 	}
 
