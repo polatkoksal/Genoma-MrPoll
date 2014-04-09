@@ -77,10 +77,10 @@ public class PatientServiceImpl extends RemoteServiceServlet implements
 						.getId());
 				List<Answer> results = visit.getAnswers();
 				for (Answer ans : results) {
-					visit.removeAnswer(ans);
 					ans.getQuestion().removeAnswer(ans);
 					em.remove(ans);
 				}
+				visit.getAnswers().clear();
 			} else {
 				visit = new Visit();
 			}
