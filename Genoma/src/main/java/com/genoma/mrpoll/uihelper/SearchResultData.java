@@ -3,22 +3,24 @@ package com.genoma.mrpoll.uihelper;
 import java.io.Serializable;
 import java.util.Date;
 
-public class SearchResultData implements Serializable{
-	
+public class SearchResultData implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	public String protocolNo;
-	
+
 	public String namaSurname;
-	
+
 	public String age;
-	
+
 	public Date date;
-	
+
 	public String hospital;
-	
+
 	public Integer patientId;
-	
+
+	public Integer visitId;
+
 	public Integer getPatientId() {
 		return patientId;
 	}
@@ -26,10 +28,6 @@ public class SearchResultData implements Serializable{
 	public void setPatientId(Integer patientId) {
 		this.patientId = patientId;
 	}
-
-	public Integer visitId;
-	
-	
 
 	public Integer getVisitId() {
 		return visitId;
@@ -78,7 +76,5 @@ public class SearchResultData implements Serializable{
 	public void setHospital(String hospital) {
 		this.hospital = hospital;
 	}
-	
-	
 
 }

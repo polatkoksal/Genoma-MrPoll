@@ -26,10 +26,11 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
 public class EditPatient extends Composite {
-	
+
 	EditVisitData editVisitData = null;
-	
-	private static GeneralInfoUiBinder uiBinder = GWT.create(GeneralInfoUiBinder.class);
+
+	private static GeneralInfoUiBinder uiBinder = GWT
+			.create(GeneralInfoUiBinder.class);
 
 	PatientServiceAsync service = GWT.create(PatientService.class);
 
@@ -51,7 +52,6 @@ public class EditPatient extends Composite {
 	@UiField
 	HorizontalPanel panel;
 
-	
 	TabPatientInfo tabPatientInfo;
 	TabVisitInfo tabVisitInfo;
 	TabClinic tabClinic;
@@ -61,13 +61,12 @@ public class EditPatient extends Composite {
 	TabPathology tabPathology;
 	TabSecondVisit tabSecondVisit;
 	TabSurgical tabSurgical;
-	
-	Updater tab;
 
 	public EditPatient(EditVisitData result) {
 		initWidget(uiBinder.createAndBindUi(this));
 		editVisitData = result;
-		//patientid.setText(result.getPatient().getProtocolNo());   ???????????????
+		// patientid.setText(result.getPatient().getProtocolNo());
+		// ???????????????
 		tabPatientInfo = new TabPatientInfo(result.getPatient());
 		tabVisitInfo = new TabVisitInfo(result.getVisit());
 		tabClinic = new TabClinic(result.getAnswers());
@@ -81,13 +80,15 @@ public class EditPatient extends Composite {
 
 	public void repaint(State s) {
 
-		if(backHandler != null){
+		Widget tab = null;
+
+		if (backHandler != null) {
 			backHandler.removeHandler();
 		}
-		if(forwardHandler != null){
+		if (forwardHandler != null) {
 			forwardHandler.removeHandler();
 		}
-		
+
 		switch (s) {
 
 		case TAB_PATIENT_INFO:
@@ -146,30 +147,28 @@ public class EditPatient extends Composite {
 		default:
 			break;
 		}
-		
-		
+
 		Tabs tabs = new Tabs(s);
 		panel.clear();
 		panel.add(tabs);
-		panel.add((Widget) tab);
+		panel.add(tab);
 	}
 
 	public HandlerRegistration pointTo(State target, Button button) {
 		final EditPatient editPatient = this;
 		HandlerRegistration result = null;
-		if (target == null) 
-		{
+		if (target == null) {
 			button.setVisible(false);
-		} 
-		else 
-		{
+		} else {
 			button.setVisible(true);
-			result=button.addClickHandler(new ClickHandler() {
+			result = button.addClickHandler(new ClickHandler() {
 				State target;
+
 				public ClickHandler init(State state) {
 					target = state;
 					return this;
 				}
+
 				public void onClick(ClickEvent event) {
 					editPatient.repaint(target);
 				}
@@ -178,81 +177,77 @@ public class EditPatient extends Composite {
 		return result;
 	}
 
-
-
 	@UiHandler("save")
-	void onSaveClick(ClickEvent event){
-		
+	void onSaveClick(ClickEvent event) {
+
 		setEnable(false);
 		setEditVisitData();
-		
+
 		service.saveEditVisitData(editVisitData, new AsyncCallback<Boolean>() {
 
 			@Override
 			public void onSuccess(Boolean result) {
-				if(!result){
+				if (!result) {
 					Window.alert("bu patient no daha önce oluşturuldu!");
 					setEnable(true);
-				}
-				else{
+				} else {
 					Window.alert("kayıt yapıldı");
 					MrPoll.repaint(State.MAIN_MENU);
 				}
 			}
-			
+
 			@Override
 			public void onFailure(Throwable caught) {
 				Window.alert("save failure!!!");
 				setEnable(true);
 			}
 
-			
 		});
 
 	}
-	
-	public void setEditVisitData(){
-		
+
+	public void setEditVisitData() {
+
 		PatientUI patientUI = editVisitData.getPatient();
 		VisitUI visitUI = editVisitData.getVisit();
 		List<AnswerUI> answersUI = editVisitData.getAnswers();
-		
+
 		patientUI.setProtocolNo(tabPatientInfo.protocolno.getText());
 		patientUI.setNameSurname(tabPatientInfo.name.getText());
-		patientUI.setGender(tabPatientInfo.gender.getSelectedIndex()+"");
-		
+		patientUI.setGender(tabPatientInfo.gender.getSelectedIndex() + "");
+
 		visitUI.setDate(tabVisitInfo.date.getValue());
 		visitUI.setHospital(tabVisitInfo.hospital.getText());
 		visitUI.setAge(tabVisitInfo.age.getText());
 		visitUI.setEthic(tabVisitInfo.ethic.getValue());
 		visitUI.setNote(tabVisitInfo.note.getText());
-		
-		answersUI.addAll(tabClinic.getAnswersFromUi());
-		answersUI.addAll(tabMammography.getAnswersFromUi());
-		answersUI.addAll(tabMRI.getAnswersFromUi());
-		answersUI.addAll(tabPathology.getAnswersFromUi());
-		answersUI.addAll(tabSecondVisit.getAnswersFromUi());
-		answersUI.addAll(tabSurgical.getAnswersFromUi());
-		answersUI.addAll(tabUltrasonography.getAnswersFromUi());
-		
-		for(AnswerUI answerUI:answersUI){
-			if(answerUI.getAnswerValue()==null){
+
+		answersUI.addAll(MrPoll.getAnswersFromUi(tabClinic.panel));
+		answersUI.addAll(MrPoll.getAnswersFromUi(tabMammography.panel));
+		answersUI.addAll(MrPoll.getAnswersFromUi(tabMRI.panel));
+		answersUI.addAll(MrPoll.getAnswersFromUi(tabPathology.panel));
+		answersUI.addAll(MrPoll.getAnswersFromUi(tabSecondVisit.panel));
+		answersUI.addAll(MrPoll.getAnswersFromUi(tabSurgical.panel));
+		answersUI.addAll(MrPoll.getAnswersFromUi(tabUltrasonography.panel));
+
+		for (AnswerUI answerUI : answersUI) {
+			if (answerUI.getAnswerValue() == null) {
 				answersUI.remove(answerUI);
 			}
 		}
-		
+
 		editVisitData.setPatient(patientUI);
 		editVisitData.setVisit(visitUI);
 		editVisitData.setAnswers(answersUI);
-		
+
 	}
 
 	@UiHandler("cancel")
 	void onCancelClick(ClickEvent event) {
 		MrPoll.repaint(State.MAIN_MENU);
 	}
-	
-	public void setEnable(Boolean b){
+
+	public void setEnable(Boolean b) {
 		save.setEnabled(b);
 		cancel.setEnabled(b);
 		forward.setEnabled(b);

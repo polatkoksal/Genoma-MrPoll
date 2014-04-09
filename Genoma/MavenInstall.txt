@@ -2,3 +2,12 @@ dependency:purge-local-repository
 gwt:compile
 clean compile war:exploded -U -e
 
+
+
+Debug edebilmek için
+
+Project -> Properties ->Run/DEbug settings
+
+Arguments tabında
+
+-remoteUI "${gwt_remote_ui_server_port}:${unique_id}" -startupUrl index.html -logLevel INFO -codeServerPort 9997 -port 8888 -war /home/kayhan/git/Genoma-MrPoll/Genoma/src/main/webapp com.genoma.mrpoll.main

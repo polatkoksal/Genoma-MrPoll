@@ -1,11 +1,9 @@
 package com.genoma.mrpoll.client.UiBinder;
 
 import java.util.Date;
-import java.util.List;
 
 import com.genoma.mrpoll.client.PatientService;
 import com.genoma.mrpoll.client.PatientServiceAsync;
-import com.genoma.mrpoll.uihelper.AnswerUI;
 import com.genoma.mrpoll.uihelper.VisitUI;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -17,18 +15,23 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.datepicker.client.DateBox;
 
-public class TabVisitInfo extends Composite implements Updater{
+public class TabVisitInfo extends Composite {
 
-	PatientServiceAsync service= GWT.create(PatientService.class);
+	PatientServiceAsync service = GWT.create(PatientService.class);
 
-	
-	private static TabVisitInfoUiBinder uiBinder = GWT.create(TabVisitInfoUiBinder.class);
-	
-	@UiField DateBox date;
-	@UiField TextBox hospital;
-	@UiField CheckBox ethic;
-	@UiField TextArea note;
-	@UiField TextBox age;
+	private static TabVisitInfoUiBinder uiBinder = GWT
+			.create(TabVisitInfoUiBinder.class);
+
+	@UiField
+	DateBox date;
+	@UiField
+	TextBox hospital;
+	@UiField
+	CheckBox ethic;
+	@UiField
+	TextArea note;
+	@UiField
+	TextBox age;
 
 	interface TabVisitInfoUiBinder extends UiBinder<Widget, TabVisitInfo> {
 	}
@@ -38,8 +41,8 @@ public class TabVisitInfo extends Composite implements Updater{
 		updateUI(visitUI);
 	}
 
-	public void updateUI(VisitUI visitUI){
-		if(visitUI.getDate() == null){
+	public void updateUI(VisitUI visitUI) {
+		if (visitUI.getDate() == null) {
 			visitUI.setDate(new Date());
 		}
 		date.setValue(visitUI.getDate());
@@ -47,12 +50,6 @@ public class TabVisitInfo extends Composite implements Updater{
 		hospital.setText(visitUI.getHospital());
 		ethic.setValue(visitUI.getEthic());
 		note.setText(visitUI.getNote());
-		
-	}
 
-	@Override
-	public List<AnswerUI> getAnswersFromUi() {
-		return null;
 	}
-
 }

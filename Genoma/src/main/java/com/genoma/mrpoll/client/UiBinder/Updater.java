@@ -1,9 +1,7 @@
 package com.genoma.mrpoll.client.UiBinder;
 
-import java.util.List;
-
-import com.genoma.mrpoll.uihelper.AnswerUI;
+import com.google.gwt.user.client.ui.AbsolutePanel;
 
 public interface Updater {
-	public List<AnswerUI> getAnswersFromUi();
+	public AbsolutePanel getMainPanel();
 }
