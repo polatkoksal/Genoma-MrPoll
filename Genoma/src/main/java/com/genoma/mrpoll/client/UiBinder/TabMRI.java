@@ -18,6 +18,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.FocusWidget;
 import com.google.gwt.user.client.ui.HasName;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
@@ -185,7 +186,7 @@ public class TabMRI extends Composite implements Updater{
 	public void updateUi(List<AnswerUI> answers){
 		for(AnswerUI answer : answers){
 			for(Widget w: panel){
-				if(w instanceof HasName && ((HasName) w).getName().equals(answer.getQuestionCode())){
+				if(answer.getAnswerValue()!=null&&w instanceof HasName && ((HasName) w).getName().equals(answer.getQuestionCode())){
 					setAnswerOf((HasName)w, answer.getAnswerValue());
 				}
 			}
@@ -195,7 +196,7 @@ public class TabMRI extends Composite implements Updater{
 	public List<AnswerUI> getAnswersFromUi() {
 		List<AnswerUI> result=new ArrayList<AnswerUI>();
 		for(Widget w: panel){
-			if(w instanceof HasName){
+			if(w instanceof HasName&&((FocusWidget)w).isEnabled()){
 				result.add(returnAnswerOf((HasName)w));
 			}
 		}

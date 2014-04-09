@@ -12,6 +12,7 @@ import com.genoma.mrpoll.uihelper.AnswerUI;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.Composite;
@@ -28,6 +29,7 @@ public class TabClinic extends Composite implements Updater {
 	@UiField CheckBox riskfactor;
 	@UiField AbsolutePanel panel;
 
+	
 	interface ClinicUiBinder extends UiBinder<Widget, TabClinic> {
 	}
 
@@ -37,7 +39,7 @@ public class TabClinic extends Composite implements Updater {
 		initWidget(uiBinder.createAndBindUi(this));
 		menopause_combo.addItem("Premenapoz");
 		menopause_combo.addItem("Postmenapoz");
-		updateUI(answers);		
+		updateUI(answers);	
 	}
 
 	
