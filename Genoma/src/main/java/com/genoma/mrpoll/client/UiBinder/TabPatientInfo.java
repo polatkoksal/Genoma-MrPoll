@@ -1,27 +1,22 @@
 package com.genoma.mrpoll.client.UiBinder;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import com.genoma.mrpoll.client.MrPoll;
-import com.genoma.mrpoll.client.MrPoll.State;
 import com.genoma.mrpoll.client.PatientService;
 import com.genoma.mrpoll.client.PatientServiceAsync;
-import com.genoma.mrpoll.domain.Answer;
 import com.genoma.mrpoll.uihelper.AnswerUI;
 import com.genoma.mrpoll.uihelper.PatientUI;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.BlurEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
-import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.event.logical.shared.ValueChangeEvent;
-import com.google.gwt.event.dom.client.BlurEvent;
 
 public class TabPatientInfo extends Composite implements Updater {
 	

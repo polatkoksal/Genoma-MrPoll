@@ -3,19 +3,14 @@ package com.genoma.mrpoll.client;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
-import com.genoma.mrpoll.client.UiBinder.NewPatient;
-import com.genoma.mrpoll.client.UiBinder.SearchVisit;
-import com.genoma.mrpoll.client.UiBinder.UserSearchToEdit;
-import com.genoma.mrpoll.client.UiBinder.UserToUpdate;
 import com.genoma.mrpoll.client.UiBinder.EditPatient;
-import com.genoma.mrpoll.client.UiBinder.UserNew;
-import com.genoma.mrpoll.client.UiBinder.UserUpdate;
+import com.genoma.mrpoll.client.UiBinder.SearchVisit;
 import com.genoma.mrpoll.client.UiBinder.UserLogin;
 import com.genoma.mrpoll.client.UiBinder.UserMainMenu;
-import com.genoma.mrpoll.domain.Answer;
-import com.genoma.mrpoll.domain.User;
+import com.genoma.mrpoll.client.UiBinder.UserNew;
+import com.genoma.mrpoll.client.UiBinder.UserSearchToEdit;
+import com.genoma.mrpoll.client.UiBinder.UserToUpdate;
+import com.genoma.mrpoll.client.UiBinder.UserUpdate;
 import com.genoma.mrpoll.uihelper.AnswerUI;
 import com.genoma.mrpoll.uihelper.EditVisitData;
 import com.genoma.mrpoll.uihelper.PatientUI;
@@ -31,11 +26,9 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.FocusWidget;
 import com.google.gwt.user.client.ui.HasName;
-import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
-import com.sun.java.swing.plaf.windows.resources.windows;
 
 public class MrPoll implements EntryPoint {
 	

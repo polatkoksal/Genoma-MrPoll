@@ -4,7 +4,6 @@ import com.genoma.mrpoll.client.MrPoll;
 import com.genoma.mrpoll.client.MrPoll.State;
 import com.genoma.mrpoll.client.UserService;
 import com.genoma.mrpoll.client.UserServiceAsync;
-import com.genoma.mrpoll.uihelper.EditVisitData;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;

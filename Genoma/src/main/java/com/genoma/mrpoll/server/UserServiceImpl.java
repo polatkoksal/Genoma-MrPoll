@@ -28,7 +28,6 @@ import com.genoma.mrpoll.domain.Settings;
 import com.genoma.mrpoll.domain.User;
 import com.genoma.mrpoll.domain.UserRole;
 import com.genoma.mrpoll.uihelper.UserUI;
-import com.genoma.mrpoll.util.UtilService;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 public class UserServiceImpl extends RemoteServiceServlet implements

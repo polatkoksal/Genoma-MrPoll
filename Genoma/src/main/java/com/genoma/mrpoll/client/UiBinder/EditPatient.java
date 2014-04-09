@@ -1,6 +1,5 @@
 package com.genoma.mrpoll.client.UiBinder;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.genoma.mrpoll.client.MrPoll;
@@ -24,7 +23,6 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 public class EditPatient extends Composite {

@@ -1,8 +1,6 @@
 package com.genoma.mrpoll.uihelper;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 public class PatientUI implements Serializable {
 	

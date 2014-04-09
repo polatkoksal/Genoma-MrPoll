@@ -3,15 +3,6 @@ package com.genoma.mrpoll.uihelper;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
-import com.genoma.mrpoll.domain.Answer;
 
 public class QuestionUI implements Serializable{
 
