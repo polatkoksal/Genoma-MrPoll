@@ -77,6 +77,8 @@ public class PatientServiceImpl extends RemoteServiceServlet implements
 						.getId());
 				List<Answer> results = visit.getAnswers();
 				for (Answer ans : results) {
+					visit.removeAnswer(ans);
+					ans.getQuestion().removeAnswer(ans);
 					em.remove(ans);
 				}
 			} else {
@@ -97,7 +99,7 @@ public class PatientServiceImpl extends RemoteServiceServlet implements
 			patient = em.merge(patient);
 			visit.setPatient(patient);
 			visit = em.merge(visit);
-			patient.getVisits().add(visit);
+			patient.addVisit(visit);
 
 			// DELETE ALL PRECIOUS ANSWERS OF VISIT.
 
@@ -113,14 +115,13 @@ public class PatientServiceImpl extends RemoteServiceServlet implements
 					List<Question> questions = query1.getResultList();
 					// FIXME : Throw exception
 					if (!questions.isEmpty()) {
-						answer.setQuestion(questions.get(0));
-						answer.setVisit(visit);
+						questions.get(0).addAnswer(answer);
+						visit.addAnswer(answer);
 						answers.add(answer);
 						em.persist(answer);
 					}
 				}
 			}
-			em.flush();
 			tx.commit();
 		} catch (Exception e) {
 			tx.rollback();
@@ -273,19 +274,20 @@ public class PatientServiceImpl extends RemoteServiceServlet implements
 
 			List<Answer> answers = v.getAnswers();
 			for (Answer ans : answers) {
+				v.removeAnswer(ans);
+				ans.getQuestion().removeAnswer(ans);
 				em.remove(ans);
 			}
 			Patient p = v.getPatient();
-			p.getVisits().remove(v);
+			p.removeVisit(v);
 			em.remove(v);
 
 			// FIXME: Kayhan Burası çalışmıyor. d
 			List<Visit> visits2 = p.getVisits();
 			if (visits2.size() == 0) {
+				p.getUser().removePatient(p);
 				em.remove(p);
 			}
-
-
 			tx.commit();
 		} catch (Exception e) {
 			tx.rollback();
