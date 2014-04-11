@@ -4,6 +4,7 @@ import static com.genoma.mrpoll.client.MrPoll.setAnswerOf;
 
 import java.util.List;
 
+import com.genoma.mrpoll.client.MrPoll;
 import com.genoma.mrpoll.uihelper.AnswerUI;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ChangeEvent;
@@ -75,10 +76,6 @@ public class TabSecondVisit extends Composite {
 
 	public TabSecondVisit(List<AnswerUI> list) {
 		initWidget(uiBinder.createAndBindUi(this));
-		onR_mri_biopsyClick(null);
-		onL_mri_biopsyClick(null);
-		onR_usgClick(null);
-		onL_usgClick(null);
 		r_mri_biopsy_diagnosis.addItem("Duktal");
 		r_mri_biopsy_diagnosis.addItem("Lobüler");
 		r_mri_biopsy_diagnosis.addItem("Mikst");
@@ -95,6 +92,11 @@ public class TabSecondVisit extends Composite {
 		l_usg_biopsy_diagnosis.addItem("Lobüler");
 		l_usg_biopsy_diagnosis.addItem("Mikst");
 		l_usg_biopsy_diagnosis.addItem("Diğer");
+		MrPoll.updateUi(panel, list);
+		onR_mri_biopsyClick(null);
+		onL_mri_biopsyClick(null);
+		onR_usgClick(null);
+		onL_usgClick(null);
 		onR_mri_biopsy_diagnosisChange(null);
 		onL_mri_biopsy_diagnosisChange(null);
 		onR_usg_biopsy_diagnosisChange(null);

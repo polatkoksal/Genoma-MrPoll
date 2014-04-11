@@ -33,7 +33,7 @@
 				<g:Label text="Histopatolojik tanı:" ui:field="r_usg_biopsy_diagnosis_label"/>
 			</g:at>
 			<g:at left="205" top="195">
-				<g:ListBox ui:field="r_usg_biopsy_diagnosis" name="7124"/>
+				<g:ListBox ui:field="r_usg_biopsy_diagnosis" name="7124" width="58px" height="20px"/>
 			</g:at>
 			<g:at left="361" top="48">
 				<g:CheckBox width="282px" height="19px" text="MRI kılavuzluğunda biyopsi yapıldı" ui:field="l_mri_biopsy" name="7210"/>
@@ -71,7 +71,7 @@
 			<g:at left="596" top="73">
 				<g:TextBox width="88px" height="12px" ui:field="l_mri_biopsy_diagnosis_other" name="7212"/>
 			</g:at>
-			<g:at left="267" top="195">
+			<g:at left="275" top="197">
 				<g:TextBox width="88px" height="12px" ui:field="r_usg_biopsy_diagnosis_other" name="7125"/>
 			</g:at>
 			<g:at left="618" top="195">

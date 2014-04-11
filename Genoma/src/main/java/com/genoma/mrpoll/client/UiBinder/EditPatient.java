@@ -222,6 +222,7 @@ public class EditPatient extends Composite {
 		visitUI.setEthic(tabVisitInfo.ethic.getValue());
 		visitUI.setNote(tabVisitInfo.note.getText());
 
+		answersUI.clear();
 		answersUI.addAll(MrPoll.getAnswersFromUi(tabClinic.panel));
 		answersUI.addAll(MrPoll.getAnswersFromUi(tabMammography.panel));
 		answersUI.addAll(MrPoll.getAnswersFromUi(tabMRI.panel));

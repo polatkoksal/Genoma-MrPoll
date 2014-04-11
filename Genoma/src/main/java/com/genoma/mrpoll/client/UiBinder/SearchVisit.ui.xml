@@ -19,7 +19,7 @@
 				<g:VerticalPanel width="1382px" height="309px" ui:field="panel"/>
 			</g:at>
 			<g:at left="545" top="22">
-				<g:Button width="53px" height="24px" ui:field="cancel">İPTAL</g:Button>
+				<g:Button width="185px" height="24px" ui:field="cancel" text="ANA MENÜYE DÖN">İPTAL</g:Button>
 			</g:at>
 		</g:AbsolutePanel>
 	</g:HTMLPanel>

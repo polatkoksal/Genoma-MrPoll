@@ -104,6 +104,8 @@ public class TabMRI extends Composite {
 	TextBox r_indication_other;
 	@UiField
 	TextBox l_indication_other;
+	@UiField TextBox r_nonmassstain_desc;
+	@UiField TextBox l_nonmassstain_desc;
 
 	interface MammographyUiBinder extends UiBinder<Widget, TabMRI> {
 	}

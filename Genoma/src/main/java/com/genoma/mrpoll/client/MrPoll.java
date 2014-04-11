@@ -112,7 +112,6 @@ public class MrPoll implements EntryPoint {
 						}
 					});
 		} else {
-			Window.alert("in else!");
 			editPatientPanel = new EditPatient(editVisitData);
 			MrPoll.repaint(State.TAB_PATIENT_INFO);
 		}
@@ -178,15 +177,11 @@ public class MrPoll implements EntryPoint {
 
 	public static List<AnswerUI> getAnswersFromUi(AbsolutePanel panel) {
 		List<AnswerUI> result = new ArrayList<AnswerUI>();
-		String s = "";
 		for (Widget w : panel) {
 			if (w instanceof HasName && ((FocusWidget) w).isEnabled()) {
 				result.add(returnAnswerOf((HasName) w));
-				s += ((HasName) w).getName() + "-"
-						+ returnAnswerOf((HasName) w);
 			}
 		}
-		Window.alert(s);
 		return result;
 	}
 

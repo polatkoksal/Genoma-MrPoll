@@ -84,6 +84,7 @@ public class PatientServiceImpl extends RemoteServiceServlet implements
 			} else {
 				visit = new Visit();
 			}
+			
 
 			try {
 				Integer patientId = patient.getId();
@@ -122,6 +123,10 @@ public class PatientServiceImpl extends RemoteServiceServlet implements
 					}
 				}
 			}
+			for(Answer a : answers){
+				System.out.println("answerValue:"+a.getAnswerValue()+"questionCode:"+a.getQuestion().getQuestionCode()+"questionText:"+a.getQuestion().getQuestion());
+			}
+			
 			tx.commit();
 		} catch (Exception e) {
 			tx.rollback();
@@ -129,7 +134,7 @@ public class PatientServiceImpl extends RemoteServiceServlet implements
 		} finally {
 			em.close();
 		}
-
+		
 		return result;
 	}
 
@@ -266,13 +271,16 @@ public class PatientServiceImpl extends RemoteServiceServlet implements
 		try {
 			tx.begin();
 
-			Query query1 = em
-					.createQuery("select v from Visit v where v.id=:visitId");
+			Query query1 = em.createQuery("select v from Visit v where v.id=:visitId");
 			query1.setParameter("visitId", searchResultData.getVisitId());
 			List<Visit> visits = query1.getResultList();
 			Visit v = visits.get(0);
 
-			List<Answer> answers = v.getAnswers();
+			Query query2 = em.createQuery("select a from Answer a where a.visit.id=:visitId");
+			query2.setParameter("visitId", v.getId());
+			List<Answer> answers = query2.getResultList();
+			
+			//List<Answer> answers = v.getAnswers();
 			for (Answer ans : answers) {
 				v.removeAnswer(ans);
 				ans.getQuestion().removeAnswer(ans);
@@ -299,6 +307,11 @@ public class PatientServiceImpl extends RemoteServiceServlet implements
 		return result;
 	}
 
+	
+	
+	
+	
+	
 	// ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*

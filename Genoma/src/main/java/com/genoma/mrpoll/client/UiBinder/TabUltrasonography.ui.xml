@@ -57,7 +57,7 @@
 				<g:CheckBox width="50px" height="19px" text="Kitle" ui:field="l_mass" wordWrap="false" name="4210"/>
 			</g:at>
 			<g:at left="389" top="319">
-				<g:CheckBox width="90px" height="19px" text="Bulgu Yok" ui:field="l_nofinding" wordWrap="false" name="4230"/>
+				<g:CheckBox width="90px" height="19px" text="Bulgu Yok" ui:field="l_nofinding" wordWrap="false" name="4200"/>
 			</g:at>
 			<g:at left="415" top="134">
 				<g:Label width="100px" height="16px" text="Lezyon Sayısı:" ui:field="l_lesionnumber_label"/>

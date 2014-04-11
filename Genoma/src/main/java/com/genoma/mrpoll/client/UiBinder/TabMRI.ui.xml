@@ -18,7 +18,7 @@
 				<g:Label text="Lezyon Sayısı:" ui:field="r_lesionnumber_label"/>
 			</g:at>
 			<g:at left="160" top="132">
-				<g:TextBox ui:field="r_lesionnumber" name="5111"/>
+				<g:TextBox ui:field="r_lesionnumber" name="5111" width="143px" height="11px"/>
 			</g:at>
 			<g:at left="36" top="156">
 				<g:Label text="Lezyon Dağılımı:" ui:field="r_lesionspread_label"/>
@@ -30,7 +30,7 @@
 				<g:Label text="Lezyon Boyutu:" ui:field="r_lesionsize_label"/>
 			</g:at>
 			<g:at left="160" top="178">
-				<g:TextBox ui:field="r_lesionsize" name="5113"/>
+				<g:TextBox ui:field="r_lesionsize" name="5113" width="143px" height="11px"/>
 			</g:at>
 			<g:at left="26" top="275">
 				<g:CheckBox text="Aksilla Lenf Düğümü Pozitif" ui:field="r_axillary" name="5150"/>
@@ -138,10 +138,16 @@
 				<g:CheckBox width="210px" height="19px" text="Kitlesel Olmayan Boyanma" ui:field="l_nonmassstain" name="5220"/>
 			</g:at>
 			<g:at left="243" top="403">
-				<g:TextBox ui:field="r_indication_other" name="5161"/>
+				<g:TextBox ui:field="r_indication_other" name="5161" width="143px" height="11px"/>
 			</g:at>
 			<g:at left="647" top="403">
 				<g:TextBox width="130px" height="13px" name="5261" ui:field="l_indication_other"/>
+			</g:at>
+			<g:at left="216" top="200">
+				<g:TextBox ui:field="r_nonmassstain_desc" name="5121"/>
+			</g:at>
+			<g:at left="627" top="202">
+				<g:TextBox ui:field="l_nonmassstain_desc" name="5221"/>
 			</g:at>
 		</g:AbsolutePanel>
 	</g:HTMLPanel>

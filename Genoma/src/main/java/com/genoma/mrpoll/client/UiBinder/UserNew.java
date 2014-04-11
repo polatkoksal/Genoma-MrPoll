@@ -62,20 +62,6 @@ public class UserNew extends Composite{
 			public void onSuccess(Boolean result) {
 				if(result){
 					Window.alert("Kullanıcı Eklendi!");
-					
-					/*String message = "Kullanic Adi:"+username.getText()+"  Sifre:"+password.getText();
-					service.sendMail(email.getText(), message, new AsyncCallback<Void>() {
-						@Override
-						public void onSuccess(Void result) {
-							Window.alert("mail sent");
-						}
-						@Override
-						public void onFailure(Throwable caught) {
-							Window.alert("send mail fails!!!");
-						}
-
-						
-					});*/
 					MrPoll.repaint(State.MAIN_MENU);
 				}
 				else{

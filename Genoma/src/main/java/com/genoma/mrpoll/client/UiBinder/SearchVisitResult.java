@@ -46,7 +46,7 @@ public class SearchVisitResult extends Composite {
 			protocolno.setText(searchResultData.getProtocolNo());
 			name.setText(searchResultData.getNamaSurname());
 			age.setText(searchResultData.getAge());
-			hospital.setText(searchResultData.getHospital());
+			hospital.setText(searchResultData.getHospital());	
 			date.setText(searchResultData.getDate().toString());
 		}
 		
@@ -60,7 +60,6 @@ public class SearchVisitResult extends Composite {
 			@Override
 			public void onSuccess(EditVisitData result) {
 				MrPoll.setEditVisitData(result);
-				
 			}
 			
 			@Override
