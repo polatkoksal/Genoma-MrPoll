@@ -15,8 +15,8 @@
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://127.9.81.2:5432/mrpoll" />
-			<property name="javax.persistence.jdbc.user" value="postgres" />
-			<property name="javax.persistence.jdbc.password" value="1" />
+			<property name="javax.persistence.jdbc.user" value="adminuytglyl" />
+			<property name="javax.persistence.jdbc.password" value="HGsR7c6iRkMd" />
 			<property name="eclipselink.ddl-generation" value="create-tables" />
 			<property name="eclipselink.ddl-generation.output-mode"
 				value="database" />
